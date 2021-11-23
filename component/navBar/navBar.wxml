@@ -1,0 +1,43 @@
+<view class='header' style="height: {{headerHight}}px">
+    <view class='status' style="height:{{statusHeight}}px"></view>
+    <view class='nav' style="height:{{navHeight}}px">
+        <view class="nav_con" style="padding: {{paddingTop}}px 0px;">
+            <view class="nav_icon" style="width: {{conHegiht + paddingLeft}}px">
+                <block wx:if="{{showBack}}">
+                    <image 
+                        class="nav_img"
+                        bindtap="onGoback"
+                        style="width: {{conHegiht * 2 / 3}}px; height: {{conHegiht * 2 / 3}}px" 
+                        src="/asserts/public/back.png" />
+                </block>
+                <block wx:else>
+                    <image 
+                        class="nav_img"
+                        style="width: {{conHegiht}}px; height: {{conHegiht}}px" 
+                        src="/asserts/public/search_logo.png" />
+                </block>
+            </view>
+            <view class="nav_ipt" bindtap="onTapIpt">
+                <!-- <van-field
+                    value="{{ value }}"
+                    placeholder="搜索"
+                    custom-style="height: {{conHegiht-2}}px; padding: {{paddingTop}}px 0px;"
+                    border="{{ false }}"
+                    left-icon="search"
+                    bind:change="onChange"
+                    bind:confirm="onConfirm"
+                /> -->
+                <image class="nav_ipt_search" src="/asserts/public/search.png" style="height: {{conHegiht / 2 - 2}}px; width: {{conHegiht / 2 - 2}}px"/>
+                <input 
+                    value="{{ value }}"
+                    placeholder-style="font-size: 24rpx;" 
+                    bindconfirm="onConfirm" 
+                    class="nav_ipt_container" 
+                    placeholder="搜索" 
+                    bindinput="onChange"
+                    style="height: {{conHegiht - 2}}px"/>
+            </view> 
+        </view>
+        <view class="nav_empty" style="width:{{disWidth}}px"></view>     
+    </view>
+</view>

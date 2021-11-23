@@ -1,0 +1,45 @@
+.nav {
+    display: flex;
+    flex-direction: row;
+}
+
+.nav_con {
+    flex: 1;
+    display: flex;
+    border-bottom: 1rpx solid #f0f0f0;
+    align-items: center;
+}
+
+.nav_icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav_img {
+    margin-left: 20rpx;
+}
+
+.nav_ipt {
+    flex: 1;
+    padding-left: 10rpx;
+    padding-right: 30rpx;
+    border: 1rpx solid #eeeeee;
+    border-radius: 100rpx;
+    display: flex;
+    align-items: center;
+    margin-left: 20rpx;
+}
+
+.nav_ipt_search {
+    margin: 0 14rpx;
+}
+
+.nav_ipt_container {
+    flex: 1;
+    font-size: 24rpx;
+}
+
+.nav_empty {
+    border-bottom: 1rpx solid #f0f0f0;
+}
