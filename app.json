@@ -1,12 +1,19 @@
 {
-	"pages": ["pages/index/index", "pages/logs/logs"],
+	"pages": [
+		"pages/home/index/index",
+		"pages/index/index",
+		"pages/logs/logs",
+		"pages/square/index/index",
+		"pages/rest/index/index",
+		"pages/my/index/index",
+		"pages/calendar/index/index"
+	],
 	"window": {
 		"backgroundTextStyle": "light",
 		"navigationBarBackgroundColor": "#fff",
 		"navigationBarTitleText": "Weixin",
 		"navigationBarTextStyle": "black"
 	},
-	"style": "v2",
 	"sitemapLocation": "sitemap.json",
 	"tabBar": {
 		"color": "#d8d8d8",
@@ -14,22 +21,28 @@
 		"position": "bottom",
 		"list": [
 			{
-				"pagePath": "pages/home/home",
+				"pagePath": "pages/home/index/index",
 				"text": "首页",
 				"iconPath": "asserts/tabBar/home.png",
 				"selectedIconPath": "asserts/tabBar/home_select.png"
 			},
 			{
-				"pagePath": "pages/circle/circle",
-				"text": "圈子",
+				"pagePath": "pages/square/index/index",
+				"text": "广场",
 				"iconPath": "asserts/tabBar/circle.png",
 				"selectedIconPath": "asserts/tabBar/circle_select.png"
 			},
 			{
-				"pagePath": "pages/message/message",
-				"text": "消息",
+				"pagePath": "pages/rest/index/index",
+				"text": "其他",
 				"iconPath": "asserts/tabBar/message.png",
 				"selectedIconPath": "asserts/tabBar/message_select.png"
+			},
+            {
+				"pagePath": "pages/calendar/index/index",
+				"text": "档期",
+				"iconPath": "asserts/tabBar/my.png",
+				"selectedIconPath": "asserts/tabBar/my_select.png"
 			},
 			{
 				"pagePath": "pages/my/index/index",
