@@ -1,1 +1,21 @@
-/* pages/my/index/index.wxss */
+.wrap {
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.background_img {
+    width: 100%;
+}
+
+.con {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+}
+
+
+

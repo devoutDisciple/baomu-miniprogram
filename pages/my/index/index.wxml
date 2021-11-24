@@ -1,2 +1,6 @@
-<!--pages/my/index/index.wxml-->
-<text>pages/my/index/index.wxml</text>
+<view class="wrap">
+    <image mode="widthFix" class="background_img" src="/asserts/public/invitation.png"/>
+    <view class="con">
+        <header text="我的"/>
+    </view>
+</view>

@@ -1,0 +1,7 @@
+<view class="header" style="{{ 'height: ' + navHeight + '; top: ' + statusBarHeight + '; line-height: '+ navHeight }}">
+    {{text}}
+    <image 
+        wx:if="{{showBack}}"
+        class="head_img" src="/asserts/public/back_icon.png"
+        style="{{'height: ' + backIconHeight + '; width: ' + backIconHeight + '; top: ' + backIconMarginTop + '; left: ' + backIconMarginTop }}" />
+</view>
