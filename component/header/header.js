@@ -27,7 +27,6 @@ Component({
 	data: {
 		navHeight: '40px',
 		statusBarHeight: '20px',
-		backIconHeight: '20px',
 		backIconMarginTop: '10px',
 		headerHight: '60px',
 	},
@@ -44,8 +43,7 @@ Component({
 					headerHight: `${res.headerHight}px`,
 					navHeight: `${res.navHeight}px`,
 					statusBarHeight: `${res.statusBarHeight}px`,
-					backIconHeight: `${res.navHeight / 2}px`,
-					backIconMarginTop: `${res.navHeight / 4}px`,
+					backIconMarginTop: `${res.navHeight / 3}px`,
 				});
 			});
 		},

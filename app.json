@@ -29,20 +29,20 @@
 			{
 				"pagePath": "pages/square/index/index",
 				"text": "广场",
-				"iconPath": "asserts/tabBar/circle.png",
-				"selectedIconPath": "asserts/tabBar/circle_select.png"
+				"iconPath": "asserts/tabBar/square.png",
+				"selectedIconPath": "asserts/tabBar/square_select.png"
 			},
 			{
 				"pagePath": "pages/rest/index/index",
 				"text": "其他",
-				"iconPath": "asserts/tabBar/message.png",
-				"selectedIconPath": "asserts/tabBar/message_select.png"
+				"iconPath": "asserts/tabBar/rest.png",
+				"selectedIconPath": "asserts/tabBar/rest_select.png"
 			},
             {
 				"pagePath": "pages/calendar/index/index",
 				"text": "档期",
-				"iconPath": "asserts/tabBar/my.png",
-				"selectedIconPath": "asserts/tabBar/my_select.png"
+				"iconPath": "asserts/tabBar/calendar.png",
+				"selectedIconPath": "asserts/tabBar/calendar_select.png"
 			},
 			{
 				"pagePath": "pages/my/index/index",

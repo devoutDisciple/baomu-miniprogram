@@ -17,5 +17,64 @@
     height: 100vh;
 }
 
+.intro {
+    position: absolute;
+    background: red;
+    min-height: 100rpx;
+    width: calc(100vw - 40rpx);
+    left: 0;
+    top: 100px;
+    display: flex;
+    flex-direction: column;
+    padding: 0 20rpx;
+}
 
+.person {
+    display: flex;
+    flex-direction: row;
+    height: 144rpx;
+}
+
+.person_photo {
+    width: 144rpx;
+    height: 144rpx;
+}
+
+.person_msg {
+    flex: 1;
+    margin-left: 20rpx;
+}
+
+.person_mgs_profession {
+    height: 72rpx;
+    display: flex;
+}
+
+.person_mgs_profession_name {
+    min-width: 40rpx;
+    display: flex;
+    align-items: center;
+    font-size: 38rpx;
+    color: #fff;
+}
+
+.person_mgs_profession_level {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    margin-left: 15rpx;
+}
+
+.person_mgs_profession_level_photo {
+    height: 36rpx;
+    width: 36rpx;
+}
+
+.person_mgs_name {
+    height: 72rpx;
+    display: flex;
+    align-items: center;
+    font-size: 34rpx;
+    color: #5c5c5c;
+}
 

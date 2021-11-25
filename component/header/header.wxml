@@ -3,5 +3,5 @@
     <image 
         wx:if="{{showBack}}"
         class="head_img" src="/asserts/public/back_icon.png"
-        style="{{'height: ' + backIconHeight + '; width: ' + backIconHeight + '; top: ' + backIconMarginTop + '; left: ' + backIconMarginTop }}" />
+        style="{{' top: ' + backIconMarginTop + '; left: ' + backIconMarginTop }}" />
 </view>
