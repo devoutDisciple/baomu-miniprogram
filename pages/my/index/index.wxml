@@ -1,8 +1,11 @@
+<view wx:if="{{showLoading}}" class="loading" style="{{ 'height: ' + statusHeight }}">
+    <van-loading size="20" type="spinner"/>
+</view>
 <view class="wrap">
-    <image mode="widthFix" class="background_img" src="/asserts/public/invitation.png"/>
+    <image mode="widthFix" class="background_img" src="/asserts/public/home_bg.png"/>
     <view class="con">
         <header text="我的"/>
-        <view class="intro" style="{{' top: ' + statusHeight + ';' }}">
+        <view class="intro" style="{{' top: ' + statusHeight + '; height: calc(100vh - ' + statusHeight  +')' }}">
             <view class="person">
                 <image class="person_photo" src="/asserts/temp/photo.png" />
                 <view class="person_msg">
@@ -17,6 +20,39 @@
                     </view>
                 </view>
             </view>
+            <view class="data">
+                <view class="data_chunk">
+                    <view class="data_chunk_txt">获赞</view>
+                    <view class="data_chunk_num">2213</view>
+                </view>
+                <view class="data_chunk">
+                    <view class="data_chunk_txt">获赞</view>
+                    <view class="data_chunk_num">2213</view>
+                </view>
+                <view class="data_chunk">
+                    <view class="data_chunk_txt">获赞</view>
+                    <view class="data_chunk_num">2213</view>
+                </view>
+            </view>
+            <view class="desc">
+                个人简介: 区块链是一个信息技术领域的术语。从本质上讲，它是一个共享数据库，存储于其中的数据或信息
+            </view>
+            <scroll-view class="detail" scroll-y="{{true}}" show-scrollbar="{{false}}" enhanced="{{true}}">
+                <view class="opt">123</view>
+                <view class="opt">123</view>
+                <view class="opt">123</view>
+                <view class="opt">123</view>
+                <view class="opt">123</view>
+                <view class="opt">123</view>
+                <view class="opt">123</view>
+                <view class="opt">123</view>
+                <view class="opt">123</view>
+                <view class="opt">123</view>
+                <view class="opt">123</view>
+                <view class="opt">123</view>
+                <view class="opt">123</view>
+                <view class="btm"/>
+            </scroll-view>
         </view>
     </view>
 </view>

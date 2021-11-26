@@ -15,6 +15,9 @@
 		"navigationBarTextStyle": "black"
 	},
 	"sitemapLocation": "sitemap.json",
+	"usingComponents": {
+		"van-loading": "@vant/weapp/loading/index"
+	},
 	"tabBar": {
 		"color": "#d8d8d8",
 		"selectedColor": "#313131",
@@ -38,7 +41,7 @@
 				"iconPath": "asserts/tabBar/rest.png",
 				"selectedIconPath": "asserts/tabBar/rest_select.png"
 			},
-            {
+			{
 				"pagePath": "pages/calendar/index/index",
 				"text": "档期",
 				"iconPath": "asserts/tabBar/calendar.png",
