@@ -1,0 +1,11 @@
+<view class="list" style="{{ !isFirst &&  'padding-top: 40rpx;' }}">
+    <view class="list_icon">
+        <image class="list_img" src="{{'/asserts/public/' + iconName + '.png'}}" />
+    </view>
+    <view class="list_con" style="{{ !isLast &&  'padding-bottom: 30rpx; border-bottom: 2rpx solid #EDEDED;' }}">
+        <view class="list_con_text">{{text}}</view>
+        <view class="list_con_icon">
+            <image class="left_icon" src="/asserts/public/left.png" />
+        </view>
+    </view>
+</view>

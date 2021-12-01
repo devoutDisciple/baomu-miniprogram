@@ -38,19 +38,48 @@
                 个人简介: 区块链是一个信息技术领域的术语。从本质上讲，它是一个共享数据库，存储于其中的数据或信息
             </view>
             <scroll-view class="detail" scroll-y="{{true}}" show-scrollbar="{{false}}" enhanced="{{true}}">
-                <view class="opt">123</view>
-                <view class="opt">123</view>
-                <view class="opt">123</view>
-                <view class="opt">123</view>
-                <view class="opt">123</view>
-                <view class="opt">123</view>
-                <view class="opt">123</view>
-                <view class="opt">123</view>
-                <view class="opt">123</view>
-                <view class="opt">123</view>
-                <view class="opt">123</view>
-                <view class="opt">123</view>
-                <view class="opt">123</view>
+                <view class="opt work_msg">
+                    <view class="opt_chunk">
+                        <view class="opt_chunk_icon">
+                            <image src="/asserts/public/my_team.png" class="opt_chunk_img"/>
+                        </view>
+                        <view class="opt_chunk_txt">我的乐队</view>
+                    </view>
+                    <view class="opt_chunk">
+                        <view class="opt_chunk_icon">
+                            <image src="/asserts/public/my_team.png" class="opt_chunk_img"/>
+                        </view>
+                        <view class="opt_chunk_txt">我的乐队</view>
+                    </view>
+                    <view class="opt_chunk">
+                        <view class="opt_chunk_icon">
+                            <image src="/asserts/public/my_team.png" class="opt_chunk_img"/>
+                        </view>
+                        <view class="opt_chunk_txt">我的乐队</view>
+                    </view>
+                    <view class="opt_chunk">
+                        <view class="opt_chunk_icon">
+                            <image src="/asserts/public/my_team.png" class="opt_chunk_img"/>
+                        </view>
+                        <view class="opt_chunk_txt">我的乐队</view>
+                    </view>
+                </view>
+                <view class="opt">
+                    <listItem text="毕业院校认证/获奖认证" iconName="my_school" isFirst/>
+                    <listItem text="身份证实名认证" iconName="identity_authentication" isLast/>
+                </view>
+                <view class="opt">
+                    <listItem text="消息中心" iconName="msg_center" isFirst/>
+                    <listItem text="我的技能" iconName="my_skill"/>
+                    <listItem text="照片墙修改" iconName="photo_wall"/>
+                    <listItem text="工作地点" iconName="work_location"/>
+                    <listItem text="可预约时段" iconName="order _time" isLast/>
+                </view>
+                <view class="opt">
+                    <listItem text="作品展示" iconName="production_show" isFirst/>
+                    <listItem text="去组团" iconName="cluster"/>
+                    <listItem text="客服中心" iconName="call_center" isLast/>
+                </view>
                 <view class="btm"/>
             </scroll-view>
         </view>

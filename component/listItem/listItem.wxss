@@ -1,0 +1,39 @@
+.list {
+    display: flex;
+    /* background: red; */
+}
+
+.list_icon {
+    width: 80rpx;
+    height: 60rpx;
+    display: flex;
+    align-items: center;
+}
+
+.list_img {
+    height: 42rpx;
+    width: 42rpx;
+}
+
+.list_con {
+    flex: 1;
+    display: flex;
+    align-items: center;
+}
+
+.list_con_text {
+    flex: 1;
+}
+
+.list_con_icon {
+    width: 60rpx;
+    height: 60rpx;
+    display: flex;
+    align-items: center;
+    justify-content:flex-end;
+}
+
+.left_icon {
+    height: 30rpx;
+    width: 15rpx;
+}

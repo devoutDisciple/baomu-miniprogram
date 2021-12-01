@@ -116,7 +116,7 @@
 }
 
 .desc {
-    margin: 40rpx;
+    margin: 50rpx 40rpx;
     color: #fff;
     display: -webkit-box;
     overflow: hidden;
@@ -126,11 +126,10 @@
     -webkit-line-clamp: 2;
 }
 
-.detail {
+.detail {   
     flex: 1;
     background: #f9f9f9;
-    padding: 20rpx;
-    padding-top: 0;
+    padding: 0 20rpx;
     width: calc(100vw - 40rpx);
     overflow: hidden;
 }
@@ -140,13 +139,41 @@
   }
 
 .opt {
-    width: 100%;
     background: #fff;
     margin-top: 40rpx;
-    padding: 30rpx 20rpx;
+    padding: 40rpx;
+    border-radius: 20rpx;
+    box-shadow: 0rpx 0rpx 13rpx 4rpx #f3f3f3;
+}
+
+.work_msg {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.opt_chunk {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.opt_chunk_icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.opt_chunk_img {
+    width: 54rpx;
+    height: 54rpx;
+}
+
+.opt_chunk_txt {
+    margin-top: 20rpx;
 }
 
 .btm {
-    height: 20rpx;
+    height: 60rpx;
     width: 100%;
 }

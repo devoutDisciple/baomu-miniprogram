@@ -1,7 +1,8 @@
 {
 	"navigationStyle": "custom",
 	"usingComponents": {
-        "header": "/component/header/header"
+        "header": "/component/header/header",
+        "listItem": "/component/listItem/listItem"
 	},
 	"enablePullDownRefresh": true
 }
