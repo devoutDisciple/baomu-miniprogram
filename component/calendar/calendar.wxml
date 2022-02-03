@@ -1,0 +1,44 @@
+<view class="calendar_con">
+    <view class="title">
+        <view class="title_icon">
+            <image class="title_img" src="/asserts/public/calendar_right.png" />
+        </view>
+        <view class="title_date">2月 2022年</view>
+        <view class="title_icon">
+            <image class="title_img" src="/asserts/public/calendar_left.png" />
+        </view>
+    </view>
+    <view class="week">
+        <block wx:for="{{week}}" wx:key="index">
+            <view class="week_item">{{item}}</view>
+        </block>
+    </view>
+    <block wx:for="{{calendar}}" wx:key="index">
+        <block wx:if="{{item.is_start}}">
+            <view class="day_item">
+                <view class="day_text days_start">
+                    <view class="days_item_modal">{{item.day}}</view>
+                </view>
+                <view class="days_item_color_start" />
+            </view>
+        </block>
+        <block wx:elif="{{item.is_end}}">
+            <view class="day_item">
+                <view class="day_text days_end">
+                    <view class="days_item_modal">{{item.day}}</view>
+                </view>
+                <view class="days_item_color_end" />
+            </view>
+        </block>
+        <block wx:elif="{{item.is_ranger}}">
+            <view class="day_item days_ranger">
+                <view class="day_text">{{item.day}}</view>
+            </view>
+        </block>
+        <block wx:else>
+            <view class="day_item">
+                <view class="day_text">{{item.day}}</view>
+            </view>
+        </block>
+    </block>
+</view>

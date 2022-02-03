@@ -1,0 +1,116 @@
+.calendar_con {
+    display: flex;
+    flex-wrap: wrap;
+    width: calc(100% - 40rpx);
+    padding: 30rpx 20rpx;
+    background: #fff;
+    border-radius: 20rpx;
+}
+
+.week {
+    width: 100%;
+    display: flex;
+    color: #333;
+    font-weight: 600;
+}
+
+.week_item {
+    width: calc((100% - 40rpx) / 7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.title {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    margin-top: 20rpx;
+    margin-bottom: 40rpx;
+}
+
+.title_icon {
+    width: calc((100% - 40rpx) / 7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.title_img {
+    width: 15rpx;
+    height: 30rpx;
+}
+
+.title_date {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.day_item {
+    width: calc((100% - 40rpx) / 7);
+    height: 70rpx;
+    margin-top: 40rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.day_text {
+    height: 70rpx;
+    width: 70rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.days_ranger {
+    background: #f1f1ea;
+}
+
+.days_start {
+    border-top-left-radius: 100%;
+    border-bottom-left-radius: 100%;
+    position: relative;
+    background: #f1f1ea;
+}
+
+.days_end {
+    border-top-right-radius: 100%;
+    border-bottom-right-radius: 100%;
+    position: relative;
+    background: #f1f1ea;
+}
+
+.days_item_modal {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: #d2d2ba;
+    border-radius: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+}
+
+.days_item_color_start {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 50%;
+    height: 100%;
+    background: #f1f1ea;
+}
+
+.days_item_color_end {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 50%;
+    height: 100%;
+    background: #f1f1ea;
+}

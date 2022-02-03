@@ -1,4 +1,5 @@
 {
+  "setting": {},
   "condition": {
     "plugin": {
       "list": []
@@ -14,6 +15,12 @@
         {
           "name": "我的",
           "pathName": "pages/my/index/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "日历",
+          "pathName": "pages/calendar/index/index",
           "query": "",
           "scene": null
         }
