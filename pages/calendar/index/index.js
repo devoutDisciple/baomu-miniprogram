@@ -4,49 +4,26 @@ Page({
 	 * 页面的初始数据
 	 */
 	data: {
-		calendar: [],
-		week: ['日', '一', '二', '三', '四', '五', '六'],
-		// week: ['Sun', 'Mon', 'Tus', 'Wed', 'Thu', 'Fri', 'Sat'],
+		selectTimeRange: [
+			{
+				start_time: '2022-02-03',
+				end_time: '2022-02-10',
+			},
+			{
+				start_time: '2022-02-21',
+				end_time: '2022-03-21',
+			},
+			{
+				start_time: '2022-02-16',
+				end_time: '2022-02-16',
+			},
+		],
 	},
 
 	/**
 	 * 生命周期函数--监听页面加载
 	 */
-	onLoad: function () {
-		const selectRange = [
-			{
-				start_time: 3,
-				end_time: 10,
-			},
-			{
-				start_time: 16,
-				end_time: 17,
-			},
-		];
-		const arr = [];
-		for (let index = 1; index < 31; index++) {
-			arr.push({
-				day: index,
-				is_start: false,
-				is_end: false,
-				is_ranger: false,
-			});
-		}
-		selectRange.forEach((range) => {
-			arr.forEach((item) => {
-				if (item.day === range.start_time) {
-					item.is_start = true;
-				}
-				if (item.day === range.end_time) {
-					item.is_end = true;
-				}
-				if (item.day > range.start_time && item.day < range.end_time) {
-					item.is_ranger = true;
-				}
-			});
-		});
-		this.setData({ calendar: arr });
-	},
+	onLoad: function () {},
 
 	/**
 	 * 生命周期函数--监听页面初次渲染完成

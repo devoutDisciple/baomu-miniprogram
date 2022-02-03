@@ -34,9 +34,15 @@ const reloadHomePage = () => {
 	prePages.onReloadData();
 };
 
+const getDays = (year, month) => {
+	const d = new Date(year, month, 0);
+	return d.getDate();
+};
+
 module.exports = {
 	formatTime,
 	getMsgShowTime,
 	getDiffTime,
 	reloadHomePage,
+	getDays,
 };
