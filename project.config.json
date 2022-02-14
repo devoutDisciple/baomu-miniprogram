@@ -36,7 +36,7 @@
       "outputPath": ""
     },
     "enableEngineNative": false,
-    "useIsolateContext": true,
+    "useIsolateContext": false,
     "userConfirmedBundleSwitch": false,
     "packNpmManually": true,
     "packNpmRelationList": [
@@ -53,7 +53,7 @@
   },
   "compileType": "miniprogram",
   "libVersion": "2.19.4",
-  "appid": "wx231432d7e566ebfb",
+  "appid": "wx3141bfc9a71cbe70",
   "projectname": "minibaomu",
   "debugOptions": {
     "hidedInDevtools": []

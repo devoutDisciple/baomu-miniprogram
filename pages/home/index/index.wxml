@@ -1,4 +1,33 @@
-<!--pages/home/index/index.wxml-->
-<view>
-    
-</view>
+<scroll-view class="wrap" scroll-y="{{true}}" enhanced="{{true}}" show-scrollbar="{{false}}"> 
+    <view class="bg_con">
+        <image class="bg_img" mode="heightFix" src="/asserts/public/home_bg.png" />
+        <view class="tab">
+            <view class="tab_work">
+                <view class="tab_text">找演出<view class="tab_border" /></view>
+            </view>
+            <view class="tab_work">
+                <view class="tab_text">去演出<view class="tab_border" /></view>
+            </view>
+        </view>
+    </view>
+    <view class="desc">
+        <view class="desc_left">
+            <image class="desc_title" src="/asserts/public/baomu_font.png" />
+            <view class="desc_text">为您找到合适的演员</view>
+        </view>
+        <view class="desc_right">
+            <view class="desc_right_btn">发布需求</view>
+        </view>
+    </view>
+    <view class="search">
+        <search-ipt />
+    </view>
+    <view class="test">111</view>
+    <view class="test">111</view>
+    <view class="test">111</view>
+    <view class="test">111</view>
+    <view class="test">111</view>
+    <view class="test">111</view>
+    <view class="test">111</view>
+    <view class="test">111</view>
+</scroll-view>

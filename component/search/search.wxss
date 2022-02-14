@@ -1,0 +1,22 @@
+.nav_ipt {
+    height: 70rpx;
+    width: calc(100vw - 180rpx);
+    padding-left: 10rpx;
+    padding-right: 30rpx;
+    background: #fff;
+    border-radius: 100rpx;
+    display: flex;
+    align-items: center;
+    border: 4rpx solid #ededed;
+}
+
+.nav_ipt_img {
+    margin: 0 14rpx;
+    height: 35rpx;
+    width: 35rpx;
+}
+
+.nav_ipt_container {
+    flex: 1;
+    font-size: 24rpx;
+}

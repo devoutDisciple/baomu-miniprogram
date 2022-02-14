@@ -1,1 +1,120 @@
-/* pages/home/index/index.wxss */
+.wrap {
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    background: #f7f7f7;
+    position: relative;
+}
+
+.bg_con {
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: #000;
+    width: 100%;
+    height: 500rpx;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.bg_img {
+    height: 100%;
+}
+
+.tab {
+    width: calc(100vw - 40rpx);
+    position: absolute;
+    left: 20rpx;
+    bottom: 0;
+    background: #fff;
+    height: 100rpx;
+    border-top-left-radius: 20rpx;
+    border-top-right-radius: 20rpx;
+    display: flex;
+}
+
+.tab_work {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tab_text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 14rpx;
+}
+
+.tab_border {
+    height: 5rpx;
+    width: 74rpx;
+    background: #333;
+    margin-top: 10rpx;
+    border-radius: 10rpx;
+}
+
+.desc {
+    height: 120rpx;
+    width: calc(100vw - 40rpx);
+    position: absolute;
+    left: 20rpx;
+    top: 230rpx;
+    display: flex;
+}
+
+.desc_left {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.desc_title {
+    width: 180rpx;
+    margin-top: 10rpx;
+    height: 45rpx;
+    overflow: hidden;
+    display: flex;
+}
+
+.desc_text {
+    flex: 1;
+    display: flex;
+    align-items: flex-end;
+    color: #cccccc;
+    font-size: 28rpx;
+}
+
+.desc_right {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.desc_right_btn {
+    background: #b5b58d;
+    color: #fff;
+    font-size: 34rpx;
+    padding: 20rpx 30rpx;
+    border-radius: 60rpx;
+}
+
+.search {
+    margin-top: 500rpx;
+    height: 100rpx;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: calc(100vw - 40rpx);
+    margin-left: 20rpx;
+    border-bottom-left-radius: 20rpx;
+    border-bottom-right-radius: 20rpx;
+}
+
+.test {
+    height: 400rpx;
+}
