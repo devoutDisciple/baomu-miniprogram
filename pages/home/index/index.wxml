@@ -22,12 +22,61 @@
     <view class="search">
         <search-ipt />
     </view>
-    <view class="test">111</view>
-    <view class="test">111</view>
-    <view class="test">111</view>
-    <view class="test">111</view>
-    <view class="test">111</view>
-    <view class="test">111</view>
-    <view class="test">111</view>
-    <view class="test">111</view>
+    <scroll-view class="type" scroll-x="{{true}}" enhanced="{{true}}" show-scrollbar="{{false}}">
+        <view class="type_con">
+            <view class="type_item">
+                <image class="type_img" src="/asserts/public/home_sort.png" />
+            </view>
+            <view class="type_item">
+                成都
+                <image class="type_item_icon" src="/asserts/public/arrow_bottom.png" />
+            </view>
+            <view class="type_item">
+                乐团类型
+                <image class="type_item_icon" src="/asserts/public/arrow_bottom.png" />
+            </view>
+            <view class="type_item">
+                擅长风格
+                <image class="type_item_icon" src="/asserts/public/arrow_bottom.png" />
+            </view>
+            <view class="type_item">
+                演奏方式
+                <image class="type_item_icon" src="/asserts/public/arrow_bottom.png" />
+            </view>
+            <view class="type_item">
+                合作类型
+                <image class="type_item_icon" src="/asserts/public/arrow_bottom.png" />
+            </view>
+            <view class="type_item type_empty">...</view>
+        </view>
+    </scroll-view>
+    <view class="person_con">
+        <view class="person_item">
+            <person-item />
+        </view>
+        <view class="person_item">
+            <person-item />
+        </view>
+        <view class="person_item">
+            <person-item />
+        </view>
+        <view class="person_item">
+            <person-item />
+        </view>
+        <view class="person_item">
+            <person-item />
+        </view>
+        <view class="person_item">
+            <person-item />
+        </view>
+        <view class="person_item">
+            <person-item />
+        </view>
+        <view class="person_item">
+            <person-item />
+        </view>
+        <view class="person_item">
+            <person-item />
+        </view>
+    </view>
 </scroll-view>

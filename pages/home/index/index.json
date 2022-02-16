@@ -1,7 +1,8 @@
 {
 	"usingComponents": {
 		"header": "/component/navBar/navBar",
-        "search-ipt": "/component/search/search"
+        "search-ipt": "/component/search/search",
+        "person-item": "/component/personItem/personItem"
 	},
 	"navigationStyle": "custom"
 }
