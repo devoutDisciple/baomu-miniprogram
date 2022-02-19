@@ -3,7 +3,11 @@ Page({
 	/**
 	 * 页面的初始数据
 	 */
-	data: {},
+	data: {
+		selectTabIdx: 2, // 1-找演出 2-去演出
+		personList: [1, 2, 3, 4, 5, 6, 7, 8],
+		taskList: [1, 2, 3, 4, 5, 6, 7, 8],
+	},
 
 	/**
 	 * 生命周期函数--监听页面加载
@@ -12,25 +16,12 @@ Page({
 		console.log(options);
 	},
 
-	/**
-	 * 生命周期函数--监听页面初次渲染完成
-	 */
-	onReady: function () {},
-
-	/**
-	 * 生命周期函数--监听页面显示
-	 */
-	onShow: function () {},
-
-	/**
-	 * 生命周期函数--监听页面隐藏
-	 */
-	onHide: function () {},
-
-	/**
-	 * 生命周期函数--监听页面卸载
-	 */
-	onUnload: function () {},
+	// 选择去演出或者找演出
+	onSelectTab: function (e) {
+		console.log(e, 111);
+		const { idx } = e.currentTarget.dataset;
+		this.setData({ selectTabIdx: Number(idx) });
+	},
 
 	/**
 	 * 页面相关事件处理函数--监听用户下拉动作

@@ -3,10 +3,16 @@
         <image class="bg_img" mode="heightFix" src="/asserts/public/home_bg.png" />
         <view class="tab">
             <view class="tab_work">
-                <view class="tab_text">找演出<view class="tab_border" /></view>
+                <view class="tab_text {{selectTabIdx === 1 && 'tab_text_select'}}" data-idx="1" bindtap = "onSelectTab">
+                    找演出
+                    <block wx:if="{{selectTabIdx === 1}}"><view class="tab_border" /></block>
+                </view>
             </view>
             <view class="tab_work">
-                <view class="tab_text">去演出<view class="tab_border" /></view>
+                <view class="tab_text {{selectTabIdx === 2 && 'tab_text_select'}}" data-idx="2" bindtap = "onSelectTab">
+                    去演出
+                    <block wx:if="{{selectTabIdx === 2}}"><view class="tab_border" /></block>
+                </view>
             </view>
         </view>
     </view>
@@ -51,32 +57,31 @@
         </view>
     </scroll-view>
     <view class="person_con">
-        <view class="person_item">
-            <person-item />
-        </view>
-        <view class="person_item">
-            <person-item />
-        </view>
-        <view class="person_item">
-            <person-item />
-        </view>
-        <view class="person_item">
-            <person-item />
-        </view>
-        <view class="person_item">
-            <person-item />
-        </view>
-        <view class="person_item">
-            <person-item />
-        </view>
-        <view class="person_item">
-            <person-item />
-        </view>
-        <view class="person_item">
-            <person-item />
-        </view>
-        <view class="person_item">
-            <person-item />
-        </view>
+        <block wx:if="{{selectTabIdx === 1}}">
+            <block wx:if="{{personList && personList.length !== 0}}">
+                <block wx:for="{{personList}}" wx:key="index">
+                     <view class="person_item">
+                        <person-item />
+                    </view>
+                </block>
+                <view class="empty_txt">没有更多啦~</view>
+            </block>
+            <block wx:else>
+                <view class="empty">暂无数据</view>
+            </block>
+        </block>
+        <block wx:if="{{selectTabIdx === 2}}">
+            <block wx:if="{{taskList && taskList.length !== 0}}">
+                <block wx:for="{{taskList}}" wx:key="index">
+                     <view class="person_item">
+                        <task-item />
+                    </view>
+                </block>
+                <view class="empty_txt">没有更多啦~</view>
+            </block>
+            <block wx:else>
+                <view class="empty">暂无数据</view>
+            </block>
+        </block>
     </view>
 </scroll-view>

@@ -1,7 +1,6 @@
 .wrap {
     height: 100vh;
     width: 100vw;
-    overflow: hidden;
     background: #f7f7f7;
     position: relative;
 }
@@ -44,6 +43,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
 }
 
 .tab_text {
@@ -52,6 +52,12 @@
     align-items: center;
     flex-direction: column;
     margin-top: 14rpx;
+    font-size: 30rpx;
+}
+
+.tab_text_select {
+    font-weight: 600;
+    font-size: 34rpx;
 }
 
 .tab_border {
@@ -60,6 +66,8 @@
     background: #333;
     margin-top: 10rpx;
     border-radius: 10rpx;
+    position: absolute;
+    bottom: 10rpx;
 }
 
 .desc {
@@ -169,4 +177,22 @@
 
 .person_item {
     margin-bottom: 20rpx;
+}
+
+.empty {
+    height: 500rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 40rpx;
+    color: #8a8a8a;
+}
+
+.empty_txt {
+    height: 100rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #8a8a8a;
+    font-size: 34rpx;
 }

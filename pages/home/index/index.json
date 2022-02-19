@@ -2,7 +2,9 @@
 	"usingComponents": {
 		"header": "/component/navBar/navBar",
         "search-ipt": "/component/search/search",
-        "person-item": "/component/personItem/personItem"
+        "person-item": "/component/personItem/personItem",
+        "task-item": "/component/taskItem/taskItem"
+
 	},
 	"navigationStyle": "custom"
 }
