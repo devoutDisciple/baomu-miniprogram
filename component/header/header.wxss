@@ -4,6 +4,7 @@
     position: absolute;
     color: #fff;
     font-size: 34rpx;
+    z-index: 10;
 }
 
 .head_img {

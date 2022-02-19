@@ -1,2 +1,54 @@
-<!--pages/personDetail/personDetail.wxml-->
-<text>pages/personDetail/personDetail.wxml</text>
+<view class="person">
+    <header text="" showBack="true"/>
+    <scroll-view class="wrap" scroll-y="{{true}}" enhanced="{{true}}" show-scrollbar="{{false}}"> 
+        <image class="bg" mode="widthFix" src="/asserts/temp/person_bg.png" />
+        <view class="con">
+            <view class="msg">
+                <view class="msg_title">
+                    <image class="msg_photo" src="/asserts/temp/photo.png" />
+                    <view class="msg_name">张晓琪 29岁</view>
+                    <image class="msg_icon" src="/asserts/public/message.png" />
+                </view>
+                <view class="msg_sign">
+                        摄影师小张
+                </view>
+                <view class="msg_tubiao">
+                    <view class="msg_tubiao_item msg_tubiao_item_renzheng">
+                        <image class="msg_tubiao_item_img" src="/asserts/public/renzheng.png" />
+                        实名
+                    </view>
+                    <view class="msg_tubiao_item msg_tubiao_item_yuanxiao">
+                        <image class="msg_tubiao_item_img" src="/asserts/public/yuanxiao.png" />
+                        院校
+                    </view>
+                    <view class="msg_tubiao_item msg_tubiao_item_huojiang">
+                        <image class="msg_tubiao_item_img" src="/asserts/public/huojiang.png" />
+                        获奖
+                    </view>
+                    <view class="msg_tubiao_item msg_tubiao_item_kaoji">
+                        <image class="msg_tubiao_item_img" src="/asserts/public/kaoji.png" />
+                        考级
+                    </view>
+                </view>
+                <view class="msg_desc">个人简介：是西安摄影网、西安摄影论坛、长安摄影网的创始人兼CEO。甲方都快女看得见风</view>
+                <view class="msg_data">
+                    <view class="msg_data_chunk">
+                        <view class="msg_data_chunk_name">获赞</view>
+                        <view class="msg_data_chunk_num">200</view>
+                    </view>
+                    <view class="msg_data_chunk">
+                        <view class="msg_data_chunk_name">关注</view>
+                        <view class="msg_data_chunk_num">200</view>
+                    </view>
+                    <view class="msg_data_chunk">
+                        <view class="msg_data_chunk_name">粉丝</view>
+                        <view class="msg_data_chunk_num">200</view>
+                    </view>
+                </view>
+            </view>
+            <view class="address">
+                111
+            </view>
+        </view>
+    </scroll-view>
+</view>

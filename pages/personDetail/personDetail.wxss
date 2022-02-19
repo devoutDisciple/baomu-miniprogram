@@ -1,1 +1,147 @@
-/* pages/personDetail/personDetail.wxss */
+.person {
+    height: 100vh;
+    width: 100vw;
+    background: #f7f7f7;
+}
+
+.wrap {
+    height: 100vh;
+    width: 100vw;
+    position: relative;
+}
+
+.bg {
+    width: 100vw;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 1;
+}
+
+.con {
+    position: absolute;
+    top: 400rpx;
+    width: calc(100vw - 40rpx);
+    min-height: 300rpx;
+    z-index: 99;
+    padding: 0 20rpx;
+}
+
+.msg {
+    background: #fff;
+    padding: 0 30rpx;
+    border-radius: 20rpx;
+    padding-bottom: 40rpx;
+}
+
+.msg_title {
+    height: 140rpx;
+    position: relative;
+}
+
+.msg_photo {
+    height: 160rpx;
+    width: 160rpx;
+    border-radius: 100%;
+    position: absolute;
+    left: 20rpx;
+    top: -70rpx;
+}
+
+.msg_name {
+    position: absolute;
+    left: 190rpx;
+    top: 0;
+    height: 80rpx;
+    max-width: 300rpx;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: flex;
+    align-items: flex-end;
+}
+
+.msg_icon {
+    height: 60rpx;
+    width: 60rpx;
+    position: absolute;
+    right: 20rpx;
+    top: 20rpx;
+}
+
+.msg_sign {
+    font-size: 36rpx;
+    font-weight: 600;
+    height: 60rpx;
+}
+
+.msg_tubiao {
+    display: flex;
+}
+
+.msg_tubiao_item {
+    padding: 5rpx 20rpx;
+    font-size: 24rpx;
+   
+    margin-right: 10rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20rpx;
+}
+
+.msg_tubiao_item_img {
+    width: 24rpx;
+    height: 24rpx;
+    margin-right: 5rpx;
+    display: flex;
+    overflow: hidden;
+}
+
+.msg_tubiao_item_renzheng {
+    background: #f6eede;
+    color: #987f4a;
+}
+
+.msg_tubiao_item_yuanxiao {
+    background: #e7e7da;
+    color: #9d9d74;
+}
+
+.msg_tubiao_item_huojiang {
+    background: #f5dcc4;
+    color: #e19449;
+}
+
+.msg_tubiao_item_kaoji {
+    background: #dfe9d1;
+    color: #7b9b50;
+}
+
+.msg_desc {
+    margin: 40rpx 0;
+    font-size: 28rpx;
+    color: #6d6d6d;
+}
+
+.msg_data {
+    display: flex;
+    justify-content: space-between;
+}
+
+.msg_data_chunk_name {
+    font-size: 34rpx;
+}
+
+.msg_data_chunk_num {
+    margin-top: 10rpx;
+    font-size: 40rpx;
+    font-weight: 600;
+}
+
+.address {
+    margin-top: 20rpx;
+    background: #fff;
+    padding: 30rpx 40rpx;
+    border-radius: 20rpx;
+}
