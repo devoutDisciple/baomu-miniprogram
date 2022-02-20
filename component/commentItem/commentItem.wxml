@@ -1,0 +1,18 @@
+<view class="comment">
+    <view class="comment_title">
+        <image class="comment_title_img" src="/asserts/temp/photo.png" />
+        王笑笑
+    </view>
+    <view class="comment_grade">
+        <view class="comment_grade_left">
+            <van-rate allow-half="{{true}}" readonly="{{true}}" value="{{ 4.5 }}" color="#e2cb99" />
+            4.5
+        </view>
+        <view class="comment_grade_right">
+            2021.11.01
+        </view>
+    </view>
+    <view class="comment_text">
+        超强真实感,人文纪实就应该是这样,不需要强烈的色彩、夸张的构图,只要真实有力量的眼神和真切可触摸到的现实,就能带来震撼。
+    </view>
+</view>

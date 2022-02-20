@@ -1,0 +1,27 @@
+.comment {
+    padding: 20rpx 0;
+    border-bottom: 1rpx solid #efefef;
+}
+
+.comment_title {
+    display: flex;
+    align-items: center;
+}
+
+.comment_title_img {
+    width: 80rpx;
+    height: 80rpx;
+    margin-right: 20rpx;
+}
+
+.comment_grade {
+    margin-top: 10rpx;
+    margin-bottom: 20rpx;
+    display: flex;
+    align-items: flex-end;
+}
+
+.comment_grade_right {
+    flex: 1;
+    text-align: right;
+}

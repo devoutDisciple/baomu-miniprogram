@@ -47,8 +47,91 @@
                 </view>
             </view>
             <view class="address">
-                111
+                <view class="address_chunk">
+                    <view class="address_chunk_icon">
+                        <image class="address_chunk_icon_img" src="/asserts/public/location.png" />
+                        工作地点
+                    </view>
+                    <view class="address_chunk_desc">
+                        成都市锦江区芳草街18号
+                    </view>
+                </view>
+                <view class="address_chunk">
+                    <view class="address_chunk_icon">
+                        <image class="address_chunk_icon_img" src="/asserts/public/yaoqing_time.png" />
+                        可邀请时段
+                    </view>
+                    <view class="address_chunk_desc">
+                        11.8-12.9 9:00-18:00 工作日
+                    </view>
+                </view>
             </view>
+            <view class="common_chunk">
+                <view class="common_title">技能</view>
+                <view class="skill_title">钢琴</view>
+                <van-progress show-pivot="{{false}}" color="#b5b58d" percentage="80" />
+                <view class="skill_title">小提琴</view>
+                <van-progress show-pivot="{{false}}" color="#b5b58d" percentage="40" />
+            </view>
+            <view class="common_chunk">
+                <view class="common_title">作品
+                    <view class="common_more">
+                        全部作品
+                        <image class="common_more_icon" src="/asserts/public/left.png" />
+                    </view>
+                </view>
+                <scroll-view class="person_product" scroll-x="{{true}}" enhanced="{{true}}" show-scrollbar="{{false}}">
+                    <view class="person_product_con">
+                        <image class="product_img" src="/asserts/temp/pro_1.png" />
+                        <image class="product_img" src="/asserts/temp/pro_2.png" />
+                        <image class="product_img" src="/asserts/temp/pro_3.png" />
+                        <image class="product_img" src="/asserts/temp/pro_4.png" />
+                        <image class="product_img" src="/asserts/temp/pro_5.png" />
+                    </view>
+                </scroll-view>
+            </view>
+            <view class="common_chunk">
+                <view class="common_title">动态
+                    <view class="common_more">
+                        全部动态
+                        <image class="common_more_icon" src="/asserts/public/left.png" />
+                    </view>
+                </view>
+                <scroll-view class="person_product" scroll-x="{{true}}" enhanced="{{true}}" show-scrollbar="{{false}}">
+                    <view class="person_product_con">
+                        <image class="product_img" src="/asserts/temp/con1.png" />
+                        <image class="product_img" src="/asserts/temp/con2.png" />
+                        <image class="product_img" src="/asserts/temp/con3.png" />
+                        <image class="product_img" src="/asserts/temp/con4.png" />
+                        <image class="product_img" src="/asserts/temp/con1.png" />
+                    </view>
+                </scroll-view>
+            </view>
+            <view class="common_chunk">
+                <view class="common_title">获奖信息</view>
+                <view class="award">
+                    <view class="award_icon"></view>
+                    <view class="award_desc">2019年11月 荣获xx比赛二等奖</view>
+                </view>
+                <view class="award">
+                    <view class="award_icon"></view>
+                    <view class="award_desc">2019年11月 荣获xx比赛二等奖</view>
+                </view>
+            </view>
+            <view class="common_chunk">
+                <view class="common_title">
+                    评价
+                    <view class="common_more">
+                        全部评价（169条）
+                        <image class="common_more_icon" src="/asserts/public/left.png" />
+                    </view>
+                </view>
+                <comment-item />
+                <comment-item />
+                <comment-item />
+            </view>
+            <view class="empty"></view>
         </view>
     </scroll-view>
+    <view class="invitate_btn">邀请</view>
 </view>
