@@ -263,3 +263,62 @@
 .empty {
     height: 140rpx;
 }
+
+.dialog {
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: rgba(138, 138, 138, 0.6);
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dialog_con {
+    width: calc(100vw - 200rpx);
+    background: #fff;
+    position: relative;
+    padding-top: 80rpx;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    border-radius: 20rpx;
+}
+
+.dialog_title {
+    text-align: center;
+    font-size: 34rpx;
+    font-weight: 600;
+}
+
+.dialog_desc {
+    text-align: center;
+    font-size: 26rpx;
+    color: #8a8a8a;
+    margin-top: 20rpx;
+}
+
+.dialog_btn {
+    margin-top: 60rpx;
+    margin-bottom: 40rpx;
+    background: #000;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 80rpx;
+    width: calc(100vw - 240rpx);
+    margin-left: 20rpx;
+    border-radius: 10rpx;
+}
+
+.dialog_con_img {
+    height: 90rpx;
+    width: 90rpx;
+    position: absolute;
+    left: calc((100vw - 300rpx) / 2);
+    top: -40rpx;
+}

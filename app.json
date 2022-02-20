@@ -21,7 +21,8 @@
     "van-loading": "@vant/weapp/loading/index",
     "van-calendar": "@vant/weapp/calendar/index",
     "van-progress": "@vant/weapp/progress/index",
-    "van-rate": "@vant/weapp/rate/index"
+    "van-rate": "@vant/weapp/rate/index",
+    "van-dialog": "@vant/weapp/dialog/index"
   },
   "tabBar": {
     "color": "#d8d8d8",

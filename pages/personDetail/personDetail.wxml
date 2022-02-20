@@ -10,22 +10,22 @@
                     <image class="msg_icon" src="/asserts/public/message.png" />
                 </view>
                 <view class="msg_sign">
-                        摄影师小张
+                    摄影师小张
                 </view>
                 <view class="msg_tubiao">
-                    <view class="msg_tubiao_item msg_tubiao_item_renzheng">
+                    <view class="msg_tubiao_item msg_tubiao_item_renzheng" data-idx="{{1}}" bindtap="onTapSign">
                         <image class="msg_tubiao_item_img" src="/asserts/public/renzheng.png" />
                         实名
                     </view>
-                    <view class="msg_tubiao_item msg_tubiao_item_yuanxiao">
+                    <view class="msg_tubiao_item msg_tubiao_item_yuanxiao" data-idx="{{2}}" bindtap="onTapSign">
                         <image class="msg_tubiao_item_img" src="/asserts/public/yuanxiao.png" />
                         院校
                     </view>
-                    <view class="msg_tubiao_item msg_tubiao_item_huojiang">
+                    <view class="msg_tubiao_item msg_tubiao_item_huojiang" data-idx="{{3}}" bindtap="onTapSign">
                         <image class="msg_tubiao_item_img" src="/asserts/public/huojiang.png" />
                         获奖
                     </view>
-                    <view class="msg_tubiao_item msg_tubiao_item_kaoji">
+                    <view class="msg_tubiao_item msg_tubiao_item_kaoji" data-idx="{{4}}" bindtap="onTapSign">
                         <image class="msg_tubiao_item_img" src="/asserts/public/kaoji.png" />
                         考级
                     </view>
@@ -134,4 +134,14 @@
         </view>
     </scroll-view>
     <view class="invitate_btn">邀请</view>
+    <block wx:if="{{dialogShow}}">
+        <view class="dialog">
+            <view class="dialog_con">
+                <image class="dialog_con_img" src="{{dialogDetail.src}}" />
+                <view class="dialog_title">{{dialogDetail.title}}</view>
+                <view class="dialog_desc">{{dialogDetail.desc}}</view>
+                <view class="dialog_btn" bindtap="onCloseDialog">确定</view>
+            </view>
+        </view>
+    </block>
 </view>

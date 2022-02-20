@@ -12,7 +12,7 @@
                     <view class="person_mgs_profession">
                         <view class="person_mgs_profession_name">摄影大师-托洛夫斯基</view>
                         <view class="person_mgs_profession_level">
-                            <image class="person_mgs_profession_level_photo" src="/asserts/temp/level.png" />
+                            <image class="person_mgs_profession_level_photo" src="/asserts/temp/renzheng.png" />
                         </view>
                     </view>
                     <view class="person_mgs_name">

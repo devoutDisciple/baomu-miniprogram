@@ -1,7 +1,8 @@
 {
 	"usingComponents": {
 		"header": "/component/header/header",
-		"comment-item": "/component/commentItem/commentItem"
+		"comment-item": "/component/commentItem/commentItem",
+		"dialog": "/component/dialog/dialog"
 	},
 	"navigationStyle": "custom"
 }
