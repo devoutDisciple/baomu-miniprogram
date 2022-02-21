@@ -1,0 +1,11 @@
+.empty {
+    height: 400rpx;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.empty_img {
+    height: 300rpx;
+    width: 300rpx;
+}

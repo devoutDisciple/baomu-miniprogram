@@ -1,0 +1,12 @@
+<view class="good" data-type="{{type}}" bindtap = "onTapItem">
+    <view class="good_left">
+        <image src="{{type === 'goods' ? '/asserts/public/good_color.png' : '/asserts/public/comment_color.png'}}" />
+    </view>
+    <view class="good_txt">
+        {{type === 'goods' ? '点赞' : '评论'}}
+    </view>
+    <view class="good_right">
+        <view wx:if="{{num != 0}}" class="good_right_num">{{num > 99 ? '99+' : num}}</view>
+        <image src="/asserts/public/arrow_right.png" />
+    </view>
+</view> 

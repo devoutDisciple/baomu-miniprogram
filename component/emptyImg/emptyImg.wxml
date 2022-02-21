@@ -1,0 +1,3 @@
+<view class="empty">
+    <image class="empty_img" src="/asserts/public/empty.png" />
+</view>

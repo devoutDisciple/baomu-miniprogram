@@ -7,6 +7,7 @@
                 <image class="person_icon" src="/asserts/public/geren.png" />
                 <image class="person_icon" src="/asserts/public/renzheng.png" />
             </view>
+            
             <view class="person_pingfen">
                 <image class="person_desc_icon" src="/asserts/public/pingfen.png" />
                 <view class="person_pingfen_txt1">4.8</view>

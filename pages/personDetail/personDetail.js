@@ -1,4 +1,7 @@
-// pages/personDetail/personDetail.js
+// eslint-disable-next-line import/named
+import { formatTime } from '../../utils/util';
+import moment from '../../utils/moment';
+
 Page({
 	/**
 	 * 页面的初始数据
@@ -15,11 +18,10 @@ Page({
 	/**
 	 * 生命周期函数--监听页面加载
 	 */
-	onLoad: function (options) {},
+	onLoad: function () {},
 
 	// 点击标识
 	onTapSign: function (e) {
-		console.log(e, 111);
 		const { idx } = e.currentTarget.dataset;
 		let dialogDetail = {};
 		switch (idx) {
@@ -60,6 +62,75 @@ Page({
 	// 点击关闭弹框
 	onCloseDialog: function () {
 		this.setData({ dialogShow: false });
+	},
+
+	// 模拟数据存储
+	setStoreageMsg: function () {
+		const data = [];
+		data.push({
+			person_id: 17, // 发送信息的人
+			person_name: '测试账号2', // 发送信息人的名字
+			person_photo: 'http://localhost:8888/photo/D9SXV44EL168JNDW-1623772814994.png', // 发送信息人的头像
+			unread: 0, // 未读信息数量
+			msg: [
+				{
+					content: 'sjdfjdks',
+					from: 2, // 1-代表自己发送的 2-别人发送的
+					// "2021-11-12 12:00:00"
+					time: formatTime(new Date()),
+					type: 1, // 1-文字 2-图片
+				},
+			], // 具体信息
+		});
+		wx.setStorageSync('msg_data', JSON.stringify(data));
+	},
+
+	// 点击发送信息
+	onTapMsg: function () {
+		this.setStoreageMsg();
+		let { userDetail } = this.data;
+		userDetail = {
+			id: 17,
+			username: '测试账号2',
+			photo: 'http://localhost:8888/photo/D9SXV44EL168JNDW-1623772814994.png',
+		};
+		let msgData = wx.getStorageSync('msg_data');
+		let data = [
+			{
+				person_id: userDetail.id,
+				person_name: userDetail.username,
+				person_photo: userDetail.photo,
+				unread: 0,
+				msg: [],
+			},
+		];
+		if (msgData) {
+			msgData = JSON.parse(msgData);
+			if (Array.isArray(msgData)) {
+				let flag = true;
+				let curUser = {};
+				let curIdx = 0;
+				// 应当判断是否已经给该用户发过消息
+				msgData.forEach((item, index) => {
+					if (item.person_id === userDetail.id) {
+						flag = false;
+						curUser = item;
+						curIdx = index;
+					}
+				});
+				if (flag) {
+					data = [...data, ...msgData];
+				} else {
+					msgData.splice(curIdx, 1);
+					msgData.unshift(curUser);
+					data = msgData;
+				}
+			}
+		}
+		wx.setStorageSync('msg_data', JSON.stringify(data));
+		wx.navigateTo({
+			url: `/pages/chat/chat?person_id=${userDetail.id}`,
+		});
 	},
 
 	/**

@@ -8,7 +8,9 @@
     "pages/my/index/index",
     "pages/calendar/index/index",
     "pages/test/test",
-    "pages/personDetail/personDetail"
+    "pages/personDetail/personDetail",
+    "pages/chat/chat",
+    "pages/message/message"
   ],
   "window": {
     "backgroundTextStyle": "light",

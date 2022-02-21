@@ -1,0 +1,12 @@
+<scroll-view class="message" scroll-y="{{true}}" >
+    <block wx:if="{{msgData && msgData.length !== 0}}">
+        <block wx:for="{{msgData}}" wx:key="person_id">
+            <list-item msg="{{item}}" msgData="{{msgData}}" personId="{{item.person_id}}" wx:if="{{item.person_id && item.person_name}}"/>
+        </block>
+        <btm-empty />
+    </block>
+    <block wx:else>
+        <view class="empty"></view>
+        <empty-img />
+    </block>
+</scroll-view>

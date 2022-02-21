@@ -1,0 +1,85 @@
+.list {
+    display: flex;
+    height: 100rpx;
+    padding: 20rpx;
+    border-bottom: 1rpx solid #fbfbfb;
+    overflow: hidden;
+    font-size: 30rpx;
+}
+
+.photo {
+    width: 120rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.photo_img {
+    width: 100rpx;
+    height: 100rpx;
+    border-radius: 100%;
+}
+
+.chunk {
+    flex: 1;
+}
+
+.chunk_title {
+    height: 50rpx;
+    display: flex;
+    line-height: 50rpx;
+}
+
+.chunk_title_name {
+    flex: 1;
+    color: #333333;
+    display: -webkit-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-all;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    margin-right: 40rpx;
+}
+
+.chunk_title_time {
+    font-size: 22rpx;
+    color: #999999;
+    display: -webkit-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-all;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+}
+
+.chunk_content {
+    height: 50rpx;
+    display: flex;
+    line-height: 50rpx;
+}
+
+.chunk_content_txt {
+    flex: 1;
+    line-height: 66rpx;
+    font-size: 22rpx;
+    margin-right: 40rpx;
+    color: #999;
+    display: -webkit-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-all;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+}
+
+.chunk_content_num {
+    font-size: 20rpx;
+    height: 44rpx;
+    width: 44rpx;
+    text-align: center;
+    line-height: 44rpx;
+    background: #f5406d;
+    border-radius: 100%;
+    color: #fff;
+}

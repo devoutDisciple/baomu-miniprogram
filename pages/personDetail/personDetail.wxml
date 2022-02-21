@@ -7,7 +7,7 @@
                 <view class="msg_title">
                     <image class="msg_photo" src="/asserts/temp/photo.png" />
                     <view class="msg_name">张晓琪 29岁</view>
-                    <image class="msg_icon" src="/asserts/public/message.png" />
+                    <image bindtap = "onTapMsg" class="msg_icon" src="/asserts/public/message.png" />
                 </view>
                 <view class="msg_sign">
                     摄影师小张

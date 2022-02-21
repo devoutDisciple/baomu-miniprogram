@@ -1,0 +1,13 @@
+.wrap {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.fix_height {
+    height: 200rpx;
+}
+
+.fix_width {
+    width: 200rpx;
+}

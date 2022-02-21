@@ -35,6 +35,18 @@
           "pathName": "pages/personDetail/personDetail",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "发送信息",
+          "pathName": "pages/chat/chat",
+          "query": "person_id=1",
+          "scene": null
+        },
+        {
+          "name": "消息页面",
+          "pathName": "pages/message/message",
+          "query": "",
+          "scene": null
         }
       ]
     }
