@@ -10,7 +10,8 @@
     "pages/test/test",
     "pages/personDetail/personDetail",
     "pages/chat/chat",
-    "pages/message/message"
+    "pages/message/message",
+    "pages/systemMsg/systemMsg"
   ],
   "window": {
     "backgroundTextStyle": "light",

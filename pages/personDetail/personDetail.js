@@ -71,13 +71,13 @@ Page({
 			person_id: 17, // 发送信息的人
 			person_name: '测试账号2', // 发送信息人的名字
 			person_photo: 'http://localhost:8888/photo/D9SXV44EL168JNDW-1623772814994.png', // 发送信息人的头像
-			unread: 0, // 未读信息数量
+			noread: 11, // 未读信息数量
 			msg: [
 				{
 					content: 'sjdfjdks',
 					from: 2, // 1-代表自己发送的 2-别人发送的
 					// "2021-11-12 12:00:00"
-					time: formatTime(new Date()),
+					time: '2021-11-12 12:00:00',
 					type: 1, // 1-文字 2-图片
 				},
 			], // 具体信息
@@ -100,7 +100,7 @@ Page({
 				person_id: userDetail.id,
 				person_name: userDetail.username,
 				person_photo: userDetail.photo,
-				unread: 0,
+				noread: 0,
 				msg: [],
 			},
 		];

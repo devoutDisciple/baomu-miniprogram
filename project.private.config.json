@@ -39,12 +39,18 @@
         {
           "name": "发送信息",
           "pathName": "pages/chat/chat",
-          "query": "person_id=1",
+          "query": "person_id=17",
           "scene": null
         },
         {
           "name": "消息页面",
           "pathName": "pages/message/message",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "系统消息通知",
+          "pathName": "pages/systemMsg/systemMsg",
           "query": "",
           "scene": null
         }

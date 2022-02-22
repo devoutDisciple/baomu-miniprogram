@@ -1,7 +1,7 @@
 .list {
     display: flex;
     height: 100rpx;
-    padding: 20rpx;
+    padding: 40rpx 20rpx;
     border-bottom: 1rpx solid #fbfbfb;
     overflow: hidden;
     font-size: 30rpx;
@@ -43,7 +43,7 @@
 }
 
 .chunk_title_time {
-    font-size: 22rpx;
+    font-size: 26rpx;
     color: #999999;
     display: -webkit-box;
     overflow: hidden;
@@ -62,7 +62,7 @@
 .chunk_content_txt {
     flex: 1;
     line-height: 66rpx;
-    font-size: 22rpx;
+    font-size: 28rpx;
     margin-right: 40rpx;
     color: #999;
     display: -webkit-box;
@@ -73,13 +73,47 @@
     -webkit-line-clamp: 1;
 }
 
+.photo_con {
+    border-radius: 100%;
+    width: 100rpx;
+    height: 100rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.photo_con1 {
+    background: #000;
+}
+
+.photo_con2 {
+    background: #e2cb99;
+}
+
+.photo_con3 {
+    background: #b5b58d;
+}
+
+.photo_icon {
+    width: 45rpx;
+    height: 50rpx;
+}
+
+.photo_icon3 {
+    width: 55rpx;
+    height: 45rpx;
+}
+
+
+
 .chunk_content_num {
     font-size: 20rpx;
     height: 44rpx;
     width: 44rpx;
     text-align: center;
     line-height: 44rpx;
-    background: #f5406d;
+    background: #fa5253;
     border-radius: 100%;
     color: #fff;
+    margin-top: 11rpx;
 }

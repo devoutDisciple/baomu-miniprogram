@@ -1,0 +1,6 @@
+{
+	"usingComponents": {
+        "chat-left": "/component/chatLeft/chatLeft"
+    },
+	"navigationBarTitleText": "系统消息"
+}

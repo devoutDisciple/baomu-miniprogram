@@ -18,6 +18,12 @@ Component({
 	 */
 	data: {},
 
+	lifetimes: {
+		attached: function () {
+			console.log(this.data.msg, 11);
+		},
+	},
+
 	/**
 	 * 组件的方法列表
 	 */
