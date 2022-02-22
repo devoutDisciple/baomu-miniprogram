@@ -4,3 +4,16 @@
     height: calc(100vh - 40rpx);
     background: #f7f7f7;
 }
+
+.thing {
+    background: #fff;
+    margin-top: 20rpx;
+    padding: 30rpx 20rpx;
+    border-radius: 20rpx;
+}
+
+.thing_title {
+    margin-bottom: 30rpx;
+    font-size: 34rpx;
+    font-weight: 600;
+}

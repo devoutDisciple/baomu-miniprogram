@@ -1,0 +1,4 @@
+<view class="award">
+    <view class="award_icon"></view>
+    <view class="award_desc">{{text}}</view>
+</view>

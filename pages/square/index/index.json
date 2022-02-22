@@ -1,3 +1,7 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+      "square-list": "/component/squareList/squareList",
+      "btm-tip": "/component/btmTip/btmTip"
+  },
+  "navigationBarTitleText": "广场"
 }

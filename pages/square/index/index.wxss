@@ -1,1 +1,10 @@
-/* pages/square/index/index.wxss */
+.wrap {
+    padding: 0 20rpx;
+    width: calc(100vw - 40rpx);
+    height: 100vh;
+    background: #f7f7f7;
+}
+
+.chunk {
+    margin-top: 20rpx;
+}

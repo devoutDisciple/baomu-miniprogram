@@ -109,14 +109,8 @@
             </view>
             <view class="common_chunk">
                 <view class="common_title">获奖信息</view>
-                <view class="award">
-                    <view class="award_icon"></view>
-                    <view class="award_desc">2019年11月 荣获xx比赛二等奖</view>
-                </view>
-                <view class="award">
-                    <view class="award_icon"></view>
-                    <view class="award_desc">2019年11月 荣获xx比赛二等奖</view>
-                </view>
+                <beard-list text="2019年11月 荣获xx比赛二等奖"/>
+                <beard-list text="2019年11月 荣获xx比赛二等奖"/>
             </view>
             <view class="common_chunk">
                 <view class="common_title">

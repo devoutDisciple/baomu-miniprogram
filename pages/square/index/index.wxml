@@ -1,2 +1,10 @@
-<!--pages/square/index/index.wxml-->
-<text>pages/square/index/index.wxml</text>
+<scroll-view class="wrap" scroll-y="{{true}}" enhanced="{{true}}" show-scrollbar="{{false}}">
+    <block wx:if="{{list && list.length !== 0}}">
+        <block wx:for="{{list}}" wx:key="index">
+            <view class="chunk">
+                <square-list />
+            </view>
+        </block>
+    </block>
+    <btm-tip />
+</scroll-view>

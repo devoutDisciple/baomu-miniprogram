@@ -1,0 +1,70 @@
+.list {
+    background: #fff;
+    padding: 30rpx 20rpx;
+    /* padding-top: 20rpx;
+    padding-bottom: 20rpx; */
+    border-radius: 20rpx;
+}
+
+.list_img {
+    width: 100%;
+}
+
+.title {
+    margin: 20rpx 0;
+    font-size: 36rpx;
+}
+
+.person {
+    display: flex;
+    align-items: center;
+}
+
+.person_img {
+    width: 60rpx;
+    height: 60rpx;
+    border-radius: 100%;
+}
+
+.person_name {
+    margin: 0 10rpx;
+    max-width: 280rpx;
+    display: -webkit-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-all;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+}
+
+.person_icon {
+    width: 36rpx;
+    height: 36rpx;
+    margin-right: 5rpx;
+}
+
+.person_tag {
+    padding: 5rpx 20rpx;
+    background: #efefe7;
+    border-radius: 30rpx;
+    font-size: 26rpx;
+}
+
+.person_time {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    color: #666;
+    font-size: 26rpx;
+}
+
+.desc {
+    color: #999;
+    margin-top: 20rpx;
+    display: -webkit-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-all;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+}

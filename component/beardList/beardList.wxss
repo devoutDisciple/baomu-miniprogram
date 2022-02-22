@@ -1,0 +1,20 @@
+.award {
+    display: flex;
+    align-items: center; 
+    margin-bottom: 20rpx;
+ }
+ 
+ .award_icon {
+     width: 24rpx;
+     height: 24rpx;
+     /* background: red; */
+     background: #b5b58d;
+     border-radius: 100%;
+     margin-right: 20rpx;
+ }
+ 
+ .award_desc {
+     flex: 1;
+     color: #686868;
+     font-size: 28rpx;
+ }

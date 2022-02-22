@@ -1,6 +1,7 @@
 {
 	"usingComponents": {
-		"calendar-component": "/component/calendar/calendar"
+		"calendar-component": "/component/calendar/calendar",
+        "beard-list": "/component/beardList/beardList"
 	},
 	"enablePullDownRefresh": true
 }
