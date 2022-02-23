@@ -1,13 +1,11 @@
 {
   "pages": [
     "pages/home/index/index",
-    "pages/index/index",
     "pages/logs/logs",
     "pages/square/index/index",
     "pages/rest/index/index",
     "pages/my/index/index",
     "pages/calendar/index/index",
-    "pages/test/test",
     "pages/personDetail/personDetail",
     "pages/chat/chat",
     "pages/message/message",

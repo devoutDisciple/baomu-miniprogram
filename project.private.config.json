@@ -1,66 +1,72 @@
 {
-	"setting": {},
-	"condition": {
-		"plugin": {
-			"list": []
-		},
-		"game": {
-			"list": []
-		},
-		"gamePlugin": {
-			"list": []
-		},
-		"miniprogram": {
-			"list": [
-				{
-					"name": "我的",
-					"pathName": "pages/my/index/index",
-					"query": "",
-					"scene": null
-				},
-				{
-					"name": "日历",
-					"pathName": "pages/calendar/index/index",
-					"query": "",
-					"scene": null
-				},
-				{
-					"name": "首页",
-					"pathName": "pages/home/index/index",
-					"query": "",
-					"scene": null
-				},
-				{
-					"name": "广场",
-					"pathName": "pages/square/index/index",
-					"query": "",
-					"scene": null
-				},
-				{
-					"name": "个人信息页面",
-					"pathName": "pages/personDetail/personDetail",
-					"query": "",
-					"scene": null
-				},
-				{
-					"name": "发送信息",
-					"pathName": "pages/chat/chat",
-					"query": "person_id=17",
-					"scene": null
-				},
-				{
-					"name": "消息页面",
-					"pathName": "pages/message/message",
-					"query": "",
-					"scene": null
-				},
-				{
-					"name": "系统消息通知",
-					"pathName": "pages/systemMsg/systemMsg",
-					"query": "",
-					"scene": null
-				}
-			]
-		}
-	}
+  "setting": {},
+  "condition": {
+    "plugin": {
+      "list": []
+    },
+    "game": {
+      "list": []
+    },
+    "gamePlugin": {
+      "list": []
+    },
+    "miniprogram": {
+      "list": [
+        {
+          "name": "我的",
+          "pathName": "pages/my/index/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "日历",
+          "pathName": "pages/calendar/index/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "首页",
+          "pathName": "pages/home/index/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "广场",
+          "pathName": "pages/square/index/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "个人信息页面",
+          "pathName": "pages/personDetail/personDetail",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "发送信息",
+          "pathName": "pages/chat/chat",
+          "query": "person_id=17",
+          "scene": null
+        },
+        {
+          "name": "消息页面",
+          "pathName": "pages/message/message",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "系统消息通知",
+          "pathName": "pages/systemMsg/systemMsg",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "其他",
+          "pathName": "pages/rest/index/index",
+          "query": "",
+          "scene": null
+        }
+      ]
+    }
+  }
 }

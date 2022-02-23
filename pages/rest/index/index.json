@@ -1,3 +1,7 @@
 {
-  "usingComponents": {}
+	"usingComponents": {
+        "rest-list": "/component/restList/restList",
+        "btm-tip": "/component/btmTip/btmTip"
+    },
+	"navigationBarTitleText": "其他"
 }

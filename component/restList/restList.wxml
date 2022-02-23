@@ -1,0 +1,17 @@
+<view class="list">
+    <image class="list_img" mode="widthFix" src="/asserts/temp/guangchang.png" />
+    <view class="con">
+        <view class="title">这是一场无与伦比的演唱会</view>
+        <view class="address">地址：成都市花都区成华大道到二仙桥</view>
+        <view class="address">档期：2022.10.30 - 2022.11.28</view>
+        <view class="desc">
+            <view class="desc_money">￥ 1800<text class="desc_day"> /天</text></view>
+            <view class="desc_pingfen">
+                <image class="desc_pingfen_icon" src="/asserts/public/pingfen.png" />
+                <text class="desc_pingfen_fen">4.9</text>
+                <text class="desc_pingfen_txt">(99评论)</text>
+            </view>
+        </view>
+        <image class="person_msg" src="/asserts/temp/photo2.png" />
+    </view>
+</view>

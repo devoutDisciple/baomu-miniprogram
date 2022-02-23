@@ -1,6 +1,5 @@
 .list {
     background: #fff;
-    padding: 30rpx 20rpx;
     /* padding-top: 20rpx;
     padding-bottom: 20rpx; */
     border-radius: 20rpx;
@@ -8,6 +7,11 @@
 
 .list_img {
     width: 100%;
+}
+
+.con {
+    padding: 0 20rpx;
+    padding-bottom: 30rpx;
 }
 
 .title {

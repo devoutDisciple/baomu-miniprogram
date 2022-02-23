@@ -1,0 +1,82 @@
+.list {
+    background: #fff;
+    /* padding-top: 20rpx;
+    padding-bottom: 20rpx; */
+    border-radius: 20rpx;
+}
+
+.list_img {
+    width: 100%;
+    display: flex;
+}
+
+.con {
+    padding: 0 20rpx;
+    padding-bottom: 30rpx;
+    position: relative;
+}
+
+.title {
+    font-size: 36rpx;
+    margin-top: 30rpx;
+    font-weight: 600;
+}
+
+.address {
+    color: #999;
+    margin-top: 10rpx;
+    font-size: 28rpx;
+    display: -webkit-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-all;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+}
+
+.desc {
+    margin-top: 20rpx;
+    display: flex;
+    align-items: center;
+}
+
+.desc_money {
+    flex: 1;
+    font-size: 36rpx;
+    font-weight: 600;
+}
+
+.desc_day{
+    font-size: 26rpx;
+    color: #666;
+}
+
+.desc_pingfen {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    font-size: 30rpx;
+}
+
+.desc_pingfen_icon {
+    height: 34rpx;
+    width: 34rpx;
+}
+
+.desc_pingfen_fen {
+    font-weight: 600;
+    margin: 0 8rpx;
+}
+
+.desc_pingfen_txt {
+    color: #666;
+}
+
+.person_msg {
+    height: 100rpx;
+    width: 100rpx;
+    position: absolute;
+    top: -80rpx;
+    right: 40rpx;
+}

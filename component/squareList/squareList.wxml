@@ -1,12 +1,14 @@
 <view class="list">
     <image class="list_img" mode="widthFix" src="/asserts/temp/guangchang.png" />
-    <view class="title">这是一场无与伦比的演唱会</view>
-    <view class="person">
-        <image class="person_img" src="/asserts/temp/photo2.png" />
-        <view class="person_name">摄影师小张摄影师小张摄影师小张摄影师小张</view>
-        <image class="person_icon" src="/asserts/public/renzhengbiaoshi.png" />
-        <view class="person_tag">同城</view>
-        <view class="person_time">1小时前</view>
+    <view class="con">
+        <view class="title">这是一场无与伦比的演唱会</view>
+        <view class="person">
+            <image class="person_img" src="/asserts/temp/photo2.png" />
+            <view class="person_name">摄影师小张摄影师小张摄影师小张摄影师小张</view>
+            <image class="person_icon" src="/asserts/public/renzhengbiaoshi.png" />
+            <view class="person_tag">同城</view>
+            <view class="person_time">1小时前</view>
+        </view>
+        <view class="desc">这是描述信息，这是描述信息，这是描述信息，这是描述信息，这是描述信息，这是描述信息，这是描述信息</view>
     </view>
-    <view class="desc">描述信息描述信息描述信息描述信息描述信息描述信息描述信息描述信息描述信息描述信息描述信息描述信息描述信息描述信息描述信息描述信息</view>
 </view>
