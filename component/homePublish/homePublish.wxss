@@ -26,8 +26,15 @@
 .process_chunk {
     height: 8rpx;
     width: calc(100% / 3 - 40rpx);
-    background: #b5b58d;
     border-radius: 8rpx;
+}
+
+.process_active {
+    background: #b5b58d;
+}
+
+.process_disabled {
+    background: #ececec;
 }
 
 .pub_btn {

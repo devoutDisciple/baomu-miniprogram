@@ -1,4 +1,4 @@
-<home-publish>
+<home-publish  process="{{1}}">
     <view class="chunk">
         <input placeholder="填写需求名称" />
     </view>
@@ -15,8 +15,6 @@
                         演奏方式
                     </view>
                 </block>
-                
-                
             </picker>
         </select-item>
     </view>

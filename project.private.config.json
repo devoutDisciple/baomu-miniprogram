@@ -67,8 +67,14 @@
           "scene": null
         },
         {
-          "name": "发布",
+          "name": "发布1",
           "pathName": "pages/home/publish1/publish1",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "发布2",
+          "pathName": "pages/home/publish2/publish2",
           "query": "",
           "scene": null
         }

@@ -1,2 +1,69 @@
-<!--pages/home/publish2/publish2.wxml-->
-<text>pages/home/publish2/publish2.wxml</text>
+<home-publish process="{{2}}">
+    <view class="chunk">
+        <select-item>
+            <picker class="picker" bindchange="bindPickerChange" value="{{index}}" range="{{typeActions}}">
+                <block wx:if="{{typeSelect}}">
+                    <view class="picker_value">
+                        {{typeSelect}}
+                    </view>
+                </block>
+                <block wx:else>
+                    <view class="picker_init">
+                        来回时间
+                    </view>
+                </block>
+            </picker>
+        </select-item>
+    </view>
+    <view class="chunk">
+        <select-item>
+            <picker class="picker" mode="date" bindchange="bindPickerChange" value="{{index}}" range="{{typeActions}}">
+                <block wx:if="{{typeSelect}}">
+                    <view class="picker_value">
+                        {{typeSelect}}
+                    </view>
+                </block>
+                <block wx:else>
+                    <view class="picker_init">
+                        演出日期
+                    </view>
+                </block>
+            </picker>
+        </select-item>
+    </view>
+    <view class="chunk">
+        <select-item>
+            <picker class="picker" bindchange="bindPickerChange" value="{{index}}" range="{{typeActions}}">
+                <block wx:if="{{typeSelect}}">
+                    <view class="picker_value">
+                        {{typeSelect}}
+                    </view>
+                </block>
+                <block wx:else>
+                    <view class="picker_init">
+                        演出时长(小时)
+                    </view>
+                </block>
+            </picker>
+        </select-item>
+    </view>
+    <view class="chunk">
+        <input placeholder="演出地点" />
+    </view>
+    <view class="chunk">
+        <select-item>
+            <picker class="picker" bindchange="bindPickerChange" value="{{index}}" range="{{typeActions}}">
+                <block wx:if="{{typeSelect}}">
+                    <view class="picker_value">
+                        {{typeSelect}}
+                    </view>
+                </block>
+                <block wx:else>
+                    <view class="picker_init">
+                        是否议价
+                    </view>
+                </block>
+            </picker>
+        </select-item>
+    </view>
+</home-publish>
