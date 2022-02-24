@@ -9,7 +9,10 @@
     "pages/personDetail/personDetail",
     "pages/chat/chat",
     "pages/message/message",
-    "pages/systemMsg/systemMsg"
+    "pages/systemMsg/systemMsg",
+    "pages/home/publish1/publish1",
+    "pages/home/publish2/publish2",
+    "pages/home/publish3/publish3"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -23,7 +26,9 @@
     "van-calendar": "@vant/weapp/calendar/index",
     "van-progress": "@vant/weapp/progress/index",
     "van-rate": "@vant/weapp/rate/index",
-    "van-dialog": "@vant/weapp/dialog/index"
+    "van-dialog": "@vant/weapp/dialog/index",
+    "van-picker": "@vant/weapp/picker/index",
+    "van-action-sheet": "@vant/weapp/action-sheet/index"
   },
   "tabBar": {
     "color": "#d8d8d8",

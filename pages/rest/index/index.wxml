@@ -36,4 +36,5 @@
         </view>
         <btm-tip />
     </view>
+    <view class="publish_btn">发布</view>
 </scroll-view>

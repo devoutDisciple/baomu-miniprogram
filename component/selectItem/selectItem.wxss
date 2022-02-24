@@ -1,0 +1,18 @@
+.select {
+    position: relative;
+    height: 40rpx;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.icon {
+    width: 80rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.icon_img {
+    width: 18rpx;
+    height: 12rpx;
+}

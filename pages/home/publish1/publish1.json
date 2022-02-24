@@ -1,0 +1,7 @@
+{
+	"usingComponents": {
+        "home-publish": "/component/homePublish/homePublish",
+        "select-item": "/component/selectItem/selectItem"
+    },
+	"navigationStyle": "custom"
+}

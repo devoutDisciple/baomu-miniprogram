@@ -65,6 +65,12 @@
           "pathName": "pages/rest/index/index",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "发布",
+          "pathName": "pages/home/publish1/publish1",
+          "query": "",
+          "scene": null
         }
       ]
     }

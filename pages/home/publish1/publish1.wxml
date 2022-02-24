@@ -1,0 +1,25 @@
+<home-publish>
+    <view class="chunk">
+        <input placeholder="填写需求名称" />
+    </view>
+    <view class="chunk">
+        <select-item>
+            <picker class="picker" bindchange="bindPickerChange" value="{{index}}" range="{{typeActions}}">
+                <block wx:if="{{typeSelect}}">
+                    <view class="picker_value">
+                        {{typeSelect}}
+                    </view>
+                </block>
+                <block wx:else>
+                    <view class="picker_init">
+                        演奏方式
+                    </view>
+                </block>
+                
+                
+            </picker>
+        </select-item>
+    </view>
+    
+    
+</home-publish>

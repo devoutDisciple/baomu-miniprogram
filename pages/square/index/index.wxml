@@ -1,10 +1,13 @@
-<scroll-view class="wrap" scroll-y="{{true}}" enhanced="{{true}}" show-scrollbar="{{false}}">
-    <block wx:if="{{list && list.length !== 0}}">
-        <block wx:for="{{list}}" wx:key="index">
-            <view class="chunk">
-                <square-list />
-            </view>
+<scroll-view class="con" scroll-y="{{true}}" enhanced="{{true}}" show-scrollbar="{{false}}">
+    <view class="wrap">
+        <block wx:if="{{list && list.length !== 0}}">
+            <block wx:for="{{list}}" wx:key="index">
+                <view class="chunk">
+                    <square-list />
+                </view>
+            </block>
         </block>
-    </block>
-    <btm-tip />
+        <btm-tip />
+    </view>
+    <view class="publish_btn">发布</view>
 </scroll-view>

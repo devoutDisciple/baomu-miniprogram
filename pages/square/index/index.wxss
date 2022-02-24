@@ -1,10 +1,31 @@
-.wrap {
-    padding: 0 20rpx;
-    width: calc(100vw - 40rpx);
+.con {
+    width: 100vw;
     height: 100vh;
     background: #f7f7f7;
 }
 
+.wrap {
+    width: calc(100vw - 40rpx);
+    height: 100vh;
+    margin-left: 20rpx;
+}
+
 .chunk {
     margin-top: 20rpx;
+}
+
+.publish_btn {
+    position: fixed;
+    right: 50rpx;
+    bottom: 40rpx;
+    z-index: 10;
+    width: 100rpx;
+    height: 100rpx;
+    border-radius: 100%;
+    color: #fff;
+    font-size: 32rpx;
+    background: #b5b58d;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

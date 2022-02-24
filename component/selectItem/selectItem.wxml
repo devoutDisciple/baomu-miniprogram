@@ -1,0 +1,8 @@
+<view class="select" bindtap = "onTap">
+    <view class="value">
+        <slot></slot>
+    </view>
+    <view class="icon">
+        <image class="icon_img" src="/asserts/public/select_icon.png" />
+    </view>
+</view>

@@ -55,3 +55,19 @@
 .chunk {
     margin-bottom: 20rpx;
 }
+
+.publish_btn {
+    position: fixed;
+    right: 50rpx;
+    bottom: 40rpx;
+    z-index: 10;
+    width: 100rpx;
+    height: 100rpx;
+    border-radius: 100%;
+    color: #fff;
+    font-size: 32rpx;
+    background: #b5b58d;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
