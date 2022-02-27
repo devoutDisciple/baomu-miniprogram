@@ -1,1 +1,21 @@
-/* pages/home/publish3/publish3.wxss */
+.chunk {
+    padding: 40rpx 0;
+    border-bottom: 1rpx solid #ececec;
+}
+
+.picker {
+    position: absolute;
+    width: 100%;
+    align-items: center;
+    height: 40rpx;
+    left: 0;
+    top: 0;
+}
+
+.picker_init {
+    color: #6a6a6a;
+}
+
+.picker_value {
+    color: #333;
+}

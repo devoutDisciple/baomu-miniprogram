@@ -1,2 +1,40 @@
-<!--pages/home/publish3/publish3.wxml-->
-<text>pages/home/publish3/publish3.wxml</text>
+<home-publish process="{{2}}">
+    <view class="chunk">
+        <select-item>
+            <picker class="picker" bindchange="bindPickerChange" value="{{index}}" range="{{typeActions}}">
+                <block wx:if="{{typeSelect}}">
+                    <view class="picker_value">
+                        {{typeSelect}}
+                    </view>
+                </block>
+                <block wx:else>
+                    <view class="picker_init">
+                        是否接送
+                    </view>
+                </block>
+            </picker>
+        </select-item>
+    </view>
+    <view class="chunk">
+        <select-item>
+            <picker class="picker" mode="date" bindchange="bindPickerChange" value="{{index}}" range="{{typeActions}}">
+                <block wx:if="{{typeSelect}}">
+                    <view class="picker_value">
+                        {{typeSelect}}
+                    </view>
+                </block>
+                <block wx:else>
+                    <view class="picker_init">
+                        是否包食宿
+                    </view>
+                </block>
+            </picker>
+        </select-item>
+    </view>
+    <view class="chunk">
+        <textarea 	cursor-spacing="{{40}}" placeholder="演出简介" maxlength="{{200}}"/>
+    </view>
+    <view class="chunk">
+        <input placeholder="演出费用" />
+    </view>
+</home-publish>

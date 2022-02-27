@@ -1,5 +1,5 @@
 <scroll-view class="wrap" scroll-y="{{true}}" enhanced="{{true}}" show-scrollbar="{{false}}">
-    <image class="img" mode="widthFix" src="/asserts/public/home_publish.png" />
+    <image class="img" mode="widthFix" src="/asserts/temp/home_publish.png" />
     <view class="con">
         <view class="process_title">发布需求</view>
         <view class="process_con">
