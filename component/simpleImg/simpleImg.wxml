@@ -1,0 +1,4 @@
+<view class="wrap" data-src="{{data}}">
+    <image wx:if="{{data.width > data.height}}" class="fix_width" src="{{data.url}}" mode="widthFix"/>
+    <image wx:else class="fix_height" src="{{data.url}}" mode="heightFix"/>
+</view>

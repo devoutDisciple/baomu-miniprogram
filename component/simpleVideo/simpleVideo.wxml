@@ -1,0 +1,58 @@
+<view class="container" style="height: {{videoDetail.videoHeight}}px; width: {{videoDetail.videoWidth}}px">
+    <!--
+        src="http://wxsnsdy.tc.qq.com/105/20210/snsdyvideodownload?filekey=30280201010421301f0201690402534804102ca905ce620b1241b726bc41dcff44e00204012882540400&bizid=1023&hy=SH&fileparam=302c020101042530230204136ffd93020457e3c4ff02024ef202031e8d7f02030f42400204045a320a0201000400" 
+        style="height: calc({{videoDetail.width}} / (100vw - 40rpx) * {{videoDetail.height}})"
+    -->
+    <video 
+        id="{{videoId}}"
+        class="{{videoDetail.height > videoDetail.width ? 'video fix_height' : 'video fix_width'}}"
+        style="height: {{videoDetail.videoHeight}}px; width: {{videoDetail.videoWidth}}px"
+        src="{{videoDetail.url}}"
+        controls="{{true}}"
+        show-progress="{{true}}"
+        show-play-btn="{{false}}"
+        enable-progress-gesture="{{false}}"
+        show-center-play-btn='{{false}}'
+        picture-in-picture-show-progress="{{true}}" 
+        bindplay="onVideoPlay"
+        bindpause="onVideoPause"
+        bindended="onVideoEnd"
+        bindtimeupdate="onTimeUpdate"
+        bindcontrolstoggle="onControlStoggle"
+        binderror="videoErrorCallback"  />
+        <!--
+            controls: 是否显示默认播放控件（播放/暂停按钮、播放进度、时间）
+            show-progress: 若不设置，宽度大于240时才会显示
+            autoplay: 是否自动播放
+            show-fullscreen-btn： 是否显示全屏按钮
+            show-play-btn： 是否显示视频底部控制栏的播放按钮
+            show-center-play-btn: 是否显示视频中间的播放按钮
+            enable-progress-gesture: 是否开启控制进度的手势
+            poster: 视频封面的图片网络资源地址或云文件ID（2.3.0）。若 controls 属性值为 false 则设置 poster 无效
+            enable-play-gesture: 是否开启播放手势，即双击切换播放/暂停
+            picture-in-picture-show-progress: 是否在小窗模式下显示播放进度
+            enable-auto-rotation: 是否开启手机横屏时自动全屏，当系统设置开启自动旋转时生效
+            bindcontrolstoggle: 切换 controls 显示隐藏时触发
+            bindplay: 当开始/继续播放时触发play事件
+            bindpause: 当暂停播放时触发 pause 事件
+            waiting-视频还没有播放 process-视频播放中 pause-视频暂停 end-视频播放结束
+        -->
+    <view class="video_cover_con" wx:if="{{showCoverImg && videoDetail.photo && activeState === 'waiting'}}" bindtap="onTapModalImg">
+        <!-- <image class="video_cover_img" wx:if="{{videoDetail.photo && activeState === 'waiting'}}" src="{{videoDetail.photo.url}}" bindtap="onTapModalImg"/> -->
+        <simple-img data="{{videoDetail.photo}}"/>
+    </view>
+    <!-- <image class="video_cover_img" wx:if="{{videoDetail.photo && activeState === 'waiting'}}" src="{{videoDetail.photo.url}}" bindtap="onTapModalImg"/> -->
+
+    <!-- 视频刚开始加载的时候 -->
+    <view wx:if="{{activeState === 'waiting'}}" bindtap="onTapModalImg" class="video_play_container">
+        <image class="video_play_img" src="/asserts/public/play.png" />
+    </view>
+    <!-- 控制条显示的时候 -->
+    <view wx:if="{{controllerShow && activeState === 'process'}}" bindtap="onTapPauseBtn" class="video_play_container">
+        <image class="video_pause_img" src="/asserts/public/pause.png" />
+    </view>
+    <!-- 视频暂停或者播放结束的时候 -->
+    <view wx:if="{{activeState === 'pause' || activeState === 'end'}}" bindtap="onTapStartBtn" class="video_play_container">
+        <image class="video_play_img" src="/asserts/public/play.png" />
+    </view>
+</view>

@@ -7,6 +7,24 @@ module.exports = {
 	getLogin: (userinfo = {}) => {
 		return new Promise((resolve, reject) => {
 			loading.showLoading();
+			const userId = wx.getStorageSync('userId');
+			if (userId) {
+				post({ url: '/login/loginByUserId', data: { userId } })
+					.then((data) => {
+						app.globalData.userInfo = data;
+						const { id, username, photo, wx_openid, phone } = data;
+						// 将用户信息缓存下来
+						wx.setStorageSync('user_id', id);
+						wx.setStorageSync('username', username);
+						wx.setStorageSync('photo', photo);
+						wx.setStorageSync('open_id', wx_openid);
+						wx.setStorageSync('phone', phone);
+						resolve(data);
+					})
+					.catch(() => reject())
+					.finally(() => loading.hideLoading());
+				return;
+			}
 			// 微信登录
 			wx.login({
 				// 成功失败与否
@@ -16,9 +34,13 @@ module.exports = {
 						post({ url: '/login/loginByWxOpenid', data: { code, ...userinfo } })
 							.then((data) => {
 								app.globalData.userInfo = data;
-								const { wx_openid, id } = data;
+								const { id, username, photo, wx_openid, phone } = data;
+								// 将用户信息缓存下来
 								wx.setStorageSync('user_id', id);
-								wx.setStorageSync('wx_openid', wx_openid);
+								wx.setStorageSync('username', username);
+								wx.setStorageSync('photo', photo);
+								wx.setStorageSync('open_id', wx_openid);
+								wx.setStorageSync('phone', phone);
 								resolve(data);
 							})
 							.catch(() => reject())
@@ -35,15 +57,12 @@ module.exports = {
 		});
 	},
 
+	// 获取用户手机号
+	getUserPhone: () => {},
+
 	// 判断用户是否登录
 	isLogin: () => {
-		const is_login = wx.getStorageSync('is_login');
-		if (!is_login || String(is_login) !== '1') {
-			wx.navigateTo({
-				url: '/pages/login/wxLogin/wxLogin',
-			});
-			return false;
-		}
-		return true;
+		const userId = wx.getStorageSync('userId');
+		return !!userId;
 	},
 };

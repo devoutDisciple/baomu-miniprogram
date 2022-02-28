@@ -1,0 +1,46 @@
+.container {
+    width: 100%;
+    font-size: 34rpx;
+    display: flex;
+    position: relative;
+}
+
+.video {
+    width: 100%;
+}
+
+.fix_height {
+    width: 60vw;
+}
+
+.video_cover_con {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+}
+
+.video_play_container {
+    position: absolute;
+    height: 80rpx;
+    width: 80rpx;
+    left: calc(50% - 40rpx);
+    top: calc(50% - 40rpx);
+    background: #333;
+    opacity: 0.3;
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.video_play_img {
+    height: 60rpx;
+    width: 60rpx;
+}
+
+.video_pause_img {
+    height: 40rpx;
+    width: 40rpx;
+}

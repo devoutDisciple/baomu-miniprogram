@@ -1,0 +1,4 @@
+<view class="img" bind:tap="onPreviewImg" data-src="{{src}}">
+    <image wx:if="{{width > height}}" class="fix_height" src="{{src}}" mode="aspectFill"/>
+    <image wx:else class="fix_width" src="{{src}}" mode="aspectFill"/>
+</view>

@@ -1,7 +1,6 @@
 {
   "pages": [
     "pages/home/index/index",
-    "pages/logs/logs",
     "pages/square/index/index",
     "pages/rest/index/index",
     "pages/my/index/index",
@@ -12,7 +11,8 @@
     "pages/systemMsg/systemMsg",
     "pages/home/publish1/publish1",
     "pages/home/publish2/publish2",
-    "pages/home/publish3/publish3"
+    "pages/home/publish3/publish3",
+    "pages/square/publish/publish"
   ],
   "window": {
     "backgroundTextStyle": "light",
