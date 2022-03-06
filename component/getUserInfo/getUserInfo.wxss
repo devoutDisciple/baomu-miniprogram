@@ -1,0 +1,29 @@
+.con {
+  padding: 30rpx;
+  font-size: 24rpx;
+  color: #8a8a8a;
+  padding-bottom: 0;
+}
+
+.title {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  height: 40rpx;
+  width: 40rpx;
+  margin-right: 10rpx;
+}
+
+.btn_con {
+  padding-top: 60rpx;
+  display: flex;
+  justify-content: center;
+}
+
+.btn {
+  width: 170rpx;
+  font-size: 30rpx;
+  margin: 0 20rpx;
+}

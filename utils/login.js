@@ -7,7 +7,7 @@ module.exports = {
 	getLogin: (userinfo = {}) => {
 		return new Promise((resolve, reject) => {
 			loading.showLoading();
-			const userId = wx.getStorageSync('userId');
+			const userId = wx.getStorageSync('user_id');
 			if (userId) {
 				post({ url: '/login/loginByUserId', data: { userId } })
 					.then((data) => {
@@ -62,7 +62,7 @@ module.exports = {
 
 	// 判断用户是否登录
 	isLogin: () => {
-		const userId = wx.getStorageSync('userId');
+		const userId = wx.getStorageSync('user_id');
 		return !!userId;
 	},
 };

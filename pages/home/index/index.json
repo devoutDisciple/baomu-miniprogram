@@ -3,7 +3,9 @@
 		"header": "/component/navBar/navBar",
         "search-ipt": "/component/search/search",
         "person-item": "/component/personItem/personItem",
-        "task-item": "/component/taskItem/taskItem"
+        "task-item": "/component/taskItem/taskItem",
+        "phone-component": "/component/getPhone/getPhone",
+        "userinfo-component": "/component/getUserInfo/getUserInfo"
 
 	},
 	"navigationStyle": "custom"

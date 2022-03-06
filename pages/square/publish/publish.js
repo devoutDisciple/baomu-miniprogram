@@ -86,6 +86,18 @@ Page({
 		});
 	},
 
+	// 移除图片
+	onRemoveImg: function (e) {
+		const { idx } = e.currentTarget.dataset;
+		const { tempImgUrlPaths } = this.data;
+		tempImgUrlPaths.splice(idx, 1);
+		this.setData({ tempImgUrlPaths });
+	},
+
+	onRemoveVideo: function () {
+		this.setData({ videoDetail: {} });
+	},
+
 	/**
 	 * 生命周期函数--监听页面初次渲染完成
 	 */

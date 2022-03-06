@@ -1,0 +1,19 @@
+<van-popup
+    show="{{ visible }}"
+    round
+    closeable
+    position="bottom"
+    custom-style="height: 20%"
+    bind:close="onClose"
+    >
+    <view class="con">
+        <view class="title">
+            <image class="logo" src="{{logoUrl}}" />
+            <text>鲍姆演艺想要获取您的昵称、头像</text>
+        </view>
+        <view class="btn_con">
+            <button class="btn" type="default" bindtap="onClose">拒绝</button>
+            <button class="btn" type="primary" open-type="getUserInfo" bindtap="getUserInfo">确认</button>
+        </view>
+    </view>
+</van-popup>

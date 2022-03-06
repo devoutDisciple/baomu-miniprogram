@@ -1,39 +1,16 @@
 import { get } from './utils/request';
 import utils from './utils/util';
-import config from './config/config';
 
 App({
 	globalData: {
 		userInfo: null,
-		myReceiveGoodsNum: 0, // 我收到的点赞量
-		myReceiveCommentsNum: 0, // 我收到的评论数
-		msgsNum: 0, // 消息数量
 	},
 
 	data: {
 		goodsTimer: null, // 刷新点赞的记录
 	},
 
-	onLaunch: async function (e) {
-		// 查看是否被转发进来的
-		if (e && e.query) {
-			const { from } = e.query;
-			if (String(from) === '2' || String(from) === '3' || String(from) === '4' || String(from) === '5') {
-				const { content_id, type } = e.query;
-				wx.navigateTo({
-					url: `/pages/detail/detail?content_id=${content_id}&type=${type}`,
-				});
-			}
-		}
-		// 统计各种信息
-		if (config.env === 'dev') {
-			this.getTotalMsg();
-		} else {
-			setInterval(() => {
-				this.getTotalMsg();
-			}, 5000);
-		}
-	},
+	onLaunch: function () {},
 
 	// 各种统计信息
 	getTotalMsg: async function () {
@@ -67,7 +44,6 @@ App({
 		if (!user_id) return 0;
 		const res = await get({ url: '/message/msgsByUserId', data: { user_id } });
 		let msgData = wx.getStorageSync('msg_data') || '[]';
-		console.log(msgData, 111);
 		msgData = JSON.parse(msgData);
 		if (res && Array.isArray(res.data) && res.data.length !== 0) {
 			const { data } = res;

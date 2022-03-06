@@ -22,13 +22,14 @@
   },
   "sitemapLocation": "sitemap.json",
   "usingComponents": {
-    "van-loading": "@vant/weapp/loading/index",
-    "van-calendar": "@vant/weapp/calendar/index",
     "van-progress": "@vant/weapp/progress/index",
     "van-rate": "@vant/weapp/rate/index",
-    "van-dialog": "@vant/weapp/dialog/index",
-    "van-picker": "@vant/weapp/picker/index",
-    "van-action-sheet": "@vant/weapp/action-sheet/index"
+    "van-popup": "@vant/weapp/popup/index"
+  },
+  "permission": {
+      "scope.userLocation": {
+        "desc": "用于为您提供更细致的服务"
+    }
   },
   "tabBar": {
     "color": "#d8d8d8",

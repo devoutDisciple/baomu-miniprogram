@@ -23,23 +23,24 @@
         <view class="chunk">
             <textarea auto-height class="text" cursor-spacing="{{40}}" placeholder="内容" maxlength="{{200}}"/>
         </view>
-    </scroll-view>
-    <view class="img_con">
-        <block wx:if="{{tempImgUrlPaths && tempImgUrlPaths.length !== 0}}">
-            <block wx:for="{{tempImgUrlPaths}}" wx:key="index">
-                <view class="img_chunk">
-                    <my-img src="{{item}}"/>
-                    <image class="img_close" src="/asserts/public/close.png" />
+        <view class="img_con">
+            <block wx:if="{{tempImgUrlPaths && tempImgUrlPaths.length !== 0}}">
+                <block wx:for="{{tempImgUrlPaths}}" wx:key="index">
+                    <view class="img_chunk">
+                        <my-img src="{{item}}"/>
+                        <image data-idx="{{index}}" bindtap="onRemoveImg" class="img_close" src="/asserts/public/close.png" />
+                    </view>
+                </block>
+            </block>
+            <block wx:if="{{videoDetail && videoDetail.url}}">
+                <view class="video">
+                    <simple-video showCoverImg="{{false}}" videoId="my_video" wx:if="{{videoDetail.url && videoDetail.photo}}" videoDetail="{{videoDetail}}"/>
+                    <image bindtap="onRemoveVideo" class="img_close" src="/asserts/public/close.png" bindtap = "onRemoveVideo"/>
                 </view>
             </block>
-        </block>
-        <block wx:if="{{videoDetail && videoDetail.url}}">
-            <view class="video">
-                <simple-video showCoverImg="{{false}}" videoId="my_video" wx:if="{{videoDetail.url && videoDetail.photo}}" videoDetail="{{videoDetail}}"/>
-                <image class="img_close" src="/asserts/public/close.png" bindtap = "onRemoveVideo"/>
-            </view>
-        </block>
-    </view>
+        </view>
+    </scroll-view>
+   
     <view class="btm">
         <view class="btm_left">
             <image bindtap="onChooseImg" class="btm_icon btm_icon1" src="/asserts/public/img.png" />

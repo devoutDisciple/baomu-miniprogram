@@ -84,4 +84,6 @@
             </block>
         </block>
     </view>
+     <userinfo-component visible="{{userDialogVisible}}" bindOnClose="onCloseUserInfoDialog" />
+     <phone-component visible="{{phoneDialogVisible}}" bindOnClose="onClosePhoneDialog"/>
 </scroll-view>
