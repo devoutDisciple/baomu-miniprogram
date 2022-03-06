@@ -1,4 +1,3 @@
-// component/header/header.js
 import deviceUtil from '../../utils/deviceUtil';
 
 Component({
@@ -45,6 +44,12 @@ Component({
 					statusBarHeight: `${res.statusBarHeight}px`,
 					backIconMarginTop: `${res.navHeight / 3}px`,
 				});
+			});
+		},
+		// 点击返回
+		onTapBack: function () {
+			wx.navigateBack({
+				complete: (res) => {},
 			});
 		},
 	},

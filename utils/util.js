@@ -39,10 +39,39 @@ const getDays = (year, month) => {
 	return d.getDate();
 };
 
+const getStoragePublishMsg = (key) => {
+	// publish 的数据结构
+	// {
+	//     发布1
+	//     publish1: {title: "", instrumentSelectId: ""}
+	// }
+	const publish = wx.getStorageSync('publish');
+	let temp = {};
+	if (publish) {
+		temp = JSON.parse(publish)[key];
+	}
+	return temp;
+};
+
+const setStoragePublishMsg = (key, data) => {
+	let publish = wx.getStorageSync('publish');
+	if (publish) {
+		publish = JSON.parse(publish);
+		const temp = publish[key] || {};
+		publish[key] = { ...temp, ...data };
+	} else {
+		publish = {};
+		publish[key] = data;
+	}
+	wx.setStorageSync('publish', JSON.stringify(publish));
+};
+
 module.exports = {
 	formatTime,
 	getMsgShowTime,
 	getDiffTime,
 	reloadHomePage,
 	getDays,
+	getStoragePublishMsg,
+	setStoragePublishMsg,
 };

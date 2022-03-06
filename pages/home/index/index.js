@@ -57,7 +57,6 @@ Page({
 				if (res.errMsg === 'getLocation:ok') {
 					const { latitude, longitude } = res;
 					const user_id = wx.getStorageSync('user_id');
-					console.log(user_id, 111);
 					if (!user_id) return;
 					// 更新用户位置
 					request.post({ url: '/user/updateLocation', data: { latitude, longitude, user_id } });
@@ -100,10 +99,22 @@ Page({
 		});
 	},
 
+	// 点击发布需求
+	onPublish: function () {
+		wx.navigateTo({
+			url: '/pages/home/publish1/publish1',
+		});
+	},
+
 	// 选择去演出或者找演出
 	onSelectTab: function (e) {
 		const { idx } = e.currentTarget.dataset;
 		this.setData({ selectTabIdx: Number(idx) });
+	},
+
+	// 页面展示
+	onShow: function () {
+		console.log(1111);
 	},
 
 	/**

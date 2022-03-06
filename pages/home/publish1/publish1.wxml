@@ -1,13 +1,14 @@
 <home-publish  process="{{1}}">
+    <header showBack/>
     <view class="chunk">
-        <input placeholder="填写需求名称" />
+        <input value="{{title}}" bindblur="onIptBlur" placeholder="填写需求名称" />
     </view>
     <view class="chunk">
         <select-item>
-            <picker class="picker" bindchange="bindPickerChange" value="{{index}}" range="{{typeActions}}">
-                <block wx:if="{{typeSelect}}">
+            <picker class="picker" bindchange="bindPickerChange" value="{{index}}" range="{{instrumentList}}">
+                <block wx:if="{{instrumentSelectName}}">
                     <view class="picker_value">
-                        {{typeSelect}}
+                        {{instrumentSelectName}}
                     </view>
                 </block>
                 <block wx:else>
@@ -18,6 +19,4 @@
             </picker>
         </select-item>
     </view>
-    
-    
 </home-publish>

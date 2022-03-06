@@ -1,4 +1,5 @@
-<home-publish process="{{2}}">
+<home-publish process="{{3}}">
+    <header showBack/>
     <view class="chunk">
         <select-item>
             <picker class="picker" bindchange="bindPickerChange" value="{{index}}" range="{{typeActions}}">

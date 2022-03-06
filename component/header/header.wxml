@@ -1,6 +1,7 @@
 <view class="header" style="{{ 'height: ' + navHeight + '; top: ' + statusBarHeight + '; line-height: '+ navHeight }}">
     {{text}}
     <image 
+        bindtap="onTapBack"
         wx:if="{{showBack}}"
         class="head_img" src="/asserts/public/back_icon.png"
         style="{{' top: ' + backIconMarginTop + '; left: ' + backIconMarginTop }}" />

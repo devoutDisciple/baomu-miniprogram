@@ -11,10 +11,10 @@
     </view>
     <view class="pub_btn">
         <block wx:if="{{process !== 1}}">
-            <view class="pub_pre">
+            <view bindtap="onTapPre" class="pub_pre" data-idx="{{process}}">
                 <image class="pub_pre_img" src="/asserts/public/pub_pre.png" />
             </view>
         </block>
-        <image class="pub_img" src="/asserts/public/pub_next.png" />
+        <image bindtap="onTapNext" data-idx="{{process}}" class="pub_img" src="/asserts/public/pub_next.png" />
     </view>
 </scroll-view>

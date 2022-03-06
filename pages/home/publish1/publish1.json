@@ -1,7 +1,8 @@
 {
 	"usingComponents": {
         "home-publish": "/component/homePublish/homePublish",
-        "select-item": "/component/selectItem/selectItem"
+        "select-item": "/component/selectItem/selectItem",
+        "header": "/component/header/header"
     },
 	"navigationStyle": "custom"
 }
