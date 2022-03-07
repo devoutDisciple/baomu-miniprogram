@@ -1,7 +1,3 @@
-// eslint-disable-next-line import/named
-import { formatTime } from '../../utils/util';
-import moment from '../../utils/moment';
-
 Page({
 	/**
 	 * 页面的初始数据

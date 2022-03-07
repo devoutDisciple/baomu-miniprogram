@@ -2,10 +2,10 @@
     <header showBack/>
     <view class="chunk">
         <select-item>
-            <picker class="picker" bindchange="bindPickerChange" value="{{index}}" range="{{typeActions}}">
-                <block wx:if="{{typeSelect}}">
+            <picker class="picker" bindchange="onPickSend" range="{{isYesList}}">
+                <block wx:if="{{selectSend}}">
                     <view class="picker_value">
-                        {{typeSelect}}
+                        {{selectSend}}
                     </view>
                 </block>
                 <block wx:else>
@@ -18,10 +18,10 @@
     </view>
     <view class="chunk">
         <select-item>
-            <picker class="picker" mode="date" bindchange="bindPickerChange" value="{{index}}" range="{{typeActions}}">
-                <block wx:if="{{typeSelect}}">
+            <picker class="picker" bindchange="onPickFoods" range="{{isYesList}}">
+                <block wx:if="{{selectFoods}}">
                     <view class="picker_value">
-                        {{typeSelect}}
+                        {{selectFoods}}
                     </view>
                 </block>
                 <block wx:else>
@@ -33,9 +33,9 @@
         </select-item>
     </view>
     <view class="chunk">
-        <textarea 	cursor-spacing="{{40}}" placeholder="演出简介" maxlength="{{200}}"/>
+        <textarea cursor-spacing="{{40}}" value="{{desc}}" placeholder="演出简介" maxlength="{{200}}" bindblur="onBlurDesc"/>
     </view>
     <view class="chunk">
-        <input placeholder="演出费用" />
+        <input placeholder="演出费用" value="{{price}}" type="number" bindblur="onBlurPrice"/>
     </view>
 </home-publish>

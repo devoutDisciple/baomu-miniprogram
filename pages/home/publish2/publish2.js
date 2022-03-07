@@ -31,6 +31,7 @@ Page({
 		this.initMsg();
 	},
 
+	// 设置初始值
 	initMsg: function () {
 		const publish = getStoragePublishMsg('publish2');
 		if (publish.selectAddress) this.setData({ selectAddress: publish.selectAddress });

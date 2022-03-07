@@ -17,4 +17,11 @@
         </block>
         <image bindtap="onTapNext" data-idx="{{process}}" class="pub_img" src="/asserts/public/pub_next.png" />
     </view>
+    <block wx:if="{{dialogVisible}}">
+        <tip-dialog
+            bindOnClose="onCloseDialog"
+            src="{{dialogDetail.src}}" 
+            title="{{dialogDetail.title}}" 
+            desc="{{dialogDetail.desc}}"/> 
+    </block>
 </scroll-view>

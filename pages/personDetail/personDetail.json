@@ -2,7 +2,8 @@
 	"usingComponents": {
 		"header": "/component/header/header",
 		"comment-item": "/component/commentItem/commentItem",
-        "beard-list": "/component/beardList/beardList"
+        "beard-list": "/component/beardList/beardList",
+        "tip-dialog": "/component/tipDialog/tipDialog"
 	},
 	"navigationStyle": "custom"
 }

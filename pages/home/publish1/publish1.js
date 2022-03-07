@@ -24,7 +24,7 @@ Page({
 
 	initMsg: function () {
 		const publish = getStoragePublishMsg('publish1');
-		if (publish.title) {
+		if (publish && publish.title) {
 			const { instruments } = this.data;
 			const { id, name } = instruments.filter((item) => item.id === publish.instrumentSelectId)[0];
 			this.setData({ title: publish.title, instrumentSelectId: id, instrumentSelectName: name });

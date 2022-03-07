@@ -12,7 +12,8 @@
     "pages/home/publish1/publish1",
     "pages/home/publish2/publish2",
     "pages/home/publish3/publish3",
-    "pages/square/publish/publish"
+    "pages/square/publish/publish",
+    "pages/home/publishDetail/publishDetail"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -28,8 +29,8 @@
     "van-calendar": "@vant/weapp/calendar/index"
   },
   "permission": {
-      "scope.userLocation": {
-        "desc": "用于为您提供更细致的服务"
+    "scope.userLocation": {
+      "desc": "用于为您提供更细致的服务"
     }
   },
   "tabBar": {

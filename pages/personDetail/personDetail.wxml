@@ -129,13 +129,11 @@
     </scroll-view>
     <view class="invitate_btn">邀请</view>
     <block wx:if="{{dialogShow}}">
-        <view class="dialog">
-            <view class="dialog_con">
-                <image class="dialog_con_img" src="{{dialogDetail.src}}" />
-                <view class="dialog_title">{{dialogDetail.title}}</view>
-                <view class="dialog_desc">{{dialogDetail.desc}}</view>
-                <view class="dialog_btn" bindtap="onCloseDialog">确定</view>
-            </view>
-        </view>
+        <tip-dialog
+            bindOnClose="onCloseDialog"
+            src="{{dialogDetail.src}}" 
+            title="{{dialogDetail.title}}" 
+            desc="{{dialogDetail.desc}}"/> 
     </block>
+    
 </view>
