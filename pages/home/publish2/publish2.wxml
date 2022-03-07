@@ -1,27 +1,11 @@
-<home-publish process="{{2}}">
+<home-publish class="wrap" process="{{2}}">
     <header showBack/>
     <view class="chunk">
         <select-item>
-            <picker class="picker" bindchange="bindPickerChange" value="{{index}}" range="{{typeActions}}">
-                <block wx:if="{{typeSelect}}">
+            <view class="picker" bindtap="onChangeCalendarVisible">
+                <block wx:if="{{selectDate}}">
                     <view class="picker_value">
-                        {{typeSelect}}
-                    </view>
-                </block>
-                <block wx:else>
-                    <view class="picker_init">
-                        来回时间
-                    </view>
-                </block>
-            </picker>
-        </select-item>
-    </view>
-    <view class="chunk">
-        <select-item>
-            <picker class="picker" mode="date" bindchange="bindPickerChange" value="{{index}}" range="{{typeActions}}">
-                <block wx:if="{{typeSelect}}">
-                    <view class="picker_value">
-                        {{typeSelect}}
+                        {{selectDate}}
                     </view>
                 </block>
                 <block wx:else>
@@ -29,34 +13,47 @@
                         演出日期
                     </view>
                 </block>
-            </picker>
+            </view>
         </select-item>
     </view>
     <view class="chunk">
         <select-item>
-            <picker class="picker" bindchange="bindPickerChange" value="{{index}}" range="{{typeActions}}">
-                <block wx:if="{{typeSelect}}">
+            <picker class="picker" bindchange="timePickSelect" range="{{hourList}}">
+                <block wx:if="{{selectHour}}">
                     <view class="picker_value">
-                        {{typeSelect}}
+                        {{selectHour}}
                     </view>
                 </block>
                 <block wx:else>
                     <view class="picker_init">
-                        演出时长(小时)
+                        演出时长(小时/天)
                     </view>
                 </block>
             </picker>
         </select-item>
     </view>
     <view class="chunk">
-        <input placeholder="演出地点" />
+        <select-item>
+            <view class="picker" bindtap="onChooseAddress">
+                <block wx:if="{{selectAddress.name}}">
+                    <view class="picker_value">
+                        {{selectAddress.name}}
+                    </view>
+                </block>
+                <block wx:else>
+                    <view class="picker_init">
+                        演出地点
+                    </view>
+                </block>
+            </view>
+        </select-item>
     </view>
     <view class="chunk">
         <select-item>
-            <picker class="picker" bindchange="bindPickerChange" value="{{index}}" range="{{typeActions}}">
-                <block wx:if="{{typeSelect}}">
+            <picker class="picker" bindchange="onPickPrice" range="{{priceList}}">
+                <block wx:if="{{selectPrice}}">
                     <view class="picker_value">
-                        {{typeSelect}}
+                        {{selectPrice}}
                     </view>
                 </block>
                 <block wx:else>
@@ -67,4 +64,10 @@
             </picker>
         </select-item>
     </view>
+    <van-calendar
+        show="{{ calendarVisible }}"
+        type="range"
+        bind:close="onChangeCalendarVisible"
+        bind:confirm="onConfirmDate"
+        />
 </home-publish>

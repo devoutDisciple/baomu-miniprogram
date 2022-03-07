@@ -3,6 +3,7 @@
     height: 40rpx;
     display: flex;
     justify-content: flex-end;
+    
 }
 
 .icon {

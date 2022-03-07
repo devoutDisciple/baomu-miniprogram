@@ -1,22 +1,116 @@
+import moment from '../../../utils/moment';
+// eslint-disable-next-line import/named
+import { getStoragePublishMsg, setStoragePublishMsg } from '../../../utils/util';
+
 Page({
 	/**
 	 * 页面的初始数据
 	 */
 	data: {
-		typeActions: ['小提琴演奏', '钢琴演奏'],
-		typeSelect: '',
+		calendarVisible: false, // 日历开关
+		startTime: '',
+		endTime: '',
+		selectDate: '', // 选择的日期区间
+		hourList: [], // 时长list
+		selectHour: '', // 选择的小时
+		selectAddress: {
+			name: '',
+			address: '',
+			latitude: '',
+			longitude: '',
+		}, // 演出地点
+		priceList: ['是', '否'],
+		selectPrice: '',
 	},
 
 	/**
 	 * 生命周期函数--监听页面加载
 	 */
-	onLoad: function (options) {},
+	onLoad: function () {
+		this.generatorHourList();
+		this.initMsg();
+	},
 
-	bindPickerChange: function (e) {
+	initMsg: function () {
+		const publish = getStoragePublishMsg('publish2');
+		if (publish.selectAddress) this.setData({ selectAddress: publish.selectAddress });
+		if (publish.price) this.setData({ selectPrice: publish.price });
+		if (publish.hours) this.setData({ selectHour: publish.hours });
+		if (publish.startTime && publish.endTime) {
+			const { startTime, endTime } = publish;
+			this.setData({
+				startTime,
+				endTime,
+				selectDate: `${startTime} - ${endTime}`,
+			});
+		}
+	},
+
+	// 生成时长list
+	generatorHourList: function () {
+		const hourList = [];
+		for (let index = 1; index < 17; index++) {
+			hourList.push(index * 0.5);
+		}
+		this.setData({ hourList });
+	},
+
+	// calendarVisible 日历开关
+	onChangeCalendarVisible: function () {
+		const { calendarVisible } = this.data;
+		this.setData({ calendarVisible: !calendarVisible });
+	},
+
+	// 选择日历确定
+	onConfirmDate: function (e) {
+		const { detail } = e;
+		if (!detail || !Array.isArray(detail) || !detail[0]) {
+			return wx.showToast({
+				title: '请选择日期',
+				icon: 'error',
+			});
+		}
+		const startTime = moment(detail[0]).format('YYYY.MM.DD');
+		const endTime = moment(detail[1]).format('YYYY.MM.DD');
+		this.setData({ startTime, endTime, selectDate: `${startTime} - ${endTime}` });
+		this.onChangeCalendarVisible();
+		setStoragePublishMsg('publish2', { startTime, endTime });
+	},
+
+	// 选择时长
+	timePickSelect: function (e) {
 		const { value } = e.detail;
-		const typeSelect = this.data.typeActions[value];
-		console.log(typeSelect);
-		this.setData({ typeSelect: typeSelect });
+		const selectHour = this.data.hourList[value];
+		this.setData({ selectHour: `${selectHour} 小时/天` });
+		setStoragePublishMsg('publish2', { hours: selectHour });
+	},
+
+	// 选择演出地点
+	onChooseAddress: function () {
+		const self = this;
+		wx.chooseLocation({
+			complete: function (res) {
+				if (res.errMsg !== 'chooseLocation:ok') {
+					return wx.wx.showToast({
+						title: '请选择地址',
+						icon: 'error',
+					});
+				}
+				const { address, latitude, longitude, name } = res;
+				self.setData({ selectAddress: { address, latitude, longitude, name } });
+				setStoragePublishMsg('publish2', {
+					selectAddress: { address, latitude, longitude, name },
+				});
+			},
+		});
+	},
+
+	// 选择是否议价
+	onPickPrice: function (e) {
+		const { value } = e.detail;
+		const selectPrice = this.data.priceList[value];
+		this.setData({ selectPrice: selectPrice });
+		setStoragePublishMsg('publish2', { price: selectPrice });
 	},
 
 	/**

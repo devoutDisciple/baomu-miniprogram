@@ -24,7 +24,8 @@
   "usingComponents": {
     "van-progress": "@vant/weapp/progress/index",
     "van-rate": "@vant/weapp/rate/index",
-    "van-popup": "@vant/weapp/popup/index"
+    "van-popup": "@vant/weapp/popup/index",
+    "van-calendar": "@vant/weapp/calendar/index"
   },
   "permission": {
       "scope.userLocation": {

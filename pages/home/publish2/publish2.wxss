@@ -18,4 +18,32 @@
 
 .picker_value {
     color: #333;
+    max-width: 85%;
+    display: -webkit-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-all;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+}
+
+.wrap .van-calendar__day--start {
+    background: #d2d2ba!important;
+    color: #333!important;
+}
+
+.wrap .van-calendar__day--end {
+    background: #d2d2ba!important;
+    color: #333!important;
+}
+
+.wrap .van-calendar__day--middle {
+    background: #f1f1ea!important;
+    color: #333!important;
+}
+
+.wrap .van-button--danger {
+    background: #d2d2ba!important;
+    border-color: #d2d2ba!important;
+    color: #333!important;
 }
