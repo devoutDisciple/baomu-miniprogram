@@ -13,7 +13,8 @@
     "pages/home/publish2/publish2",
     "pages/home/publish3/publish3",
     "pages/square/publish/publish",
-    "pages/invitation/invitation"
+    "pages/invitation/invitation",
+    "pages/publishDetail/publishDetail"
   ],
   "window": {
     "backgroundTextStyle": "light",

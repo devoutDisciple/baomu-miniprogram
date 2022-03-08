@@ -94,6 +94,13 @@
           "name": "邀请",
           "pathName": "pages/invitation/invitation",
           "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "发布详情",
+          "pathName": "pages/publishDetail/publishDetail",
+          "query": "",
           "scene": null,
           "launchMode": "default"
         }
