@@ -3,6 +3,139 @@
         <view class="calendar">
             <calendar-component selectTimeRange="{{selectTimeRange}}"/>
         </view>
+        <view class="desc">
+            <view class="person">
+                <view class="person_txt">被雇佣人</view>
+                <view class="person_name">
+                    <image class="person_photo" src="/asserts/temp/photo.png" />
+                    周杰伦
+                </view>
+            </view>
+            <view class="chunk">
+                <select-item>
+                    <picker class="picker" bindchange="onPickInstruments" range="{{instrumentList}}">
+                        <block wx:if="{{instrumentSelectName}}">
+                            <view class="picker_value">
+                                {{instrumentSelectName}}
+                            </view>
+                        </block>
+                        <block wx:else>
+                            <view class="picker_init">
+                                演奏方式
+                            </view>
+                        </block>
+                    </picker>
+                </select-item>
+            </view>
+            <view class="chunk">
+                <select-item>
+                    <view class="picker" bindtap="onChangeCalendarVisible">
+                        <block wx:if="{{selectDate}}">
+                            <view class="picker_value">
+                                {{selectDate}}
+                            </view>
+                        </block>
+                        <block wx:else>
+                            <view class="picker_init">
+                                演出日期
+                            </view>
+                        </block>
+                    </view>
+                </select-item>
+            </view>
+            <view class="chunk">
+                <select-item>
+                    <picker class="picker" bindchange="timePickSelect" range="{{hourList}}">
+                        <block wx:if="{{selectHour}}">
+                            <view class="picker_value">
+                                {{selectHour}}
+                            </view>
+                        </block>
+                        <block wx:else>
+                            <view class="picker_init">
+                                演出时长(小时/天)
+                            </view>
+                        </block>
+                    </picker>
+                </select-item>
+            </view>
+            <view class="chunk">
+                <select-item>
+                    <view class="picker" bindtap="onChooseAddress">
+                        <block wx:if="{{selectAddress.name}}">
+                            <view class="picker_value">
+                                {{selectAddress.name}}
+                            </view>
+                        </block>
+                        <block wx:else>
+                            <view class="picker_init">
+                                演出地点
+                            </view>
+                        </block>
+                    </view>
+                </select-item>
+            </view>
+            <view class="chunk">
+                <select-item>
+                    <picker class="picker" bindchange="onPickSend" range="{{isYesList}}">
+                        <block wx:if="{{selectSend}}">
+                            <view class="picker_value">
+                                {{selectSend}}
+                            </view>
+                        </block>
+                        <block wx:else>
+                            <view class="picker_init">
+                                是否接送
+                            </view>
+                        </block>
+                    </picker>
+                </select-item>
+            </view>
+            <view class="chunk">
+                <select-item>
+                    <picker class="picker" bindchange="onPickFoods" range="{{isYesList}}">
+                        <block wx:if="{{selectFoods}}">
+                            <view class="picker_value">
+                                {{selectFoods}}
+                            </view>
+                        </block>
+                        <block wx:else>
+                            <view class="picker_init">
+                                是否包食宿
+                            </view>
+                        </block>
+                    </picker>
+                </select-item>
+            </view>
+            <view class="chunk">
+                <select-item>
+                    <picker class="picker" bindchange="onPickPrice" range="{{isYesList}}">
+                        <block wx:if="{{selectPrice}}">
+                            <view class="picker_value">
+                                {{selectPrice}}
+                            </view>
+                        </block>
+                        <block wx:else>
+                            <view class="picker_init">
+                                是否议价
+                            </view>
+                        </block>
+                    </picker>
+                </select-item>
+            </view>
+            <view class="chunk">
+                <textarea cursor-spacing="{{40}}" value="{{desc}}" placeholder="演出简介" maxlength="{{200}}" bindblur="onBlurDesc"/>
+            </view>
+            <view class="chunk">
+                <input placeholder="演出费用" value="{{price}}" type="number" bindblur="onBlurPrice"/>
+            </view>
+            <view class="invitate_btn">邀请</view>
+        </view>
     </scroll-view>
-    <view class="invitate_btn">邀请</view>
+    <van-calendar
+        show="{{ calendarVisible }}"
+        type="range"
+        bind:close="onChangeCalendarVisible"
+        bind:confirm="onConfirmDate"
+        />
 </view>

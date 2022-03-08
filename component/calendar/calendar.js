@@ -76,7 +76,6 @@ Component({
 					});
 				});
 			}
-			console.log(result, 11);
 			this.setData({ calendar: result, year, month });
 		},
 		// 点击上一个月
