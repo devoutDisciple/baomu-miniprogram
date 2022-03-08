@@ -80,6 +80,9 @@ Component({
 		},
 		onCloseDialog: function () {
 			this.setData({ dialogVisible: false });
+			wx.switchTab({
+				url: '/pages/home/index/index',
+			});
 		},
 	},
 });

@@ -1,0 +1,7 @@
+{
+	"usingComponents": {
+		"calendar-component": "/component/calendar/calendar",
+		"beard-list": "/component/beardList/beardList"
+	},
+	"navigationBarTitleText": "邀请"
+}

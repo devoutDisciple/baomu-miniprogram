@@ -89,6 +89,13 @@
           "pathName": "pages/square/publish/publish",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "邀请",
+          "pathName": "pages/invitation/invitation",
+          "query": "",
+          "scene": null,
+          "launchMode": "default"
         }
       ]
     }

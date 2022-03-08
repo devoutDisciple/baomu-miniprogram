@@ -1,0 +1,8 @@
+<view class="wrap">
+    <scroll-view class="con" scroll-y="{{true}}" enhanced="{{true}}" show-scrollbar="{{false}}">
+        <view class="calendar">
+            <calendar-component selectTimeRange="{{selectTimeRange}}"/>
+        </view>
+    </scroll-view>
+    <view class="invitate_btn">邀请</view>
+</view>

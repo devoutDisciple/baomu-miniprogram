@@ -1,4 +1,4 @@
-// pages/home/publishDetail/publishDetail.js
+// pages/invitation/invitation.js
 Page({
 
   /**
