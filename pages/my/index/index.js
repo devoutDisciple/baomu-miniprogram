@@ -55,7 +55,7 @@ Page({
 		// 工作记录
 		if (type === 'record') this.jumpPage('/pages/my/myPublish/myPublish');
 		// 获奖认证
-		if (type === 'honor') this.jumpPage('/pages/my/myPublish/myPublish');
+		if (type === 'honor') this.jumpPage('/pages/my/school/school');
 		// 实名认证
 		if (type === 'shenfen') this.jumpPage('/pages/my/idcard/idcard');
 		// 消息中心

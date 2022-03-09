@@ -1,4 +1,5 @@
-<view class="header" style="{{ 'height: ' + navHeight + '; top: ' + statusBarHeight + '; line-height: '+ navHeight }}">
+<view wx:if="{{showTop}}" class="top" style="{{ 'height: ' + statusBarHeight + '; background: ' + topColor}}"></view>
+<view class="header" style="{{ 'height: ' + navHeight + '; top: ' + statusBarHeight + '; line-height: '+ navHeight  + '; background: '+ topColor}}">
     {{text}}
     <image 
         bindtap="onTapBack"

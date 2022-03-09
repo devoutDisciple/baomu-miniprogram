@@ -18,6 +18,14 @@ Component({
 			type: Boolean,
 			value: false,
 		},
+		showTop: {
+			type: Boolean,
+			value: false,
+		},
+		topColor: {
+			type: String,
+			value: '',
+		},
 	},
 
 	/**

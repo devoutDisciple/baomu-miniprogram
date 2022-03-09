@@ -115,6 +115,13 @@
           "name": "身份认证",
           "pathName": "pages/my/idcard/idcard",
           "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "院校认证",
+          "pathName": "pages/my/school/school",
+          "query": "",
           "scene": null,
           "launchMode": "default"
         }

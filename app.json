@@ -16,7 +16,8 @@
     "pages/invitation/invitation",
     "pages/publishDetail/publishDetail",
     "pages/my/myPublish/myPublish",
-    "pages/my/idcard/idcard"
+    "pages/my/idcard/idcard",
+    "pages/my/school/school"
   ],
   "window": {
     "backgroundTextStyle": "light",
