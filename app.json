@@ -14,7 +14,9 @@
     "pages/home/publish3/publish3",
     "pages/square/publish/publish",
     "pages/invitation/invitation",
-    "pages/publishDetail/publishDetail"
+    "pages/publishDetail/publishDetail",
+    "pages/my/myPublish/myPublish",
+    "pages/my/idcard/idcard"
   ],
   "window": {
     "backgroundTextStyle": "light",

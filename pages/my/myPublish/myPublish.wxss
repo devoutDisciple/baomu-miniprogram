@@ -1,0 +1,15 @@
+.con {
+    width: 100vw;
+    height: 100vh;
+    background: #f7f7f7;
+}
+
+.wrap {
+    width: calc(100vw - 40rpx);
+    height: 100vh;
+    margin-left: 20rpx;
+}
+
+.chunk {
+    margin-top: 20rpx;
+}

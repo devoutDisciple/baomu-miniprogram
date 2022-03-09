@@ -1,5 +1,5 @@
 // eslint-disable-next-line import/named
-import { getStoragePublishMsg, setStoragePublishMsg } from '../../utils/util';
+import { getStoragePublishMsg } from '../../utils/util';
 
 Component({
 	/**

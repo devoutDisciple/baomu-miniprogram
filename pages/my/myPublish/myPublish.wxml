@@ -9,5 +9,4 @@
         </block>
         <btm-tip />
     </view>
-    <view class="publish_btn" bindtap="onTapPublish">发布</view>
 </scroll-view>

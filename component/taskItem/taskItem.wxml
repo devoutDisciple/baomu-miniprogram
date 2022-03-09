@@ -1,5 +1,5 @@
 <view class="task">
-    <view class="task_desc">
+    <view class="task_desc" bindtap="onTapTask">
         <image class="task_desc_left" src="/asserts/temp/task_temp.png" />
         <view class="task_desc_right">
             <view class="task_title">
@@ -20,10 +20,10 @@
         </view>
     </view>
     <view class="task_footer">
-        <image class="person_photo" src="/asserts/temp/touxiang.png" />
-        <view class="person_name">张小姐</view>
+        <image bindtap="onTapPerson" class="person_photo" src="/asserts/temp/photo.png" />
+        <view bindtap="onTapPerson" class="person_name">张小姐</view>
         <view class="person_btn">
-            <view class="person_btn_txt">抢单</view>
+            <view class="person_btn_txt" bindtap="onTapTask">抢单</view>
         </view>
     </view>
 </view>

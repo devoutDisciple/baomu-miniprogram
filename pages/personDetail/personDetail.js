@@ -6,7 +6,7 @@ Page({
 		dialogShow: false,
 		dialogDetail: {
 			title: '',
-			src: '/asserts/public/renzhengbiaoshi.png',
+			src: '',
 			desc: '',
 		},
 	},

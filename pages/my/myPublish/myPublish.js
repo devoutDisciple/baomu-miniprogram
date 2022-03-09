@@ -1,4 +1,4 @@
-// pages/square/index/index.js
+// pages/my/myPublish/myPublish.js
 Page({
 	/**
 	 * 页面的初始数据
@@ -11,13 +11,6 @@ Page({
 	 * 生命周期函数--监听页面加载
 	 */
 	onLoad: function (options) {},
-
-	// 点击发布
-	onTapPublish: function () {
-		wx.navigateTo({
-			url: '/pages/square/publish/publish',
-		});
-	},
 
 	/**
 	 * 生命周期函数--监听页面初次渲染完成

@@ -6,7 +6,7 @@ Page({
 	 * 页面的初始数据
 	 */
 	data: {
-		selectTabIdx: 2, // 1-找演出 2-去演出
+		selectTabIdx: 1, // 1-找演出 2-去演出
 		personList: [1, 2, 3, 4, 5, 6, 7, 8],
 		taskList: [1, 2, 3, 4, 5, 6, 7, 8],
 		userDialogVisible: false, // 获取用户基本信息
@@ -113,9 +113,7 @@ Page({
 	},
 
 	// 页面展示
-	onShow: function () {
-		console.log(1111);
-	},
+	onShow: function () {},
 
 	/**
 	 * 页面相关事件处理函数--监听用户下拉动作

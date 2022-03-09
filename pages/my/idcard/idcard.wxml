@@ -1,0 +1,52 @@
+<view class="person">
+    <header text="" showBack="true"/>
+    <scroll-view class="wrap" scroll-y="{{true}}" enhanced="{{true}}" show-scrollbar="{{false}}"> 
+        <view class="bg {{ type === 2 ? 'bg_process' : type === 3 ? 'bg_fail' : type=== 4 ? 'bg_success' : ''}}">
+            <block wx:if="{{type === 2}}">
+                <view class="bg_desc">身份正在审核中</view>
+            </block>
+            <block wx:if="{{type === 3}}">
+                <view class="bg_desc">身份认证失败请重新上传</view>
+            </block>
+            <block wx:if="{{type === 4}}">
+                <view class="bg_desc">身份认证成功</view>
+            </block>
+        </view>
+        <view class="con">
+            <view class="chunk" data-type="1" bindtap="{{type === 1 || type === 3 ? 'onChooseImg' : ''}}">
+                <view class="chunk_title">正面</view>
+                <view class="chunk_desc">上传身份证正面照片</view>
+                <view class="photo_con">
+                    <block wx:if="{{idcard1}}">
+                        <image class="photo_img" src="{{idcard1}}" />
+                    </block>
+                    <block wx:else>
+                        <image class="photo_img" src="/asserts/public/shenfen1.png" />
+                    </block>
+                </view>
+            </view>
+            <view class="chunk chunk2" data-type="2" bindtap="{{type === 1 || type === 3 ? 'onChooseImg' : ''}}">
+                <view class="chunk_title">反面</view>
+                <view class="chunk_desc">上传身份证反面照片</view>
+                <view class="photo_con">
+                    <block wx:if="{{idcard2}}">
+                        <image class="photo_img" src="{{idcard2}}" />
+                    </block>
+                    <block wx:else>
+                        <image class="photo_img" src="/asserts/public/shenfen2.png" />
+                    </block>
+                </view>
+            </view>
+        </view>
+    </scroll-view>
+    <block wx:if="{{type === 1 || type === 3}}">
+        <view class="invitate_btn" bindtap="onSend">保存并提交审核</view>
+    </block>
+    <block wx:if="{{dialogShow}}">
+        <tip-dialog
+            bindOnClose="onCloseDialog"
+            src="{{dialogDetail.src}}" 
+            title="{{dialogDetail.title}}" 
+            desc="{{dialogDetail.desc}}"/> 
+    </block>
+</view>

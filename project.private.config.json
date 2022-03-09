@@ -101,6 +101,20 @@
           "name": "发布详情",
           "pathName": "pages/publishDetail/publishDetail",
           "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "我的发布",
+          "pathName": "pages/my/myPublish/myPublish",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "身份认证",
+          "pathName": "pages/my/idcard/idcard",
+          "query": "",
           "scene": null,
           "launchMode": "default"
         }

@@ -58,7 +58,6 @@ Page({
 				// tempFilePath可以作为img标签的src属性显示图片
 				// const { tempFilePaths } = res;
 				loading.hideLoading();
-				console.log(res, 111);
 				if (res && res.errMsg === 'chooseMedia:ok' && Array.isArray(res.tempFiles)) {
 					const tempFile = res.tempFiles[0];
 					// const { height, width } = tempFile;
