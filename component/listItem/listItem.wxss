@@ -1,6 +1,7 @@
 .list {
     display: flex;
     /* background: red; */
+    position: relative;
 }
 
 .list_icon {

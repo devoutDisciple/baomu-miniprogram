@@ -1,4 +1,23 @@
-<scroll-view class="wrap" scroll-y="{{true}}" enhanced="{{true}}" show-scrollbar="{{false}}"> 
+<scroll-view class="wrap" scroll-y="{{true}}" enhanced="{{true}}" show-scrollbar="{{false}}" bindscroll="onPageScroll">
+    <block wx:if="{{scrollOver}}">
+        <header></header>
+        <view class="tab_fix" style="{{'top: ' + tabTop}}">
+            <view class="tab2">
+                <view class="tab_work">
+                    <view class="tab_text {{selectTabIdx === 1 && 'tab_text_select'}}" data-idx="1" bindtap = "onSelectTab">
+                        找演出
+                        <block wx:if="{{selectTabIdx === 1}}"><view class="tab_border" /></block>
+                    </view>
+                </view>
+                <view class="tab_work">
+                    <view class="tab_text {{selectTabIdx === 2 && 'tab_text_select'}}" data-idx="2" bindtap = "onSelectTab">
+                        去演出
+                        <block wx:if="{{selectTabIdx === 2}}"><view class="tab_border" /></block>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </block>
     <view class="bg_con">
         <image class="bg_img" mode="heightFix" src="/asserts/public/home_bg.png" />
         <view class="tab">
@@ -86,4 +105,7 @@
     </view>
      <userinfo-component visible="{{userDialogVisible}}" bindOnClose="onCloseUserInfoDialog" />
      <phone-component visible="{{phoneDialogVisible}}" bindOnClose="onClosePhoneDialog"/>
+     <view class="publish_btn" wx:if="{{scrollOver}}">
+         <image class="publish_btn_img" src="/asserts/public/plus.png" />
+     </view>
 </scroll-view>

@@ -122,6 +122,13 @@
           "name": "院校认证",
           "pathName": "pages/my/school/school",
           "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "考级认证",
+          "pathName": "pages/my/level/level",
+          "query": "",
           "scene": null,
           "launchMode": "default"
         }

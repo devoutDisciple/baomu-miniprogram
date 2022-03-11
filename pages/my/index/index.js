@@ -58,6 +58,8 @@ Page({
 		if (type === 'honor') this.jumpPage('/pages/my/school/school');
 		// 实名认证
 		if (type === 'shenfen') this.jumpPage('/pages/my/idcard/idcard');
+		// 考级认证
+		if (type === 'level') this.jumpPage('/pages/my/level/level');
 		// 消息中心
 		if (type === 'message') this.jumpPage('/pages/message/message');
 		// 我的技能

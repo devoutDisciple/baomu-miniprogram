@@ -66,6 +66,7 @@
                 </view>
                 <view class="opt">
                     <listItem text="毕业院校认证/获奖认证" iconName="my_school" data-type="honor" bindtap="goOtherPage" isFirst/>
+                    <listItem text="考级认证" iconName="my_skill" data-type="level" bindtap="goOtherPage"/>
                     <listItem text="身份证实名认证" iconName="identity_authentication" data-type="shenfen" bindtap="goOtherPage" isLast/>
                 </view>
                 <view class="opt">
@@ -78,7 +79,9 @@
                 <view class="opt">
                     <listItem text="作品展示" iconName="production_show" data-type="product" bindtap="goOtherPage" isFirst/>
                     <listItem text="去组团" iconName="cluster" data-type="getTeam" bindtap="goOtherPage"/>
-                    <listItem text="客服中心" iconName="call_center" data-type="service" bindtap="goOtherPage" isLast/>
+                    <listItem text="客服中心" iconName="call_center" isLast>
+                        <button class="service_btn" open-type="contact" bindcontact="handleContact">联系客服</button>
+                    </listItem>
                 </view>
                 <view class="btm"/>
             </scroll-view>

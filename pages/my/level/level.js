@@ -1,4 +1,4 @@
-// pages/my/idcard/idcard.js
+// pages/my/school/school.js
 Page({
 	/**
 	 * 页面的初始数据
@@ -6,7 +6,7 @@ Page({
 	data: {
 		idcard1: '', // 身份证正面
 		idcard2: '', // 反面
-		type: 2, // 1-未认证 2-认证中 3-认证失败 4-认证成功
+		type: 1, // 1-未认证 2-认证中 3-认证失败 4-认证成功
 		dialogShow: false,
 		dialogDetail: {
 			title: '已提交审核!',
@@ -18,7 +18,7 @@ Page({
 	/**
 	 * 生命周期函数--监听页面加载
 	 */
-	onLoad: function () {},
+	onLoad: function (options) {},
 
 	// 选择照片
 	onChooseImg: function (e) {

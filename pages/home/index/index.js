@@ -1,5 +1,6 @@
 import login from '../../../utils/login';
 import request from '../../../utils/request';
+import deviceUtil from '../../../utils/deviceUtil';
 
 Page({
 	/**
@@ -11,6 +12,8 @@ Page({
 		taskList: [1, 2, 3, 4, 5, 6, 7, 8],
 		userDialogVisible: false, // 获取用户基本信息
 		phoneDialogVisible: false, // 获取用户手机号弹框
+		scrollOver: false, // 是否滑出输入框
+		tabTop: '60px', // tab距离顶部的距离
 	},
 
 	/**
@@ -36,6 +39,23 @@ Page({
 		wx.showShareMenu({
 			withShareTicket: true,
 			menus: ['shareAppMessage'],
+		});
+		this.getDeviceStatus();
+	},
+
+	// 页面滚动
+	onPageScroll: function (e) {
+		const { scrollTop } = e.detail;
+		console.log(scrollTop, 12131);
+		this.setData({ scrollOver: scrollTop > 210 });
+	},
+
+	getDeviceStatus: function () {
+		deviceUtil.getDeviceInfo().then((res) => {
+			const { statusBarHeight, navHeight } = res;
+			const tabTop = `${statusBarHeight + navHeight}px`;
+			console.log(tabTop);
+			this.setData({ tabTop });
 		});
 	},
 

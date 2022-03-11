@@ -6,7 +6,7 @@ Page({
 	data: {
 		idcard1: '', // 身份证正面
 		idcard2: '', // 反面
-		type: 4, // 1-未认证 2-认证中 3-认证失败 4-认证成功
+		type: 2, // 1-未认证 2-认证中 3-认证失败 4-认证成功
 		dialogShow: false,
 		dialogDetail: {
 			title: '已提交审核!',

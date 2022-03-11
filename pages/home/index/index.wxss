@@ -196,3 +196,41 @@
     color: #8a8a8a;
     font-size: 34rpx;
 }
+
+.publish_btn {
+    position: fixed;
+    bottom: 47rpx;
+    right: 42rpx;
+    width: 100rpx;
+    height: 100rpx;
+    background: #b5b58d;
+    border-radius: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.publish_btn_img {
+    width: 50rpx;
+    height: 50rpx;
+}
+
+.tab_fix {
+    position: fixed;
+    left: 0;
+    z-index: 3;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    background: #fff;
+    box-shadow: 0px 5rpx 8rpx #666;
+
+}
+
+.tab2 {
+    width: calc(100vw - 40rpx);
+    height: 100rpx;
+    border-top-left-radius: 20rpx;
+    border-top-right-radius: 20rpx;
+    display: flex;
+}

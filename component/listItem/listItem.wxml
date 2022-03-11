@@ -8,4 +8,5 @@
             <image class="left_icon" src="/asserts/public/left.png" />
         </view>
     </view>
+    <slot></slot>
 </view>

@@ -15,9 +15,9 @@ Component({
 		},
 	},
 	data: {
-		headerHight: 60, // 导航总高度
-		statusHeight: 20, // 状态栏高度
-		navHeight: 40, // 内容高度
+		headerHight: '60px', // 导航总高度
+		statusHeight: '20px', // 状态栏高度
+		navHeight: '40px', // 内容高度
 		conHegiht: 32, // 内容区要展示内容的高度
 		disWidth: 101, // 按钮占用的宽度
 		paddingLeft: 7, // 左边留白宽度
@@ -26,6 +26,32 @@ Component({
 	},
 
 	methods: {
+		// 获取设备信息
+		getDeviceData: function () {
+			// 获取设备信息
+			utils.getDeviceInfo().then((res) => {
+				const {
+					headerHight,
+					statusBarHeight: statusHeight,
+					navHeight,
+					conHegiht,
+					disWidth,
+					paddingLeft,
+					paddingTop,
+				} = res;
+				this.setData({
+					headerHight: `${headerHight}px`,
+					navHeight: `${navHeight}px`,
+					statusBarHeight: `${statusHeight}px`,
+					backIconMarginTop: `${navHeight / 3}px`,
+					statusHeight: `${statusHeight}px`,
+					conHegiht: conHegiht - 2,
+					disWidth,
+					paddingLeft,
+					paddingTop,
+				});
+			});
+		},
 		// input输入改变
 		onChange: function (e) {
 			const { value } = e.detail;
@@ -57,26 +83,6 @@ Component({
 
 	// 组件生命周期函数-在组件实例进入页面节点树时执行)
 	attached() {
-		// 获取设备相关信息
-		utils.getDeviceInfo().then((res) => {
-			const {
-				headerHight,
-				statusBarHeight: statusHeight,
-				navHeight,
-				conHegiht,
-				disWidth,
-				paddingLeft,
-				paddingTop,
-			} = res;
-			this.setData({
-				headerHight,
-				statusHeight,
-				navHeight,
-				conHegiht: conHegiht - 2,
-				disWidth,
-				paddingLeft,
-				paddingTop,
-			});
-		});
+		this.getDeviceData();
 	},
 });

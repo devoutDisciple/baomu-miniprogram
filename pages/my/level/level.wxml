@@ -1,5 +1,5 @@
 <view class="person">
-    <header text="毕业院校认证" showBack="true" showTop topColor="{{ type === 2 ? '#b5b58d' : type === 3 ? '#f0bcc6' : type=== 4 ? '#55bfb5' : '#000' }}"/>
+    <header text="考级认证" showBack="true" showTop topColor="{{ type === 2 ? '#b5b58d' : type === 3 ? '#f0bcc6' : type=== 4 ? '#55bfb5' : '#000' }}"/>
     <scroll-view class="wrap" scroll-y="{{true}}" enhanced="{{true}}" show-scrollbar="{{false}}"> 
         <view class="bg {{ type === 2 ? 'bg_process' : type === 3 ? 'bg_fail' : type=== 4 ? 'bg_success' : ''}}">
             <block wx:if="{{type === 2}}">
@@ -14,21 +14,22 @@
         </view>
         <view class="con">
             <view class="chunk" data-type="1">
-                <view class="chunk_title">毕业院校认证</view>
+                <view class="chunk_title">基本信息填写</view>
                 <view class="ipt_chunk">
-                    <input placeholder="姓名" bindblur="onBlurPrice"/>
-                </view>
-                <view class="ipt_chunk">
-                    <input placeholder="身份证号码" bindblur="onBlurPrice"/>
-                </view>
-                <view class="ipt_chunk">
-                    <input placeholder="电话号码" bindblur="onBlurPrice"/>
-                </view>
-                <view class="ipt_chunk">
-                    <input placeholder="学校名称" bindblur="onBlurPrice"/>
-                </view>
-                <view class="ipt_chunk">
-                    <input placeholder="毕业时间" bindblur="onBlurPrice"/>
+                    <select-item>
+                        <picker class="picker" bindchange="onPickFoods" range="{{isYesList}}">
+                            <block wx:if="{{selectFoods}}">
+                                <view class="picker_value">
+                                    {{selectFoods}}
+                                </view>
+                            </block>
+                            <block wx:else>
+                                <view class="picker_init">
+                                    证书颁发结构
+                                </view>
+                            </block>
+                        </picker>
+                    </select-item>
                 </view>
                 <view class="ipt_chunk">
                     <select-item>
@@ -40,49 +41,33 @@
                             </block>
                             <block wx:else>
                                 <view class="picker_init">
-                                    学习形式
+                                    证书等级
                                 </view>
                             </block>
                         </picker>
                     </select-item>
                 </view>
-                <view class="photo_con" bindtap="{{type === 1 || type === 3 ? 'onChooseImg' : ''}}">
-                    <block wx:if="{{idcard1}}">
-                        <image class="photo_img" src="{{idcard1}}" />
-                    </block>
-                    <block wx:else>
-                        <image class="photo_img" src="/asserts/public/shenfen1.png" />
-                    </block>
+                <view class="ipt_chunk">
+                    <select-item>
+                        <picker class="picker" bindchange="onPickFoods" range="{{isYesList}}">
+                            <block wx:if="{{selectFoods}}">
+                                <view class="picker_value">
+                                    {{selectFoods}}
+                                </view>
+                            </block>
+                            <block wx:else>
+                                <view class="picker_init">
+                                    证书获取时间
+                                </view>
+                            </block>
+                        </picker>
+                    </select-item>
                 </view>
-                <view class="photo_desc">毕业证照片上传(请务必上传真实信息平台会人工审核)</view>
+                
             </view>
             <view class="chunk chunk2" data-type="1">
-                <view class="chunk_title">获奖认证</view>
-                <view class="ipt_chunk">
-                    <input placeholder="证书颁发机构" bindblur="onBlurPrice"/>
-                </view>
-                <view class="ipt_chunk">
-                    <input placeholder="证书名称" bindblur="onBlurPrice"/>
-                </view>
-                <view class="ipt_chunk">
-                    <input placeholder="名次" bindblur="onBlurPrice"/>
-                </view>
-                <view class="ipt_chunk">
-                    <select-item>
-                        <picker class="picker" bindchange="onPickFoods" range="{{isYesList}}">
-                            <block wx:if="{{selectFoods}}">
-                                <view class="picker_value">
-                                    {{selectFoods}}
-                                </view>
-                            </block>
-                            <block wx:else>
-                                <view class="picker_init">
-                                    证书颁发时间
-                                </view>
-                            </block>
-                        </picker>
-                    </select-item>
-                </view>
+                <view class="chunk_title">证书</view>
+                <view class="chunk_desc">考级证书拍照上传</view>
                 <view class="photo_con" bindtap="{{type === 1 || type === 3 ? 'onChooseImg' : ''}}">
                     <block wx:if="{{idcard2}}">
                         <image class="photo_img" src="{{idcard2}}" />
@@ -91,7 +76,6 @@
                         <image class="photo_img" src="/asserts/public/shenfen1.png" />
                     </block>
                 </view>
-                <view class="photo_desc">获奖证书照片上传</view>
             </view>
         </view>
     </scroll-view>
