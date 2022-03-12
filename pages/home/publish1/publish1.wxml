@@ -5,7 +5,23 @@
     </view>
     <view class="chunk">
         <select-item>
-            <picker class="picker" bindchange="bindPickerChange" value="{{index}}" range="{{instrumentList}}">
+            <picker class="picker" bindchange="onSelectPlay" range="{{playList}}">
+                <block wx:if="{{playName}}">
+                    <view class="picker_value">
+                        {{playName}}
+                    </view>
+                </block>
+                <block wx:else>
+                    <view class="picker_init">
+                        演奏方式
+                    </view>
+                </block>
+            </picker>
+        </select-item>
+    </view>
+    <view class="chunk">
+        <select-item>
+            <picker class="picker" bindchange="onPickInstruments" range="{{instrumentList}}">
                 <block wx:if="{{instrumentSelectName}}">
                     <view class="picker_value">
                         {{instrumentSelectName}}
@@ -13,7 +29,7 @@
                 </block>
                 <block wx:else>
                     <view class="picker_init">
-                        演奏方式
+                        乐器类型
                     </view>
                 </block>
             </picker>

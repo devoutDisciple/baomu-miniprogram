@@ -1,4 +1,5 @@
-import request from '../../../utils/request';
+// import request from '../../../utils/request';
+import { instruments, plays, voices } from '../../../constant/constant';
 // eslint-disable-next-line import/named
 import { getStoragePublishMsg, setStoragePublishMsg } from '../../../utils/util';
 
@@ -7,43 +8,73 @@ Page({
 	 * 页面的初始数据
 	 */
 	data: {
-		instruments: [], // 所有的乐器
-		instrumentList: ['小提琴演奏', '钢琴演奏'],
+		playList: [], // 演奏方式
+		playName: '', // 演奏方式
+		playId: '', // 演奏方式
+		instrumentList: [], // 选择乐器的list
 		instrumentSelectName: '',
 		instrumentSelectId: '',
 		title: '', // 需求名称
+		typeList: [], // 演奏类型
 	},
 
 	/**
 	 * 生命周期函数--监听页面加载
 	 */
 	onLoad: async function () {
-		await this.getAllInstruments();
+		// 获取所有演奏方式
+		this.getAllPlayList();
+		// 获取所有乐器类型
+		await this.getAllInstruments(instruments);
 		this.initMsg();
 	},
 
 	initMsg: function () {
 		const publish = getStoragePublishMsg('publish1');
 		if (publish && publish.title) {
-			const { instruments } = this.data;
-			const { id, name } = instruments.filter((item) => item.id === publish.instrumentSelectId)[0];
-			this.setData({ title: publish.title, instrumentSelectId: id, instrumentSelectName: name });
+			const tempList = Number(publish.playId) === 1 ? instruments : voices;
+			const instrumentSelectItem = tempList.filter((item) => item.id === publish.instrumentSelectId)[0];
+			const playSelectItem = plays.filter((item) => item.id === publish.playId)[0];
+			this.setData({
+				title: publish.title,
+				instrumentSelectId: instrumentSelectItem.id,
+				instrumentSelectName: instrumentSelectItem.name,
+				playName: playSelectItem.name,
+				playId: playSelectItem.id,
+			});
 		}
 	},
 
-	// 获取所有乐器
-	getAllInstruments: async function () {
-		const results = await request.get({ url: '/instrument/allBySelect' });
-		const instrumentList = [];
-		results.forEach((item) => instrumentList.push(item.name));
-		this.setData({ instruments: results || [], instrumentList: instrumentList || [] });
+	// 获取所有演奏类型
+	getAllPlayList: function () {
+		const playList = [];
+		plays.forEach((item) => playList.push(item.name));
+		this.setData({ playList: playList || [] });
 	},
 
-	bindPickerChange: function (e) {
+	// 选择演奏类型
+	onSelectPlay: function (e) {
 		const { value } = e.detail;
-		const { instruments } = this.data;
-		const instrumentSelectItem = instruments[value];
-		const { name, id } = instrumentSelectItem;
+		const { name, id } = plays[value];
+		this.setData({ playName: name, playId: id, instrumentSelectName: '', instrumentSelectId: '' });
+		// 获取所有乐器类型
+		this.getAllInstruments(Number(value) === 1 ? voices : instruments);
+		setStoragePublishMsg('publish1', { playId: id, instrumentSelectId: '' });
+	},
+
+	// 获取所有乐器类型
+	getAllInstruments: function (list) {
+		const instrumentList = [];
+		list.forEach((item) => instrumentList.push(item.name));
+		this.setData({ instrumentList: instrumentList || [] });
+	},
+
+	// 选择乐器类型的时候
+	onPickInstruments: function (e) {
+		const { value } = e.detail;
+		const { playId } = this.data;
+		const tempList = Number(playId) === 1 ? instruments : voices;
+		const { name, id } = tempList[value];
 		this.setData({ instrumentSelectName: name, instrumentSelectId: id });
 		setStoragePublishMsg('publish1', { instrumentSelectId: id });
 	},

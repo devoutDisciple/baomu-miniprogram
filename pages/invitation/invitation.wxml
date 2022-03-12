@@ -109,10 +109,10 @@
             </view>
             <view class="chunk">
                 <select-item>
-                    <picker class="picker" bindchange="onPickPrice" range="{{isYesList}}">
-                        <block wx:if="{{selectPrice}}">
+                    <picker class="picker" bindchange="onPickBargain" range="{{isYesList}}">
+                        <block wx:if="{{selectBargain}}">
                             <view class="picker_value">
-                                {{selectPrice}}
+                                {{selectBargain}}
                             </view>
                         </block>
                         <block wx:else>

@@ -31,7 +31,7 @@ Component({
 			const { idx } = e.currentTarget.dataset;
 			if (idx === 1) {
 				const publish1 = getStoragePublishMsg('publish1');
-				if (!publish1 || !publish1.title || !publish1.instrumentSelectId) {
+				if (!publish1 || !publish1.title || !publish1.instrumentSelectId || !publish1.playId) {
 					return wx.showToast({
 						title: '请完善信息',
 						icon: 'error',

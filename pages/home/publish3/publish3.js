@@ -23,6 +23,7 @@ Page({
 	// 设置初始值
 	initMsg: function () {
 		const publish = getStoragePublishMsg('publish3');
+		if (!publish) return;
 		if (publish.foods) this.setData({ selectFoods: publish.foods });
 		if (publish.send) this.setData({ selectSend: publish.send });
 		if (publish.desc) this.setData({ desc: publish.desc });

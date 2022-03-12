@@ -57,7 +57,7 @@
                         </view>
                         <view class="opt_chunk_txt">我的评论</view>
                     </view>
-                    <view class="opt_chunk" data-type="record" bindtap="goOtherPage">
+                    <view class="opt_chunk" data-type="order" bindtap="goOtherPage">
                         <view class="opt_chunk_icon">
                             <image src="/asserts/public/my_record.png" class="opt_chunk_img"/>
                         </view>

@@ -1,4 +1,11 @@
-export const instrumentList = [
+// 演奏方式
+export const plays = [
+	{ id: 1, name: '器乐' },
+	{ id: 2, name: '人声' },
+];
+
+// 器乐类型
+export const instruments = [
 	{ id: 1, name: '西洋·木管乐' },
 	{ id: 2, name: '西洋·铜管乐' },
 	{ id: 3, name: '西洋·弦乐' },
@@ -11,4 +18,11 @@ export const instrumentList = [
 	{ id: 10, name: '民乐·打击乐器' },
 ];
 
-export const test = {};
+// 人声类型
+export const voices = [
+	{ id: 61, name: '民族唱法' },
+	{ id: 62, name: '美声唱法' },
+	{ id: 63, name: '流行唱法' },
+	{ id: 64, name: '通俗唱法' },
+	{ id: 65, name: '合唱' },
+];

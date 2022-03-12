@@ -129,6 +129,13 @@
           "name": "考级认证",
           "pathName": "pages/my/level/level",
           "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "我的技能",
+          "pathName": "pages/my/skill/skill",
+          "query": "",
           "scene": null,
           "launchMode": "default"
         }

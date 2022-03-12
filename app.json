@@ -18,7 +18,9 @@
     "pages/my/myPublish/myPublish",
     "pages/my/idcard/idcard",
     "pages/my/school/school",
-    "pages/my/level/level"
+    "pages/my/level/level",
+    "pages/my/skill/skill",
+    "pages/my/order/order"
   ],
   "window": {
     "backgroundTextStyle": "light",

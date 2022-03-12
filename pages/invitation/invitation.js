@@ -1,5 +1,6 @@
 import request from '../../utils/request';
 import moment from '../../utils/moment';
+import { instruments, plays, voices } from '../../constant/constant';
 
 Page({
 	/**
@@ -12,9 +13,12 @@ Page({
 				end_time: '2022-03-21',
 			},
 		],
-		instrumentList: [], // 乐器的列表
-		instrumentSelectName: '', // 选择乐器的名称
-		instrumentSelectId: '', // 选择乐器的id
+		playList: [], // 演奏方式
+		playName: '', // 演奏方式
+		playId: '', // 演奏方式
+		instrumentList: [], // 选择乐器的list
+		instrumentSelectName: '',
+		instrumentSelectId: '',
 		calendarVisible: false, // 日历开关
 		startTime: '', // 日期开始时间
 		endTime: '', // 日期结束时间
@@ -28,7 +32,7 @@ Page({
 			longitude: '',
 		}, // 演出地点
 		isYesList: ['是', '否'],
-		selectPrice: '', // 是否议价
+		selectBargain: '', // 是否议价
 		selectSend: '', // 是否接送
 		selectFoods: '', // 是否包食宿
 		desc: '', // 演出描述
@@ -43,20 +47,35 @@ Page({
 		this.generatorHourList();
 	},
 
-	// 获取所有乐器
-	getAllInstruments: async function () {
-		const results = await request.get({ url: '/instrument/allBySelect' });
-		const instrumentList = [];
-		results.forEach((item) => instrumentList.push(item.name));
-		this.setData({ instruments: results || [], instrumentList: instrumentList || [] });
+	// 获取所有演奏类型
+	getAllPlayList: function () {
+		const playList = [];
+		plays.forEach((item) => playList.push(item.name));
+		this.setData({ playList: playList || [] });
 	},
 
-	// 选择乐器
+	// 选择演奏类型
+	onSelectPlay: function (e) {
+		const { value } = e.detail;
+		const { name, id } = plays[value];
+		this.setData({ playName: name, playId: id, instrumentSelectName: '', instrumentSelectId: '' });
+		// 获取所有乐器类型
+		this.getAllInstruments(Number(value) === 1 ? voices : instruments);
+	},
+
+	// 获取所有乐器类型
+	getAllInstruments: function (list) {
+		const instrumentList = [];
+		list.forEach((item) => instrumentList.push(item.name));
+		this.setData({ instrumentList: instrumentList || [] });
+	},
+
+	// 选择乐器类型的时候
 	onPickInstruments: function (e) {
 		const { value } = e.detail;
-		const { instruments } = this.data;
-		const instrumentSelectItem = instruments[value];
-		const { name, id } = instrumentSelectItem;
+		const { playId } = this.data;
+		const tempList = Number(playId) === 1 ? instruments : voices;
+		const { name, id } = tempList[value];
 		this.setData({ instrumentSelectName: name, instrumentSelectId: id });
 	},
 
@@ -115,10 +134,10 @@ Page({
 	},
 
 	// 选择是否议价
-	onPickPrice: function (e) {
+	onPickBargain: function (e) {
 		const { value } = e.detail;
-		const selectPrice = this.data.isYesList[value];
-		this.setData({ selectPrice: selectPrice });
+		const selectBargain = this.data.isYesList[value];
+		this.setData({ selectBargain: selectBargain });
 	},
 
 	// 选择是否接送

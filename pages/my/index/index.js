@@ -53,7 +53,7 @@ Page({
 		// 我的评论
 		if (type === 'comment') this.jumpPage('/pages/my/myPublish/myPublish');
 		// 工作记录
-		if (type === 'record') this.jumpPage('/pages/my/myPublish/myPublish');
+		if (type === 'order') this.jumpPage('/pages/my/order/order');
 		// 获奖认证
 		if (type === 'honor') this.jumpPage('/pages/my/school/school');
 		// 实名认证
@@ -63,7 +63,7 @@ Page({
 		// 消息中心
 		if (type === 'message') this.jumpPage('/pages/message/message');
 		// 我的技能
-		if (type === 'skill') this.jumpPage('/pages/my/myPublish/myPublish');
+		if (type === 'skill') this.jumpPage('/pages/my/skill/skill');
 		// 照片墙
 		if (type === 'photo') this.jumpPage('/pages/my/myPublish/myPublish');
 		// 工作地点

@@ -19,8 +19,8 @@ Page({
 			latitude: '',
 			longitude: '',
 		}, // 演出地点
-		priceList: ['是', '否'],
-		selectPrice: '',
+		bargainList: ['是', '否'],
+		selectBargain: '',
 	},
 
 	/**
@@ -34,8 +34,9 @@ Page({
 	// 设置初始值
 	initMsg: function () {
 		const publish = getStoragePublishMsg('publish2');
+		if (!publish) return;
 		if (publish.selectAddress) this.setData({ selectAddress: publish.selectAddress });
-		if (publish.price) this.setData({ selectPrice: publish.price });
+		if (publish.bargain) this.setData({ selectBargain: publish.bargain });
 		if (publish.hours) this.setData({ selectHour: publish.hours });
 		if (publish.startTime && publish.endTime) {
 			const { startTime, endTime } = publish;
@@ -107,11 +108,11 @@ Page({
 	},
 
 	// 选择是否议价
-	onPickPrice: function (e) {
+	onPickBargain: function (e) {
 		const { value } = e.detail;
-		const selectPrice = this.data.priceList[value];
-		this.setData({ selectPrice: selectPrice });
-		setStoragePublishMsg('publish2', { price: selectPrice });
+		const selectBargain = this.data.bargainList[value];
+		this.setData({ selectBargain: selectBargain });
+		setStoragePublishMsg('publish2', { bargain: selectBargain });
 	},
 
 	/**

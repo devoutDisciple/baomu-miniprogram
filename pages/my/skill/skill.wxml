@@ -1,0 +1,32 @@
+<view class="person">
+    <header text="我的技能" showBack="true" showTop topColor="{{ type === 2 ? '#b5b58d' : type === 3 ? '#f0bcc6' : type=== 4 ? '#55bfb5' : '#000' }}"/>
+    <scroll-view class="wrap" scroll-y="{{true}}" enhanced="{{true}}" show-scrollbar="{{false}}"> 
+        <view class="bg {{ type === 2 ? 'bg_process' : type === 3 ? 'bg_fail' : type=== 4 ? 'bg_success' : ''}}">
+            <block wx:if="{{type === 2}}">
+                <view class="bg_desc">正在审核中</view>
+            </block>
+            <block wx:if="{{type === 3}}">
+                <view class="bg_desc">认证失败请重新上传</view>
+            </block>
+            <block wx:if="{{type === 4}}">
+                <view class="bg_desc">认证成功</view>
+            </block>
+        </view>
+        <view class="con">
+            <view class="chunk">
+                <view class="chunk_title">添加我的技能</view>
+                <view class="chunk_desc">添加我的技能</view>
+            </view>
+        </view>
+    </scroll-view>
+    <block wx:if="{{type === 1 || type === 3}}">
+        <view class="invitate_btn" bindtap="onSend">保存并提交审核</view>
+    </block>
+    <block wx:if="{{dialogShow}}">
+        <tip-dialog
+            bindOnClose="onCloseDialog"
+            src="{{dialogDetail.src}}" 
+            title="{{dialogDetail.title}}" 
+            desc="{{dialogDetail.desc}}"/> 
+    </block>
+</view>
