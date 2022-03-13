@@ -96,9 +96,67 @@
     border-radius: 20rpx;
 }
 
+.title {
+    display: flex;
+}
+
+.title_left {
+    flex: 1;
+}
+
+.title_right {
+    width: 100rpx;
+}
+
+.title_icon_bg {
+    background: #000;
+    width: 80rpx;
+    height: 80rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 100%;
+}
+
+.title_icon {
+    width: 35rpx;
+    height: 35rpx;
+}
+
 .chunk2 {
     margin-top: 40rpx;
-    margin-bottom: 200rpx;
+}
+
+.skill {
+    margin-top: 40rpx;
+    padding-top: 10rpx;
+}
+
+.skill_item {
+    display: flex;
+    margin-bottom: 20rpx;
+    margin-top: 40rpx;
+}
+
+.skill_item_name {
+    flex: 1;
+}
+
+.skill_item_grade {
+    width: 100rpx;
+    text-align: right;
+    font-size: 34rpx;
+    color: #000;
+}
+
+.skill_delete {
+    display: flex;
+    background: red;
+    color: #fff;
+    height: 100%;
+    width: 100rpx;
+    justify-content: center;
+    align-items: center;
 }
 
 .chunk_title {
@@ -112,22 +170,10 @@
     color: #666;
 }
 
-.photo_con {
-    width: 100%;
-    margin-top: 50rpx;
-    display: flex;
-    justify-content: center;
-}
-
-.photo_img {
-    width: calc(100vw - 150rpx);
-    height: calc((100vw - 150rpx) / 1.6);
-}
-
 .photo_desc {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     font-size: 26rpx;
     color: #666;
     margin-top: 30rpx;
@@ -153,4 +199,8 @@
 
 .picker_value {
     color: #333;
+}
+
+.empty {
+    height: 200rpx;
 }

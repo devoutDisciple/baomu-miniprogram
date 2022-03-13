@@ -13,10 +13,80 @@
             </block>
         </view>
         <view class="con">
-            <view class="chunk">
-                <view class="chunk_title">添加我的技能</view>
-                <view class="chunk_desc">添加我的技能</view>
+            <view class="chunk title">
+                <view class="title_left">
+                    <view class="chunk_title">
+                        添加我的技能
+                    </view>
+                    <view class="chunk_desc">点击添加</view>
+                </view>
+                <view class="title_right" bindtap="onAddSkill">
+                    <view class="title_icon_bg">
+                        <image class="title_icon" src="/asserts/public/plus.png" />
+                    </view>
+                </view>
             </view>
+            <view class="chunk skill">
+                <van-swipe-cell right-width="{{ 65 }}">
+                    <view class="skill_item">
+                        <view class="skill_item_name">小提琴</view>
+                        <view class="skill_item_grade">5.0</view>
+                    </view>
+                    <van-progress show-pivot="{{false}}" color="#b5b58d" percentage="80" />
+                    <view class="skill_delete" slot="right">删除</view>
+                </van-swipe-cell>
+                <van-swipe-cell right-width="{{ 65 }}">
+                    <view class="skill_item">
+                        <view class="skill_item_name">钢琴</view>
+                        <view class="skill_item_grade">5.0</view>
+                    </view>
+                    <van-progress show-pivot="{{false}}" color="#b5b58d" percentage="80" />
+                    <view class="skill_delete" slot="right">删除</view>
+                </van-swipe-cell>
+            </view>
+            <block wx:if="{{addList && addList.length !== 0}}">
+                <block wx:for="{{addList}}" wx:key="index">
+                    <van-swipe-cell right-width="{{ 65 }}">
+                        <view class="chunk chunk2">
+                            <view class="ipt_chunk">
+                                <select-item>
+                                    <picker class="picker" bindchange="onPickSkill" data-idx="{{index}}" range="{{skillList}}">
+                                        <block wx:if="{{item.selectSkillName}}">
+                                            <view class="picker_value">
+                                                {{item.selectSkillName}}
+                                            </view>
+                                        </block>
+                                        <block wx:else>
+                                            <view class="picker_init">
+                                                技能名称
+                                            </view>
+                                        </block>
+                                    </picker>
+                                </select-item>
+                            </view>
+                            <view class="ipt_chunk">
+                                <select-item>
+                                    <picker class="picker" bindchange="onPickGrade" data-idx="{{index}}" range="{{gradeList}}">
+                                        <block wx:if="{{item.selectGradeName}}">
+                                            <view class="picker_value">
+                                                {{item.selectGradeName}}
+                                            </view>
+                                        </block>
+                                        <block wx:else>
+                                            <view class="picker_init">
+                                                经验值自评
+                                            </view>
+                                        </block>
+                                    </picker>
+                                </select-item>
+                            </view>
+                            <view class="photo_desc">经验值自评越高 技能越强，评分在1分～5分之间</view>
+                        </view>
+                        <view bindtap="onDeleteNewSkill" data-item="{{item}}" class="skill_delete" slot="right">删除</view>
+                    </van-swipe-cell>
+                </block>
+            </block>
+            <view class="empty"></view>
         </view>
     </scroll-view>
     <block wx:if="{{type === 1 || type === 3}}">

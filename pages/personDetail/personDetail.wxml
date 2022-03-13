@@ -6,11 +6,13 @@
             <view class="msg">
                 <view class="msg_title">
                     <image class="msg_photo" src="/asserts/temp/photo.png" />
-                    <view class="msg_name">张晓琪 29岁</view>
-                    <image bindtap = "onTapMsg" class="msg_icon" src="/asserts/public/message.png" />
+                    <view class="msg_name">{{personDetail.username || ""}}</view>
+                    <block wx:if="{{own_id !== user_id}}">
+                        <image bindtap = "onTapMsg" class="msg_icon" src="/asserts/public/message.png" />
+                    </block>
                 </view>
                 <view class="msg_sign">
-                    摄影师小张
+                    {{personDetail.nickname || ""}}
                 </view>
                 <view class="msg_tubiao">
                     <view class="msg_tubiao_item msg_tubiao_item_renzheng" data-idx="{{1}}" bindtap="onTapSign">
@@ -30,19 +32,19 @@
                         考级
                     </view>
                 </view>
-                <view class="msg_desc">个人简介：是西安摄影网、西安摄影论坛、长安摄影网的创始人兼CEO。甲方都快女看得见风</view>
+                <view class="msg_desc">个人简介：{{personDetail.desc || "暂无"}}</view>
                 <view class="msg_data">
                     <view class="msg_data_chunk">
                         <view class="msg_data_chunk_name">获赞</view>
-                        <view class="msg_data_chunk_num">200</view>
+                        <view class="msg_data_chunk_num">{{personDetail.goods_num}}</view>
                     </view>
                     <view class="msg_data_chunk">
                         <view class="msg_data_chunk_name">关注</view>
-                        <view class="msg_data_chunk_num">200</view>
+                        <view class="msg_data_chunk_num">{{personDetail.attention_num}}</view>
                     </view>
                     <view class="msg_data_chunk">
                         <view class="msg_data_chunk_name">粉丝</view>
-                        <view class="msg_data_chunk_num">200</view>
+                        <view class="msg_data_chunk_num">{{personDetail.fans_num}}</view>
                     </view>
                 </view>
             </view>
@@ -53,7 +55,7 @@
                         工作地点
                     </view>
                     <view class="address_chunk_desc">
-                        成都市锦江区芳草街18号
+                        {{personDetail.province}}  {{personDetail.city}}
                     </view>
                 </view>
                 <view class="address_chunk">

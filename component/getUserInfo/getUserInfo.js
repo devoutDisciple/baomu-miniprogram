@@ -28,10 +28,10 @@ Component({
 				complete: (res) => {
 					if (res.userInfo) {
 						const { nickName, avatarUrl } = res.userInfo;
-						const userid = wx.getStorageSync('user_id');
+						const user_id = wx.getStorageSync('user_id');
 						request.post({
 							url: '/user/updateInfo',
-							data: { userid: userid, nickname: nickName, photo: avatarUrl },
+							data: { user_id: user_id, nickname: nickName, photo: avatarUrl },
 						});
 						wx.setStorageSync('username', nickName);
 						wx.setStorageSync('photo', avatarUrl);

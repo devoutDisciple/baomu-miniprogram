@@ -1,25 +1,25 @@
 <view class="person">
     <view class="person_title">
-        <image class="person_title_photo" src="/asserts/temp/photo.png" />
-        <view class="person_title_desc">
-            <view class="person_name" bindtap="onTapPerson">
-                <view class="person_name_text">摄影师小张摄影师小张摄影师小张</view>
+        <image class="person_title_photo" src="{{data.photo}}" bindtap="onTapPerson"/>
+        <view class="person_title_desc" bindtap="onTapPerson">
+            <view class="person_name">
+                <view class="person_name_text">{{data.nickname || ""}}</view>
                 <image class="person_icon" src="/asserts/public/geren.png" />
                 <image class="person_icon" src="/asserts/public/renzheng.png" />
             </view>
-            <view class="person_pingfen" bindtap="onTapPerson">
+            <view class="person_pingfen">
                 <image class="person_desc_icon" src="/asserts/public/pingfen.png" />
-                <view class="person_pingfen_txt1">4.8</view>
-                <view class="person_pingfen_txt2 person_pingfen_num">(23评论)</view>
+                <view class="person_pingfen_txt1">{{data.grade}}</view>
+                <view class="person_pingfen_txt2 person_pingfen_num">({{data.comment_num}}评论)</view>
                 <view class="person_pingfen_txt1 person_pingfen_distance">距离</view>
-                <view class="person_pingfen_txt2 person_pingfen_num">4565km</view>
+                <view class="person_pingfen_txt2 person_pingfen_num">{{data.distance}}</view>
             </view>
         </view>
         <view class="person_title_btn" bindtap="onTapInvitation">
             <view class="person_title_btn_txt">邀请</view>
         </view>
     </view>
-    <scroll-view class="person_product" scroll-x="{{true}}" enhanced="{{true}}" show-scrollbar="{{false}}">
+    <scroll-view class="person_product" scroll-x="{{true}}" enhanced="{{true}}" show-scrollbar="{{false}}" bindtap="onTapPerson">
         <view class="person_product_con">
             <image class="product_img" src="/asserts/temp/pro_1.png" />
             <image class="product_img" src="/asserts/temp/pro_2.png" />
@@ -29,6 +29,6 @@
         </view>
     </scroll-view>
     <view class="person_address">
-        工作地点:北京   可预约时段:10.10 - 10.30
+        工作地点:{{data.city}}
     </view>
 </view>

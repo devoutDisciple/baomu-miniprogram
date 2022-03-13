@@ -37,7 +37,7 @@ Page({
 		if (!publish) return;
 		if (publish.selectAddress) this.setData({ selectAddress: publish.selectAddress });
 		if (publish.bargain) this.setData({ selectBargain: publish.bargain });
-		if (publish.hours) this.setData({ selectHour: publish.hours });
+		if (publish.hours) this.setData({ selectHour: `${publish.hours}小时/天` });
 		if (publish.startTime && publish.endTime) {
 			const { startTime, endTime } = publish;
 			this.setData({
@@ -110,6 +110,7 @@ Page({
 	// 选择是否议价
 	onPickBargain: function (e) {
 		const { value } = e.detail;
+		console.log(value, 111);
 		const selectBargain = this.data.bargainList[value];
 		this.setData({ selectBargain: selectBargain });
 		setStoragePublishMsg('publish2', { bargain: selectBargain });

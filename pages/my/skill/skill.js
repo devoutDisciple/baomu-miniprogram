@@ -1,4 +1,6 @@
-// pages/my/school/school.js
+import util from '../../../utils/util';
+import { skills } from '../../../constant/constant';
+
 Page({
 	/**
 	 * 页面的初始数据
@@ -13,12 +15,23 @@ Page({
 			src: '/asserts/public/publish.png',
 			desc: '提交后需1-3个工作日审核，请耐心等待！',
 		},
+		addList: [{ id: '1111', selectSkillId: '', selectSkillName: '', selectGradeId: '', selectGradeName: '' }], // 添加技能的id的list
+		skillList: [], // 技能的名称
+		gradeList: [1, 2, 3, 4, 5], // 自评分
 	},
 
 	/**
 	 * 生命周期函数--监听页面加载
 	 */
-	onLoad: function (options) {},
+	onLoad: function () {
+		this.getSkillList();
+	},
+
+	getSkillList: function () {
+		const skillList = [];
+		skills.forEach((item) => skillList.push(item.name));
+		this.setData({ skillList });
+	},
 
 	// 选择照片
 	onChooseImg: function (e) {
@@ -54,6 +67,44 @@ Page({
 	// 关闭弹框
 	onCloseDialog: function () {
 		this.setData({ dialogShow: false });
+	},
+
+	// 点击添加技能
+	onAddSkill: function () {
+		const { addList } = this.data;
+		const randomStr = util.getRandomStr();
+		addList.push({ id: randomStr, selectSkillId: '', selectSkillName: '', selectGradeId: '', selectGradeName: '' });
+		this.setData({ addList: addList });
+	},
+
+	// 删除新增的技能
+	onDeleteNewSkill: function (e) {
+		const { id } = e.currentTarget.dataset.item;
+		const { addList } = this.data;
+		let idx = 0;
+		addList.forEach((item, index) => {
+			if (item.id === id) idx = index;
+		});
+		addList.splice(idx, 1);
+		this.setData({ addList: addList });
+	},
+
+	// 选择技能
+	onPickSkill: function (e) {
+		const { value } = e.detail;
+		const { idx } = e.currentTarget.dataset;
+		const { addList } = this.data;
+		addList[idx] = { ...addList[idx], selectSkillName: skills[value].name, selectSkillId: skills[value].id };
+		this.setData({ addList });
+	},
+
+	// 选择评分
+	onPickGrade: function (e) {
+		const { value } = e.detail;
+		const { idx } = e.currentTarget.dataset;
+		const { addList } = this.data;
+		addList[idx] = { ...addList[idx], selectGradeName: Number(value) + 1, selectGradeId: Number(value) + 1 };
+		this.setData({ addList });
 	},
 
 	/**

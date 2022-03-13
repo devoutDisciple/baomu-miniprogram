@@ -33,7 +33,8 @@
     "van-progress": "@vant/weapp/progress/index",
     "van-rate": "@vant/weapp/rate/index",
     "van-popup": "@vant/weapp/popup/index",
-    "van-calendar": "@vant/weapp/calendar/index"
+    "van-calendar": "@vant/weapp/calendar/index",
+    "van-swipe-cell": "@vant/weapp/swipe-cell/index"
   },
   "permission": {
     "scope.userLocation": {

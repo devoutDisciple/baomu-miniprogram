@@ -3,7 +3,12 @@ Component({
 	/**
 	 * 组件的属性列表
 	 */
-	properties: {},
+	properties: {
+		data: {
+			type: Object,
+			value: {},
+		},
+	},
 
 	/**
 	 * 组件的初始数据
@@ -16,7 +21,7 @@ Component({
 	methods: {
 		onTapPerson: function () {
 			wx.navigateTo({
-				url: '/pages/personDetail/personDetail',
+				url: `/pages/personDetail/personDetail?user_id=${this.data.data.id}`,
 			});
 		},
 		onTapInvitation: function () {

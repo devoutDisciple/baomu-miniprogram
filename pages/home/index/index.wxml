@@ -77,10 +77,10 @@
     </scroll-view>
     <view class="person_con">
         <block wx:if="{{selectTabIdx === 1}}">
-            <block wx:if="{{personList && personList.length !== 0}}">
-                <block wx:for="{{personList}}" wx:key="index">
+            <block wx:if="{{actorList && actorList.length !== 0}}">
+                <block wx:for="{{actorList}}" wx:key="index">
                      <view class="person_item">
-                        <person-item />
+                        <person-item data="{{item}}"/>
                     </view>
                 </block>
                 <view class="empty_txt">没有更多啦~</view>

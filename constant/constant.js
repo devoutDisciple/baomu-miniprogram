@@ -26,3 +26,11 @@ export const voices = [
 	{ id: 64, name: '通俗唱法' },
 	{ id: 65, name: '合唱' },
 ];
+
+// 技能名称
+export const skills = [
+	{ id: 1, name: '小提琴' },
+	{ id: 2, name: '钢琴' },
+	{ id: 3, name: '电子琴' },
+	{ id: 4, name: '吉他' },
+];

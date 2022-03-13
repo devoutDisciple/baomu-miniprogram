@@ -39,8 +39,9 @@
         {
           "name": "个人信息页面",
           "pathName": "pages/personDetail/personDetail",
-          "query": "",
-          "scene": null
+          "query": "user_id=8",
+          "scene": null,
+          "launchMode": "default"
         },
         {
           "name": "发送信息",
@@ -136,8 +137,8 @@
           "name": "我的技能",
           "pathName": "pages/my/skill/skill",
           "query": "",
-          "scene": null,
-          "launchMode": "default"
+          "launchMode": "default",
+          "scene": null
         }
       ]
     }

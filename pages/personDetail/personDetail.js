@@ -1,8 +1,14 @@
+import loading from '../../utils/loading';
+import request from '../../utils/request';
+
 Page({
 	/**
 	 * 页面的初始数据
 	 */
 	data: {
+		own_id: '', // 当前账户的id
+		user_id: '', // 当前用户的id
+		personDetail: {}, // 个人信息
 		dialogShow: false,
 		dialogDetail: {
 			title: '',
@@ -14,7 +20,27 @@ Page({
 	/**
 	 * 生命周期函数--监听页面加载
 	 */
-	onLoad: function () {},
+	onLoad: function (options) {
+		const { user_id } = options;
+		if (!user_id) {
+			return wx.switchTab({
+				url: '/pages/home/index/index',
+			});
+		}
+		loading.showLoading();
+		const own_id = wx.getStorageSync('user_id');
+		this.setData({ user_id: Number(user_id), own_id: Number(own_id) }, () => {
+			this.getPersonDetail();
+		});
+	},
+
+	// 获取个人信息
+	getPersonDetail: async function () {
+		const { user_id } = this.data;
+		const personDetail = await request.get({ url: '/user/userDetail', data: { user_id } });
+		this.setData({ personDetail });
+		loading.hideLoading();
+	},
 
 	// 点击标识
 	onTapSign: function (e) {

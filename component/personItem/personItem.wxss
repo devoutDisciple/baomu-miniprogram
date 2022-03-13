@@ -15,6 +15,7 @@
 .person_title_photo {
     height: 100rpx;
     width: 100rpx;
+    border-radius: 100%;
 }
 
 .person_title_desc {
