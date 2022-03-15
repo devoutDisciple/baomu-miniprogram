@@ -1,5 +1,7 @@
 import util from '../../../utils/util';
 import { skills } from '../../../constant/constant';
+import request from '../../../utils/request';
+import loading from '../../../utils/loading';
 
 Page({
 	/**
@@ -10,58 +12,81 @@ Page({
 		idcard2: '', // 反面
 		type: 1, // 1-未认证 2-认证中 3-认证失败 4-认证成功
 		dialogShow: false,
+		skillList: [], // 用户的技能列表
 		dialogDetail: {
-			title: '已提交审核!',
+			title: '已保存!',
 			src: '/asserts/public/publish.png',
-			desc: '提交后需1-3个工作日审核，请耐心等待！',
+			desc: '',
 		},
-		addList: [{ id: '1111', selectSkillId: '', selectSkillName: '', selectGradeId: '', selectGradeName: '' }], // 添加技能的id的list
-		skillList: [], // 技能的名称
+		// addList: [{ id: '1111', selectSkillId: '', selectSkillName: '', selectGradeId: '', selectGradeName: '' }], // 添加技能的id的list
+		addList: [], // 添加技能的id的list
+		skillListForSelect: [], // 技能的名称
 		gradeList: [1, 2, 3, 4, 5], // 自评分
 	},
 
 	/**
 	 * 生命周期函数--监听页面加载
 	 */
-	onLoad: function () {
-		this.getSkillList();
+	onLoad: async function () {
+		// 获取下拉框的技能选项
+		this.getSkillListForSelect();
+		// 获取技能列表
+		await this.getSkillList();
 	},
 
-	getSkillList: function () {
-		const skillList = [];
-		skills.forEach((item) => skillList.push(item.name));
-		this.setData({ skillList });
-	},
-
-	// 选择照片
-	onChooseImg: function (e) {
-		const { type } = e.currentTarget.dataset;
-		const self = this;
-		wx.chooseImage({
-			count: 1,
-			sizeType: ['original', 'compressed'],
-			sourceType: ['album', 'camera'],
-			success(res) {
-				// tempFilePath可以作为img标签的src属性显示图片
-				const { tempFilePaths } = res;
-				if (Number(type) === 1) {
-					self.setData({ idcard1: tempFilePaths[0] });
-				} else {
-					self.setData({ idcard2: tempFilePaths[0] });
-				}
-			},
-			fail: function () {
-				wx.showToast({
-					title: '请重新选择',
-					icon: 'error',
-				});
-			},
+	// 获取用户技能
+	getSkillList: async function () {
+		const user_id = wx.getStorageSync('user_id');
+		if (!user_id) return;
+		loading.showLoading();
+		const lists = await request.get({ url: '/skill/all', data: { user_id } });
+		lists.forEach((item) => {
+			item.skillName = skills.filter((skill) => skill.id === item.skill_id)[0].name;
+			item.grade = Number(item.grade).toFixed(1);
+			item.percent = Number((Number(item.grade) / 5) * 100).toFixed(0);
 		});
+		this.setData({ skillList: lists });
+		loading.hideLoading();
+	},
+
+	// 获取技能名称
+	getSkillListForSelect: function () {
+		const skillListForSelect = [];
+		skills.forEach((item) => skillListForSelect.push(item.name));
+		this.setData({ skillListForSelect });
 	},
 
 	// 提交审核
-	onSend: function () {
-		this.setData({ dialogShow: true });
+	onSend: async function () {
+		const { addList } = this.data;
+		const user_id = wx.getStorageSync('user_id');
+		if (!addList || addList.length === 0) {
+			return wx.showToast({
+				title: '请填写技能',
+				icon: 'error',
+			});
+		}
+		let flag = true;
+		const params = [];
+		addList.forEach((item) => {
+			if (!item.selectSkillId || !item.selectGradeId) flag = false;
+			params.push({
+				user_id,
+				skill_id: item.selectSkillId,
+				grade: item.selectGradeId,
+			});
+		});
+		if (!flag) {
+			return wx.showToast({
+				title: '请完善信息',
+				icon: 'error',
+			});
+		}
+		const result = await request.post({ url: '/skill/add', data: { data: params } });
+		if (result === 'success') {
+			this.getSkillList();
+			this.setData({ dialogShow: true, addList: [] });
+		}
 	},
 
 	// 关闭弹框
@@ -75,6 +100,24 @@ Page({
 		const randomStr = util.getRandomStr();
 		addList.push({ id: randomStr, selectSkillId: '', selectSkillName: '', selectGradeId: '', selectGradeName: '' });
 		this.setData({ addList: addList });
+	},
+
+	// 删除已有技能
+	onDeleteSkill: async function (e) {
+		console.log(e, 1212);
+		const { idx } = e.currentTarget.dataset;
+		const user_id = wx.getStorageSync('user_id');
+		const { skillList } = this.data;
+		const currentItem = skillList[idx];
+		console.log(currentItem);
+		const result = await request.post({ url: '/skill/delete', data: { skill_id: currentItem.skill_id, user_id } });
+		if (result === 'success') {
+			wx.showToast({
+				title: '已删除',
+				icon: 'success',
+			});
+			this.getSkillList();
+		}
 	},
 
 	// 删除新增的技能

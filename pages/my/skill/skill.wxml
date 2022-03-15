@@ -26,31 +26,27 @@
                     </view>
                 </view>
             </view>
-            <view class="chunk skill">
-                <van-swipe-cell right-width="{{ 65 }}">
-                    <view class="skill_item">
-                        <view class="skill_item_name">小提琴</view>
-                        <view class="skill_item_grade">5.0</view>
-                    </view>
-                    <van-progress show-pivot="{{false}}" color="#b5b58d" percentage="80" />
-                    <view class="skill_delete" slot="right">删除</view>
-                </van-swipe-cell>
-                <van-swipe-cell right-width="{{ 65 }}">
-                    <view class="skill_item">
-                        <view class="skill_item_name">钢琴</view>
-                        <view class="skill_item_grade">5.0</view>
-                    </view>
-                    <van-progress show-pivot="{{false}}" color="#b5b58d" percentage="80" />
-                    <view class="skill_delete" slot="right">删除</view>
-                </van-swipe-cell>
-            </view>
+            <block wx:if="{{skillList && skillList.length !== 0}}">
+                <view class="chunk skill">
+                        <block wx:for="{{skillList}}" wx:key="index">
+                            <van-swipe-cell right-width="{{ 65 }}">
+                                <view class="skill_item">
+                                    <view class="skill_item_name">{{item.skillName}}</view>
+                                    <view class="skill_item_grade">{{item.grade}}</view>
+                                </view>
+                                <van-progress show-pivot="{{false}}" color="#b5b58d" percentage="{{item.percent}}" />
+                                <view class="skill_delete" data-idx="{{index}}" bindtap="onDeleteSkill" slot="right">删除</view>
+                            </van-swipe-cell>
+                        </block>
+                </view>
+            </block>
             <block wx:if="{{addList && addList.length !== 0}}">
                 <block wx:for="{{addList}}" wx:key="index">
                     <van-swipe-cell right-width="{{ 65 }}">
                         <view class="chunk chunk2">
                             <view class="ipt_chunk">
                                 <select-item>
-                                    <picker class="picker" bindchange="onPickSkill" data-idx="{{index}}" range="{{skillList}}">
+                                    <picker class="picker" bindchange="onPickSkill" data-idx="{{index}}" range="{{skillListForSelect}}">
                                         <block wx:if="{{item.selectSkillName}}">
                                             <view class="picker_value">
                                                 {{item.selectSkillName}}
@@ -90,7 +86,7 @@
         </view>
     </scroll-view>
     <block wx:if="{{type === 1 || type === 3}}">
-        <view class="invitate_btn" bindtap="onSend">保存并提交审核</view>
+        <view class="invitate_btn" bindtap="onSend">保存</view>
     </block>
     <block wx:if="{{dialogShow}}">
         <tip-dialog
