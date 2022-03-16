@@ -1,5 +1,6 @@
 import loading from '../../utils/loading';
 import request from '../../utils/request';
+import { skills } from '../../constant/constant';
 
 Page({
 	/**
@@ -10,11 +11,13 @@ Page({
 		user_id: '', // 当前用户的id
 		personDetail: {}, // 个人信息
 		dialogShow: false,
+		// 弹框的显示文案
 		dialogDetail: {
 			title: '',
 			src: '',
 			desc: '',
 		},
+		skillList: [], // 技能列表
 	},
 
 	/**
@@ -30,7 +33,10 @@ Page({
 		loading.showLoading();
 		const own_id = wx.getStorageSync('user_id');
 		this.setData({ user_id: Number(user_id), own_id: Number(own_id) }, () => {
+			// 获取个人信息
 			this.getPersonDetail();
+			// 获取个人技能列表
+			this.getUserSkill();
 		});
 	},
 
@@ -38,7 +44,22 @@ Page({
 	getPersonDetail: async function () {
 		const { user_id } = this.data;
 		const personDetail = await request.get({ url: '/user/userDetail', data: { user_id } });
+		console.log(personDetail, 23323);
 		this.setData({ personDetail });
+		loading.hideLoading();
+	},
+
+	// 获取技能列表
+	getUserSkill: async function () {
+		const { user_id } = this.data;
+		const lists = await request.get({ url: '/skill/all', data: { user_id } });
+		console.log(lists, 1231111);
+		lists.forEach((item) => {
+			item.skillName = skills.filter((skill) => skill.id === item.skill_id)[0].name;
+			item.grade = Number(item.grade).toFixed(1);
+			item.percent = Number((Number(item.grade) / 5) * 100).toFixed(0);
+		});
+		this.setData({ skillList: lists });
 		loading.hideLoading();
 	},
 

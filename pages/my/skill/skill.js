@@ -104,12 +104,10 @@ Page({
 
 	// 删除已有技能
 	onDeleteSkill: async function (e) {
-		console.log(e, 1212);
 		const { idx } = e.currentTarget.dataset;
 		const user_id = wx.getStorageSync('user_id');
 		const { skillList } = this.data;
 		const currentItem = skillList[idx];
-		console.log(currentItem);
 		const result = await request.post({ url: '/skill/delete', data: { skill_id: currentItem.skill_id, user_id } });
 		if (result === 'success') {
 			wx.showToast({

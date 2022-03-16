@@ -17,10 +17,10 @@
                 <view class="chunk_title">基本信息填写</view>
                 <view class="ipt_chunk">
                     <select-item>
-                        <picker class="picker" bindchange="onPickFoods" range="{{isYesList}}">
-                            <block wx:if="{{selectFoods}}">
+                        <picker class="picker" bindchange="onPickSchool" range="{{schoolList}}">
+                            <block wx:if="{{selectSchoolName}}">
                                 <view class="picker_value">
-                                    {{selectFoods}}
+                                    {{selectSchoolName}}
                                 </view>
                             </block>
                             <block wx:else>
@@ -33,10 +33,10 @@
                 </view>
                 <view class="ipt_chunk">
                     <select-item>
-                        <picker class="picker" bindchange="onPickFoods" range="{{isYesList}}">
-                            <block wx:if="{{selectFoods}}">
+                        <picker class="picker" bindchange="onPickLevel" range="{{levelList}}">
+                            <block wx:if="{{selectLevelName}}">
                                 <view class="picker_value">
-                                    {{selectFoods}}
+                                    {{selectLevelName}}
                                 </view>
                             </block>
                             <block wx:else>
@@ -49,10 +49,10 @@
                 </view>
                 <view class="ipt_chunk">
                     <select-item>
-                        <picker class="picker" bindchange="onPickFoods" range="{{isYesList}}">
-                            <block wx:if="{{selectFoods}}">
+                        <picker class="picker" mode="date" bindchange="onPickTime">
+                            <block wx:if="{{selectDate}}">
                                 <view class="picker_value">
-                                    {{selectFoods}}
+                                    {{selectDate}}
                                 </view>
                             </block>
                             <block wx:else>
@@ -69,8 +69,8 @@
                 <view class="chunk_title">证书</view>
                 <view class="chunk_desc">考级证书拍照上传</view>
                 <view class="photo_con" bindtap="{{type === 1 || type === 3 ? 'onChooseImg' : ''}}">
-                    <block wx:if="{{idcard2}}">
-                        <image class="photo_img" src="{{idcard2}}" />
+                    <block wx:if="{{selectImg}}">
+                        <image class="photo_img" src="{{selectImg}}" />
                     </block>
                     <block wx:else>
                         <image class="photo_img" src="/asserts/public/shenfen1.png" />

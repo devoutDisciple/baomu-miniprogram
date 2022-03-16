@@ -15,22 +15,30 @@
                     {{personDetail.nickname || ""}}
                 </view>
                 <view class="msg_tubiao">
-                    <view class="msg_tubiao_item msg_tubiao_item_renzheng" data-idx="{{1}}" bindtap="onTapSign">
-                        <image class="msg_tubiao_item_img" src="/asserts/public/renzheng.png" />
-                        实名
-                    </view>
-                    <view class="msg_tubiao_item msg_tubiao_item_yuanxiao" data-idx="{{2}}" bindtap="onTapSign">
-                        <image class="msg_tubiao_item_img" src="/asserts/public/yuanxiao.png" />
-                        院校
-                    </view>
-                    <view class="msg_tubiao_item msg_tubiao_item_huojiang" data-idx="{{3}}" bindtap="onTapSign">
-                        <image class="msg_tubiao_item_img" src="/asserts/public/huojiang.png" />
-                        获奖
-                    </view>
-                    <view class="msg_tubiao_item msg_tubiao_item_kaoji" data-idx="{{4}}" bindtap="onTapSign">
-                        <image class="msg_tubiao_item_img" src="/asserts/public/kaoji.png" />
-                        考级
-                    </view>
+                    <block wx:if="{{personDetail.is_name === 1}}">
+                        <view class="msg_tubiao_item msg_tubiao_item_renzheng" data-idx="{{1}}" bindtap="onTapSign">
+                            <image class="msg_tubiao_item_img" src="/asserts/public/renzheng.png" />
+                            实名
+                        </view>
+                    </block>
+                    <block wx:if="{{personDetail.is_scholl === 1}}">
+                        <view class="msg_tubiao_item msg_tubiao_item_yuanxiao" data-idx="{{2}}" bindtap="onTapSign">
+                            <image class="msg_tubiao_item_img" src="/asserts/public/yuanxiao.png" />
+                            院校
+                        </view>
+                    </block>
+                    <block wx:if="{{personDetail.is_award === 1}}">
+                        <view class="msg_tubiao_item msg_tubiao_item_huojiang" data-idx="{{3}}" bindtap="onTapSign">
+                            <image class="msg_tubiao_item_img" src="/asserts/public/huojiang.png" />
+                            获奖
+                        </view>
+                    </block>
+                    <block wx:if="{{personDetail.is_level === 1}}">
+                        <view class="msg_tubiao_item msg_tubiao_item_kaoji" data-idx="{{4}}" bindtap="onTapSign">
+                            <image class="msg_tubiao_item_img" src="/asserts/public/kaoji.png" />
+                            考级
+                        </view>
+                    </block>
                 </view>
                 <view class="msg_desc">个人简介：{{personDetail.desc || "暂无"}}</view>
                 <view class="msg_data">
@@ -68,13 +76,16 @@
                     </view>
                 </view>
             </view>
-            <view class="common_chunk">
-                <view class="common_title">技能</view>
-                <view class="skill_title">钢琴</view>
-                <van-progress show-pivot="{{false}}" color="#b5b58d" percentage="80" />
-                <view class="skill_title">小提琴</view>
-                <van-progress show-pivot="{{false}}" color="#b5b58d" percentage="40" />
-            </view>
+            <block wx:if="{{skillList && skillList.length !== 0}}">
+                <view class="common_chunk">
+                    <view class="common_title">技能</view>
+                    <block wx:for="{{skillList}}" wx:key="index">
+                        <view class="skill_title">{{item.skillName}}</view>
+                        <van-progress show-pivot="{{false}}" color="#b5b58d" percentage="{{item.percent}}" />
+                    </block>
+                </view>
+            </block>
+            
             <view class="common_chunk">
                 <view class="common_title">作品
                     <view class="common_more">
