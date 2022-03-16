@@ -428,3 +428,13 @@ export const levels = [
 	{ id: 5, name: 'C级' },
 	{ id: 6, name: 'D级' },
 ];
+
+// 学习形式
+export const study_type = [
+	{ id: 1, name: '小学' },
+	{ id: 2, name: '初中' },
+	{ id: 3, name: '高中' },
+	{ id: 4, name: '大学' },
+	{ id: 5, name: '硕士' },
+	{ id: 6, name: '博士' },
+];

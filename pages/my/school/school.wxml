@@ -16,26 +16,36 @@
             <view class="chunk" data-type="1">
                 <view class="chunk_title">毕业院校认证</view>
                 <view class="ipt_chunk">
-                    <input placeholder="姓名" bindblur="onBlurPrice"/>
+                    <input placeholder="姓名" value="{{name}}" data-key="name" bindblur="onBlurInput"/>
                 </view>
                 <view class="ipt_chunk">
-                    <input placeholder="身份证号码" bindblur="onBlurPrice"/>
+                    <input placeholder="身份证号码" value="{{idcard}}" type="idcard" data-key="idcard" bindblur="onBlurInput"/>
                 </view>
                 <view class="ipt_chunk">
-                    <input placeholder="电话号码" bindblur="onBlurPrice"/>
-                </view>
-                <view class="ipt_chunk">
-                    <input placeholder="学校名称" bindblur="onBlurPrice"/>
-                </view>
-                <view class="ipt_chunk">
-                    <input placeholder="毕业时间" bindblur="onBlurPrice"/>
+                    <input placeholder="学校名称" value="{{school_name}}" data-key="school_name" bindblur="onBlurInput"/>
                 </view>
                 <view class="ipt_chunk">
                     <select-item>
-                        <picker class="picker" bindchange="onPickFoods" range="{{isYesList}}">
-                            <block wx:if="{{selectFoods}}">
+                        <picker class="picker" data-key="graduation_time" bindchange="onPickTime" mode="date">
+                            <block wx:if="{{graduation_time}}">
                                 <view class="picker_value">
-                                    {{selectFoods}}
+                                    {{graduation_time}}
+                                </view>
+                            </block>
+                            <block wx:else>
+                                <view class="picker_init">
+                                    毕业时间
+                                </view>
+                            </block>
+                        </picker>
+                    </select-item>
+                </view>
+                <view class="ipt_chunk">
+                    <select-item>
+                        <picker class="picker" bindchange="onPickStudy" range="{{study_list}}">
+                            <block wx:if="{{study_name}}">
+                                <view class="picker_value">
+                                    {{study_name}}
                                 </view>
                             </block>
                             <block wx:else>
@@ -46,9 +56,9 @@
                         </picker>
                     </select-item>
                 </view>
-                <view class="photo_con" bindtap="{{type === 1 || type === 3 ? 'onChooseImg' : ''}}">
-                    <block wx:if="{{idcard1}}">
-                        <image class="photo_img" src="{{idcard1}}" />
+                <view class="photo_con" data-type="schoolImg" bindtap="{{type === 1 || type === 3 ? 'onChooseImg' : ''}}">
+                    <block wx:if="{{schoolImg}}">
+                        <image class="photo_img" src="{{schoolImg}}" />
                     </block>
                     <block wx:else>
                         <image class="photo_img" src="/asserts/public/shenfen1.png" />
@@ -59,20 +69,20 @@
             <view class="chunk chunk2" data-type="1">
                 <view class="chunk_title">获奖认证</view>
                 <view class="ipt_chunk">
-                    <input placeholder="证书颁发机构" bindblur="onBlurPrice"/>
+                    <input placeholder="证书颁发机构" value="{{certificate_gov}}" data-key="certificate_gov" bindblur="onBlurInput"/>
                 </view>
                 <view class="ipt_chunk">
-                    <input placeholder="证书名称" bindblur="onBlurPrice"/>
+                    <input placeholder="证书名称" value="{{certificate_name}}" data-key="certificate_name" bindblur="onBlurInput"/>
                 </view>
                 <view class="ipt_chunk">
-                    <input placeholder="名次" bindblur="onBlurPrice"/>
+                    <input placeholder="名次" value="{{certificate_level}}" data-key="certificate_level" bindblur="onBlurInput"/>
                 </view>
                 <view class="ipt_chunk">
                     <select-item>
-                        <picker class="picker" bindchange="onPickFoods" range="{{isYesList}}">
-                            <block wx:if="{{selectFoods}}">
+                        <picker class="picker" data-key="certificate_time" bindchange="onPickTime" mode="date">
+                            <block wx:if="{{certificate_time}}">
                                 <view class="picker_value">
-                                    {{selectFoods}}
+                                    {{certificate_time}}
                                 </view>
                             </block>
                             <block wx:else>
@@ -83,9 +93,9 @@
                         </picker>
                     </select-item>
                 </view>
-                <view class="photo_con" bindtap="{{type === 1 || type === 3 ? 'onChooseImg' : ''}}">
-                    <block wx:if="{{idcard2}}">
-                        <image class="photo_img" src="{{idcard2}}" />
+                <view class="photo_con" data-type="awardImg" bindtap="{{type === 1 || type === 3 ? 'onChooseImg' : ''}}">
+                    <block wx:if="{{awardImg}}">
+                        <image class="photo_img" src="{{awardImg}}" />
                     </block>
                     <block wx:else>
                         <image class="photo_img" src="/asserts/public/shenfen1.png" />
