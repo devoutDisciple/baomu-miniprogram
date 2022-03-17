@@ -40,8 +40,8 @@
           "name": "个人信息页面",
           "pathName": "pages/personDetail/personDetail",
           "query": "user_id=8",
-          "scene": null,
-          "launchMode": "default"
+          "launchMode": "default",
+          "scene": null
         },
         {
           "name": "发送信息",
@@ -139,6 +139,13 @@
           "query": "",
           "launchMode": "default",
           "scene": null
+        },
+        {
+          "name": "我的作品",
+          "pathName": "pages/my/productionShow/productionShow",
+          "query": "",
+          "scene": null,
+          "launchMode": "default"
         }
       ]
     }

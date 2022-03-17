@@ -1,4 +1,4 @@
-import { study_type, levels } from '../../../constant/constant';
+import { study_type } from '../../../constant/constant';
 import request, { uploadFile } from '../../../utils/request';
 import loading from '../../../utils/loading';
 

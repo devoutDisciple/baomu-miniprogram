@@ -1,12 +1,14 @@
 import loading from '../../utils/loading';
 import request from '../../utils/request';
 import { skills } from '../../constant/constant';
+import moment from '../../utils/moment';
 
 Page({
 	/**
 	 * 页面的初始数据
 	 */
 	data: {
+		showHeader: false, // 是否展示滑动之后的header
 		own_id: '', // 当前账户的id
 		user_id: '', // 当前用户的id
 		personDetail: {}, // 个人信息
@@ -18,6 +20,7 @@ Page({
 			desc: '',
 		},
 		skillList: [], // 技能列表
+		awardDetail: {}, // 获奖记录
 	},
 
 	/**
@@ -37,14 +40,20 @@ Page({
 			this.getPersonDetail();
 			// 获取个人技能列表
 			this.getUserSkill();
+			// 获取个人获奖记录
+			this.getUserAward();
 		});
+	},
+
+	onScroll: function (e) {
+		const { scrollTop } = e.detail;
+		this.setData({ showHeader: scrollTop > 126 });
 	},
 
 	// 获取个人信息
 	getPersonDetail: async function () {
 		const { user_id } = this.data;
 		const personDetail = await request.get({ url: '/user/userDetail', data: { user_id } });
-		console.log(personDetail, 23323);
 		this.setData({ personDetail });
 		loading.hideLoading();
 	},
@@ -53,13 +62,21 @@ Page({
 	getUserSkill: async function () {
 		const { user_id } = this.data;
 		const lists = await request.get({ url: '/skill/all', data: { user_id } });
-		console.log(lists, 1231111);
 		lists.forEach((item) => {
 			item.skillName = skills.filter((skill) => skill.id === item.skill_id)[0].name;
 			item.grade = Number(item.grade).toFixed(1);
 			item.percent = Number((Number(item.grade) / 5) * 100).toFixed(0);
 		});
 		this.setData({ skillList: lists });
+		loading.hideLoading();
+	},
+
+	// 获取获奖记录
+	getUserAward: async function () {
+		const { user_id } = this.data;
+		const detail = await request.get({ url: '/school/all', data: { user_id } });
+		detail.certificate_time = moment(detail.certificate_time).format('YYYY年MM月');
+		this.setData({ awardDetail: detail });
 		loading.hideLoading();
 	},
 

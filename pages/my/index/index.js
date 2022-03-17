@@ -71,7 +71,7 @@ Page({
 		// 可预约时段
 		if (type === 'time') this.jumpPage('/pages/my/myPublish/myPublish');
 		// 作品展示
-		if (type === 'product') this.jumpPage('/pages/my/myPublish/myPublish');
+		if (type === 'productionShow') this.jumpPage('/pages/my/productionShow/productionShow');
 		// 去组团
 		if (type === 'getTeam') this.jumpPage('/pages/my/myPublish/myPublish');
 		// 客服中心

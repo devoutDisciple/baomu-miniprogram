@@ -42,8 +42,8 @@ Component({
 	 */
 	methods: {
 		onPreviewImg: function (e) {
-			const { url } = e.currentTarget.dataset.src;
-			wx.previewImage({ urls: [url] });
+			const { src } = e.currentTarget.dataset;
+			wx.previewImage({ urls: [src] });
 		},
 	},
 });

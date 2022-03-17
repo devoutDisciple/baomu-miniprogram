@@ -77,7 +77,7 @@
                     <listItem text="可预约时段" iconName="order _time" data-type="time" bindtap="goOtherPage" isLast/>
                 </view>
                 <view class="opt">
-                    <listItem text="作品展示" iconName="production_show" data-type="product" bindtap="goOtherPage" isFirst/>
+                    <listItem text="作品展示" iconName="production_show" data-type="productionShow" bindtap="goOtherPage" isFirst/>
                     <listItem text="去组团" iconName="cluster" data-type="getTeam" bindtap="goOtherPage"/>
                     <listItem text="客服中心" iconName="call_center" isLast>
                         <button class="service_btn" open-type="contact" bindcontact="handleContact">联系客服</button>

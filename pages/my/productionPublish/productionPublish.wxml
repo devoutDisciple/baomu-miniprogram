@@ -1,0 +1,54 @@
+<view class="con">
+    <view class="empty"></view>
+    <scroll-view class="wrap" scroll-y="{{true}}" enhanced="{{true}}" show-scrollbar="{{false}}">
+        <view class="chunk">
+            <input placeholder="标题" bindblur="onBlurTitle"/>
+        </view>
+        <view class="chunk">
+            <select-item>
+                <picker class="picker" bindchange="onPickInstruments" value="{{index}}" range="{{instrumentList}}">
+                    <block wx:if="{{instrumentSelectName}}">
+                        <view class="picker_value">
+                            {{instrumentSelectName}}
+                        </view>
+                    </block>
+                    <block wx:else>
+                        <view class="picker_init">
+                            选择分类
+                        </view>
+                    </block>
+                </picker>
+            </select-item>
+        </view>
+        <view class="chunk">
+            <textarea auto-height class="text" cursor-spacing="{{40}}" placeholder="内容" bindblur="onBlurDesc" maxlength="{{200}}"/>
+        </view>
+        <view class="img_con">
+            <block wx:if="{{tempImgUrlPaths && tempImgUrlPaths.length !== 0}}">
+                <block wx:for="{{tempImgUrlPaths}}" wx:key="index">
+                    <view class="img_chunk">
+                        <my-img src="{{item}}"/>
+                        <image data-idx="{{index}}" bindtap="onRemoveImg" class="img_close" src="/asserts/public/close.png" />
+                    </view>
+                </block>
+            </block>
+            <block wx:if="{{videoDetail && videoDetail.url}}">
+                <view class="video">
+                    <simple-video showCoverImg="{{false}}" videoId="my_video" wx:if="{{videoDetail.url && videoDetail.photo}}" videoDetail="{{videoDetail}}"/>
+                    <image bindtap="onRemoveVideo" class="img_close" src="/asserts/public/close.png" bindtap = "onRemoveVideo"/>
+                </view>
+            </block>
+        </view>
+    </scroll-view>
+   
+    <view class="btm">
+        <view class="btm_left">
+            <image bindtap="onChooseImg" class="btm_icon btm_icon1" src="/asserts/public/img.png" />
+            <image bindtap="onChooseVideo" class="btm_icon btm_icon2" src="/asserts/public/video.png" />
+            <image class="btm_icon btm_icon3" src="/asserts/public/music.png" />
+        </view>
+        <view class="btm_right">
+            <view class="btm_pub">发布</view>
+        </view>
+    </view>
+</view>

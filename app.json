@@ -20,7 +20,9 @@
     "pages/my/school/school",
     "pages/my/level/level",
     "pages/my/skill/skill",
-    "pages/my/order/order"
+    "pages/my/order/order",
+    "pages/my/productionShow/productionShow",
+    "pages/my/productionPublish/productionPublish"
   ],
   "window": {
     "backgroundTextStyle": "light",

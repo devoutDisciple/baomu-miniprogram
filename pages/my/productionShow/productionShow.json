@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "my-img": "/component/img/img"
+  },
+  "navigationBarTitleText": "作品展示"
+}

@@ -1,0 +1,15 @@
+<scroll-view class="wrap" scroll-y="{{true}}" show-scrollbar="{{false}}" enhanced="{{true}}">
+    <view class="chunk">
+        <view class="con">
+            <my-img  class="con_con" src="/asserts/temp/con2.png"/>
+            <view class="con_desc">
+                <view class="con_desc_title">小提琴演奏</view>
+                <view class="con_desc_text">这是作品简介简介这是作品简介简介这是作品简介简介这是作品简介简介这是作品简介简介这是作品简介简介这是作品简介简介这是作品简介简介这是作品简介简介这是作品简介简介</view>
+            </view>
+        </view>
+        <view class="name">
+            <view class="name_type">作品类型：小提琴</view>
+        </view>
+    </view>
+    <view class="add_btn" bindtap="onTapAdd">添加作品</view>
+</scroll-view>

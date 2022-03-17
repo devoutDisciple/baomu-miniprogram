@@ -1,6 +1,11 @@
 <view class="person">
-    <header text="" showBack="true"/>
-    <scroll-view class="wrap" scroll-y="{{true}}" enhanced="{{true}}" show-scrollbar="{{false}}"> 
+    <block wx:if="{{!showHeader}}">
+        <header text="" showBack="true"/>
+    </block>
+    <block wx:else>
+        <header text="个人信息" showBack="true" showTop topColor="#000"/>
+    </block>
+    <scroll-view class="wrap" scroll-y="{{true}}" enhanced="{{true}}" show-scrollbar="{{false}}" bindscroll="onScroll"> 
         <image class="bg" mode="widthFix" src="/asserts/temp/person_bg.png" />
         <view class="con">
             <view class="msg">
@@ -120,11 +125,12 @@
                     </view>
                 </scroll-view>
             </view>
-            <view class="common_chunk">
-                <view class="common_title">获奖信息</view>
-                <beard-list text="2019年11月 荣获xx比赛二等奖"/>
-                <beard-list text="2019年11月 荣获xx比赛二等奖"/>
-            </view>
+            <block wx:if="{{awardDetail && awardDetail.certificate_name && awardDetail.certificate_gov}}">
+                <view class="common_chunk">
+                    <view class="common_title">获奖信息</view>
+                    <beard-list text="{{awardDetail.certificate_time}} {{awardDetail.certificate_gov}} {{awardDetail.certificate_name}} {{awardDetail.certificate_level}}"/>
+                </view>
+            </block>
             <view class="common_chunk">
                 <view class="common_title">
                     评价
