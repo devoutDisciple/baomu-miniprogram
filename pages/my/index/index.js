@@ -45,6 +45,7 @@ Page({
 	// 前往其他页面
 	goOtherPage: function (e) {
 		const { type } = e.currentTarget.dataset;
+		const user_id = wx.wx.getStorageSync('user_id');
 		console.log(type, 1111);
 		// 我的发布
 		if (type === 'publish') this.jumpPage('/pages/my/myPublish/myPublish');
@@ -71,7 +72,7 @@ Page({
 		// 可预约时段
 		if (type === 'time') this.jumpPage('/pages/my/myPublish/myPublish');
 		// 作品展示
-		if (type === 'productionShow') this.jumpPage('/pages/my/productionShow/productionShow');
+		if (type === 'productionShow') this.jumpPage(`/pages/my/productionShow/productionShow?user_id=${user_id}`);
 		// 去组团
 		if (type === 'getTeam') this.jumpPage('/pages/my/myPublish/myPublish');
 		// 客服中心

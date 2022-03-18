@@ -1,5 +1,6 @@
 import loading from '../../../utils/loading';
-import { instruments, plays, voices } from '../../../constant/constant';
+import { instruments } from '../../../constant/constant';
+import request, { post, uploadFile } from '../../../utils/request';
 
 Page({
 	/**
@@ -18,7 +19,7 @@ Page({
 	/**
 	 * 生命周期函数--监听页面加载
 	 */
-	onLoad: function (options) {
+	onLoad: function () {
 		this.getAllInstruments();
 	},
 
@@ -80,9 +81,6 @@ Page({
 				loading.hideLoading();
 				if (res && res.errMsg === 'chooseMedia:ok' && Array.isArray(res.tempFiles)) {
 					const tempFile = res.tempFiles[0];
-					// const { height, width } = tempFile;
-					// const { screenWidth } = self.data;
-					// const videoHeight = Number((height * screenWidth) / width).toFixed(0);
 					self.setData({
 						videoDetail: {
 							url: tempFile.tempFilePath,
@@ -91,7 +89,6 @@ Page({
 							duration: tempFile.duration,
 							size: tempFile.size,
 							photo: tempFile.thumbTempFilePath,
-							// videoHeight,
 						},
 					});
 				}
@@ -130,38 +127,62 @@ Page({
 		this.setData({ desc: value });
 	},
 
-	/**
-	 * 生命周期函数--监听页面初次渲染完成
-	 */
-	onReady: function () {},
-
-	/**
-	 * 生命周期函数--监听页面显示
-	 */
-	onShow: function () {},
-
-	/**
-	 * 生命周期函数--监听页面隐藏
-	 */
-	onHide: function () {},
-
-	/**
-	 * 生命周期函数--监听页面卸载
-	 */
-	onUnload: function () {},
-
-	/**
-	 * 页面相关事件处理函数--监听用户下拉动作
-	 */
-	onPullDownRefresh: function () {},
-
-	/**
-	 * 页面上拉触底事件的处理函数
-	 */
-	onReachBottom: function () {},
-
-	/**
-	 * 用户点击右上角分享
-	 */
-	onShareAppMessage: function () {},
+	// 点击发布
+	onPublish: async function () {
+		const user_id = wx.getStorageSync('user_id');
+		const { instrumentSelectId, tempImgUrlPaths, videoDetail, desc, title } = this.data;
+		// if (!desc || !title || !instrumentSelectId) {
+		// 	return wx.showToast({
+		// 		title: '请完善信息',
+		// 		icon: 'error',
+		// 	});
+		// }
+		// if (tempImgUrlPaths.length === 0 && !videoDetail.duration) {
+		// 	return wx.showToast({
+		// 		title: '请上传作品',
+		// 		icon: 'error',
+		// 	});
+		// }
+		loading.showLoading();
+		const uploadImgUrls = [];
+		if (tempImgUrlPaths && tempImgUrlPaths.length !== 0) {
+			let len = tempImgUrlPaths.length;
+			loading.showLoading();
+			while (len > 0) {
+				len -= 1;
+				// eslint-disable-next-line no-await-in-loop
+				const fileDetail = await uploadFile({ url: '/production/upload', data: tempImgUrlPaths[len] });
+				uploadImgUrls.push(fileDetail.url);
+			}
+		}
+		let fileDetail = {};
+		if (videoDetail && videoDetail.duration) {
+			const videoUrl = await uploadFile({ url: '/production/upload', data: videoDetail.url });
+			const coverImgDetail = await uploadFile({ url: '/production/uploadCoverImg', data: videoDetail.photo });
+			fileDetail = {
+				url: videoUrl.url,
+				height: videoDetail.height,
+				width: videoDetail.width,
+				duration: videoDetail.duration,
+				size: videoDetail.size,
+				photo: coverImgDetail,
+			};
+		}
+		const params = {
+			user_id,
+			title,
+			instr_id: instrumentSelectId,
+			desc,
+			img_url: uploadImgUrls,
+			video: fileDetail,
+		};
+		const result = await request.post({ url: '/production/add', data: params });
+		if (result === 'success') {
+			wx.showToast({
+				title: '发布成功',
+				icon: 'success',
+			});
+		}
+		loading.hideLoading();
+	},
 });

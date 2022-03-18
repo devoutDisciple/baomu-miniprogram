@@ -1,14 +1,36 @@
-// pages/my/productionShow/productionShow.js
+const request = require('../../../utils/request');
+const loading = require('../../../utils/loading');
+
 Page({
 	/**
 	 * 页面的初始数据
 	 */
-	data: {},
+	data: {
+		owner_id: '',
+		user_id: '',
+		productionList: [],
+	},
 
 	/**
 	 * 生命周期函数--监听页面加载
 	 */
-	onLoad: function (options) {},
+	onLoad: function (options) {
+		const user_id = options;
+		const owner_id = wx.getStorageSync('user_id');
+		this.setData({ user_id, owner_id }, () => {
+			this.getProduction();
+		});
+	},
+
+	// 获取作品
+	getProduction: async function () {
+		loading.showLoading();
+		const { user_id } = this.data;
+		const result = await request.get({ url: '/production/allByUserId', data: user_id });
+		console.log(result, 1213);
+		this.setData({ productionList: result });
+		loading.hideLoading();
+	},
 
 	// 点击添加作品
 	onTapAdd: function () {

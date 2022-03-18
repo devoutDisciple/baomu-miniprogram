@@ -70,3 +70,18 @@
     justify-content: center;
     font-size: 34rpx;
 }
+
+.empty {
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #6a6a6a;
+}
+
+.empty_img {
+    width: 300rpx;
+    height: 246rpx;
+    margin-bottom: 30rpx;
+}

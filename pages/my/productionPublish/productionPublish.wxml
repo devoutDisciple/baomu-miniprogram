@@ -48,7 +48,7 @@
             <image class="btm_icon btm_icon3" src="/asserts/public/music.png" />
         </view>
         <view class="btm_right">
-            <view class="btm_pub">发布</view>
+            <view class="btm_pub" bindtap="onPublish">发布</view>
         </view>
     </view>
 </view>
