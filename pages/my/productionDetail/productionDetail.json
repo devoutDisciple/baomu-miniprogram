@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+      "img-show": "/component/detailImgShow/detailImgShow"
+  },
+  "navigationBarTitleText": "作品详情"
+}

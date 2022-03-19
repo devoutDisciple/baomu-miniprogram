@@ -45,7 +45,7 @@ Page({
 	// 前往其他页面
 	goOtherPage: function (e) {
 		const { type } = e.currentTarget.dataset;
-		const user_id = wx.wx.getStorageSync('user_id');
+		const user_id = wx.getStorageSync('user_id');
 		console.log(type, 1111);
 		// 我的发布
 		if (type === 'publish') this.jumpPage('/pages/my/myPublish/myPublish');

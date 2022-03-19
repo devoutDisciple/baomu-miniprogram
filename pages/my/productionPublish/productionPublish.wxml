@@ -21,7 +21,7 @@
             </select-item>
         </view>
         <view class="chunk">
-            <textarea auto-height class="text" cursor-spacing="{{40}}" placeholder="内容" bindblur="onBlurDesc" maxlength="{{200}}"/>
+            <textarea auto-height class="text" cursor-spacing="{{40}}" placeholder="内容" bindblur="onBlurDesc" maxlength="{{1000}}"/>
         </view>
         <view class="img_con">
             <block wx:if="{{tempImgUrlPaths && tempImgUrlPaths.length !== 0}}">

@@ -93,7 +93,7 @@ Page({
 		wx.chooseLocation({
 			complete: function (res) {
 				if (res.errMsg !== 'chooseLocation:ok') {
-					return wx.wx.showToast({
+					return wx.showToast({
 						title: '请选择地址',
 						icon: 'error',
 					});

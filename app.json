@@ -22,7 +22,8 @@
     "pages/my/skill/skill",
     "pages/my/order/order",
     "pages/my/productionShow/productionShow",
-    "pages/my/productionPublish/productionPublish"
+    "pages/my/productionPublish/productionPublish",
+    "pages/my/productionDetail/productionDetail"
   ],
   "window": {
     "backgroundTextStyle": "light",

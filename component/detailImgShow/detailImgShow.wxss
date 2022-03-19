@@ -1,0 +1,61 @@
+.wrap {
+    width: 100%;
+}
+
+.img {
+    margin-top: 10rpx;
+}
+
+.wrap2 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.wrap2 .img {
+    width: calc((100vw - 50rpx)/ 2);
+    height: calc((100vw - 50rpx)/ 2);
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+
+.wrap3 {
+    display: flex;
+    flex-wrap: wrap;
+    overflow: hidden;
+    justify-content: space-between;
+}
+
+.wrap3_ellipsis {
+    max-height: calc((100vw - 60rpx) / 3 * 2 + 20rpx);
+    position: relative;
+}
+
+.more_num {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: calc((100vw - 60rpx)/ 3);
+    height: calc((100vw - 60rpx)/ 3);
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-size: 50rpx;
+    font-weight: 900;
+}
+
+.wrap3 .img {
+    width: calc((100vw - 60rpx)/ 3);
+    height: calc((100vw - 60rpx)/ 3);
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+
+.my_img {
+    width: 100%;
+    height: 100%;
+}

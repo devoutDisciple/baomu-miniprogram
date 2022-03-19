@@ -35,6 +35,12 @@
 
 .con_desc_title {
     font-size: 36rpx;
+    display: -webkit-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-all;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
 }
 
 .con_desc_text {
@@ -84,4 +90,8 @@
     width: 300rpx;
     height: 246rpx;
     margin-bottom: 30rpx;
+}
+
+.btm_empty {
+    height: 150rpx;
 }

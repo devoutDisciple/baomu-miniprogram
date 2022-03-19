@@ -1,0 +1,3 @@
+<scroll-view class="wrap" scroll-y="{{true}}" enhanced="{{true}}" show-scrollbar="{{false}}">
+    <img-show imgList="{{detail.img_url}}" showAll/>
+</scroll-view>

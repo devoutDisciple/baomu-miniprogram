@@ -18,6 +18,12 @@ Component({
 		},
 	},
 
+	observers: {
+		'videoDetail, videoId, showCoverImg': function (a, b, c) {
+			console.log(a, b, c, 72382);
+		},
+	},
+
 	/**
 	 * 组件的初始数据
 	 */
@@ -84,6 +90,8 @@ Component({
 				.in(this)
 				.select(`#${this.data.videoId}`)
 				.boundingClientRect(function (rect) {
+					if (!rect) return;
+					// 查看是否超出可视区域，然后停止播放
 					const { top } = rect;
 					if (top < -30 || top > windowHeight) {
 						self.videoContext.pause();

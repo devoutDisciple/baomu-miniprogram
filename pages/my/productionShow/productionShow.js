@@ -1,5 +1,6 @@
-const request = require('../../../utils/request');
-const loading = require('../../../utils/loading');
+import request from '../../../utils/request';
+import loading from '../../../utils/loading';
+import { instruments } from '../../../constant/constant';
 
 Page({
 	/**
@@ -27,7 +28,23 @@ Page({
 		loading.showLoading();
 		const { user_id } = this.data;
 		const result = await request.get({ url: '/production/allByUserId', data: user_id });
-		console.log(result, 1213);
+		if (result && result.length !== 0) {
+			result.forEach((item) => {
+				item.instr_name = instruments.filter((ins) => ins.id === item.instr_id)[0].name;
+				const itemVideo = item.video;
+				if (itemVideo && itemVideo.duration && itemVideo.url) {
+					// width: 300rpx;
+					// height: 246rpx;
+					if (itemVideo.width > itemVideo.height) {
+						itemVideo.videoHeight = parseInt((Number(itemVideo.height) * 300) / Number(itemVideo.width));
+						itemVideo.videoWidth = 300;
+					} else {
+						itemVideo.videoWidth = parseInt((Number(itemVideo.width) * 246) / Number(itemVideo.height));
+						itemVideo.videoHeight = 246;
+					}
+				}
+			});
+		}
 		this.setData({ productionList: result });
 		loading.hideLoading();
 	},

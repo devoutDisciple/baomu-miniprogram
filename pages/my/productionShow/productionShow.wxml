@@ -1,17 +1,26 @@
 <scroll-view class="wrap" scroll-y="{{true}}" show-scrollbar="{{false}}" enhanced="{{true}}">
     <block wx:if="{{productionList && productionList.length !== 0}}">
-        <view class="chunk">
-            <view class="con">
-                <my-img  class="con_con" src="/asserts/temp/con2.png"/>
-                <view class="con_desc">
-                    <view class="con_desc_title">小提琴演奏</view>
-                    <view class="con_desc_text">这是作品简介简介这是作品简介简介这是作品简介简介这是作品简介简介这是作品简介简介这是作品简介简介这是作品简介简介这是作品简介简介这是作品简介简介这是作品简介简介</view>
+        <block wx:for="{{productionList}}" wx:key="index">
+            <view class="chunk">
+                <view class="con">
+                    <block wx:if="{{item.video && item.video.duration && item.video.url}}">
+                        <simple-video class="con_con" videoId="{{item.video.url}}" videoDetail="{{item.video}}"/>
+                    </block>
+                    <block wx:else>
+                        <my-img class="con_con" src="{{item.showImg}}"/>
+                    </block>
+                    <view class="con_desc">
+                        <view class="con_desc_title">{{item.title}}</view>
+                        <view class="con_desc_text">{{item.desc}}</view>
+                    </view>
+                </view>
+                <view class="name">
+                    <view class="name_type">作品类型：{{item.instr_name}}</view>
                 </view>
             </view>
-            <view class="name">
-                <view class="name_type">作品类型：小提琴</view>
-            </view>
-        </view>
+        </block>
+        <btm-tip />
+        <view class="btm_empty"></view>
     </block>
     <block wx:else>
         <view class="empty">

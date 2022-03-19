@@ -1,6 +1,8 @@
 {
   "usingComponents": {
-    "my-img": "/component/img/img"
+    "my-img": "/component/img/img",
+    "btm-tip": "/component/btmTip/btmTip",
+    "simple-video": "/component/simpleVideo/simpleVideo"
   },
   "navigationBarTitleText": "作品展示"
 }

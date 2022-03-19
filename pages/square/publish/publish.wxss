@@ -52,6 +52,7 @@
     box-shadow: 0rpx -3rpx 27rpx #8a8a8a;
     display: flex;
     background: #fff;
+    z-index: 100;
 }
 
 .btm_left {

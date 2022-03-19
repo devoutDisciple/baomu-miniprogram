@@ -1,6 +1,6 @@
 .container {
     width: 100%;
-    font-size: 34rpx;
+    height: 100%;
     display: flex;
     position: relative;
 }
@@ -10,7 +10,11 @@
 }
 
 .fix_height {
-    width: 60vw;
+    height: 100%;
+}
+
+.fix_width {
+    width: 100%;
 }
 
 .video_cover_con {

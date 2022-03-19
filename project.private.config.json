@@ -144,8 +144,8 @@
           "name": "我的作品",
           "pathName": "pages/my/productionShow/productionShow",
           "query": "user_id=8",
-          "scene": null,
-          "launchMode": "default"
+          "launchMode": "default",
+          "scene": null
         },
         {
           "name": "添加作品",
@@ -153,6 +153,13 @@
           "query": "",
           "launchMode": "default",
           "scene": null
+        },
+        {
+          "name": "作品详情",
+          "pathName": "pages/my/productionDetail/productionDetail",
+          "query": "id=11",
+          "scene": null,
+          "launchMode": "default"
         }
       ]
     }
