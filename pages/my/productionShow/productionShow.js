@@ -31,18 +31,6 @@ Page({
 		if (result && result.length !== 0) {
 			result.forEach((item) => {
 				item.instr_name = instruments.filter((ins) => ins.id === item.instr_id)[0].name;
-				const itemVideo = item.video;
-				if (itemVideo && itemVideo.duration && itemVideo.url) {
-					// width: 300rpx;
-					// height: 246rpx;
-					if (itemVideo.width > itemVideo.height) {
-						itemVideo.videoHeight = parseInt((Number(itemVideo.height) * 300) / Number(itemVideo.width));
-						itemVideo.videoWidth = 300;
-					} else {
-						itemVideo.videoWidth = parseInt((Number(itemVideo.width) * 246) / Number(itemVideo.height));
-						itemVideo.videoHeight = 246;
-					}
-				}
 			});
 		}
 		this.setData({ productionList: result });
@@ -53,6 +41,14 @@ Page({
 	onTapAdd: function () {
 		wx.navigateTo({
 			url: '/pages/my/productionPublish/productionPublish',
+		});
+	},
+
+	// 点击详情
+	onShowDetail: function (e) {
+		const { id } = e.currentTarget.dataset;
+		wx.navigateTo({
+			url: `/pages/my/productionDetail/productionDetail?id=${id}`,
 		});
 	},
 

@@ -51,11 +51,11 @@ Component({
 				const len = imgList.length;
 				const remain = len % 3;
 				if (remain === 1) {
-					const newImgList = imgList.concat([{ empty: true }, { empty: true }]);
+					const newImgList = imgList.concat(['', '']);
 					return this.setData({ imgLists: newImgList, imgListLen: imgList.length });
 				}
 				if (remain === 2) {
-					const newImgList = imgList.concat([{ empty: true }]);
+					const newImgList = imgList.concat(['']);
 					return this.setData({ imgLists: newImgList, imgListLen: imgList.length });
 				}
 			}

@@ -19,8 +19,28 @@ Component({
 	},
 
 	observers: {
-		'videoDetail, videoId, showCoverImg': function (a, b, c) {
-			console.log(a, b, c, 72382);
+		videoDetail: function (videoDetail) {
+			const self = this;
+			if (!videoDetail || !videoDetail.url) return;
+			wx.createSelectorQuery()
+				.in(this)
+				.select(`.video_container`)
+				.boundingClientRect(function (rect) {
+					const { width, height } = videoDetail;
+					const conWidth = rect.width;
+					const conHeight = rect.height;
+					let videoHeight;
+					let videoWidth;
+					if (width > height) {
+						videoHeight = parseInt((Number(height) * conWidth) / Number(width));
+						videoWidth = conWidth;
+					} else {
+						videoWidth = parseInt((Number(width) * conHeight) / Number(height));
+						videoHeight = conHeight;
+					}
+					self.setData({ videoWidth, videoHeight });
+				})
+				.exec();
 		},
 	},
 
@@ -28,6 +48,8 @@ Component({
 	 * 组件的初始数据
 	 */
 	data: {
+		videoWidth: '', // 由于video的宽和高不会自适应，所以需要计算得出值
+		videoHeight: '',
 		activeState: 'waiting', // waiting-视频还没有播放 process-视频播放中 pause-视频暂停 end-视频播放结束
 		hasPlay: false, // 是否已经播放过
 		controllerShow: false, // 控制条显示隐藏

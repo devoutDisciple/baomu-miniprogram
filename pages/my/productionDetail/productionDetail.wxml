@@ -1,3 +1,20 @@
 <scroll-view class="wrap" scroll-y="{{true}}" enhanced="{{true}}" show-scrollbar="{{false}}">
-    <img-show imgList="{{detail.img_url}}" showAll/>
+    <view class="img_con">
+        <block wx:if="{{detail.video && detail.video.url}}">
+            <simple-video class="video" videoDetail="{{detail.video}}" videoId="{{detail.video.url}}" showCoverImg/>
+        </block>
+        <block wx:if="{{detail.img_url && detail.img_url.length !== 0}}">
+            <img-show imgList="{{detail.img_url}}" showAll/>
+        </block>
+    </view>
+    <view class="con">
+        <view class="title">{{detail.title}}</view>
+        <view class="production">
+            <view class="production_left">作品类型：{{detail.instr_name}}</view>
+            <view class="production_right">{{detail.create_time}}</view>
+        </view>
+        <view class="production_desc">
+            <text>{{detail.desc}}</text>
+        </view>
+    </view>
 </scroll-view>

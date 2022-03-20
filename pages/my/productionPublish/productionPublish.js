@@ -118,13 +118,13 @@ Page({
 	// 输入标题
 	onBlurTitle: function (e) {
 		const { value } = e.detail;
-		this.setData({ title: value });
+		this.setData({ title: String(value).trim() });
 	},
 
 	// 输入内容
 	onBlurDesc: function (e) {
 		const { value } = e.detail;
-		this.setData({ desc: value });
+		this.setData({ desc: String(value).trim() });
 	},
 
 	// 点击发布
@@ -132,18 +132,18 @@ Page({
 		try {
 			const user_id = wx.getStorageSync('user_id');
 			const { instrumentSelectId, tempImgUrlPaths, videoDetail, desc, title } = this.data;
-			// if (!desc || !title || !instrumentSelectId) {
-			// 	return wx.showToast({
-			// 		title: '请完善信息',
-			// 		icon: 'error',
-			// 	});
-			// }
-			// if (tempImgUrlPaths.length === 0 && !videoDetail.duration) {
-			// 	return wx.showToast({
-			// 		title: '请上传作品',
-			// 		icon: 'error',
-			// 	});
-			// }
+			if (!desc || !title || !instrumentSelectId) {
+				return wx.showToast({
+					title: '请完善信息',
+					icon: 'error',
+				});
+			}
+			if (tempImgUrlPaths.length === 0 && !videoDetail.duration) {
+				return wx.showToast({
+					title: '请上传作品',
+					icon: 'error',
+				});
+			}
 			loading.showLoading();
 			const uploadImgUrls = [];
 			if (tempImgUrlPaths && tempImgUrlPaths.length !== 0) {

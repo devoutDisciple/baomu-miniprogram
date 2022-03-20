@@ -1,6 +1,7 @@
 {
   "usingComponents": {
-      "img-show": "/component/detailImgShow/detailImgShow"
+      "img-show": "/component/detailImgShow/detailImgShow",
+      "simple-video": "/component/simpleVideo/simpleVideo"
   },
   "navigationBarTitleText": "作品详情"
 }

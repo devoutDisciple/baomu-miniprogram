@@ -1,4 +1,6 @@
-const request = require('../../../utils/request');
+import request from '../../../utils/request';
+import { instruments } from '../../../constant/constant';
+import loading from '../../../utils/loading';
 
 Page({
 	/**
@@ -26,9 +28,18 @@ Page({
 
 	// 查询作品详情
 	onSearchProductionDetail: async function () {
-		const { id } = this.data;
-		const detail = await request.get({ url: '/production/detailById', data: { id } });
-		console.log(detail, 111);
-		this.setData({ detail });
+		try {
+			loading.showLoading();
+			const { id } = this.data;
+			const detail = await request.get({ url: '/production/detailById', data: { id } });
+			if (detail) {
+				detail.instr_name = instruments.filter((ins) => ins.id === detail.instr_id)[0].name;
+			}
+			this.setData({ detail });
+			loading.hideLoading();
+		} catch (error) {
+			console.log(error);
+			loading.hideLoading();
+		}
 	},
 });

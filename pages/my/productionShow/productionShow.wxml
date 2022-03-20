@@ -9,12 +9,12 @@
                     <block wx:else>
                         <my-img class="con_con" src="{{item.showImg}}"/>
                     </block>
-                    <view class="con_desc">
+                    <view class="con_desc" data-id="{{item.id}}" bindtap="onShowDetail">
                         <view class="con_desc_title">{{item.title}}</view>
                         <view class="con_desc_text">{{item.desc}}</view>
                     </view>
                 </view>
-                <view class="name">
+                <view class="name" data-id="{{item.id}}" bindtap="onShowDetail">
                     <view class="name_type">作品类型：{{item.instr_name}}</view>
                 </view>
             </view>

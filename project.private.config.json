@@ -143,7 +143,7 @@
         {
           "name": "我的作品",
           "pathName": "pages/my/productionShow/productionShow",
-          "query": "user_id=8",
+          "query": "",
           "launchMode": "default",
           "scene": null
         },
@@ -157,7 +157,7 @@
         {
           "name": "作品详情",
           "pathName": "pages/my/productionDetail/productionDetail",
-          "query": "id=11",
+          "query": "",
           "scene": null,
           "launchMode": "default"
         }

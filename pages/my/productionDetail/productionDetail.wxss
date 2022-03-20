@@ -1,5 +1,37 @@
 .wrap {
     width: 100vw;
     height: 100vh;
-    background: red;
+    background: #f6f6f6;
+}
+
+.img_con {
+    background: #fff;
+    padding: 30rpx 20rpx;
+}
+
+.con {
+    margin-top: 20rpx;
+    background: #fff;
+    padding: 20rpx;
+}
+
+.title {
+    font-size: 34rpx;
+    color: #000;
+}
+
+.production {
+    display: flex;
+    padding: 10rpx 0;
+    font-size: 26rpx;
+    color: #6a6a6a;
+}
+
+.production_right {
+    text-align: right;
+    flex: 1;
+}
+
+.production_desc {
+    padding: 40rpx 0;
 }

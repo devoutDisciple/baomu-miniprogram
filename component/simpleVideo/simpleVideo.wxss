@@ -1,20 +1,11 @@
-.container {
+.video_container {
     width: 100%;
     height: 100%;
     display: flex;
     position: relative;
-}
-
-.video {
-    width: 100%;
-}
-
-.fix_height {
-    height: 100%;
-}
-
-.fix_width {
-    width: 100%;
+    background: #333;
+    align-items: center;
+    justify-content: center;
 }
 
 .video_cover_con {
