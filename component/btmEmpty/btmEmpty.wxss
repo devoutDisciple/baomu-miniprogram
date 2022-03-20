@@ -1,4 +1,4 @@
 .empty {
-    height: 50rpx;
+    height: 150rpx;
     width: 100%;
 }

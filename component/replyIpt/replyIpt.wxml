@@ -1,0 +1,47 @@
+<van-action-sheet
+    title=""
+    show="{{ visible }}"
+    bind:close="onClose">
+    <view class="content">
+        <block wx:if="{{tempUrlPaths && tempUrlPaths.length !== 0}}">
+            <view class="img_con">
+                <block wx:for="{{tempUrlPaths}}" wx:key="index">
+                    <view class="img_chunk">
+                        <image class="img" src="{{item}}" />
+                        <image class="img_close" data-idx="{{index}}" bindtap="onRemoveImg" src="/asserts/public/close.png" />
+                    </view>
+                </block>
+            </view>
+        </block>
+        <view class="desc">
+            <input 
+                focus="{{focus}}" 
+                bindblur="onBlur"
+                bindfocus="onFocus"
+                cursor-spacing="40" 
+                adjust-position="true"
+                readonly="readonly"
+                class="ipt" 
+                value="{{replyValue}}"
+                bindinput="onChangeValue"
+                placeholder="好话一句句，让人心情变美丽" 
+                placeholder-style="font-size: 28rpx; color: #AAA;"
+                maxlength="200"
+                bindtap="onTapIpt"
+                bindkeyboardheightchange="keyboardheightchange"
+                confirm-type="send"/>
+            <view class="send" bindtap="onSendMsg">发送</view>
+        </view>
+        <view class="icon">
+            <image class="icon_img" bindtap="onChooseImg" src="/asserts/public/img.png" />
+            <image class="icon_img" bindtap="onShowEmoji" src="/asserts/public/emoji.png" />
+        </view>
+        <block wx:if="{{showEmoji && !focus}}">
+            <scroll-view scroll-y="{{true}}" enable-flex class="emoji">
+                <block wx:for="{{emojis}}" wx:key="index">
+                    <view bindtap="onClickEmoji" data-item="{{item}}" class="emoji_chunk">{{item}}</view>
+                </block>
+            </scroll-view>
+        </block>
+    </view>
+</van-action-sheet>

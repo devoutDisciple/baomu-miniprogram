@@ -157,7 +157,7 @@
         {
           "name": "作品详情",
           "pathName": "pages/my/productionDetail/productionDetail",
-          "query": "",
+          "query": "id=11",
           "scene": null,
           "launchMode": "default"
         }

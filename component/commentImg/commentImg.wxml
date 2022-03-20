@@ -1,0 +1,17 @@
+<block>
+    <view wx:if="{{imgListLen === 1}}" class="wrap wrap1">
+        <view bindtap="showImg" data-index="{{index}}" class="img" wx:for="{{imgList}}" wx:key="index">
+            <my-img src="{{item.url}}"/>
+        </view>
+    </view>
+     <view wx:elif="{{imgListLen === 2}}" class="wrap wrap2">
+        <view bindtap="showImg" data-index="{{index}}" class="img" wx:for="{{imgList}}" wx:key="index">
+            <my-img src="{{item.url}}"/>
+        </view>
+    </view>
+    <view wx:elif="{{imgListLen > 2}}" class="wrap wrap3 {{showAll ? '' : 'wrap3_ellipsis'}}">
+        <view bindtap="showImg" data-index="{{index}}" class="img" wx:for="{{imgList}}" wx:key="index">
+            <my-img src="{{item.url}}"/>
+        </view>
+    </view>
+</block>

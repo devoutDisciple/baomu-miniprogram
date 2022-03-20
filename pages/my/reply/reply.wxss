@@ -1,0 +1,40 @@
+.wrap {
+    height: 100vh; 
+    display: flex;
+    font-size: 28rpx;
+    flex-direction: column;
+    background: #fff;
+}
+.con {
+    flex: 1;
+    width: 100vw;
+    overflow: hidden;
+    background: #f8f8f8;
+}
+.con ::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+    color: transparent;
+}
+.con_my {
+    padding: 0 20rpx;
+    background: #fff;
+}
+.con_other {
+    padding: 0 20rpx;
+}
+.bottom {
+    height: 100rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.ipt {
+    width: 90%;
+    height: 70rpx;
+    line-height: 70rpx;
+    background: #f8f8f8;
+    padding: 0 20rpx;
+    border-radius: 70rpx;
+    color: #AAA;
+}

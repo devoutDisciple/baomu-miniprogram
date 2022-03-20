@@ -1,0 +1,90 @@
+.content {
+    padding: 30rpx 20rpx;
+    font-size: 30rpx;
+}
+
+.desc {
+    display: flex;
+    height: 70rpx;
+}
+
+
+.ipt {
+    background: #f8f8f8;
+    flex: 1;
+    height: 70rpx;
+    padding: 0 10rpx;
+    border-radius: 10rpx;
+}
+
+.send {
+    width: 80rpx;
+    text-align: right;
+    line-height: 70rpx;
+    color: red;
+}
+
+.icon {
+    margin: 10rpx;
+    height: 50rpx;
+    padding-top: 10rpx;
+}
+
+.icon_img {
+    height: 50rpx;
+    width: 50rpx;
+    margin-right: 40rpx;
+}
+
+.emoji {
+    padding: 10rpx 0;
+    display: flex;
+    flex-wrap: wrap;
+    max-height: 320rpx;
+}
+
+.emoji ::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+    color: transparent;
+}
+
+.emoji_chunk {
+    margin: 10rpx 0;
+    width: calc((100vw - 40rpx) / 8);
+    height: 60rpx;
+    display: flex;
+    font-size: 40rpx;
+    /* background: blue; */
+    justify-content: center;
+    align-items: center;
+}
+
+.img_chunk {
+    height: calc((100vw - 80rpx) / 3);
+    width: calc((100vw - 80rpx) / 3);
+    margin-bottom: 20rpx;
+    position: relative;
+}
+
+.img_con {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.img_close {
+    height: 40rpx;
+    width: 40rpx;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.img {
+    height: calc((100vw - 80rpx) / 3);
+    width: calc((100vw - 80rpx) / 3);
+}
+
+.img_chunk:nth-child(3n + 2) {
+    margin: 0 20rpx;
+}

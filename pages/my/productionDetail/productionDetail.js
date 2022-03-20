@@ -9,6 +9,7 @@ Page({
 	data: {
 		id: '', // 作品id
 		detail: {}, // 作品详情
+		hadGoods: false, // 是否给该作品点过赞
 	},
 
 	/**
@@ -23,6 +24,8 @@ Page({
 		}
 		this.setData({ id }, () => {
 			this.onSearchProductionDetail();
+			this.onSearchCommonts(id);
+			this.getUserProductionGoods(id);
 		});
 	},
 
@@ -41,5 +44,24 @@ Page({
 			console.log(error);
 			loading.hideLoading();
 		}
+	},
+
+	// 查询评论
+	onSearchCommonts: function (id) {
+		const user_id = wx.getStorageSync('user_id');
+		loading.showLoading();
+		request
+			.get({ url: '/reply/allByContentId', data: { content_id: id, user_id, current: 1 } })
+			.then((res) => {
+				this.setData({ comments: res || [] });
+			})
+			.finally(() => loading.hideLoading());
+	},
+
+	// 查看是否点过赞
+	getUserProductionGoods: async function (id) {
+		const user_id = wx.getStorageSync('user_id');
+		const hadGoods = await request.get({ url: '/goods/userProductionGoods', data: { user_id, content_id: id } });
+		this.setData({ hadGoods: hadGoods === 1 });
 	},
 });

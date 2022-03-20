@@ -1,0 +1,24 @@
+<view class="btm">
+    <view class="con">
+        <view class="btm_left">
+            <input value="{{replyValue}}" class="ipt" bindblur="onBlurIpt" placeholder="写评论" />
+            <view class="icon_img">
+                <image class="icon" bindtap="onSend" src="/asserts/public/send.png" />
+            </view>
+        </view>
+        <view class="btm_right">
+            <view class="icon_img">
+                <block wx:if="{{hadGoods}}">
+                    <image class="icon" bindtap="onTagGood" src="/asserts/public/good_select.png" />
+                </block>
+                <block wx:else>
+                    <image class="icon" bindtap="onTagGood" src="/asserts/public/good_black.png" />
+                </block>
+            </view>
+            <view class="icon_img">
+                <image class="icon" bindtap="onSend" src="/asserts/public/share_black.png" />
+            </view>
+        </view>
+    </view>
+    
+</view>

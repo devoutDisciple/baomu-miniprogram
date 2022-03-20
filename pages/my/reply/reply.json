@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+      "comment": "/component/comment/comment",
+      "btm-empty": "/component/btmEmpty/btmEmpty",
+      "reply-ipt": "/component/replyIpt/replyIpt",
+      "empty-img": "/component/emptyImg/emptyImg"
+  },
+  "navigationBarTitleText": "评论回复"
+}

@@ -23,7 +23,8 @@
     "pages/my/order/order",
     "pages/my/productionShow/productionShow",
     "pages/my/productionPublish/productionPublish",
-    "pages/my/productionDetail/productionDetail"
+    "pages/my/productionDetail/productionDetail",
+    "pages/my/reply/reply"
   ],
   "window": {
     "backgroundTextStyle": "light",

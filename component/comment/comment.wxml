@@ -1,0 +1,32 @@
+<view class="comment">
+   <view class="header">
+        <image class="header_img" src="{{detail.userPhoto}}" />
+   </view> 
+   <view class="content">
+        <view class="con_name">{{detail.username}}</view>
+        <view class="con_desc" bindtap="searchReply">{{detail.desc}}</view>
+        <block wx:if="{{imgList && imgList.length !== 0}}">
+            <view class="con_img">
+                <comment-img imgList="{{imgList}}"/>
+            </view>
+        </block>
+        <view 
+            wx:if="{{detail.comment > 0 && type === 'content'}}" 
+            class="con_comment_num" 
+            bindtap="searchReply">共{{detail.comment}}条回复 <image class="con_comment_num_img" src="/asserts/public/arrow_right_blue.png" /> 
+        </view>
+        <view class="con_data">
+            <view class="con_data_time">{{detail.create_time}}</view>
+             <view class="con_data_opt">
+                <view wx:if="{{type === 'content'}}" class="con_data_opt_chunk" bindtap="searchReply">
+                    <image class="con_data_opt_chunk_img" src="/asserts/public/reply.png" />{{detail.comment}}
+                </view>
+                <view class="con_data_opt_chunk" bindtap="onChangeGoods">
+                    <image class="con_data_opt_chunk_img" wx:if="{{detail.hadGoods}}" src="/asserts/public/good_select.png" />
+                    <image class="con_data_opt_chunk_img" wx:else src="/asserts/public/good.png" />
+                    {{detail.goods}}
+                </view>
+             </view>
+        </view>
+   </view> 
+</view>

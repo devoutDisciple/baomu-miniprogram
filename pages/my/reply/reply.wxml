@@ -1,0 +1,30 @@
+<view class="wrap">
+    <scroll-view class="con" scroll-y="{{true}}">
+        <view class="con_my">
+            <comment detail="{{currentReply}}" type="reply"/>
+        </view>
+        <view class="con_other">
+            <block wx:if="{{replyList && replyList.length !== 0}}">
+                <comment 
+                    wx:key="id" 
+                    type="reply" 
+                    detail="{{item}}" 
+                    wx:for="{{replyList}}" 
+                    imgList="{{item.img_urls || []}}" />
+            </block>
+            <block wx:else>
+                <empty-img />
+            </block>
+        </view>
+        <btm-empty />
+    </scroll-view>
+    <reply-ipt 
+        type="2" 
+        focus="{{focus}}" 
+        visible="{{visible}}" 
+        contentId="{{contentId}}" 
+        commentId="{{currentReply.id}}" 
+        bindOnClose="onCloseIptDialog"
+        bindCallback="onSerchReplyList"
+        />
+</view>

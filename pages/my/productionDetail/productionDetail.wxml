@@ -10,11 +10,36 @@
     <view class="con">
         <view class="title">{{detail.title}}</view>
         <view class="production">
-            <view class="production_left">作品类型：{{detail.instr_name}}</view>
+            <view class="production_left">{{detail.instr_name}}</view>
             <view class="production_right">{{detail.create_time}}</view>
         </view>
-        <view class="production_desc">
+        <!-- <view class="production_desc">
             <text>{{detail.desc}}</text>
+        </view> -->
+    </view>
+    <view class="common_chunk">
+        <view class="common_title">
+            评价
+            <view class="common_more">
+                全部评价（169条）
+                <image class="common_more_icon" src="/asserts/public/left.png" />
+            </view>
         </view>
+        <view class="comment">
+            <block wx:if="{{comments && comments.length !== 0}}">
+                <comment 
+                    wx:key="id"
+                    type="content"
+                    detail="{{item}}"
+                    wx:for="{{comments}}"
+                    contentId="{{detail.id}}"
+                    imgList="{{item.img_urls || []}}"/>
+                <btm-tip />
+            </block>
+            <block wx:elif="{{id}}">
+                <empty-img/>
+            </block>
+        </view>
+        <reply-btm hadGoods="{{hadGoods}}" type="{{1}}" contentId="{{detail.id}}" commentId="" ownerId="{{detail.user_id}}"/>
     </view>
 </scroll-view>

@@ -1,0 +1,36 @@
+.wrap {
+    width: 100%;
+}
+
+.img {
+    margin-top: 10rpx;
+}
+
+.wrap2 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.wrap2 .img {
+    width: calc((100vw - 150rpx)/ 2);
+    height: calc((100vw - 150rpx)/ 2);
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+
+.wrap3 {
+    display: flex;
+    flex-wrap: wrap;
+    overflow: hidden;
+    justify-content: space-between;
+}
+
+.wrap3 .img {
+    width: calc((100vw - 160rpx)/ 3);
+    height: calc((100vw - 160rpx)/ 3);
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}

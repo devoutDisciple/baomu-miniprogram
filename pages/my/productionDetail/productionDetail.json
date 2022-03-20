@@ -1,7 +1,12 @@
 {
   "usingComponents": {
       "img-show": "/component/detailImgShow/detailImgShow",
-      "simple-video": "/component/simpleVideo/simpleVideo"
+      "simple-video": "/component/simpleVideo/simpleVideo",
+      "comment": "/component/comment/comment",
+      "btm-tip": "/component/btmTip/btmTip",
+      "btm-empty": "/component/btmEmpty/btmEmpty",
+      "empty-img": "/component/emptyImg/emptyImg",
+      "reply-btm": "/component/replyBtm/replyBtm"
   },
   "navigationBarTitleText": "作品详情"
 }
