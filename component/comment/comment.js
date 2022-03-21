@@ -50,7 +50,7 @@ Component({
 			const user_id = wx.getStorageSync('user_id');
 			const { detail, type } = this.data;
 			const flag = !detail.hadGoods;
-			detail.goods += flag ? 1 : -1;
+			detail.goods_num += flag ? 1 : -1;
 			detail.hadGoods = flag;
 			this.setData({ detail });
 			const { userId } = detail;

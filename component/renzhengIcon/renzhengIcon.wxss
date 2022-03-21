@@ -1,0 +1,37 @@
+.msg_tubiao_item {
+    padding: 5rpx 20rpx;
+    font-size: 24rpx;
+    margin-right: 10rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20rpx;
+}
+
+.msg_tubiao_item_img {
+    width: 24rpx;
+    height: 24rpx;
+    margin-right: 5rpx;
+    display: flex;
+    overflow: hidden;
+}
+
+.msg_tubiao_item_renzheng {
+    background: #f6eede;
+    color: #987f4a;
+}
+
+.msg_tubiao_item_yuanxiao {
+    background: #e7e7da;
+    color: #9d9d74;
+}
+
+.msg_tubiao_item_huojiang {
+    background: #f5dcc4;
+    color: #e19449;
+}
+
+.msg_tubiao_item_kaoji {
+    background: #dfe9d1;
+    color: #7b9b50;
+}

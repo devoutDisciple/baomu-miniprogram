@@ -3,7 +3,8 @@
 		"header": "/component/header/header",
 		"comment-item": "/component/commentItem/commentItem",
         "beard-list": "/component/beardList/beardList",
-        "tip-dialog": "/component/tipDialog/tipDialog"
+        "tip-dialog": "/component/tipDialog/tipDialog",
+        "renzhengIcon": "/component/renzhengIcon/renzhengIcon"
 	},
 	"navigationStyle": "custom"
 }

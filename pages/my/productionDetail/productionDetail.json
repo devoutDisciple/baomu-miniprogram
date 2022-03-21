@@ -6,7 +6,8 @@
       "btm-tip": "/component/btmTip/btmTip",
       "btm-empty": "/component/btmEmpty/btmEmpty",
       "empty-img": "/component/emptyImg/emptyImg",
-      "reply-btm": "/component/replyBtm/replyBtm"
+      "reply-btm": "/component/replyBtm/replyBtm",
+      "renzhengIcon": "/component/renzhengIcon/renzhengIcon"
   },
   "navigationBarTitleText": "作品详情"
 }

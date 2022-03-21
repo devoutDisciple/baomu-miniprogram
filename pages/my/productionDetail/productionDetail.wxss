@@ -18,6 +18,7 @@
 .title {
     font-size: 34rpx;
     color: #000;
+    margin-top: 30rpx;
 }
 
 .production {
@@ -34,6 +35,31 @@
 
 .production_desc {
     padding: 40rpx 0;
+}
+
+.user {
+}
+
+.user_photo {
+    display: flex;
+    align-items: center;
+}
+
+.user_photo_img {
+    height: 80rpx;
+    width: 80rpx;
+    margin-right: 20rpx;
+}
+
+.user_photo_icon {
+    height: 40rpx;
+    width: 40rpx;
+    margin-left: 20rpx;
+}
+
+.msg_tubiao {
+    display: flex;
+    margin-top: 10rpx;
 }
 
 .common_chunk {

@@ -8,11 +8,25 @@
         </block>
     </view>
     <view class="con">
+        <view class="user">
+            <view class="user_photo">
+                <image class="user_photo_img" src="/asserts/temp/photo.png" />
+                温江自
+                <image class="user_photo_icon" src="/asserts/public/attention_add.png" />
+            </view>
+            <view class="msg_tubiao">
+                <renzhengIcon idx="1"/>
+                <renzhengIcon idx="2"/>
+                <renzhengIcon idx="3"/>
+                <renzhengIcon idx="4"/>
+            </view>
+        </view>
         <view class="title">{{detail.title}}</view>
         <view class="production">
             <view class="production_left">{{detail.instr_name}}</view>
             <view class="production_right">{{detail.create_time}}</view>
         </view>
+        
         <!-- <view class="production_desc">
             <text>{{detail.desc}}</text>
         </view> -->
@@ -21,7 +35,7 @@
         <view class="common_title">
             评价
             <view class="common_more">
-                全部评价（169条）
+                全部评价（{{comment_total}}条）
                 <image class="common_more_icon" src="/asserts/public/left.png" />
             </view>
         </view>
@@ -38,8 +52,9 @@
             </block>
             <block wx:elif="{{id}}">
                 <empty-img/>
+                <btm-empty />
             </block>
         </view>
-        <reply-btm hadGoods="{{hadGoods}}" type="{{1}}" contentId="{{detail.id}}" commentId="" ownerId="{{detail.user_id}}"/>
+        <reply-btm bindCallback="onRepluSuccess" hadGoods="{{hadGoods}}" type="{{1}}" contentId="{{detail.id}}" commentId="" ownerId="{{detail.user_id}}"/>
     </view>
 </scroll-view>

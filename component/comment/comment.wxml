@@ -11,20 +11,20 @@
             </view>
         </block>
         <view 
-            wx:if="{{detail.comment > 0 && type === 'content'}}" 
+            wx:if="{{detail.comment_num > 0 && type === 'content'}}" 
             class="con_comment_num" 
-            bindtap="searchReply">共{{detail.comment}}条回复 <image class="con_comment_num_img" src="/asserts/public/arrow_right_blue.png" /> 
+            bindtap="searchReply">共{{detail.comment_num}}条回复 <image class="con_comment_num_img" src="/asserts/public/arrow_right_blue.png" /> 
         </view>
         <view class="con_data">
             <view class="con_data_time">{{detail.create_time}}</view>
              <view class="con_data_opt">
                 <view wx:if="{{type === 'content'}}" class="con_data_opt_chunk" bindtap="searchReply">
-                    <image class="con_data_opt_chunk_img" src="/asserts/public/reply.png" />{{detail.comment}}
+                    <image class="con_data_opt_chunk_img" src="/asserts/public/reply.png" />{{detail.comment_num}}
                 </view>
                 <view class="con_data_opt_chunk" bindtap="onChangeGoods">
                     <image class="con_data_opt_chunk_img" wx:if="{{detail.hadGoods}}" src="/asserts/public/good_select.png" />
                     <image class="con_data_opt_chunk_img" wx:else src="/asserts/public/good.png" />
-                    {{detail.goods}}
+                    {{detail.goods_num}}
                 </view>
              </view>
         </view>

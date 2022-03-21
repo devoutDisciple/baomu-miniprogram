@@ -1,0 +1,11 @@
+<view class="msg_tubiao_item {{dialogDetail.class}}" data-idx="{{idx}}" bindtap="onTapSign">
+    <image class="msg_tubiao_item_img" src="{{dialogDetail.src}}" />
+    {{dialogDetail.name}}
+</view>
+<block wx:if="{{dialogShow}}">
+    <tip-dialog
+        bindOnClose="onCloseDialog"
+        src="{{dialogDetail.src}}" 
+        title="{{dialogDetail.title}}" 
+        desc="{{dialogDetail.desc}}"/> 
+</block>

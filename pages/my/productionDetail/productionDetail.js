@@ -10,6 +10,7 @@ Page({
 		id: '', // 作品id
 		detail: {}, // 作品详情
 		hadGoods: false, // 是否给该作品点过赞
+		comment_total: 0, // 全部评价
 	},
 
 	/**
@@ -53,15 +54,22 @@ Page({
 		request
 			.get({ url: '/reply/allByContentId', data: { content_id: id, user_id, current: 1 } })
 			.then((res) => {
-				this.setData({ comments: res || [] });
+				this.setData({ comments: res.list || [], comment_total: res.count });
 			})
 			.finally(() => loading.hideLoading());
 	},
 
 	// 查看是否点过赞
 	getUserProductionGoods: async function (id) {
+		loading.showLoading();
 		const user_id = wx.getStorageSync('user_id');
 		const hadGoods = await request.get({ url: '/goods/userProductionGoods', data: { user_id, content_id: id } });
 		this.setData({ hadGoods: hadGoods === 1 });
+		loading.hideLoading();
+	},
+
+	// 评论成功之后
+	onRepluSuccess: function () {
+		this.onSearchCommonts(this.data.id);
 	},
 });

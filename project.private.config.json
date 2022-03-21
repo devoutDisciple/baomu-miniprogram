@@ -158,6 +158,13 @@
           "name": "作品详情",
           "pathName": "pages/my/productionDetail/productionDetail",
           "query": "id=11",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "评论恢复详情",
+          "pathName": "pages/my/reply/reply",
+          "query": "commentId=110&contentId=11",
           "scene": null,
           "launchMode": "default"
         }

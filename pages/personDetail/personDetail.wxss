@@ -100,7 +100,6 @@
 .msg_tubiao_item {
     padding: 5rpx 20rpx;
     font-size: 24rpx;
-   
     margin-right: 10rpx;
     display: flex;
     align-items: center;
