@@ -1,14 +1,24 @@
 <view class="list">
-    <image class="list_img" mode="widthFix" src="/asserts/temp/guangchang.png" />
+    <block wx:if="{{data.video && data.video.duration && data.video.url}}">
+        <simple-video class="con_con" videoId="{{data.video.url}}" videoDetail="{{data.video}}"/>
+    </block>
+    <block wx:else>
+        <my-img class="con_con" src="{{data.showImg}}"/>
+    </block>
     <view class="con">
-        <view class="title">这是一场无与伦比的演唱会</view>
-        <view class="person">
-            <image class="person_img" src="/asserts/temp/photo2.png" />
-            <view class="person_name">摄影师小张摄影师小张摄影师小张摄影师小张</view>
-            <image class="person_icon" src="/asserts/public/renzhengbiaoshi.png" />
-            <view class="person_tag">同城</view>
-            <view class="person_time">1小时前</view>
+        <view class="title" bindtap="onSeachDetail">{{data.title}}</view>
+        <view class="person" bindtap="onSeachDetail">
+            <image class="person_img" src="{{data.userDetail.photo}}" />
+            <view class="person_name">{{data.userDetail.nickname}}</view>
+            <view class="person_time">{{data.create_time}}</view>
         </view>
-        <view class="desc">这是描述信息，这是描述信息，这是描述信息，这是描述信息，这是描述信息，这是描述信息，这是描述信息</view>
+        <view class="person_icon">
+            <renzhengIcon idx="1"/>
+            <renzhengIcon idx="2"/>
+            <renzhengIcon idx="3"/>
+            <renzhengIcon idx="4"/>
+        </view>
+        <!-- <view class="person_tag">同城</view> -->
+        <view class="desc" bindtap="onSeachDetail">{{data.desc}}</view>
     </view>
 </view>

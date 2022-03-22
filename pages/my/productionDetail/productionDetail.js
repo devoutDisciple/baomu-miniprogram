@@ -36,9 +36,10 @@ Page({
 			loading.showLoading();
 			const { id } = this.data;
 			const detail = await request.get({ url: '/production/detailById', data: { id } });
-			if (detail) {
+			if (detail && detail.instr_id) {
 				detail.instr_name = instruments.filter((ins) => ins.id === detail.instr_id)[0].name;
 			}
+			console.log(detail, 122);
 			this.setData({ detail });
 			loading.hideLoading();
 		} catch (error) {

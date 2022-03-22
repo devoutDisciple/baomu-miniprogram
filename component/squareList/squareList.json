@@ -1,4 +1,9 @@
 {
-  "component": true,
-  "usingComponents": {}
+	"component": true,
+	"usingComponents": {
+		"my-img": "/component/img/img",
+		"btm-tip": "/component/btmTip/btmTip",
+		"simple-video": "/component/simpleVideo/simpleVideo",
+        "renzhengIcon": "/component/renzhengIcon/renzhengIcon"
+	}
 }

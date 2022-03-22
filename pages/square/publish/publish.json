@@ -1,9 +1,0 @@
-{
-	"usingComponents": {
-        "home-publish": "/component/homePublish/homePublish",
-        "select-item": "/component/selectItem/selectItem",
-        "my-img": "/component/img/img",
-        "simple-video": "/component/simpleVideo/simpleVideo"
-    },
-	"navigationBarTitleText": "发布"
-}

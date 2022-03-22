@@ -1,56 +1,40 @@
-// pages/square/index/index.js
+import request from '../../../utils/request';
+import loading from '../../../utils/loading';
+import { instruments } from '../../../constant/constant';
+
 Page({
 	/**
 	 * 页面的初始数据
 	 */
 	data: {
-		list: [1, 2, 3, 4, 5, 6, 7],
+		list: [],
 	},
 
 	/**
 	 * 生命周期函数--监听页面加载
 	 */
-	onLoad: function (options) {},
+	onLoad: function () {
+		this.getAllProductions();
+	},
+
+	// 获取发布的列表
+	getAllProductions: async function () {
+		loading.showLoading();
+		const user_id = wx.getStorageSync('user_id');
+		const result = await request.get({ url: '/production/allProductions', data: { user_id } });
+		if (result && result.length !== 0) {
+			result.forEach((item) => {
+				item.instr_name = instruments.filter((ins) => ins.id === item.instr_id)[0].name;
+			});
+		}
+		loading.hideLoading();
+		this.setData({ list: result });
+	},
 
 	// 点击发布
 	onTapPublish: function () {
 		wx.navigateTo({
-			url: '/pages/square/publish/publish',
+			url: '/pages/my/productionPublish/productionPublish',
 		});
 	},
-
-	/**
-	 * 生命周期函数--监听页面初次渲染完成
-	 */
-	onReady: function () {},
-
-	/**
-	 * 生命周期函数--监听页面显示
-	 */
-	onShow: function () {},
-
-	/**
-	 * 生命周期函数--监听页面隐藏
-	 */
-	onHide: function () {},
-
-	/**
-	 * 生命周期函数--监听页面卸载
-	 */
-	onUnload: function () {},
-
-	/**
-	 * 页面相关事件处理函数--监听用户下拉动作
-	 */
-	onPullDownRefresh: function () {},
-
-	/**
-	 * 页面上拉触底事件的处理函数
-	 */
-	onReachBottom: function () {},
-
-	/**
-	 * 用户点击右上角分享
-	 */
-	onShareAppMessage: function () {},
 });

@@ -10,8 +10,8 @@
     <view class="con">
         <view class="user">
             <view class="user_photo">
-                <image class="user_photo_img" src="/asserts/temp/photo.png" />
-                温江自
+                <image class="user_photo_img" src="{{detail.userDetail.photo}}" />
+                {{detail.userDetail.nickname || ""}}
                 <image class="user_photo_icon" src="/asserts/public/attention_add.png" />
             </view>
             <view class="msg_tubiao">
@@ -26,10 +26,9 @@
             <view class="production_left">{{detail.instr_name}}</view>
             <view class="production_right">{{detail.create_time}}</view>
         </view>
-        
-        <!-- <view class="production_desc">
+        <view class="production_desc">
             <text>{{detail.desc}}</text>
-        </view> -->
+        </view>
     </view>
     <view class="common_chunk">
         <view class="common_title">

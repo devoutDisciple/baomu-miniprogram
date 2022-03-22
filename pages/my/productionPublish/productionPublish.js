@@ -1,6 +1,6 @@
 import loading from '../../../utils/loading';
 import { instruments } from '../../../constant/constant';
-import request, { post, uploadFile } from '../../../utils/request';
+import request, { uploadFile } from '../../../utils/request';
 
 Page({
 	/**

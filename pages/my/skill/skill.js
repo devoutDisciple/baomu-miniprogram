@@ -18,7 +18,7 @@ Page({
 			src: '/asserts/public/publish.png',
 			desc: '',
 		},
-		// addList: [{ id: '1111', selectSkillId: '', selectSkillName: '', selectGradeId: '', selectGradeName: '' }], // 添加技能的id的list
+		// addList: [{ id: 'id', selectSkillId: '', selectSkillName: '', selectGradeId: '', selectGradeName: '' }], // 添加技能的id的list
 		addList: [], // 添加技能的id的list
 		skillListForSelect: [], // 技能的名称
 		gradeList: [1, 2, 3, 4, 5], // 自评分

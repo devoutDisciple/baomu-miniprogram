@@ -37,9 +37,6 @@
     padding: 40rpx 0;
 }
 
-.user {
-}
-
 .user_photo {
     display: flex;
     align-items: center;
@@ -49,6 +46,7 @@
     height: 80rpx;
     width: 80rpx;
     margin-right: 20rpx;
+    border-radius: 100%;
 }
 
 .user_photo_icon {

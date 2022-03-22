@@ -108,7 +108,6 @@ Page({
 					type: 1, // 1-文字 2-图片
 				},
 			];
-			console.log(msgData, 111);
 			this.setData({ msgData: msgData });
 		}
 	},

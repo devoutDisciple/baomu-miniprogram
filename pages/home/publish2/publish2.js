@@ -110,7 +110,6 @@ Page({
 	// 选择是否议价
 	onPickBargain: function (e) {
 		const { value } = e.detail;
-		console.log(value, 111);
 		const selectBargain = this.data.bargainList[value];
 		this.setData({ selectBargain: selectBargain });
 		setStoragePublishMsg('publish2', { bargain: selectBargain });

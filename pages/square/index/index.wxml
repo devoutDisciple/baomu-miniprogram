@@ -3,7 +3,7 @@
         <block wx:if="{{list && list.length !== 0}}">
             <block wx:for="{{list}}" wx:key="index">
                 <view class="chunk">
-                    <square-list />
+                    <square-list data="{{item}}"/>
                 </view>
             </block>
         </block>

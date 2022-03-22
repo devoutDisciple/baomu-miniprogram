@@ -46,7 +46,6 @@ Page({
 	goOtherPage: function (e) {
 		const { type } = e.currentTarget.dataset;
 		const user_id = wx.getStorageSync('user_id');
-		console.log(type, 1111);
 		// 我的发布
 		if (type === 'publish') this.jumpPage('/pages/my/myPublish/myPublish');
 		// 我的乐队

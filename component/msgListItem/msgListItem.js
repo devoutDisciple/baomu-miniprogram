@@ -34,7 +34,6 @@ Component({
 	methods: {
 		// 点击消息
 		onTapMsg: function (e) {
-			console.log(e, 111);
 			const { msgtype } = e.currentTarget.dataset;
 			// 个人信息
 			if (msgtype === 1) {

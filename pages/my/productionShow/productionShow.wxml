@@ -28,6 +28,5 @@
             <view>暂无作品，赶快去上传吧~</view>
         </view>
     </block>
-    
     <view class="add_btn" bindtap="onTapAdd">添加作品</view>
 </scroll-view>

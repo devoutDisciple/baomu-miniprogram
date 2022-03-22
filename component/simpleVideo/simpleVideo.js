@@ -94,7 +94,8 @@ Component({
 			const currentPage = pages[pages.length - 1];
 			// 将当前播放的视频上下文保存在当前页面，以确保当前只有一个视频在播放
 			const { videoContext: pageVideoContext } = currentPage.data;
-			if (pageVideoContext !== this.videoContext) {
+			console.log(pageVideoContext, 1111);
+			if (pageVideoContext) {
 				pageVideoContext.pause();
 			}
 			this.videoContext.play();
