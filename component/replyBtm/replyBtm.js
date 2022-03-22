@@ -102,17 +102,32 @@ Component({
 			const { type, ownerId, contentId, commentId, hadGoods } = this.data;
 			const goods_type = !hadGoods;
 			// type   content:给内容的评论点赞 reply：给评论的评论点赞
-			request.post({
-				url: '/goods/addPostsGoods',
-				data: {
-					user_id,
-					other_id: ownerId,
-					content_id: contentId,
-					comment_id: commentId,
-					goods_type: goods_type,
-					type: type === 'content' ? 2 : 3,
-				},
-			});
+			if (type === 1) {
+				request.post({
+					url: '/goods/addPostsGoods',
+					data: {
+						user_id,
+						other_id: ownerId,
+						content_id: contentId,
+						comment_id: commentId,
+						goods_type: goods_type,
+						type: type,
+					},
+				});
+			} else {
+				request.post({
+					url: '/goods/addReplyGoods',
+					data: {
+						user_id,
+						other_id: ownerId,
+						content_id: contentId,
+						comment_id: commentId,
+						goods_type: goods_type,
+						type: type,
+					},
+				});
+			}
+			this.triggerEvent('TapGoods');
 			this.setData({ hadGoods: !hadGoods });
 		},
 	},

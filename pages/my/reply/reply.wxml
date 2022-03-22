@@ -1,13 +1,13 @@
 <view class="wrap">
     <scroll-view class="con" scroll-y="{{true}}">
         <view class="con_my">
-            <comment detail="{{currentReply}}" type="reply"/>
+            <comment detail="{{currentReply}}" type="reply1"/>
         </view>
         <view class="con_other">
             <block wx:if="{{replyList && replyList.length !== 0}}">
                 <comment 
                     wx:key="id" 
-                    type="reply" 
+                    type="reply2" 
                     detail="{{item}}" 
                     wx:for="{{replyList}}" 
                     imgList="{{item.img_urls || []}}" />
@@ -18,7 +18,7 @@
         </view>
         <btm-empty />
     </scroll-view>
-    <reply-btm bindCallback="onRepluSuccess" hadGoods="{{currentReply.hadGoods}}" type="{{2}}" contentId="{{contentId}}" commentId="{{commentId}}" ownerId="{{currentReply.userId}}"/>
+    <reply-btm bindTapGoods="onTapGoodsCallback" bindCallback="onRepluSuccess" hadGoods="{{currentReply.hadGoods}}" type="{{2}}" contentId="{{contentId}}" commentId="{{commentId}}" ownerId="{{currentReply.userId}}"/>
     <!-- <reply-ipt 
         type="2" 
         focus="{{focus}}" 

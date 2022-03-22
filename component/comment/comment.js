@@ -8,7 +8,7 @@ Component({
 	properties: {
 		type: {
 			type: String,
-			value: '', // content-内容回复 reply-评论回复
+			value: '', // content-内容回复 reply1-在评论详情页的内容回复 reply2-评论的评论
 		},
 		contentId: {
 			type: String,
@@ -54,7 +54,10 @@ Component({
 			detail.hadGoods = flag;
 			this.setData({ detail });
 			const { userId } = detail;
-			// type   content:给内容的评论点赞 reply：给评论的评论点赞
+			// type   content:给内容的评论点赞 reply1：评论详情页给内容的评论 reply2-评论的评论
+			let goodsType = 2;
+			if (type === 'content' || type === 'reply1') goodsType = 2;
+			if (type === 'reply2') goodsType = 3;
 			post({
 				url: '/goods/addReplyGoods',
 				data: {
@@ -63,7 +66,7 @@ Component({
 					content_id: detail.content_id,
 					comment_id: detail.id,
 					goods_type: flag,
-					type: type === 'content' ? 2 : 3,
+					type: goodsType,
 				},
 			});
 		},

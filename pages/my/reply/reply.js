@@ -56,4 +56,9 @@ Page({
 	onRepluSuccess: function () {
 		this.getReplyData();
 	},
+
+	// 点击下面的赞
+	onTapGoodsCallback: function () {
+		this.getReplyData();
+	},
 });
