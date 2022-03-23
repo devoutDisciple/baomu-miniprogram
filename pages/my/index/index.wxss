@@ -50,6 +50,7 @@
 .person_photo {
     width: 144rpx;
     height: 144rpx;
+    border-radius: 100%;
 }
 
 .person_msg {

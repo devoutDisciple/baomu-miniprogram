@@ -6,36 +6,39 @@
     <view class="con">
         <header text="我的"/>
         <view class="intro" style="{{' top: ' + statusHeight + '; height: calc(100vh - ' + statusHeight  +')' }}">
-            <view class="person">
-                <image class="person_photo" src="/asserts/temp/photo.png" />
+            <view class="person" bindtap="onTapUserPhoto">
+                <image class="person_photo" src="{{userDetail.photo}}" />
                 <view class="person_msg">
                     <view class="person_mgs_profession">
-                        <view class="person_mgs_profession_name">摄影大师-托洛夫斯基</view>
-                        <view class="person_mgs_profession_level">
-                            <image class="person_mgs_profession_level_photo" src="/asserts/public/renzheng.png" />
-                        </view>
+                        <view class="person_mgs_profession_name">{{userDetail.nickname}}</view>
+                        <block wx:if="{{userDetail.is_name === 1}}">
+                            <view class="person_mgs_profession_level">
+                                <image class="person_mgs_profession_level_photo" src="/asserts/public/renzheng.png" />
+                            </view>
+                        </block>
+                       
                     </view>
                     <view class="person_mgs_name">
-                        刘亦菲 28岁
+                        {{userDetail.username}}
                     </view>
                 </view>
             </view>
             <view class="data">
                 <view class="data_chunk">
                     <view class="data_chunk_txt">获赞</view>
-                    <view class="data_chunk_num">32</view>
+                    <view class="data_chunk_num">{{userDetail.goods_num}}</view>
                 </view>
                 <view class="data_chunk">
                     <view class="data_chunk_txt">关注</view>
-                    <view class="data_chunk_num">543</view>
+                    <view class="data_chunk_num">{{userDetail.attention_num}}</view>
                 </view>
                 <view class="data_chunk">
                     <view class="data_chunk_txt">粉丝</view>
-                    <view class="data_chunk_num">63321</view>
+                    <view class="data_chunk_num">{{userDetail.fans_num}}</view>
                 </view>
             </view>
             <view class="desc">
-                个人简介: 区块链是一个信息技术领域的术语。从本质上讲，它是一个共享数据库，存储于其中的数据或信息
+                个人简介: {{userDetail.desc}}
             </view>
             <scroll-view class="detail" scroll-y="{{true}}" show-scrollbar="{{false}}" enhanced="{{true}}">
                 <view class="opt work_msg">
@@ -72,7 +75,7 @@
                 <view class="opt">
                     <listItem text="消息中心" iconName="msg_center" data-type="message" bindtap="goOtherPage" isFirst/>
                     <listItem text="我的技能" iconName="my_skill" data-type="skill" bindtap="goOtherPage"/>
-                    <listItem text="照片墙修改" iconName="photo_wall" data-type="photo" bindtap="goOtherPage"/>
+                    <listItem text="个人信息修改" iconName="photo_wall" data-type="photo" bindtap="goOtherPage"/>
                     <listItem text="工作地点" iconName="work_location" data-type="address" bindtap="goOtherPage"/>
                     <listItem text="可预约时段" iconName="order _time" data-type="time" bindtap="goOtherPage" isLast/>
                 </view>

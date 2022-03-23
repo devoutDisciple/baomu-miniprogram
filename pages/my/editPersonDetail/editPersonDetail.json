@@ -1,0 +1,7 @@
+{
+	"usingComponents": {
+        "select-item": "/component/selectItem/selectItem",
+        "btm-empty": "/component/btmEmpty/btmEmpty"
+    },
+	"navigationBarTitleText": "个人资料修改"
+}

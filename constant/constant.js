@@ -438,3 +438,16 @@ export const study_type = [
 	{ id: 5, name: '硕士' },
 	{ id: 6, name: '博士' },
 ];
+
+// 擅长风格
+export const person_style = [
+	{ id: 1, name: '古典' },
+	{ id: 2, name: '电子' },
+	{ id: 3, name: '流行' },
+	{ id: 4, name: '国风' },
+	{ id: 5, name: '摇滚' },
+	{ id: 6, name: '爵士' },
+	{ id: 7, name: '布鲁斯' },
+	{ id: 8, name: '独立音乐' },
+	{ id: 9, name: '阿卡贝拉' },
+];

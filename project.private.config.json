@@ -86,12 +86,6 @@
           "scene": null
         },
         {
-          "name": "广场发布帖子",
-          "pathName": "pages/square/publish/publish",
-          "query": "",
-          "scene": null
-        },
-        {
           "name": "邀请",
           "pathName": "pages/invitation/invitation",
           "query": "",
@@ -165,6 +159,13 @@
           "name": "评论恢复详情",
           "pathName": "pages/my/reply/reply",
           "query": "commentId=110&contentId=11",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "个人资料修改",
+          "pathName": "pages/my/editPersonDetail/editPersonDetail",
+          "query": "",
           "scene": null,
           "launchMode": "default"
         }

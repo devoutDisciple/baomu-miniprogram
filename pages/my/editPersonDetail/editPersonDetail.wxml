@@ -1,0 +1,72 @@
+<scroll-view class="wrap" scroll-y="{{true}}" enhanced="{{true}}" show-scrollbar="{{false}}">
+    <view class="chunk" bindtap="onChoosePhotoImg">
+        <view class="label">头像</view>
+        <view class="value">
+            <block wx:if="{{photo}}">
+                <image class="value_img" src="{{photo}}" />
+            </block>
+            <block wx:else>
+                <image class="value_img" src="/asserts/public/defalut_photo.png" />
+            </block>
+        </view>
+        <image class="icon" src="/asserts/public/left.png" />
+    </view>
+    <view class="chunk">
+        <view class="label">昵称</view>
+        <view class="value">
+            <input class="value_ipt" value="{{nickname}}" data-key="nickname" bindblur="onBlurIpt" placeholder="请输入" />
+        </view>
+        <image class="icon" src="/asserts/public/left.png" />
+    </view>
+    <view class="chunk">
+        <view class="label">姓名</view>
+        <view class="value">
+            <input class="value_ipt" value="{{username}}" data-key="username" bindblur="onBlurIpt" placeholder="请输入" />
+        </view>
+        <image class="icon" src="/asserts/public/left.png" />
+    </view>
+    <view class="chunk">
+        <view class="label">擅长风格</view>
+        <view class="value">
+            <picker class="picker" bindchange="stylePickSelect" range="{{styleList}}">
+                <block wx:if="{{styleName}}">
+                    <view class="picker_value">
+                        {{styleName}}
+                    </view>
+                </block>
+                <block wx:else>
+                    <view class="picker_init">
+                        请选择
+                    </view>
+                </block>
+            </picker>
+        </view>
+        <image class="icon" src="/asserts/public/left.png" />
+    </view>
+    <view class="chunk2">
+        <view class="chunk_con">
+            <view class="label">个人简介</view>
+            <view class="value"></view>
+            <image class="icon" src="/asserts/public/left.png" />
+        </view>
+        <textarea class="desc" cursor-spacing="{{40}}" value="{{desc}}" placeholder="个人简介" maxlength="{{300}}" bindblur="onBlurDesc"/>
+    </view>
+    <view class="chunk2" bindtap="onChooseBgImg">
+        <view class="chunk_con">
+            <view class="label">背景墙</view>
+            <view class="value"></view>
+            <image class="icon" src="/asserts/public/left.png" />
+        </view>
+        <block wx:if="{{bgUrl}}">
+            <image class="bg_img" mode="widthFix" src="{{bgUrl}}" />
+        </block>
+        <block wx:else>
+            <image class="bg_img" mode="widthFix" src="/asserts/public/default_bg.png" />
+        </block>
+        
+    </view>
+    <view class="footer">
+        <view class="edit_btn" bindtap="onSend">确认修改</view>
+    </view>
+    <view class="empty"></view>
+</scroll-view>

@@ -1,4 +1,6 @@
 import deviceUtil from '../../../utils/deviceUtil';
+import request from '../../../utils/request';
+import loading from '../../../utils/loading';
 
 Page({
 	/**
@@ -13,14 +15,34 @@ Page({
 	/**
 	 * 生命周期函数--监听页面加载
 	 */
-	onLoad: function () {
+	onLoad: async function () {
+		loading.showLoading();
 		this.getDeviceData();
+		await this.getUserInfo();
+		loading.hideLoading();
+	},
+
+	// 获取用户信息
+	getUserInfo: async function () {
+		const user_id = wx.getStorageSync('user_id');
+		const result = await request.get({ url: '/user/userDetail', data: { user_id } });
+		this.setData({ userDetail: result });
+	},
+
+	// 点击用户头像
+	onTapUserPhoto: function () {
+		const user_id = wx.getStorageSync('user_id');
+		wx.navigateTo({
+			url: `/pages/personDetail/personDetail?user_id=${user_id}`,
+		});
 	},
 
 	/**
 	 * 生命周期函数--监听页面初次渲染完成
 	 */
-	onReady: function () {},
+	onShow: function () {
+		this.getUserInfo();
+	},
 
 	/**
 	 * 页面相关事件处理函数--监听用户下拉动作
@@ -65,7 +87,7 @@ Page({
 		// 我的技能
 		if (type === 'skill') this.jumpPage('/pages/my/skill/skill');
 		// 照片墙
-		if (type === 'photo') this.jumpPage('/pages/my/myPublish/myPublish');
+		if (type === 'photo') this.jumpPage('/pages/my/editPersonDetail/editPersonDetail');
 		// 工作地点
 		if (type === 'address') this.jumpPage('/pages/my/myPublish/myPublish');
 		// 可预约时段

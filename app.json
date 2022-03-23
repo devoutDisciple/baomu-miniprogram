@@ -12,7 +12,6 @@
     "pages/home/publish1/publish1",
     "pages/home/publish2/publish2",
     "pages/home/publish3/publish3",
-    "pages/square/publish/publish",
     "pages/invitation/invitation",
     "pages/publishDetail/publishDetail",
     "pages/my/myPublish/myPublish",
@@ -24,7 +23,8 @@
     "pages/my/productionShow/productionShow",
     "pages/my/productionPublish/productionPublish",
     "pages/my/productionDetail/productionDetail",
-    "pages/my/reply/reply"
+    "pages/my/reply/reply",
+    "pages/my/editPersonDetail/editPersonDetail"
   ],
   "window": {
     "backgroundTextStyle": "light",
