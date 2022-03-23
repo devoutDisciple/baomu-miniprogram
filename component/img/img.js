@@ -15,6 +15,7 @@ Component({
 	data: {
 		width: 200,
 		height: 100,
+		url: '',
 	},
 
 	lifetimes: {
@@ -24,6 +25,7 @@ Component({
 	observers: {
 		src: function (src) {
 			const self = this;
+			if (!src) return;
 			wx.getImageInfo({
 				src: src,
 				success: function (res) {

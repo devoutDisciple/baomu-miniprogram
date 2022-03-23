@@ -13,7 +13,7 @@ Page({
 	/**
 	 * 生命周期函数--监听页面加载
 	 */
-	onLoad: function () {
+	onShow: function () {
 		this.getAllProductions();
 	},
 
@@ -27,14 +27,15 @@ Page({
 				item.instr_name = instruments.filter((ins) => ins.id === item.instr_id)[0].name;
 			});
 		}
-		loading.hideLoading();
+		console.log(result, 121);
 		this.setData({ list: result });
+		loading.hideLoading();
 	},
 
 	// 点击发布
 	onTapPublish: function () {
 		wx.navigateTo({
-			url: '/pages/my/productionPublish/productionPublish',
+			url: '/pages/square/publish/publish',
 		});
 	},
 });

@@ -6,8 +6,14 @@
                     <square-list data="{{item}}"/>
                 </view>
             </block>
+            <btm-tip />
         </block>
-        <btm-tip />
+        <block wx:else>
+            <view class="empty">
+                <image class="empty_img" src="/asserts/public/empty.png" />
+                <view>广场还没营业哦~</view>
+            </view>
+        </block>
     </view>
     <view class="publish_btn" bindtap="onTapPublish">发布</view>
 </scroll-view>

@@ -24,7 +24,8 @@
     "pages/my/productionPublish/productionPublish",
     "pages/my/productionDetail/productionDetail",
     "pages/my/reply/reply",
-    "pages/my/editPersonDetail/editPersonDetail"
+    "pages/my/editPersonDetail/editPersonDetail",
+    "pages/square/publish/publish"
   ],
   "window": {
     "backgroundTextStyle": "light",

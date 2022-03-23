@@ -176,7 +176,7 @@ Page({
 				desc,
 				img_url: uploadImgUrls,
 				video: fileDetail,
-				type: 1,
+				type: 2,
 			};
 			const result = await request.post({ url: '/production/add', data: params });
 			if (result === 'success') {

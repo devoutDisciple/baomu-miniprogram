@@ -1,0 +1,141 @@
+.con {
+    height: 100vh;
+    width: 100vw;
+}
+
+.empty {
+    height: 20rpx;
+    background: #f7f7f7;
+}
+
+.wrap {
+    width: calc(100vw - 40rpx);
+    height: calc(100vh - 40rpx);
+    padding: 20rpx;
+}
+
+.chunk {
+    padding: 40rpx 0;
+    border-bottom: 1rpx solid #ececec;
+}
+
+.picker {
+    position: absolute;
+    width: 100%;
+    align-items: center;
+    height: 40rpx;
+    left: 0;
+    top: 0;
+}
+
+.picker_init {
+    color: #6a6a6a;
+}
+
+.picker_value {
+    color: #333;
+}
+
+.text {
+    width: 100%;
+    min-height: 200rpx;
+}
+
+.btm {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    height: 100rpx;
+    width: 100vw;
+    padding-bottom: 30rpx;
+    padding-top: 20rpx;
+    box-shadow: 0rpx -3rpx 27rpx #8a8a8a;
+    display: flex;
+    background: #fff;
+    z-index: 100;
+}
+
+.btm_left {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    margin-left: 40rpx;
+}
+
+.btm_icon {
+    margin-right: 60rpx;
+}
+
+.btm_icon1 {
+    width: 49rpx;
+    height: 48rpx;
+}
+
+.btm_icon2 {
+    width: 56rpx;
+    height: 46rpx;
+}
+
+.btm_icon3 {
+    width: 48rpx;
+    height: 54rpx;
+}
+
+.btm_right {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.btm_pub {
+    background: #000;
+    color: #fff;
+    padding: 15rpx 40rpx;
+    border-radius: 40rpx;
+    margin-right: 20rpx;
+}
+
+.img_con {
+    bottom: 170rpx;
+    left: 20rpx;
+    width: calc(100vw - 40rpx);
+    min-height: 20rpx;
+    display: flex;
+    flex-wrap: wrap;
+    padding-bottom: 240rpx;
+    padding-top: 60rpx;
+}
+
+.img_chunk {
+    height: calc((100vw - 100rpx) / 3);
+    width: calc((100vw - 100rpx) / 3);
+    padding-top: 20rpx;
+    position: relative;
+}
+
+.video {
+    position: relative;
+    width: 100%;
+    padding-top: 20rpx;
+}
+
+.img_close {
+    height: 30rpx;
+    width: 30rpx;
+    position: absolute;
+    right: 19rpx;
+    top: 16px;
+}
+
+.img_chunk:nth-child(2) {
+    margin: 0 30rpx;
+}
+
+.img_chunk:nth-child(5) {
+    margin: 0 30rpx;
+}
+
+.img_chunk:nth-child(8) {
+    margin: 0 30rpx;
+}

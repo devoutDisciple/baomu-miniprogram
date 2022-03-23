@@ -2,7 +2,7 @@
     <block wx:if="{{data.video && data.video.duration && data.video.url}}">
         <simple-video class="con_con" videoId="{{data.video.url}}" videoDetail="{{data.video}}"/>
     </block>
-    <block wx:else>
+    <block wx:elif="{{data.showImg}}">
         <my-img class="con_con" src="{{data.showImg}}"/>
     </block>
     <view class="con">
