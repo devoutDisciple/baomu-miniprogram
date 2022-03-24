@@ -2,6 +2,7 @@
 import { getStoragePublishMsg } from '../../utils/util';
 import request from '../../utils/request';
 import loading from '../../utils/loading';
+import config from '../../config/config';
 
 Component({
 	/**
@@ -11,6 +12,10 @@ Component({
 		process: {
 			type: Number,
 			value: 1,
+		},
+		bgUrl: {
+			type: String,
+			value: config.defaultPublishUrl,
 		},
 	},
 
@@ -118,6 +123,12 @@ Component({
 			wx.switchTab({
 				url: '/pages/home/index/index',
 			});
+		},
+	},
+
+	observes: {
+		bgUrl: function (a) {
+			console.log(a, 23);
 		},
 	},
 });

@@ -8,7 +8,7 @@ Page({
 	 * 页面的初始数据
 	 */
 	data: {
-		selectTabIdx: 1, // 1-找演出 2-去演出
+		selectTabIdx: 2, // 1-找演出 2-去演出
 		actorList: [], // 演员列表
 		taskList: [1, 2, 3, 4, 5, 6, 7, 8],
 		userDialogVisible: false, // 获取用户基本信息
@@ -62,6 +62,7 @@ Page({
 		this.setData({ scrollOver: scrollTop > 210 });
 	},
 
+	// 获取设备信息
 	getDeviceStatus: function () {
 		deviceUtil.getDeviceInfo().then((res) => {
 			const { statusBarHeight, navHeight } = res;

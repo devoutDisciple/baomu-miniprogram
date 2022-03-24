@@ -105,7 +105,7 @@
     </view>
      <userinfo-component visible="{{userDialogVisible}}" bindOnClose="onCloseUserInfoDialog" />
      <phone-component visible="{{phoneDialogVisible}}" bindOnClose="onClosePhoneDialog"/>
-     <view class="publish_btn" wx:if="{{scrollOver}}">
+     <view bindtap="onPublish" class="publish_btn" wx:if="{{scrollOver}}">
          <image class="publish_btn_img" src="/asserts/public/plus.png" />
      </view>
 </scroll-view>

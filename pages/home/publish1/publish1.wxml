@@ -1,4 +1,4 @@
-<home-publish  process="{{1}}">
+<home-publish  process="{{1}}" bgUrl="{{bgUrl}}">
     <header showBack/>
     <view class="chunk">
         <input value="{{title}}" bindblur="onIptBlur" placeholder="填写需求名称" />

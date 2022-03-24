@@ -6,25 +6,25 @@ export const plays = [
 
 // 器乐类型
 export const instruments = [
-	{ id: 1, name: '西洋·木管乐' },
-	{ id: 2, name: '西洋·铜管乐' },
-	{ id: 3, name: '西洋·弦乐' },
-	{ id: 4, name: '西洋·键盘乐' },
-	{ id: 5, name: '西洋·弹拨乐' },
-	{ id: 6, name: '西洋·打击乐' },
-	{ id: 7, name: '民乐·弹拨乐器' },
-	{ id: 8, name: '民乐·吹管乐器' },
-	{ id: 9, name: '民乐·拉弦乐器' },
-	{ id: 10, name: '民乐·打击乐器' },
+	{ id: 1, name: '西洋·木管乐', url: '/instruments/xiyang_muguanyue.jpg' },
+	{ id: 2, name: '西洋·铜管乐', url: '/instruments/xiyang_tongguanyue.jpg' },
+	{ id: 3, name: '西洋·弦乐', url: '/instruments/xiyang_xuanyue.jpg' },
+	{ id: 4, name: '西洋·键盘乐', url: '/instruments/xiyang_jianpanyue.jpg' },
+	{ id: 5, name: '西洋·弹拨乐', url: '/instruments/xiyang_tanboyue.jpg' },
+	{ id: 6, name: '西洋·打击乐', url: '/instruments/xiyang_dajiyue.jpg' },
+	{ id: 7, name: '民乐·弹拨乐器', url: '/instruments/minyue_tanboyue.jpg' },
+	{ id: 8, name: '民乐·吹管乐器', url: '/instruments/minyue_chuiguan.jpg' },
+	{ id: 9, name: '民乐·拉弦乐器', url: '/instruments/minyue_laxuanyue.jpg' },
+	{ id: 10, name: '民乐·打击乐器', url: '/instruments/minyue_dajiyue.jpg' },
 ];
 
 // 人声类型
 export const voices = [
-	{ id: 61, name: '民族唱法' },
-	{ id: 62, name: '美声唱法' },
-	{ id: 63, name: '流行唱法' },
-	{ id: 64, name: '通俗唱法' },
-	{ id: 65, name: '合唱' },
+	{ id: 61, name: '民族唱法', url: '/instruments/rensheng_minzu.jpg' },
+	{ id: 62, name: '美声唱法', url: '/instruments/rensheng_meisheng.jpg' },
+	{ id: 63, name: '流行唱法', url: '/instruments/rensheng_liuxing.jpg' },
+	{ id: 64, name: '通俗唱法', url: '/instruments/rensheng_liuxing.jpg' },
+	{ id: 65, name: '合唱', url: '/instruments/rensheng_hechang.jpg' },
 ];
 
 // 技能名称

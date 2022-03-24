@@ -1,5 +1,6 @@
 // import request from '../../../utils/request';
 import { instruments, plays, voices } from '../../../constant/constant';
+import config from '../../../config/config';
 // eslint-disable-next-line import/named
 import { getStoragePublishMsg, setStoragePublishMsg } from '../../../utils/util';
 
@@ -8,6 +9,7 @@ Page({
 	 * 页面的初始数据
 	 */
 	data: {
+		bgUrl: config.defaultPublishUrl, // 背景图片
 		playList: [], // 演奏方式
 		playName: '', // 演奏方式
 		playId: '', // 演奏方式
@@ -74,9 +76,11 @@ Page({
 		const { value } = e.detail;
 		const { playId } = this.data;
 		const tempList = Number(playId) === 1 ? instruments : voices;
-		const { name, id } = tempList[value];
-		this.setData({ instrumentSelectName: name, instrumentSelectId: id });
-		setStoragePublishMsg('publish1', { instrumentSelectId: id });
+		const { name, id, url } = tempList[value];
+		const bg_url = config.baseUrl + url;
+		console.log(bg_url, 2323);
+		this.setData({ instrumentSelectName: name, instrumentSelectId: id, bgUrl: bg_url });
+		setStoragePublishMsg('publish1', { instrumentSelectId: id, bgUrl: bg_url });
 	},
 
 	// 当输入框失焦
