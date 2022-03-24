@@ -40,7 +40,7 @@
             </block>
         </view>
     </scroll-view>
-   
+    
     <view class="btm">
         <view class="btm_left">
             <image bindtap="onChooseImg" class="btm_icon btm_icon1" src="/asserts/public/img.png" />
