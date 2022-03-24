@@ -13,3 +13,34 @@
 .chunk {
     margin-top: 20rpx;
 }
+
+.publish_btn {
+    position: fixed;
+    right: 50rpx;
+    bottom: 40rpx;
+    z-index: 10;
+    width: 100rpx;
+    height: 100rpx;
+    border-radius: 100%;
+    color: #fff;
+    font-size: 32rpx;
+    background: #b5b58d;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.empty {
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #6a6a6a;
+}
+
+.empty_img {
+    width: 300rpx;
+    height: 246rpx;
+    margin-bottom: 30rpx;
+}

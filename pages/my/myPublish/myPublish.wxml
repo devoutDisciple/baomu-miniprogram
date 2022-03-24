@@ -3,10 +3,17 @@
         <block wx:if="{{list && list.length !== 0}}">
             <block wx:for="{{list}}" wx:key="index">
                 <view class="chunk">
-                    <square-list />
+                    <square-list data="{{item}}"/>
                 </view>
             </block>
+            <btm-tip />
         </block>
-        <btm-tip />
+        <block wx:else>
+            <view class="empty">
+                <image class="empty_img" src="/asserts/public/empty.png" />
+                <view>还没有发布作品哦~~</view>
+            </view>
+        </block>
     </view>
+    <view class="publish_btn" bindtap="onTapPublish">发布</view>
 </scroll-view>

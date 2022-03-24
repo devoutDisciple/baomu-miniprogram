@@ -1,0 +1,17 @@
+.img {
+    width: 100%;
+    min-height: 100%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #333;
+}
+
+.fix_height {
+    width: 100%;
+}
+
+.fix_width {
+    height: 50vw;
+}

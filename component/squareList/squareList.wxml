@@ -3,7 +3,7 @@
         <simple-video class="con_con" videoId="{{data.video.url}}" videoDetail="{{data.video}}"/>
     </block>
     <block wx:elif="{{data.showImg}}">
-        <my-img class="con_con" src="{{data.showImg}}"/>
+        <my-img src="{{data.showImg}}"/>
     </block>
     <view class="con">
         <view class="title" bindtap="onSeachDetail">{{data.title}}</view>

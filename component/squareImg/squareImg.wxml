@@ -1,0 +1,8 @@
+<view class="img" bind:tap="onPreviewImg" data-src="{{src}}">
+    <block wx:if="{{width > height}}">
+        <image class="fix_height" src="{{src}}" mode="widthFix"/>
+    </block>
+    <block wx:else>
+        <image class="fix_width" src="{{src}}" mode="heightFix"/>
+    </block>
+</view>

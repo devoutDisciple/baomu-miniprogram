@@ -1,7 +1,7 @@
 {
 	"component": true,
 	"usingComponents": {
-		"my-img": "/component/img/img",
+		"my-img": "/component/squareImg/squareImg",
 		"btm-tip": "/component/btmTip/btmTip",
 		"simple-video": "/component/simpleVideo/simpleVideo",
         "renzhengIcon": "/component/renzhengIcon/renzhengIcon"

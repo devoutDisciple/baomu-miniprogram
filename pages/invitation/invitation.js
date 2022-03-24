@@ -42,8 +42,11 @@ Page({
 	/**
 	 * 生命周期函数--监听页面加载
 	 */
-	onLoad: function () {
-		this.getAllInstruments();
+	onLoad: async function () {
+		// 获取所有演奏方式
+		this.getAllPlayList();
+		// 获取所有乐器类型
+		await this.getAllInstruments(instruments);
 		this.generatorHourList();
 	},
 
