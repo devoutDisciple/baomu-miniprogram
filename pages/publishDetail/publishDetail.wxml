@@ -1,30 +1,30 @@
 <view class="wrap">
     <header showBack />
     <scroll-view class="con" scroll-y="{{true}}" enhanced="{{true}}" show-scrollbar="{{false}}">
-        <image class="img" mode="widthFix" src="/asserts/temp/home_publish.png" />
+        <image class="img" mode="widthFix" src="{{detail.instrumentUrl}}" />
         <view class="content">
-            <view class="title">需要小提琴手一位需要小提琴手一位需要小提琴手一位需要小提琴手一位</view>
-            <view class="price">标价：￥8888</view>
-            <view class="desc">简介：需要一名小提请演员，时代峻峰进度款开发圣诞节放得开打开方式金卡戴珊</view>
+            <view class="title">{{detail.title}}</view>
+            <view class="price">标价：￥{{detail.price}}</view>
+            <view class="desc">简介：{{detail.desc}}</view>
             <view class="chunk">
                 <image class="icon icon1" src="/asserts/public/time_icon.png" />
-                <view class="value">演出时长 2小时/天 2022.01.02 - 2022.02.09</view> 
+                <view class="value">演出时长 {{detail.hours}}h/天 {{detail.date}}</view> 
             </view>
             <view class="chunk">
                 <image class="icon icon2" src="/asserts/public/address_icon.png" />
-                <view class="value">演出地点 成都市锦江区芳草街18号</view> 
+                <view class="value">演出地点 {{detail.addressAll}}</view> 
             </view>
             <view class="chunk">
                 <image class="icon icon3" src="/asserts/public/talk_icon.png" />
-                <view class="value">不可议价</view> 
+                <view class="value">{{detail.bargain}}</view> 
             </view>
             <view class="chunk">
                 <image class="icon icon4" src="/asserts/public/car_icon.png" />
-                <view class="value">不接送</view> 
+                <view class="value">{{detail.send}}</view> 
             </view>
             <view class="chunk">
                 <image class="icon icon5" src="/asserts/public/food_icon.png" />
-                <view class="value">包食宿</view> 
+                <view class="value">{{detail.food}}</view> 
             </view>
         </view>
     </scroll-view>

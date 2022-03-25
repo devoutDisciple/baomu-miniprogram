@@ -86,7 +86,7 @@
         {
           "name": "发布详情",
           "pathName": "pages/publishDetail/publishDetail",
-          "query": "",
+          "query": "id=26",
           "launchMode": "default",
           "scene": null
         },

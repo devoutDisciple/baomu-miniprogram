@@ -1,7 +1,11 @@
+/* eslint-disable prefer-destructuring */
 import login from '../../../utils/login';
 import request from '../../../utils/request';
 import deviceUtil from '../../../utils/deviceUtil';
 import loading from '../../../utils/loading';
+import moment from '../../../utils/moment';
+import { plays, instruments, voices } from '../../../constant/constant';
+import config from '../../../config/config';
 
 Page({
 	/**
@@ -10,7 +14,7 @@ Page({
 	data: {
 		selectTabIdx: 2, // 1-找演出 2-去演出
 		actorList: [], // 演员列表
-		taskList: [1, 2, 3, 4, 5, 6, 7, 8],
+		demandsList: [], // 需求列表
 		userDialogVisible: false, // 获取用户基本信息
 		phoneDialogVisible: false, // 获取用户手机号弹框
 		scrollOver: false, // 是否滑出输入框
@@ -48,9 +52,10 @@ Page({
 			});
 			// 查询演员
 			await this.getActorList();
+			// 查询需求
+			await this.getDemandsList();
 		} catch (error) {
 			console.log(error);
-			loading.hideLoading();
 		} finally {
 			loading.hideLoading();
 		}
@@ -153,6 +158,36 @@ Page({
 		const user_id = wx.getStorageSync('user_id');
 		const actors = await request.get({ url: '/user/userByLocation', data: { user_id: user_id } });
 		this.setData({ actorList: actors });
+	},
+
+	// 获取需求
+	getDemandsList: async function () {
+		const user_id = wx.getStorageSync('user_id');
+		const demands = await request.get({ url: '/demand/demandByAddress', data: { user_id: user_id } });
+		const result = [];
+		if (Array.isArray(demands)) {
+			const timeFormat = 'YYYY.MM.DD';
+			demands.forEach((item) => {
+				item.date = `${moment(item.start_time).format(timeFormat)} - ${moment(item.end_time).format(
+					timeFormat,
+				)}`;
+				// 获取演奏类型
+				const { name: playName } = plays.filter((p) => p.id === Number(item.play_id))[0];
+				let instrItem = {};
+				// 获取乐器类型
+				if (item.play_id === 1) {
+					instrItem = instruments.filter((p) => p.id === Number(item.instrument_id))[0];
+				} else {
+					instrItem = voices.filter((p) => p.id === Number(item.instrument_id))[0];
+				}
+				// eslint-disable-next-line prefer-const
+				let { name: instrumentName, url: instrumentUrl } = instrItem;
+				instrumentUrl = config.baseUrl + instrumentUrl;
+				item = Object.assign(item, { playName, instrumentName, instrumentUrl });
+				result.push(item);
+			});
+		}
+		this.setData({ demandsList: result });
 	},
 
 	// 页面展示

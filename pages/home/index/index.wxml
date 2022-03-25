@@ -90,10 +90,10 @@
             </block>
         </block>
         <block wx:if="{{selectTabIdx === 2}}">
-            <block wx:if="{{taskList && taskList.length !== 0}}">
-                <block wx:for="{{taskList}}" wx:key="index">
+            <block wx:if="{{demandsList && demandsList.length !== 0}}">
+                <block wx:for="{{demandsList}}" wx:key="index">
                      <view class="person_item">
-                        <task-item />
+                        <task-item data="{{item}}"/>
                     </view>
                 </block>
                 <view class="empty_txt">没有更多啦~</view>

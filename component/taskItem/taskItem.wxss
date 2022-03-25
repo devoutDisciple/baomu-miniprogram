@@ -73,6 +73,7 @@
 .person_photo {
     height: 60rpx;
     width: 60rpx;
+    border-radius: 100%;
 }
 
 .person_name {

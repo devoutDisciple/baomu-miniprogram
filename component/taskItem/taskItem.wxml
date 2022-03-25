@@ -1,27 +1,29 @@
 <view class="task">
     <view class="task_desc" bindtap="onTapTask">
-        <image class="task_desc_left" src="/asserts/temp/task_temp.png" />
+        <view class="task_desc_left">
+            <img wx:if="{{data.instrumentUrl}}" src="{{data.instrumentUrl}}"/>
+        </view>
         <view class="task_desc_right">
             <view class="task_title">
-                <view class="task_title_name">需要小提琴手一位需要小提琴手一位需要小提琴手一位需要小提琴手一位</view>
+                <view class="task_title_name">{{data.title}}</view>
                 <view class="task_title_money">
-                    <text class="task_title_money_txt">￥ 1000</text>/小时
+                    <text class="task_title_money_txt">￥ {{data.price}}</text>/小时
                 </view>
             </view>
             <view class="task_desc_item">
-                <view class="task_desc_item_txt">工作地点：成都市武侯区</view>
+                <view class="task_desc_item_txt">工作地点：{{data.addressName}}</view>
             </view>
             <view class="task_desc_item">
-                <view class="task_desc_item_txt">演出时间：10.10 10:00-11:30</view>
+                <view class="task_desc_item_txt">演出时间：{{data.date}}</view>
             </view>
             <view class="task_desc_item">
-                <view class="task_desc_item_txt">技能要求：钢琴十级、小提琴十级、小提琴十级、小提琴十级</view>
+                <view class="task_desc_item_txt">技能要求：{{data.playName}} {{data.instrumentName}}</view>
             </view>
         </view>
     </view>
     <view class="task_footer">
-        <image bindtap="onTapPerson" class="person_photo" src="/asserts/temp/photo.png" />
-        <view bindtap="onTapPerson" class="person_name">张小姐</view>
+        <image bindtap="onTapPerson" class="person_photo" src="{{data.userPhoto}}" />
+        <view bindtap="onTapPerson" class="person_name">{{data.username}}</view>
         <view class="person_btn">
             <view class="person_btn_txt" bindtap="onTapTask">抢单</view>
         </view>
