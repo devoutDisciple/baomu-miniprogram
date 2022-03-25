@@ -11,7 +11,9 @@ Page({
 	 */
 	data: {
 		id: '',
-		detail: {},
+		detail: {}, // 发布详情
+		priceDialogVisible: false, // 报价弹框
+		price: 0, // 报价
 	},
 
 	/**
@@ -48,5 +50,42 @@ Page({
 		detail.send = detail.is_send === 2 ? '不接送' : '接送';
 		this.setData({ detail: detail });
 		loading.hideLoading();
+	},
+
+	// 点击竞价
+	onTapPrice: function () {
+		this.setData({ priceDialogVisible: true });
+	},
+
+	// 输入框失焦
+	onBlurIpt: function (e) {
+		const { value } = e.detail;
+		this.setData({ price: value });
+	},
+
+	// 取消报价
+	onClose: function () {
+		this.setData({ priceDialogVisible: false });
+	},
+
+	// 确认报价
+	onConfirmPrice: function () {
+		setTimeout(() => {
+			let { price } = this.data;
+			price = String(price).trim();
+			if (!(Number(price) > 0)) {
+				return wx.showToast({
+					title: '价格输入错误',
+					icon: 'error',
+				});
+			}
+			console.log(price, 12189);
+			this.setData({ priceDialogVisible: false });
+		}, 500);
+	},
+
+	// 关闭
+	beforeClose: function () {
+		return false;
 	},
 });

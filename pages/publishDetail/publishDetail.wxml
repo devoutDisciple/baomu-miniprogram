@@ -28,5 +28,19 @@
             </view>
         </view>
     </scroll-view>
-    <view class="invitate_btn">竞标</view>
+    <view class="invitate_btn" bindtap="onTapPrice">竞标</view>
+    <van-dialog
+        use-slot
+        title="请输入您的理想价格"
+        show="{{ priceDialogVisible }}"
+        show-cancel-button
+        bind:close="onClose"
+        bind:confirm="onConfirmPrice"
+        beforeClose="{{(beforeClose)}}"
+        >
+        <view class="ipt_con">
+            <input class="ipt" bindblur="onBlurIpt" type="number" placeholder="请输入您的报价" />
+        </view>
+    </van-dialog>
+
 </view>

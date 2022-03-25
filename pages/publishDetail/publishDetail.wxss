@@ -80,3 +80,13 @@
     width: 35rpx;
     height: 45rpx;
 }
+
+.ipt_con {
+    padding: 40rpx 20rpx;
+}
+
+.ipt {
+    height: 80rpx;
+    padding: 0 20rpx;
+    border: 1rpx solid #f2f2f2;
+}
