@@ -40,6 +40,8 @@
         <!-- 不可以议价 -->
         <block wx:else>
             <view wx:if="{{detail.detailState === 1}}" class="invitate_btn" bindtap="onTapSign">报名</view>
+            <view wx:if="{{detail.detailState === 5}}" class="invitate_btn process_btn">已报名</view>
+            <view wx:if="{{detail.detailState === 3}}" class="invitate_btn fail_btn" bindtap="onTapSign">已拒绝</view>
         </block>
     </block>
     <block wx:else>

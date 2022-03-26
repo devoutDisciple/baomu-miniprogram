@@ -1,1 +1,23 @@
-/* pages/my/order/order.wxss */
+.wrap {
+    width: calc(100vw - 40rpx);
+    height: 100vh;
+    background: #f7f7f7;
+    padding: 0 20rpx;
+}
+
+.chunk {
+    background: #fff;
+    margin-top: 20rpx;
+    border-radius: 20rpx;
+    padding: 40rpx 20rpx;
+}
+
+.empty {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+    color: #6a6a6a;
+}

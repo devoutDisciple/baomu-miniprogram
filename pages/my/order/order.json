@@ -1,4 +1,9 @@
 {
-  "usingComponents": {},
-  "navigationBarTitleText": "工作记录"
+  "usingComponents": {
+      "order-item": "/component/orderItem/orderItem",
+      "btm-empty": "/component/btmEmpty/btmEmpty",
+      "empty-img": "/component/emptyImg/emptyImg",
+      "btm-tip": "/component/btmTip/btmTip"
+  },
+  "navigationBarTitleText": "演出记录"
 }

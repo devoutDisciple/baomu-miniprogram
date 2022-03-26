@@ -1,2 +1,16 @@
-<!--pages/my/order/order.wxml-->
-<text>pages/my/order/order.wxml</text>
+<scroll-view class="wrap" scroll-y="{{true}}" show-scrollbar="{{false}}" enhanced="{{true}}">
+    <block wx:if="{{orderList && orderList.length !== 0}}">
+        <block wx:for="{{orderList}}" wx:key="index">
+            <view class="chunk">
+                <order-item data="{{item}}"/>
+            </view>
+        </block>
+        <btm-tip />
+    </block>
+    <block wx:else>
+        <view class="empty">
+            <empty-img/>
+            <view>暂无演出记录</view>
+        </view>
+    </block>
+</scroll-view>

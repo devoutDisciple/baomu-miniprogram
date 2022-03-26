@@ -1,0 +1,119 @@
+.title {
+    display: flex;
+    font-size: 28rpx;
+}
+
+.title_person {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    color: #6a6a6a;
+}
+
+.title_img {
+    width: 60rpx;
+    height: 60rpx;
+    border-radius: 100%;
+    margin-right: 20rpx;
+}
+
+.title_state {
+    width: 140rpx;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    font-size: 28rpx;
+    color: #B5B58D;
+}
+
+.con {
+    padding: 20rpx 0;
+    display: flex;
+}
+
+.con_img {
+    width: 200rpx;
+    height: 135rpx;
+}
+
+.con_desc {
+    margin-left: 20rpx;
+}
+
+.con_desc_title {
+    height: 40rpx;
+    font-size: 32rpx;
+}
+
+.con_desc_img {
+    display: flex;
+    margin-top: 20rpx;
+    flex-wrap: wrap;
+}
+
+.chunk {
+    margin-top: 20rpx;
+    margin-right: 20rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 26rpx;
+    color: #6a6a6a;
+}
+
+.desc_img {
+    width: 60rpx;
+    height: 60rpx;
+    border-radius: 100%;
+    margin-right: 10rpx;
+}
+
+.price {
+    padding: 20rpx 0;
+    display: flex;
+    justify-content: flex-end;
+    font-size: 28rpx;
+    color: #333;
+    align-items: flex-end;
+    border-bottom: 1rpx solid #f2f2f2;
+}
+
+.price_text {
+    font-size: 38rpx;
+    color: #B5B58D ;
+    display: flex;
+    align-items: flex-end;
+}
+
+.footer {
+    display: flex;
+    padding-top: 30rpx;
+}
+
+.footer_left {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    font-size: 26rpx;
+}
+
+.pingfen_img {
+    width: 28rpx;
+    height: 28rpx;
+    margin-right: 10rpx;
+}
+
+.pingfen_detail {
+    color: #6a6a6a;
+    font-size: 26rpx;
+    margin-left: 10rpx;
+}
+
+.footer_right {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    font-size: 26rpx;
+    color: #6a6a6a;
+    padding-left: 40rpx;
+}

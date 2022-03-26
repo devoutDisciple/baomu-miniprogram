@@ -451,3 +451,13 @@ export const person_style = [
 	{ id: 8, name: '独立音乐' },
 	{ id: 9, name: '阿卡贝拉' },
 ];
+
+// 参与报价的状态 1-初始状态 可以进行报名和竞标 2-竞标结束 3-被拒绝 4-竞标中 5-在报名中状态 6-中标
+export const price_state = [
+	{ id: 1, name: '系统错误' },
+	{ id: 2, name: '竞标结束' },
+	{ id: 3, name: '已拒绝' },
+	{ id: 4, name: '竞标中' },
+	{ id: 5, name: '已报名' },
+	{ id: 6, name: '中标' },
+];

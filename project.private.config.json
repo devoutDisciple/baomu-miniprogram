@@ -159,6 +159,13 @@
           "query": "",
           "launchMode": "default",
           "scene": null
+        },
+        {
+          "name": "工作记录",
+          "pathName": "pages/my/order/order",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
         }
       ]
     }

@@ -1,0 +1,40 @@
+<view class="order">
+    <view class="title">
+        <view class="title_person">
+            <image class="title_img" src="{{data.userPhoto}}" />
+            {{data.username}}
+        </view>
+        <view class="title_state">{{data.detailStateName}}</view>
+    </view>
+    <view class="con">
+        <view class="con_img">
+            <img src="{{data.instrumentUrl}}"/>
+        </view>
+        <view class="con_desc">
+            <view class="con_desc_title">{{data.title}}</view>
+            <view class="con_desc_img">
+                <view class="chunk">
+                    <image class="desc_img" src="/asserts/temp/photo.png" />
+                    <view class="con_desc_name">张小龙</view>
+                </view>
+                <view class="chunk">
+                    <image class="desc_img" src="/asserts/temp/photo.png" />
+                    <view class="con_desc_name">张小龙</view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="price">
+        费用: <view class="price_text">￥{{data.price}}</view>
+    </view>
+    <view class="footer">
+        <view class="footer_left">
+            <image class="pingfen_img" src="/asserts/public/pingfen.png" />
+            4.8
+            <view class="pingfen_detail">查看评价详情</view>
+        </view>
+        <view class="footer_right">
+            {{data.addressName}}
+        </view>
+    </view>
+</view>
