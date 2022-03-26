@@ -24,6 +24,10 @@ Component({
 			type: Boolean,
 			value: false,
 		},
+		msgNum: {
+			type: Number,
+			value: 0,
+		},
 	},
 
 	/**

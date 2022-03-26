@@ -2,20 +2,23 @@
     <view class="photo" wx:if="{{msg.msgType === 1}}">
         <image class="photo_img" src="{{msg.person_photo}}" />
     </view>
-    <view class="photo" wx:if="{{msg.msgType === 2}}">
+    <view class="photo" wx:elif="{{msg.msgType === 2}}">
         <view class="photo_con photo_con1">
             <image class="photo_icon" src="/asserts/public/msg_notify.png" />
         </view>
     </view>
-    <view class="photo" wx:if="{{msg.msgType === 3}}">
+    <view class="photo" wx:elif="{{msg.msgType === 3}}">
         <view class="photo_con photo_con2">
             <image class="photo_icon" src="/asserts/public/msg_order.png" />
         </view>
     </view>
-    <view class="photo" wx:if="{{msg.msgType === 4}}">
+    <view class="photo" wx:elif="{{msg.msgType === 4}}">
         <view class="photo_con photo_con3">
             <image class="photo_icon photo_icon3" src="/asserts/public/msg_xiaoxi.png" />
         </view>
+    </view>
+    <view class="photo" wx:else>
+        <image class="photo_img" src="{{msg.person_photo}}" />
     </view>
     <view class="chunk">
         <view class="chunk_title">

@@ -21,7 +21,7 @@
                         <image bindtap = "onTapMsg" class="msg_icon" src="/asserts/public/message.png" />
                     </block>
                 </view>
-                <view class="msg_sign">
+                <view class="msg_sign" wx:if="{{personDetail.username}}">
                     {{personDetail.username || ""}}
                 </view>
                 <view class="msg_tubiao">

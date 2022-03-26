@@ -36,7 +36,7 @@ Component({
 		onTapMsg: function (e) {
 			const { msgtype } = e.currentTarget.dataset;
 			// 个人信息
-			if (msgtype === 1) {
+			if (!msgtype) {
 				const { msg, msgData, personId } = this.data;
 				let num = 0;
 				msgData.forEach((item) => {
@@ -45,21 +45,8 @@ Component({
 						item.noread = 0;
 					}
 				});
-				const totalNum =
-					Number(getApp().globalData.myReceiveGoodsNum) +
-					Number(getApp().globalData.myReceiveCommentsNum) +
-					Number(getApp().globalData.msgsNum) -
-					Number(num);
-				if (totalNum) {
-					wx.setTabBarBadge({
-						index: 2,
-						text: String(totalNum),
-					});
-				} else {
-					wx.removeTabBarBadge({
-						index: 2,
-					});
-				}
+				const totalNum = Number(getApp().globalData.msgsNum) - Number(num);
+				getApp().globalData.msgsNum = totalNum;
 				wx.setStorageSync('msg_data', JSON.stringify(msgData));
 				wx.navigateTo({
 					url: `/pages/chat/chat?person_id=${msg.person_id}`,

@@ -73,7 +73,7 @@
                     <listItem text="身份证实名认证" iconName="identity_authentication" data-type="shenfen" bindtap="goOtherPage" isLast/>
                 </view>
                 <view class="opt">
-                    <listItem text="消息中心" iconName="msg_center" data-type="message" bindtap="goOtherPage" isFirst/>
+                    <listItem text="消息中心" iconName="msg_center" data-type="message" bindtap="goOtherPage" msgNum="{{msgNum}}" isFirst/>
                     <listItem text="我的技能" iconName="my_skill" data-type="skill" bindtap="goOtherPage"/>
                     <listItem text="个人信息修改" iconName="photo_wall" data-type="photo" bindtap="goOtherPage"/>
                     <listItem text="工作地点" iconName="work_location" data-type="address" bindtap="goOtherPage"/>

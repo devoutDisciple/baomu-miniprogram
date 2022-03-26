@@ -1,5 +1,5 @@
 import emoji from '../../config/emoji';
-import { post, uploadFile } from '../../utils/request';
+import { post, uploadFile, get } from '../../utils/request';
 import loading from '../../utils/loading';
 // eslint-disable-next-line import/named
 import { formatTime, getMsgShowTime, getDiffTime } from '../../utils/util';
@@ -23,14 +23,14 @@ Page({
 	/**
 	 * 生命周期函数--监听页面加载
 	 */
-	onLoad: function (options) {
+	onLoad: async function (options) {
 		const { person_id } = options;
 		if (!person_id) {
 			return wx.switchTab({
 				url: '/pages/home/index/index',
 			});
 		}
-		this.getUserMsg();
+		await this.getUserMsg();
 		let originData = wx.getStorageSync('msg_data');
 		originData = JSON.parse(originData);
 		if (Array.isArray(originData)) {
@@ -72,13 +72,10 @@ Page({
 
 	// 获取个人信息
 	getUserMsg: function () {
-		// const user_id = wx.getStorageSync('user_id');
-		// get({ url: '/user/userDetailByUserId', data: { user_id } }).then((res) => {
-		// 	this.setData({ user_detail: res });
-		// });
-
-		// 这次的
-		this.setData({ user_detail: { photo: '/asserts/temp/photo.png' } });
+		const user_id = wx.getStorageSync('user_id');
+		get({ url: '/user/userDetail', data: { user_id } }).then((res) => {
+			this.setData({ user_detail: res });
+		});
 	},
 
 	// 选择图片
@@ -165,26 +162,32 @@ Page({
 			this.setData({ showEmoji: false, focus: false });
 		}
 	},
+
 	// 点击emoji
 	onClickEmoji: function (e) {
 		const { msgTxt } = this.data;
 		const { item } = e.currentTarget.dataset;
 		this.setData({ msgTxt: `${msgTxt} ${item} ` });
 	},
+
 	// 失去焦点
 	onBlur: function () {
 		this.setData({ focus: false });
 	},
+
 	// 聚焦的时候
 	onFocus: function () {
 		this.setData({ focus: true, showEmoji: false });
 	},
+
 	// 点击输入框
 	onTapIpt: function () {
 		this.setData({ focus: true, showEmoji: false });
 	},
+
 	// 键盘高度发生改变
 	keyboardheightchange: function () {},
+
 	// 关闭的时候
 	onCloseIptDialog: function () {
 		this.setData({ visible: false, focus: false });
@@ -232,7 +235,7 @@ Page({
 				key: 'msg_data',
 			});
 			// 文字
-			// this.postMessage(msgTxt, 1);
+			this.postMessage(msgTxt, 1);
 		});
 	},
 });

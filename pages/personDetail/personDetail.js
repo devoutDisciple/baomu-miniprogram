@@ -147,19 +147,14 @@ Page({
 
 	// 点击发送信息
 	onTapMsg: function () {
-		this.setStoreageMsg();
-		let { userDetail } = this.data;
-		userDetail = {
-			id: 17,
-			username: '测试账号2',
-			photo: 'http://localhost:8888/photo/D9SXV44EL168JNDW-1623772814994.png',
-		};
+		const { personDetail } = this.data;
+		console.log(personDetail, 111);
 		let msgData = wx.getStorageSync('msg_data');
 		let data = [
 			{
-				person_id: userDetail.id,
-				person_name: userDetail.username,
-				person_photo: userDetail.photo,
+				person_id: personDetail.id,
+				person_name: personDetail.nickname,
+				person_photo: personDetail.photo,
 				noread: 0,
 				msg: [],
 			},
@@ -172,7 +167,7 @@ Page({
 				let curIdx = 0;
 				// 应当判断是否已经给该用户发过消息
 				msgData.forEach((item, index) => {
-					if (item.person_id === userDetail.id) {
+					if (item.person_id === personDetail.id) {
 						flag = false;
 						curUser = item;
 						curIdx = index;
@@ -189,7 +184,7 @@ Page({
 		}
 		wx.setStorageSync('msg_data', JSON.stringify(data));
 		wx.navigateTo({
-			url: `/pages/chat/chat?person_id=${userDetail.id}`,
+			url: `/pages/chat/chat?person_id=${personDetail.id}`,
 		});
 	},
 

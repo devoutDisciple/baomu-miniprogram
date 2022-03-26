@@ -2,6 +2,8 @@ import deviceUtil from '../../../utils/deviceUtil';
 import request from '../../../utils/request';
 import loading from '../../../utils/loading';
 
+const app = getApp();
+
 Page({
 	/**
 	 * 页面的初始数据
@@ -10,6 +12,7 @@ Page({
 		statusHeight: '80px', // 总高度
 		statusBarHeight: '40px', // 上方状态栏高度
 		showLoading: false, // 加载图标
+		msgNum: 0, // 未读消息数量
 	},
 
 	/**
@@ -20,6 +23,22 @@ Page({
 		this.getDeviceData();
 		await this.getUserInfo();
 		loading.hideLoading();
+	},
+
+	// 获取未读消息数量
+	getNoReadNum: function () {
+		const num = getApp().globalData.msgsNum;
+		this.setData({ msgNum: num });
+		if (num) {
+			wx.setTabBarBadge({
+				index: 4,
+				text: String(num),
+			});
+		} else {
+			wx.removeTabBarBadge({
+				index: 4,
+			});
+		}
 	},
 
 	// 获取用户信息
@@ -42,6 +61,7 @@ Page({
 	 */
 	onShow: function () {
 		this.getUserInfo();
+		this.getNoReadNum();
 	},
 
 	/**

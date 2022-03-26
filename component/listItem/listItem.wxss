@@ -27,7 +27,7 @@
 }
 
 .list_con_icon {
-    width: 60rpx;
+    width: 80rpx;
     height: 60rpx;
     display: flex;
     align-items: center;
@@ -37,4 +37,16 @@
 .left_icon {
     height: 30rpx;
     width: 15rpx;
+}
+
+.list_num {
+    background: red;
+    width: 50rpx;
+    height: 50rpx;
+    border-radius: 40rpx;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10rpx;
 }
