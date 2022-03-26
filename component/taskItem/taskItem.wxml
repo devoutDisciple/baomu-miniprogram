@@ -7,7 +7,7 @@
             <view class="task_title">
                 <view class="task_title_name">{{data.title}}</view>
                 <view class="task_title_money">
-                    <text class="task_title_money_txt">￥ {{data.price}}</text>/小时
+                    <text class="task_title_money_txt">￥ {{data.price}}</text>/总价
                 </view>
             </view>
             <view class="task_desc_item">

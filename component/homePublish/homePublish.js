@@ -89,7 +89,6 @@ Component({
 					title: publish1.title,
 					play_id: publish1.playId,
 					instrument_id: publish1.instrumentSelectId,
-
 					start_time: publish2.startTime,
 					end_time: publish2.endTime,
 					is_bargain: publish2.bargain === '是' ? 1 : 2,
@@ -98,11 +97,11 @@ Component({
 					addressName: publish2.selectAddress.name,
 					latitude: publish2.selectAddress.latitude,
 					longitude: publish2.selectAddress.longitude,
-
 					desc: publish3.desc,
 					is_food: publish3.foods === '是' ? 1 : 2,
 					is_send: publish3.send === '是' ? 1 : 2,
 					price: publish3.price,
+					state: 2, // 需求开启竞价
 				};
 				const res = await request.post({ url: '/demand/addDemand', data: params });
 				if (res === 'success') {

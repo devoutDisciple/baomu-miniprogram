@@ -28,19 +28,45 @@
             </view>
         </view>
     </scroll-view>
-    <view class="invitate_btn" bindtap="onTapPrice">竞标</view>
+    <!-- 需求竞标中 -->
+    <block wx:if="{{detail.state === 2}}">
+         <!-- 可以议价 -->
+        <block wx:if="{{detail.is_bargain === 1}}">
+            <view wx:if="{{detail.detailState === 1}}" class="invitate_btn" bindtap="onTapPrice">竞标</view>
+            <view wx:if="{{detail.detailState === 2}}" class="invitate_btn success_btn">竞标结束</view>
+            <view wx:if="{{detail.detailState === 3}}" class="invitate_btn fail_btn">已拒绝</view>
+            <view wx:if="{{detail.detailState === 4}}" class="invitate_btn process_btn">竞标中</view>
+        </block>
+        <!-- 不可以议价 -->
+        <block wx:else>
+            <view wx:if="{{detail.detailState === 1}}" class="invitate_btn" bindtap="onTapSign">报名</view>
+        </block>
+    </block>
+    <block wx:else>
+        <view class="invitate_btn success_btn">竞标结束</view>
+    </block>
     <van-dialog
         use-slot
         title="请输入您的理想价格"
         show="{{ priceDialogVisible }}"
         show-cancel-button
         bind:close="onClose"
-        bind:confirm="onConfirmPrice"
-        beforeClose="{{(beforeClose)}}"
+        showConfirmButton="{{false}}"
+        showCancelButton="{{false}}"
         >
         <view class="ipt_con">
             <input class="ipt" bindblur="onBlurIpt" type="number" placeholder="请输入您的报价" />
+            <view class="footer">
+                <view class="footer_btn footer_left" bindtap="onClose">取消</view>
+                <view class="footer_btn footer_right" bindtap="onConfirmPrice">确定</view>
+            </view>
         </view>
     </van-dialog>
-
+    <block wx:if="{{tipDialog}}">
+        <tip-dialog 
+            title="报价成功"
+            desc="报价成功，需求方会收到您的报价，等待需求方确认中"
+            bindOnClose="onCloseTipDialog"
+            />
+    </block>
 </view>

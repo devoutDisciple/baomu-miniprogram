@@ -17,10 +17,6 @@ Component({
 			type: String,
 			value: '',
 		},
-		show: {
-			type: Boolean,
-			value: false,
-		},
 	},
 
 	/**

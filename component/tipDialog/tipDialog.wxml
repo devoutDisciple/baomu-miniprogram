@@ -1,6 +1,6 @@
     <view class="dialog">
         <view class="dialog_con">
-            <image class="dialog_con_img" src="{{src}}" />
+            <image wx:if="{{src}}" class="dialog_con_img" src="{{src}}" />
             <view class="dialog_title">{{title}}</view>
             <view class="dialog_desc">{{desc}}</view>
             <view class="dialog_btn" bindtap="onCloseDialog">确定</view>

@@ -3,5 +3,6 @@
 		"calendar-component": "/component/calendar/calendar",
         "beard-list": "/component/beardList/beardList"
 	},
-	"enablePullDownRefresh": true
+	"enablePullDownRefresh": true,
+    "navigationBarTitleText": "档期"
 }
