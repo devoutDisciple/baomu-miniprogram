@@ -113,7 +113,9 @@ Page({
 		// 可预约时段
 		if (type === 'time') this.jumpPage('/pages/my/myPublish/myPublish');
 		// 作品展示
-		if (type === 'productionShow') this.jumpPage(`/pages/my/productionShow/productionShow?user_id=${user_id}`);
+		if (type === 'productionShow') {
+			this.jumpPage(`/pages/my/productionShow/productionShow?user_id=${user_id}&type=1`);
+		}
 		// 去组团
 		if (type === 'getTeam') this.jumpPage('/pages/my/myPublish/myPublish');
 		// 客服中心

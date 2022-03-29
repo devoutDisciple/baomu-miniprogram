@@ -4,7 +4,8 @@
 		"comment-item": "/component/commentItem/commentItem",
         "beard-list": "/component/beardList/beardList",
         "tip-dialog": "/component/tipDialog/tipDialog",
-        "renzhengIcon": "/component/renzhengIcon/renzhengIcon"
+        "renzhengIcon": "/component/renzhengIcon/renzhengIcon",
+        "production-img": "/component/productionImg/productionImg"
 	},
 	"navigationStyle": "custom"
 }

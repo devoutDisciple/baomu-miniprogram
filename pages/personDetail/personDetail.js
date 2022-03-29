@@ -21,6 +21,8 @@ Page({
 		},
 		skillList: [], // 技能列表
 		awardDetail: {}, // 获奖记录
+		productionList: [], // 作品列表
+		personShowList: [], // 动态列表
 	},
 
 	/**
@@ -42,6 +44,10 @@ Page({
 			this.getUserSkill();
 			// 获取个人获奖记录
 			this.getUserAward();
+			// 获取作品列表
+			this.getPersonProduction();
+			// 获取个人动态
+			this.getPersonShowList();
 		});
 	},
 
@@ -56,6 +62,29 @@ Page({
 		const personDetail = await request.get({ url: '/user/userDetail', data: { user_id } });
 		this.setData({ personDetail });
 		loading.hideLoading();
+	},
+
+	// 获取作品展示
+	getPersonProduction: async function () {
+		const { user_id } = this.data;
+		const productionList = await request.get({ url: '/user/productionList', data: { user_id, type: 1 } });
+		this.setData({ productionList: productionList });
+	},
+
+	// 获取动态展示
+	getPersonShowList: async function () {
+		const { user_id } = this.data;
+		const personShowList = await request.get({ url: '/user/productionList', data: { user_id, type: 2 } });
+		this.setData({ personShowList: personShowList });
+	},
+
+	// 跳转到作品或者动态展示页面
+	onTapProductionDetail: function (e) {
+		const { type } = e.currentTarget.dataset;
+		const { user_id } = this.data;
+		wx.navigateTo({
+			url: `/pages/my/productionShow/productionShow?user_id=${user_id}&type=${type}`,
+		});
 	},
 
 	// 获取技能列表
@@ -148,7 +177,6 @@ Page({
 	// 点击发送信息
 	onTapMsg: function () {
 		const { personDetail } = this.data;
-		console.log(personDetail, 111);
 		let msgData = wx.getStorageSync('msg_data');
 		let data = [
 			{
@@ -187,39 +215,4 @@ Page({
 			url: `/pages/chat/chat?person_id=${personDetail.id}`,
 		});
 	},
-
-	/**
-	 * 生命周期函数--监听页面初次渲染完成
-	 */
-	onReady: function () {},
-
-	/**
-	 * 生命周期函数--监听页面显示
-	 */
-	onShow: function () {},
-
-	/**
-	 * 生命周期函数--监听页面隐藏
-	 */
-	onHide: function () {},
-
-	/**
-	 * 生命周期函数--监听页面卸载
-	 */
-	onUnload: function () {},
-
-	/**
-	 * 页面相关事件处理函数--监听用户下拉动作
-	 */
-	onPullDownRefresh: function () {},
-
-	/**
-	 * 页面上拉触底事件的处理函数
-	 */
-	onReachBottom: function () {},
-
-	/**
-	 * 用户点击右上角分享
-	 */
-	onShareAppMessage: function () {},
 });
