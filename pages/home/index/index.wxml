@@ -1,4 +1,11 @@
-<scroll-view class="wrap" scroll-y="{{true}}" enhanced="{{true}}" show-scrollbar="{{false}}" bindscroll="onPageScroll">
+<scroll-view 
+    class="wrap" 
+    scroll-y="{{true}}" 
+    enhanced="{{true}}" 
+    lower-threshold="300"
+    show-scrollbar="{{false}}" 
+    bindscrolltolower="onScrollBottom"
+    bindscroll="onPageScroll">
     <block wx:if="{{scrollOver}}">
         <header></header>
         <view class="tab_fix" style="{{'top: ' + tabTop}}">

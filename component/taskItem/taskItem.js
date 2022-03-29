@@ -32,8 +32,6 @@ Component({
 	},
 
 	observers: {
-		data: function (a) {
-			console.log(a, 111);
-		},
+		data: function () {},
 	},
 });

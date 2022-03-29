@@ -19,6 +19,8 @@ Page({
 		phoneDialogVisible: false, // 获取用户手机号弹框
 		scrollOver: false, // 是否滑出输入框
 		tabTop: '60px', // tab距离顶部的距离
+		isLoading: false, // 是否在加载中
+		currentUserPage: 0, // 当前演员的页码
 	},
 
 	/**
@@ -52,8 +54,6 @@ Page({
 			});
 			// 查询演员
 			await this.getActorList();
-			// 查询需求
-			await this.getDemandsList();
 		} catch (error) {
 			console.log(error);
 		} finally {
@@ -65,6 +65,72 @@ Page({
 	onPageScroll: function (e) {
 		const { scrollTop } = e.detail;
 		this.setData({ scrollOver: scrollTop > 210 });
+	},
+
+	/**
+	 * 滑动到底部的时候
+	 */
+	onScrollBottom: function () {
+		const { isLoading } = this.data;
+		if (!isLoading) {
+			this.setData({ isLoading: true }, async () => {
+				const { selectTabIdx } = this.data;
+				console.log(selectTabIdx, 23823);
+				if (selectTabIdx === 1) {
+					await this.getActorList();
+				} else {
+					// 查询需求
+					await this.getDemandsList();
+				}
+			});
+		}
+	},
+
+	// 根据地理位置获取演员
+	getActorList: async function () {
+		const { currentUserPage, actorList } = this.data;
+		const user_id = wx.getStorageSync('user_id');
+		const actors = await request.get({
+			url: '/user/userByLocation',
+			data: { user_id: user_id, current: currentUserPage },
+		});
+		const newActorList = [...actorList, ...actors];
+		this.setData({ actorList: newActorList, currentUserPage: currentUserPage + 1, isLoading: false });
+	},
+
+	// 获取需求
+	getDemandsList: async function () {
+		const user_id = wx.getStorageSync('user_id');
+		const { demandsList, currentUserPage } = this.data;
+		const demands = await request.get({
+			url: '/demand/demandByAddress',
+			data: { user_id: user_id, current: currentUserPage },
+		});
+		const result = [];
+		if (Array.isArray(demands)) {
+			const timeFormat = 'YYYY.MM.DD';
+			demands.forEach((item) => {
+				item.date = `${moment(item.start_time).format(timeFormat)} - ${moment(item.end_time).format(
+					timeFormat,
+				)}`;
+				// 获取演奏类型
+				const { name: playName } = plays.filter((p) => p.id === Number(item.play_id))[0];
+				let instrItem = {};
+				// 获取乐器类型
+				if (item.play_id === 1) {
+					instrItem = instruments.filter((p) => p.id === Number(item.instrument_id))[0];
+				} else {
+					instrItem = voices.filter((p) => p.id === Number(item.instrument_id))[0];
+				}
+				// eslint-disable-next-line prefer-const
+				let { name: instrumentName, url: instrumentUrl } = instrItem;
+				instrumentUrl = config.baseUrl + instrumentUrl;
+				item = Object.assign(item, { playName, instrumentName, instrumentUrl });
+				result.push(item);
+			});
+		}
+		const newResult = [...demandsList, ...result];
+		this.setData({ demandsList: newResult, currentUserPage: currentUserPage + 1, isLoading: false });
 	},
 
 	// 获取设备信息
@@ -149,45 +215,15 @@ Page({
 
 	// 选择去演出或者找演出
 	onSelectTab: function (e) {
-		const { idx } = e.currentTarget.dataset;
-		this.setData({ selectTabIdx: Number(idx) });
-	},
-
-	// 根据地理位置获取演员
-	getActorList: async function () {
-		const user_id = wx.getStorageSync('user_id');
-		const actors = await request.get({ url: '/user/userByLocation', data: { user_id: user_id } });
-		this.setData({ actorList: actors });
-	},
-
-	// 获取需求
-	getDemandsList: async function () {
-		const user_id = wx.getStorageSync('user_id');
-		const demands = await request.get({ url: '/demand/demandByAddress', data: { user_id: user_id } });
-		const result = [];
-		if (Array.isArray(demands)) {
-			const timeFormat = 'YYYY.MM.DD';
-			demands.forEach((item) => {
-				item.date = `${moment(item.start_time).format(timeFormat)} - ${moment(item.end_time).format(
-					timeFormat,
-				)}`;
-				// 获取演奏类型
-				const { name: playName } = plays.filter((p) => p.id === Number(item.play_id))[0];
-				let instrItem = {};
-				// 获取乐器类型
-				if (item.play_id === 1) {
-					instrItem = instruments.filter((p) => p.id === Number(item.instrument_id))[0];
-				} else {
-					instrItem = voices.filter((p) => p.id === Number(item.instrument_id))[0];
-				}
-				// eslint-disable-next-line prefer-const
-				let { name: instrumentName, url: instrumentUrl } = instrItem;
-				instrumentUrl = config.baseUrl + instrumentUrl;
-				item = Object.assign(item, { playName, instrumentName, instrumentUrl });
-				result.push(item);
-			});
-		}
-		this.setData({ demandsList: result });
+		let { idx } = e.currentTarget.dataset;
+		idx = Number(idx);
+		this.setData({ selectTabIdx: Number(idx), currentUserPage: 0 }, () => {
+			if (idx === 1) {
+				this.getActorList();
+			} else {
+				this.getDemandsList();
+			}
+		});
 	},
 
 	// 页面展示
@@ -195,19 +231,4 @@ Page({
 		// 清空发布的缓存
 		wx.removeStorageSync('publish');
 	},
-
-	/**
-	 * 页面相关事件处理函数--监听用户下拉动作
-	 */
-	onPullDownRefresh: function () {},
-
-	/**
-	 * 页面上拉触底事件的处理函数
-	 */
-	onReachBottom: function () {},
-
-	/**
-	 * 用户点击右上角分享
-	 */
-	onShareAppMessage: function () {},
 });
