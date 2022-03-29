@@ -19,14 +19,29 @@
             <view class="person_title_btn_txt">邀请</view>
         </view>
     </view>
-    <scroll-view class="person_product" scroll-x="{{true}}" enhanced="{{true}}" show-scrollbar="{{false}}" bindtap="onTapPerson">
-        <view class="person_product_con">
-            <image class="product_img" src="/asserts/temp/pro_1.png" />
-            <image class="product_img" src="/asserts/temp/pro_2.png" />
-            <image class="product_img" src="/asserts/temp/pro_3.png" />
-            <image class="product_img" src="/asserts/temp/pro_4.png" />
-            <image class="product_img" src="/asserts/temp/pro_5.png" />
-        </view>
+    <scroll-view class="person_product" scroll-x="{{true}}" enhanced="{{true}}" show-scrollbar="{{false}}">
+        <block wx:if="{{data.productionImgs && data.productionImgs.length !== 0}}">
+            <view class="person_product_con">
+                <block wx:for="{{data.productionImgs}}" wx:key="index">
+                    <block wx:if="{{item.type === 'img'}}">
+                        <view class="product_img">
+                            <production-img data="{{item}}"/>
+                        </view>
+                    </block>
+                    <block wx:elif="{{item.type === 'video'}}">
+                        <view class="product_video">
+                            <production-img data="{{item}}"/>
+                        </view>
+                    </block>
+                </block>
+            </view>
+        </block>
+        <block wx:else>
+            <view class="production_empty">
+                <image class="production_empty_img" src="/asserts/public/empty.png" />
+                <view>暂无作品展示</view>
+            </view>
+        </block>
     </scroll-view>
     <view class="person_address">
         工作地点:{{data.city}}

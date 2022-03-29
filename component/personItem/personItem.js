@@ -30,4 +30,10 @@ Component({
 			});
 		},
 	},
+
+	// observers: {
+	// 	data: function (e) {
+	// 		console.log(e, 222);
+	// 	},
+	// },
 });
