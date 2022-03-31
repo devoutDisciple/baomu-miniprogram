@@ -1,0 +1,67 @@
+<view class="person">
+    <header text="创建乐队" showBack="true" showTop topColor="#000"/>
+    <scroll-view class="wrap" scroll-y="{{true}}" enhanced="{{true}}" show-scrollbar="{{false}}"> 
+        <view class="bg"></view>
+        <view class="con">
+            <view class="chunk">
+                <view class="chunk_title">请填写乐队信息</view>
+                <view class="ipt_chunk">
+                    <input placeholder="乐队名称" value="{{name}}" data-key="name" bindblur="onBlurInput"/>
+                </view>
+                <view class="ipt_chunk">
+                    <view class="blanks">
+                        <view class="blanks_con">成员邀请</view>
+                        <image class="blanks_icon" src="/asserts/public/left.png" />
+                    </view>
+                </view>
+                <view class="ipt_chunk" data-type="photo" bindtap="onChooseImg">
+                    <view class="blanks">
+                        <view class="blanks_con">乐队头像</view>
+                        <block wx:if="{{photo}}">
+                            <image class="team_photo" src="{{photo}}" />
+                        </block>
+                        <image class="blanks_icon" src="/asserts/public/left.png" />
+                    </view>
+                </view>
+                <view class="ipt_chunk">
+                    <select-item>
+                        <picker class="picker" bindchange="onPickStudy" range="{{study_list}}">
+                            <block wx:if="{{study_name}}">
+                                <view class="picker_value">
+                                    {{study_name}}
+                                </view>
+                            </block>
+                            <block wx:else>
+                                <view class="picker_init">
+                                    演奏音乐风格
+                                </view>
+                            </block>
+                        </picker>
+                    </select-item>
+                </view>
+                <view class="ipt_chunk">
+                    <textarea cursor-spacing="{{40}}" value="{{desc}}" placeholder="乐队简介" maxlength="{{200}}" bindblur="onBlurDesc"/>
+                </view>
+                <view class="photo_con" data-type="bgImg" bindtap="onChooseImg">
+                    <block wx:if="{{bgImg}}">
+                        <image class="photo_img" src="{{bgImg}}" />
+                    </block>
+                    <block wx:else>
+                        <image class="photo_img" src="/asserts/public/team_bg.png" />
+                    </block>
+                </view>
+                <view class="photo_desc">上传乐队背景图</view>
+            </view>
+            <view class="empty"></view>
+            <btm-empty />
+        </view>
+    </scroll-view>
+    <view class="invitate_btn" bindtap="onSend">保存并提交</view>
+    <block wx:if="{{dialogShow}}">
+        <tip-dialog
+            bindOnClose="onCloseDialog"
+            src="{{dialogDetail.src}}" 
+            title="{{dialogDetail.title}}" 
+            desc="{{dialogDetail.desc}}"/> 
+    </block>
+</view>

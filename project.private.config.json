@@ -166,6 +166,20 @@
           "query": "",
           "launchMode": "default",
           "scene": null
+        },
+        {
+          "name": "我的乐队",
+          "pathName": "pages/team/index/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "创建乐队",
+          "pathName": "pages/team/create/create",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
         }
       ]
     }

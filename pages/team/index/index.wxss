@@ -1,0 +1,132 @@
+.team {
+    height: 100vh;
+    width: calc(100vw - 40rpx);
+    padding: 0 20rpx;
+    background: #f7f7f7;
+}
+
+.chunk {
+    margin-top: 20rpx;
+    background: #fff;
+    padding: 30rpx 20rpx;
+    border-radius: 20rpx;
+}
+
+.top {
+    display: flex;
+}
+
+.team_photo {
+    width: 90rpx;
+    height: 90rpx;
+}
+
+.team_desc {
+    flex: 1;
+    padding: 0 20rpx;
+}
+
+.team_name {
+    height: 50rpx;
+    font-size: 34rpx;
+    display: -webkit-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-all;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    margin-right: 40rpx;
+}
+
+.team_people {
+    height: 40rpx;
+    font-size: 26rpx;
+}
+
+.team_people_num {
+    color: #6a6a6a;
+}
+
+.team_detail {
+    width: 160rpx;
+    color: #6a6a6a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 26rpx;
+}
+
+.team_icon {
+    width: 12rpx;
+    height: 26rpx;
+    margin-left: 10rpx;
+}
+
+.person_product {
+    padding: 30rpx 0;
+    border-bottom: 2rpx solid #ededed;
+
+}
+
+.person_product_con {
+    align-items: center;
+    display: inline-flex;
+    padding-right: 20rpx;
+}
+
+.product_img {
+    height: 200rpx;
+    display: flex;
+    margin-right: 20rpx;
+}
+
+.product_video {
+    height: 200rpx;
+    width: 300rpx;
+    margin-right: 20rpx;
+}
+
+.person_address {
+    margin-top: 30rpx;
+    display: flex;
+    align-items: center;
+    color: #888;
+}
+
+.production_empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #6a6a6a;
+    padding: 30rpx;
+}
+
+.production_empty_img {
+    width: 294rpx;
+    height: 243rpx;
+    margin-bottom: 20rpx;
+}
+
+.time {
+    padding-top: 30rpx;
+    color: #6a6a6a;
+    font-size: 26rpx;
+}
+
+.invitate_btn {
+    position: fixed;
+    bottom: 20rpx;
+    left: 40rpx;
+    width: calc(100vw - 80rpx);
+    height: 100rpx;
+    z-index: 111;
+    background: #000;
+    color: #fff;
+    border-radius: 20rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 38rpx;
+    margin: 50rpx 0;
+}

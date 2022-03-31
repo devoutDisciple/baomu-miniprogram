@@ -1,0 +1,8 @@
+{
+    "usingComponents": {
+        "production-img": "/component/productionImg/productionImg",
+        "btm-tip": "/component/btmTip/btmTip",
+        "btm-empty": "/component/btmEmpty/btmEmpty"
+    },
+    "navigationBarTitleText": "我的乐队"
+  }

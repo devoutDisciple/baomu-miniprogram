@@ -1,0 +1,9 @@
+{
+    "usingComponents": {
+      "header": "/component/header/header",
+      "select-item": "/component/selectItem/selectItem",
+      "tip-dialog": "/component/tipDialog/tipDialog",
+      "btm-empty": "/component/btmEmpty/btmEmpty"
+    },
+    "navigationStyle": "custom"
+  }

@@ -25,7 +25,10 @@
     "pages/my/productionDetail/productionDetail",
     "pages/my/reply/reply",
     "pages/my/editPersonDetail/editPersonDetail",
-    "pages/square/publish/publish"
+    "pages/square/publish/publish",
+    "pages/team/index/index",
+    "pages/team/detail/detail",
+    "pages/team/create/create"
   ],
   "window": {
     "backgroundTextStyle": "light",
