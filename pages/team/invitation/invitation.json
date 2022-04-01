@@ -1,0 +1,9 @@
+{
+	"usingComponents": {
+		"search-ipt": "/component/search/search",
+		"person-item": "/component/personItem/personItem",
+		"phone-component": "/component/getPhone/getPhone",
+		"userinfo-component": "/component/getUserInfo/getUserInfo"
+	},
+	"navigationBarTitleText": "成员邀请"
+}

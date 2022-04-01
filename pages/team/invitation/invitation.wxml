@@ -1,0 +1,33 @@
+<scroll-view 
+    class="wrap" 
+    scroll-y="{{true}}" 
+    enhanced="{{true}}" 
+    lower-threshold="300"
+    show-scrollbar="{{false}}" 
+    bindscrolltolower="onScrollBottom"
+    bindscroll="onPageScroll">
+    <view class="bg_con">
+        <view class="tab">
+            <search-ipt />
+        </view>
+    </view>
+    <view class="person_con">
+        <block wx:if="{{actorList && actorList.length !== 0}}">
+            <block wx:for="{{actorList}}" wx:key="index">
+                    <view class="person_item">
+                    <person-item data="{{item}}" bindOnTapInvitation="onTapInvitation"/>
+                </view>
+            </block>
+            <view class="empty_txt">没有更多啦~</view>
+        </block>
+        <block wx:else>
+            <view class="production_empty">
+                <image class="production_empty_img" src="/asserts/public/empty.png" />
+                <view>暂无数据</view>
+            </view>
+        </block>
+    </view>
+    <view class="invitate_btn" bindtap="onTapSureBtn">确定批量邀请</view>
+     <userinfo-component visible="{{userDialogVisible}}" bindOnClose="onCloseUserInfoDialog" />
+     <phone-component visible="{{phoneDialogVisible}}" bindOnClose="onClosePhoneDialog"/>
+</scroll-view>

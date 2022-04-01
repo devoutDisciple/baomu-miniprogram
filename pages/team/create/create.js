@@ -9,7 +9,8 @@ Page({
 	data: {
 		photo: '', // 乐队头像
 		bgImg: '', // 毕业证书图片
-		userIds: [8, 9], // 邀请的用户id
+		userIds: [], // 邀请的用户id
+		userDetails: [], // 邀请的用户详情
 		dialogShow: false,
 		dialogDetail: {
 			title: '创建成功',
@@ -29,6 +30,7 @@ Page({
 	onLoad: function () {
 		// 获取乐队演奏风格下拉选项
 		this.getStudyType();
+		this.getUserDetails();
 	},
 
 	// 获取乐队演奏风格下拉选项
@@ -58,6 +60,13 @@ Page({
 		const { value } = e.detail;
 		const selectItem = person_style[value];
 		this.setData({ study_id: selectItem.id, study_name: selectItem.name });
+	},
+
+	// 点击邀请
+	onTapInvitation: function () {
+		wx.navigateTo({
+			url: '/pages/team/invitation/invitation',
+		});
 	},
 
 	// 选择照片
@@ -142,6 +151,22 @@ Page({
 				}
 			},
 		});
+	},
+
+	// 获取邀请用户的详情
+	getUserDetails: async function () {
+		let { userIds } = this.data;
+		console.log(userIds, 12);
+		if (userIds.length === 0) {
+			this.setData({ userDetails: [] });
+			return;
+		}
+		if (userIds.length > 2) {
+			userIds = userIds.splice(0, 3);
+		}
+		const result = await request.get({ url: '/user/invitationUserDetail', data: { user_ids: userIds } });
+		console.log(result, 32);
+		this.setData({ userDetails: result });
 	},
 
 	// 提交

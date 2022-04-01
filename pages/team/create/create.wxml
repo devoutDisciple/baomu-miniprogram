@@ -8,9 +8,14 @@
                 <view class="ipt_chunk">
                     <input placeholder="乐队名称" value="{{name}}" data-key="name" bindblur="onBlurInput"/>
                 </view>
-                <view class="ipt_chunk">
+                <view class="ipt_chunk" bindtap="onTapInvitation">
                     <view class="blanks">
                         <view class="blanks_con">成员邀请</view>
+                        <block wx:if="{{userDetails && userDetails.length !== 0}}">
+                            <block wx:for="{{userDetails}}" wx:key="index">
+                                <image class="team_photo" src="{{item.photo}}" />
+                            </block>
+                        </block>
                         <image class="blanks_icon" src="/asserts/public/left.png" />
                     </view>
                 </view>

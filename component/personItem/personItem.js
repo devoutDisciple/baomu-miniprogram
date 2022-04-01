@@ -25,15 +25,16 @@ Component({
 			});
 		},
 		onTapInvitation: function () {
+			const pages = getCurrentPages();
+			const currentPage = pages[pages.length - 1];
+			console.log(currentPage.route, 111);
+			// 乐队邀请页面
+			if (currentPage.route === 'pages/team/invitation/invitation') {
+				return this.triggerEvent('OnTapInvitation', { user_id: this.data.data.id });
+			}
 			wx.navigateTo({
 				url: '/pages/invitation/invitation',
 			});
 		},
 	},
-
-	// observers: {
-	// 	data: function (e) {
-	// 		console.log(e, 222);
-	// 	},
-	// },
 });

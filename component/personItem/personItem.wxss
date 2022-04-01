@@ -91,6 +91,10 @@
     font-size: 34rpx;
 }
 
+.person_title_cancle_btn {
+    background: #666;
+}
+
 .person_product {
     padding: 30rpx 0;
     border-bottom: 2rpx solid #ededed;

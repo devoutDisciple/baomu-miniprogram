@@ -41,7 +41,7 @@
             </view>
         </block>
     </block>
-    <view class="invitate_btn">创建新乐队</view>
+    <view class="invitate_btn" bindtap="onTapBtn">创建新乐队</view>
     <btm-tip />
     <btm-empty />
 </scroll-view>

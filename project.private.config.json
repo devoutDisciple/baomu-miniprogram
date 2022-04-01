@@ -180,6 +180,13 @@
           "query": "",
           "launchMode": "default",
           "scene": null
+        },
+        {
+          "name": "邀请组队",
+          "pathName": "pages/team/invitation/invitation",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
         }
       ]
     }

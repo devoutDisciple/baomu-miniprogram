@@ -1,4 +1,5 @@
 import request from '../../../utils/request';
+import loading from '../../../utils/loading';
 
 // pages/team/index/index.js
 Page({
@@ -10,16 +11,24 @@ Page({
 	},
 
 	/**
-	 * 生命周期函数--监听页面加载
+	 * 生命周期函数--监听页面显示
 	 */
-	onLoad(options) {
+	onShow() {
 		this.getTeamListByUserId();
 	},
 
 	getTeamListByUserId: async function () {
+		loading.showLoading();
 		const user_id = wx.getStorageSync('user_id');
 		const result = await request.get({ url: '/team/teamsByUserId', data: { user_id } });
-		console.log(result, 111);
 		this.setData({ teamList: result });
+		loading.hideLoading();
+	},
+
+	// 点击创建乐队
+	onTapBtn: async function () {
+		wx.navigateTo({
+			url: '/pages/team/create/create',
+		});
 	},
 });
