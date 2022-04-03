@@ -187,6 +187,13 @@
           "query": "",
           "launchMode": "default",
           "scene": null
+        },
+        {
+          "name": "乐队详情",
+          "pathName": "pages/team/detail/detail",
+          "query": "user_id=8",
+          "launchMode": "default",
+          "scene": null
         }
       ]
     }

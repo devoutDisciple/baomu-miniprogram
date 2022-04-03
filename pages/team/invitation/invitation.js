@@ -187,7 +187,6 @@ Page({
 		});
 		const pages = getCurrentPages();
 		const currentPage = pages[pages.length - 2];
-		console.log(currentPage.getUserDetails, 1212);
 		currentPage.setData({ userIds: user_ids }, () => {
 			wx.navigateBack({
 				complete: () => {

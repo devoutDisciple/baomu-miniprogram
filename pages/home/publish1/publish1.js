@@ -78,7 +78,6 @@ Page({
 		const tempList = Number(playId) === 1 ? instruments : voices;
 		const { name, id, url } = tempList[value];
 		const bg_url = config.baseUrl + url;
-		console.log(bg_url, 2323);
 		this.setData({ instrumentSelectName: name, instrumentSelectId: id, bgUrl: bg_url });
 		setStoragePublishMsg('publish1', { instrumentSelectId: id, bgUrl: bg_url });
 	},
@@ -90,39 +89,4 @@ Page({
 		this.setData({ title: value });
 		setStoragePublishMsg('publish1', { title: value });
 	},
-
-	/**
-	 * 生命周期函数--监听页面初次渲染完成
-	 */
-	onReady: function () {},
-
-	/**
-	 * 生命周期函数--监听页面显示
-	 */
-	onShow: function () {},
-
-	/**
-	 * 生命周期函数--监听页面隐藏
-	 */
-	onHide: function () {},
-
-	/**
-	 * 生命周期函数--监听页面卸载
-	 */
-	onUnload: function () {},
-
-	/**
-	 * 页面相关事件处理函数--监听用户下拉动作
-	 */
-	onPullDownRefresh: function () {},
-
-	/**
-	 * 页面上拉触底事件的处理函数
-	 */
-	onReachBottom: function () {},
-
-	/**
-	 * 用户点击右上角分享
-	 */
-	onShareAppMessage: function () {},
 });

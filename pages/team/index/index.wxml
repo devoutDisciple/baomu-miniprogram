@@ -2,7 +2,7 @@
     <block wx:if="{{teamList && teamList.length !== 0}}">
         <block wx:for="{{teamList}}" wx:key="index">
              <view class="chunk">
-                <view class="top">
+                <view class="top" bindtap="onTapDetail" data-team="{{item}}">
                     <image class="team_photo" src="/asserts/temp/photo.png" />
                     <view class="team_desc">
                         <view class="team_name">{{item.name}}</view>
@@ -40,8 +40,15 @@
                 <view class="time">创建时间 {{item.create_time}}</view>
             </view>
         </block>
+        <btm-tip />
+        <btm-empty />
+    </block>
+    <block wx:else>
+        <view class="empty">
+            <empty-img/>
+            <view>暂无乐队，赶紧去创建吧~</view>
+        </view>
     </block>
     <view class="invitate_btn" bindtap="onTapBtn">创建新乐队</view>
-    <btm-tip />
-    <btm-empty />
+    
 </scroll-view>

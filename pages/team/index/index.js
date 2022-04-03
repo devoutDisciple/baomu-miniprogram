@@ -31,4 +31,12 @@ Page({
 			url: '/pages/team/create/create',
 		});
 	},
+
+	// 点击乐队详情
+	onTapDetail: function (e) {
+		const { user_table_id } = e.currentTarget.dataset.team;
+		wx.navigateTo({
+			url: `/pages/team/detail/detail?user_id=${user_table_id}`,
+		});
+	},
 });

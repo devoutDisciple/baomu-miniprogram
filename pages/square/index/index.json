@@ -1,9 +1,7 @@
 {
 	"usingComponents": {
 		"square-list": "/component/squareList/squareList",
-		"btm-tip": "/component/btmTip/btmTip",
-		"my-img": "/component/img/img",
-		"simple-video": "/component/simpleVideo/simpleVideo"
+		"btm-tip": "/component/btmTip/btmTip"
 	},
 	"navigationBarTitleText": "广场"
 }

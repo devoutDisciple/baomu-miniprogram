@@ -91,7 +91,7 @@ Page({
 		// 我的发布
 		if (type === 'publish') this.jumpPage('/pages/my/myPublish/myPublish');
 		// 我的乐队
-		if (type === 'team') this.jumpPage('/pages/my/myPublish/myPublish');
+		if (type === 'team') this.jumpPage('/pages/team/index/index');
 		// 我的评论
 		if (type === 'comment') this.jumpPage('/pages/my/myPublish/myPublish');
 		// 工作记录
@@ -108,8 +108,6 @@ Page({
 		if (type === 'skill') this.jumpPage('/pages/my/skill/skill');
 		// 照片墙
 		if (type === 'photo') this.jumpPage('/pages/my/editPersonDetail/editPersonDetail');
-		// 工作地点
-		if (type === 'address') this.jumpPage('/pages/my/myPublish/myPublish');
 		// 可预约时段
 		if (type === 'time') this.jumpPage('/pages/my/myPublish/myPublish');
 		// 作品展示
@@ -117,9 +115,23 @@ Page({
 			this.jumpPage(`/pages/my/productionShow/productionShow?user_id=${user_id}&type=1`);
 		}
 		// 去组团
-		if (type === 'getTeam') this.jumpPage('/pages/my/myPublish/myPublish');
-		// 客服中心
-		if (type === 'service') this.jumpPage('/pages/my/myPublish/myPublish');
+		if (type === 'getTeam') this.jumpPage('/pages/team/create/create');
+		// 工作地点
+		if (type === 'address') {
+			wx.chooseLocation({
+				complete: function (res) {
+					if (res.errMsg !== 'chooseLocation:ok') {
+						return wx.showToast({
+							title: '请重新选择',
+							icon: 'error',
+						});
+					}
+					const { latitude, longitude } = res;
+					// 更新用户位置
+					request.post({ url: '/user/updateLocation', data: { latitude, longitude, user_id } });
+				},
+			});
+		}
 	},
 
 	// 获取设备信息

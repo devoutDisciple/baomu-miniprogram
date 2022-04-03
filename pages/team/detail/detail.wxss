@@ -1,1 +1,210 @@
-/* pages/team/detail/detail.wxss */
+.person {
+    height: 100vh;
+    width: 100vw;
+    background: #f7f7f7;
+    position: relative;
+}
+
+.wrap {
+    height: 100vh;
+    width: 100vw;
+    position: relative;
+}
+
+.invitate_btn {
+    position: fixed;
+    bottom: 40rpx;
+    left: 40rpx;
+    width: calc(100vw - 80rpx);
+    height: 100rpx;
+    z-index: 111;
+    background: #000;
+    color: #fff;
+    border-radius: 20rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 36rpx;
+    font-weight: 600;
+}
+
+.bg {
+    width: 100vw;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 1;
+}
+
+.con {
+    position: absolute;
+    top: 400rpx;
+    width: calc(100vw - 40rpx);
+    min-height: 300rpx;
+    z-index: 99;
+    padding: 0 20rpx;
+}
+
+.msg {
+    background: #fff;
+    padding: 0 30rpx;
+    border-radius: 20rpx;
+    padding-bottom: 40rpx;
+}
+
+.msg_title {
+    height: 120rpx;
+    position: relative;
+}
+
+.msg_photo {
+    height: 160rpx;
+    width: 160rpx;
+    border-radius: 100%;
+    position: absolute;
+    left: 20rpx;
+    top: -70rpx;
+}
+
+.msg_name {
+    position: absolute;
+    font-size: 36rpx;
+    left: 190rpx;
+    top: 0;
+    height: 80rpx;
+    max-width: 300rpx;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: flex;
+    align-items: flex-end;
+}
+
+.msg_icon {
+    height: 60rpx;
+    width: 60rpx;
+    position: absolute;
+    right: 20rpx;
+    top: 20rpx;
+}
+
+.msg_sign {
+    font-size: 36rpx;
+    font-weight: 600;
+    height: 60rpx;
+}
+
+.msg_tubiao {
+    display: flex;
+}
+
+.msg_tubiao_item {
+    padding: 5rpx 20rpx;
+    font-size: 24rpx;
+    margin-right: 10rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20rpx;
+}
+
+.msg_tubiao_item_img {
+    width: 24rpx;
+    height: 24rpx;
+    margin-right: 5rpx;
+    display: flex;
+    overflow: hidden;
+}
+
+.msg_tubiao_item_renzheng {
+    background: #f6eede;
+    color: #987f4a;
+}
+
+.msg_tubiao_item_yuanxiao {
+    background: #e7e7da;
+    color: #9d9d74;
+}
+
+.msg_tubiao_item_huojiang {
+    background: #f5dcc4;
+    color: #e19449;
+}
+
+.msg_tubiao_item_kaoji {
+    background: #dfe9d1;
+    color: #7b9b50;
+}
+
+.msg_desc {
+    margin: 40rpx 0;
+    font-size: 28rpx;
+    color: #6d6d6d;
+}
+
+.msg_desc_icon {
+    width: 30rpx;
+    height: 30rpx;
+    margin-left: 10rpx;
+}
+
+.team_title {
+    display: flex;
+}
+
+.team_title_left {
+    flex: 1;
+    font-size: 34rpx;
+    color: #666;
+}
+
+.team_title_right {
+    width: 160rpx;
+    color: #6a6a6a;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    font-size: 26rpx;
+}
+
+.team_icon {
+    width: 12rpx;
+    height: 26rpx;
+    margin-left: 10rpx;
+}
+
+.team_person {
+    margin-top: 40rpx;
+    display: flex;
+    justify-content: space-between;
+}
+
+.team_chunk {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.team_chunk_photo {
+    width: 100rpx;
+    height: 100rpx;
+}
+
+.team_chunk_name {
+    margin-top: 20rpx;
+    font-size: 28rpx;
+    color: #666;
+}
+
+.production_chunk {
+    margin-top: 20rpx;
+    background: #fff;
+}
+
+.production_chunk_title {
+    padding: 40rpx 20rpx;
+}
+
+.empty {
+    height: 300rpx;
+}

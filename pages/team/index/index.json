@@ -2,6 +2,7 @@
     "usingComponents": {
         "production-img": "/component/productionImg/productionImg",
         "btm-tip": "/component/btmTip/btmTip",
+        "empty-img": "/component/emptyImg/emptyImg",
         "btm-empty": "/component/btmEmpty/btmEmpty"
     },
     "navigationBarTitleText": "我的乐队"

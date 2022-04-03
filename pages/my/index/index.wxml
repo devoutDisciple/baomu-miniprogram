@@ -46,7 +46,7 @@
                         <view class="opt_chunk_icon">
                             <image src="/asserts/public/my_publish.png" class="opt_chunk_img"/>
                         </view>
-                        <view class="opt_chunk_txt">我的发布</view>
+                        <view class="opt_chunk_txt">我的动态</view>
                     </view>
                     <view class="opt_chunk" data-type="team" bindtap="goOtherPage">
                         <view class="opt_chunk_icon">
