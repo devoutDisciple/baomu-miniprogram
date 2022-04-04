@@ -156,7 +156,6 @@ Page({
 	// 获取邀请用户的详情
 	getUserDetails: async function () {
 		let { userIds } = this.data;
-		console.log(userIds, 12);
 		if (userIds.length === 0) {
 			this.setData({ userDetails: [] });
 			return;
@@ -165,7 +164,6 @@ Page({
 			userIds = userIds.splice(0, 3);
 		}
 		const result = await request.get({ url: '/user/invitationUserDetail', data: { user_ids: userIds } });
-		console.log(result, 32);
 		this.setData({ userDetails: result });
 	},
 
@@ -188,7 +186,7 @@ Page({
 			});
 		}
 		if (!userIds.includes(user_id)) {
-			userIds.push(user_id);
+			userIds.unshift(user_id);
 		}
 		const team_user_ids = userIds.join(',');
 		loading.showLoading();

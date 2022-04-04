@@ -1,6 +1,7 @@
 {
   "component": true,
   "usingComponents": {
+      "my-img1": "/component/squareImg/squareImg",
       "my-img": "/component/img/img"
   }
 }

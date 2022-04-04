@@ -29,7 +29,8 @@
     "pages/team/index/index",
     "pages/team/detail/detail",
     "pages/team/create/create",
-    "pages/team/invitation/invitation"
+    "pages/team/invitation/invitation",
+    "pages/team/users/users"
   ],
   "window": {
     "backgroundTextStyle": "light",

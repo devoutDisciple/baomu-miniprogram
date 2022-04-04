@@ -20,7 +20,6 @@ Component({
 	 */
 	methods: {
 		onSeachDetail: function () {
-			console.log(this.data.data.id);
 			const { id } = this.data.data;
 			wx.navigateTo({
 				url: `/pages/my/productionDetail/productionDetail?id=${id}`,

@@ -1,0 +1,120 @@
+.wrap {
+    height: 100vh;
+    width: 100vw;
+    background: #f8f9fa;
+    padding-top: 20rpx;
+}
+
+.con {
+    width: 100%;
+    min-height: 100vh;
+    background: #fff;
+}
+
+.chunk {
+    padding: 40rpx 20rpx;
+    display: flex;
+    align-items: center;
+    border-bottom: 1rpx solid #f6f6f6;
+}
+
+.photo {
+    width: 90rpx;
+    height: 90rpx;
+    border-radius: 100%;
+}
+
+.name {
+    font-size: 32rpx;
+    flex: 1;
+    padding: 0 20rpx;
+    display: flex;
+    align-items: center;
+}
+
+.name_text {
+    max-width: 260rpx;
+    display: -webkit-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-all;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+}
+
+.name_desc {
+    font-size: 26rpx;
+    color: #666;
+    margin-right: 20rpx;
+}
+
+.state_desc {
+    font-size: 26rpx;
+    color: #f0bcc6;
+    margin-right: 20rpx;
+}
+
+.desc {
+    font-size: 28rpx;
+    color: #666;
+    display: flex;
+    align-items: center;
+}
+
+.desc_icon {
+    width: 32rpx;
+    height: 32rpx;
+    margin-right: 20rpx;
+}
+
+.chunk_delete {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f0bcc6;
+    color: #fff;
+    height: 100%;
+    width: 196rpx;
+}
+
+.empty_txt {
+    height: 300rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #8a8a8a;
+    font-size: 34rpx;
+    margin-bottom: 200rpx;
+}
+
+.invitate_btn {
+    position: fixed;
+    bottom: 10rpx;
+    left: 40rpx;
+    width: calc(100vw - 80rpx);
+    height: 100rpx;
+    z-index: 111;
+    background: #000;
+    color: #fff;
+    border-radius: 20rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 38rpx;
+    margin: 50rpx 0;
+}
+
+.production_empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #6a6a6a;
+    padding: 30rpx;
+}
+
+.production_empty_img {
+    width: 294rpx;
+    height: 243rpx;
+    margin-bottom: 20rpx;
+}

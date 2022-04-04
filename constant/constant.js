@@ -461,3 +461,10 @@ export const price_state = [
 	{ id: 5, name: '已报名' },
 	{ id: 6, name: '中标' },
 ];
+
+// 队员参与状态
+export const TEAM_USER_STATE = [
+	{ id: 1, name: '未加入' },
+	{ id: 2, name: '' }, // 已同意
+	{ id: 3, name: '已拒绝' },
+];

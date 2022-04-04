@@ -142,7 +142,7 @@
         {
           "name": "作品详情",
           "pathName": "pages/my/productionDetail/productionDetail",
-          "query": "id=11",
+          "query": "id=18",
           "launchMode": "default",
           "scene": null
         },
@@ -191,7 +191,14 @@
         {
           "name": "乐队详情",
           "pathName": "pages/team/detail/detail",
-          "query": "user_id=8",
+          "query": "user_id=38",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "乐队成员",
+          "pathName": "pages/team/users/users",
+          "query": "team_id=19",
           "launchMode": "default",
           "scene": null
         }

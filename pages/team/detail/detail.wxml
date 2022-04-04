@@ -30,7 +30,7 @@
                 <view class="msg_desc">个人简介：{{personDetail.desc || "暂无"}} 
                     <image class="msg_desc_icon" src="/asserts/public/edit.png" />
                 </view>
-                <view class="team_title">
+                <view class="team_title" bindtap="onTapSerachUser">
                     <view class="team_title_left">乐队成员：</view>
                     <view class="team_title_right">全部成员<image class="team_icon" src="/asserts/public/left.png" /></view>
                 </view>
@@ -54,14 +54,14 @@
                 </view>
             </view>
             <view class="production_chunk">
-                <view class="team_title production_chunk_title">
+                <view class="team_title production_chunk_title" data-type="1" bindtap="onTapProductionDetail">
                     <view class="team_title_left">乐队作品：</view>
                     <view class="team_title_right">全部作品<image class="team_icon" src="/asserts/public/left.png" /></view>
                 </view>
                 <square-list data="{{production1}}"/>
             </view>
             <view class="production_chunk">
-                <view class="team_title production_chunk_title">
+                <view class="team_title production_chunk_title" data-type="2" bindtap="onTapProductionDetail">
                     <view class="team_title_left">乐队动态：</view>
                     <view class="team_title_right">全部动态<image class="team_icon" src="/asserts/public/left.png" /></view>
                 </view>

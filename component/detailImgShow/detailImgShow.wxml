@@ -2,7 +2,7 @@
     <block wx:if="{{imgListLen === 1}}">
         <view class="wrap wrap1">
             <view bindtap="showImg" data-index="{{index}}" class="img" wx:for="{{imgLists}}" wx:key="index">
-                <my-img class="my_img" src="{{item}}"/>
+                <my-img1 class="my_img" src="{{item}}"/>
             </view>
         </view>
     </block>

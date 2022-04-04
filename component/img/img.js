@@ -30,6 +30,7 @@ Component({
 				src: src,
 				success: function (res) {
 					const { width, height } = res;
+					console.log(res, 9998);
 					self.setData({ width, height });
 				},
 				fail: function (err) {

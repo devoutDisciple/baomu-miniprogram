@@ -1,7 +1,6 @@
 import loading from '../../../utils/loading';
 import request from '../../../utils/request';
 import { instruments } from '../../../constant/constant';
-import moment from '../../../utils/moment';
 import login from '../../../utils/login';
 
 Page({
@@ -9,6 +8,7 @@ Page({
 	 * 页面的初始数据
 	 */
 	data: {
+		firstTime: true, // 是否是第一次
 		showHeader: false, // 是否展示滑动之后的header
 		own_id: '', // 当前账户的id
 		user_id: '', // 当前用户的id
@@ -36,12 +36,23 @@ Page({
 		}
 		loading.showLoading();
 		const own_id = wx.getStorageSync('user_id');
-		this.setData({ user_id: Number(user_id), own_id: Number(own_id) }, () => {
+		this.setData({ user_id: Number(user_id), own_id: Number(own_id), firstTime: false }, () => {
 			// 获取个人信息
 			this.getPersonDetail();
 			// 获取一个作品和一个动态
 			this.getTeamOneProduction();
 		});
+	},
+
+	onShow: function () {
+		const { firstTime } = this.data;
+		if (!firstTime) {
+			loading.showLoading();
+			// 获取个人信息
+			this.getPersonDetail();
+			// 获取一个作品和一个动态
+			this.getTeamOneProduction();
+		}
 	},
 
 	onScroll: function (e) {
@@ -81,6 +92,14 @@ Page({
 		const { user_id } = this.data;
 		wx.navigateTo({
 			url: `/pages/my/productionShow/productionShow?user_id=${user_id}&type=${type}`,
+		});
+	},
+
+	// 点击乐队成员
+	onTapSerachUser: function () {
+		const { personDetail } = this.data;
+		wx.navigateTo({
+			url: `/pages/team/users/users?team_id=${personDetail.team_id}`,
 		});
 	},
 

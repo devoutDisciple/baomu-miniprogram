@@ -1,0 +1,32 @@
+<scroll-view class="wrap" scroll-y="{{true}}" enhanced="{{true}}" show-scrollbar="{{false}}">
+    <view class="con">
+        <block wx:if="{{usersList && usersList.length !== 0}}">
+            <block wx:for="{{usersList}}" wx:key="index">
+                <van-swipe-cell right-width="{{ 100 }}">
+                    <view class="chunk">
+                        <image class="photo" src="{{item.userDetail.photo}}" />
+                        <view class="name">
+                            <text class="name_text">{{item.userDetail.nickname}}</text>
+                            <text> · </text>
+                            <text class="name_desc">{{item.is_owner === 1 ? "队长" : ""}} 主唱 </text>
+                            <text class="state_desc">{{item.stateName}}</text>
+                        </view>
+                        <view class="desc">
+                            <image class="desc_icon" src="/asserts/public/edit.png" />
+                            编辑
+                        </view>
+                    </view>
+                    <view class="chunk_delete" data-item="{{item}}" bindtap="onTapDeleteItem" slot="right">删除成员</view>
+                </van-swipe-cell>   
+            </block>
+            <view class="empty_txt">没有更多啦~</view>
+        </block>
+        <block wx:else>
+            <view class="production_empty">
+                <image class="production_empty_img" src="/asserts/public/empty.png" />
+                <view>暂无成员</view>
+            </view>
+        </block>
+    </view>
+    <view class="invitate_btn" bindtap="onTapSureBtn">邀请新成员</view>
+</scroll-view>
