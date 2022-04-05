@@ -1,0 +1,34 @@
+<scroll-view class="wrap" scroll-y="{{true}}" enhanced="{{true}}" show-scrollbar="{{false}}">
+    <view class="con">
+        <view class="chunk">
+            <view class="chunk_lable">头像</view>
+            <view class="chunk_value">
+                <image class="photo" src="{{teamUserDetail.userDetail.photo}}" />
+            </view>
+        </view>
+        <view class="chunk">
+            <view class="chunk_lable">昵称</view>
+            <view class="chunk_value">
+                {{teamUserDetail.userDetail.nickname}}
+            </view>
+        </view>
+        <view class="chunk">
+        <view class="label">乐队担当</view>
+            <view class="value">
+                <picker class="picker" bindchange="onPickStudy" range="{{study_list}}">
+                    <block wx:if="{{study_name}}">
+                        <view class="picker_value">
+                            {{study_name}}
+                        </view>
+                    </block>
+                    <block wx:else>
+                        <view class="picker_init">
+                            请选择
+                        </view>
+                    </block>
+                </picker>
+            </view>
+            <image class="icon" src="/asserts/public/left.png" />
+        </view>
+    </view>
+</scroll-view>

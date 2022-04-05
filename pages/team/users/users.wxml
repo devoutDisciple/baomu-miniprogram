@@ -11,7 +11,7 @@
                             <text class="name_desc">{{item.is_owner === 1 ? "队长" : ""}} 主唱 </text>
                             <text class="state_desc">{{item.stateName}}</text>
                         </view>
-                        <view class="desc">
+                        <view class="desc" bindtap="onTapUserEdit" data-item="{{item}}">
                             <image class="desc_icon" src="/asserts/public/edit.png" />
                             编辑
                         </view>

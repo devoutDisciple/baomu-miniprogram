@@ -35,6 +35,14 @@ Page({
 		loading.hideLoading();
 	},
 
+	// 编辑成员
+	async onTapUserEdit(e) {
+		const { id } = e.currentTarget.dataset.item;
+		wx.navigateTo({
+			url: `/pages/team/editUsers/editUsers?team_user_id=${id}`,
+		});
+	},
+
 	// 删除成员
 	async onTapDeleteItem(e) {
 		const { item } = e.currentTarget.dataset;

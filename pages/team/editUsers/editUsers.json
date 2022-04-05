@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "select-item": "/component/selectItem/selectItem"
+  },
+  "navigationBarTitleText": "乐队成员"
+}

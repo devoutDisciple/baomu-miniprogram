@@ -30,7 +30,8 @@
     "pages/team/detail/detail",
     "pages/team/create/create",
     "pages/team/invitation/invitation",
-    "pages/team/users/users"
+    "pages/team/users/users",
+    "pages/team/editUsers/editUsers"
   ],
   "window": {
     "backgroundTextStyle": "light",

@@ -201,6 +201,13 @@
           "query": "team_id=19",
           "launchMode": "default",
           "scene": null
+        },
+        {
+          "name": "成员编辑",
+          "pathName": "pages/team/editUsers/editUsers",
+          "query": "team_user_id=13",
+          "launchMode": "default",
+          "scene": null
         }
       ]
     }

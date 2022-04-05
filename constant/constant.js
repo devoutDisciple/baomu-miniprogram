@@ -468,3 +468,13 @@ export const TEAM_USER_STATE = [
 	{ id: 2, name: '' }, // 已同意
 	{ id: 3, name: '已拒绝' },
 ];
+
+// 乐队成员担当
+export const TEAM_USER_SKILL = [
+	{ id: 1, name: '钢琴手' },
+	{ id: 2, name: '小提琴手' },
+	{ id: 3, name: '架子鼓手' },
+	{ id: 4, name: '贝斯手' },
+	{ id: 5, name: '主唱' },
+	{ id: 6, name: '手风琴手' },
+];
