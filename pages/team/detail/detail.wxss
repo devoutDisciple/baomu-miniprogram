@@ -188,12 +188,18 @@
 .team_chunk_photo {
     width: 100rpx;
     height: 100rpx;
+    border-radius: 100%;
 }
 
 .team_chunk_name {
     margin-top: 20rpx;
     font-size: 28rpx;
     color: #666;
+}
+
+.team_chunk_name_desc {
+    font-size: 32rpx;
+    color: #333;
 }
 
 .production_chunk {

@@ -35,22 +35,17 @@
                     <view class="team_title_right">全部成员<image class="team_icon" src="/asserts/public/left.png" /></view>
                 </view>
                 <view class="team_person">
-                    <view class="team_chunk">
-                        <image class="team_chunk_photo" src="/asserts/temp/photo.png" />
-                        <view class="team_chunk_name">队长 主场</view>
-                    </view>
-                    <view class="team_chunk">
-                        <image class="team_chunk_photo" src="/asserts/temp/photo.png" />
-                        <view class="team_chunk_name">队长 主场</view>
-                    </view>
-                    <view class="team_chunk">
-                        <image class="team_chunk_photo" src="/asserts/temp/photo.png" />
-                        <view class="team_chunk_name">队长 主场</view>
-                    </view>
-                    <view class="team_chunk">
-                        <image class="team_chunk_photo" src="/asserts/temp/photo.png" />
-                        <view class="team_chunk_name">队长 主场</view>
-                    </view>
+                    <block wx:if="{{teamUsers && teamUsers.length !== 0}}">
+                        <block wx:for="{{teamUsers}}" wx:key="index">
+                            <view class="team_chunk">
+                                <image class="team_chunk_photo" src="{{item.userDetail.photo}}" />
+                                <view class="team_chunk_name">
+                                    <text class="team_chunk_name_desc">{{item.is_owner === 1 ? "队长 " : ""}}</text>
+                                    {{item.typeName}}
+                                </view>
+                            </view>
+                        </block>
+                    </block>
                 </view>
             </view>
             <view class="production_chunk">

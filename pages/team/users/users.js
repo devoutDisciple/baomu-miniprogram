@@ -1,5 +1,5 @@
 import request from '../../../utils/request';
-import { TEAM_USER_STATE } from '../../../constant/constant';
+import { TEAM_USER_STATE, TEAM_USER_SKILL } from '../../../constant/constant';
 import loading from '../../../utils/loading';
 
 // pages/team/users/users.js
@@ -8,6 +8,7 @@ Page({
 	 * 页面的初始数据
 	 */
 	data: {
+		isFirstTime: true,
 		usersList: [],
 	},
 
@@ -16,9 +17,15 @@ Page({
 	 */
 	onLoad(options) {
 		const { team_id } = options;
-		this.setData({ team_id }, () => {
+		this.setData({ team_id, isFirstTime: false }, () => {
 			this.onSearchUsers();
 		});
+	},
+
+	onShow() {
+		if (!this.data.isFirstTime) {
+			this.onSearchUsers();
+		}
 	},
 
 	// 查询成员
@@ -29,6 +36,8 @@ Page({
 		if (Array.isArray(result)) {
 			result.forEach((item) => {
 				item.stateName = TEAM_USER_STATE.filter((state) => item.state === state.id)[0].name;
+				const NEW_TEAM_USER_SKILL = [{ id: -1, name: '未知' }, ...TEAM_USER_SKILL];
+				item.typeName = NEW_TEAM_USER_SKILL.filter((state) => item.type === state.id)[0].name;
 			});
 		}
 		this.setData({ usersList: result || [] });

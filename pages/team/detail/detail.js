@@ -1,6 +1,6 @@
 import loading from '../../../utils/loading';
 import request from '../../../utils/request';
-import { instruments } from '../../../constant/constant';
+import { instruments, TEAM_USER_STATE, TEAM_USER_SKILL } from '../../../constant/constant';
 import login from '../../../utils/login';
 
 Page({
@@ -13,6 +13,7 @@ Page({
 		own_id: '', // 当前账户的id
 		user_id: '', // 当前用户的id
 		personDetail: {}, // 个人信息
+		teamUsers: [], // 乐队成员
 		dialogShow: false,
 		// 弹框的显示文案
 		dialogDetail: {
@@ -66,6 +67,8 @@ Page({
 		const personDetail = await request.get({ url: '/user/userDetail', data: { user_id } });
 		this.setData({ personDetail });
 		loading.hideLoading();
+		// 获取乐队成员
+		this.getTeamUser();
 	},
 
 	// 获取一个作品和一个动态
@@ -83,6 +86,24 @@ Page({
 		}
 		const [production1, production2] = result;
 		this.setData({ production1: production1 || {}, production2: production2 || {} });
+		loading.hideLoading();
+	},
+
+	// 获取乐队成员
+	getTeamUser: async function () {
+		const { personDetail } = this.data;
+		loading.showLoading();
+		let result = await request.get({ url: '/team/teamsUsersByTeamId', data: { team_id: personDetail.team_id } });
+		if (Array.isArray(result)) {
+			result.forEach((item) => {
+				item.stateName = TEAM_USER_STATE.filter((state) => item.state === state.id)[0].name;
+				const NEW_TEAM_USER_SKILL = [{ id: -1, name: '未知' }, ...TEAM_USER_SKILL];
+				item.typeName = NEW_TEAM_USER_SKILL.filter((state) => item.type === state.id)[0].name;
+			});
+		}
+		// 最多展示四个
+		result = result.splice(0, 4);
+		this.setData({ teamUsers: result });
 		loading.hideLoading();
 	},
 
