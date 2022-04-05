@@ -22,7 +22,7 @@ Page({
 		const { user_id, type, showPublishBtn } = options;
 		const owner_id = wx.getStorageSync('user_id');
 		let showBtn = Number(user_id) === Number(owner_id);
-		if (showPublishBtn) {
+		if (showPublishBtn === 'true') {
 			showBtn = true;
 		}
 		this.setData({ user_id, type, owner_id, showBtn }, () => {
@@ -55,16 +55,18 @@ Page({
 
 	// 点击添加作品
 	onTapAdd: function () {
+		const { user_id, type } = this.data;
 		wx.navigateTo({
-			url: '/pages/my/productionPublish/productionPublish',
+			url: `/pages/my/productionPublish/productionPublish?user_id=${user_id}&type=${type}`,
 		});
 	},
 
 	// 点击详情
 	onShowDetail: function (e) {
 		const { id } = e.currentTarget.dataset;
+		const { type } = this.data;
 		wx.navigateTo({
-			url: `/pages/my/productionDetail/productionDetail?id=${id}`,
+			url: `/pages/my/productionDetail/productionDetail?id=${id}&type=${type}`,
 		});
 	},
 

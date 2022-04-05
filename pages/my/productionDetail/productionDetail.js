@@ -8,6 +8,7 @@ Page({
 	 */
 	data: {
 		id: '', // 作品id
+		type: 1, // 1-作品 2-动态
 		detail: {}, // 作品详情
 		hadGoods: false, // 是否给该作品点过赞
 		comment_total: 0, // 全部评价
@@ -17,13 +18,22 @@ Page({
 	 * 生命周期函数--监听页面加载
 	 */
 	onLoad: function (options) {
-		const { id } = options;
+		const { id, type } = options;
 		if (!id) {
 			return wx.switchTab({
 				url: '/pages/home/index/index',
 			});
 		}
-		this.setData({ id }, () => {
+		if (Number(type) === 1) {
+			wx.setNavigationBarTitle({
+				title: '作品详情',
+			});
+		} else {
+			wx.setNavigationBarTitle({
+				title: '动态详情',
+			});
+		}
+		this.setData({ id, type }, () => {
 			this.onSearchProductionDetail();
 			this.onSearchCommonts(id);
 			this.getUserProductionGoods(id);
@@ -39,7 +49,6 @@ Page({
 			if (detail && detail.instr_id) {
 				detail.instr_name = instruments.filter((ins) => ins.id === detail.instr_id)[0].name;
 			}
-			console.log(detail, 122);
 			this.setData({ detail });
 			loading.hideLoading();
 		} catch (error) {
@@ -72,5 +81,22 @@ Page({
 	// 评论成功之后
 	onRepluSuccess: function () {
 		this.onSearchCommonts(this.data.id);
+	},
+
+	// 查看用户详情
+	onTapUserDetail: function () {
+		const { id: user_id, type } = this.data.detail.userDetail;
+		// 这是个人
+		if (Number(type) === 1) {
+			wx.navigateTo({
+				url: `/pages/personDetail/personDetail?user_id=${user_id}`,
+			});
+		}
+		// 这是团队
+		if (Number(type) === 2) {
+			wx.navigateTo({
+				url: `/pages/team/detail/detail?user_id=${user_id}`,
+			});
+		}
 	},
 });

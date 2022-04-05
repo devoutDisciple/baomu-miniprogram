@@ -98,6 +98,9 @@ Page({
 	// 关闭弹框
 	onCloseDialog: function () {
 		this.setData({ dialogShow: false });
+		wx.navigateBack({
+			complete: () => {},
+		});
 	},
 
 	// 获取用户位置

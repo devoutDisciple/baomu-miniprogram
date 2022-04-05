@@ -27,8 +27,8 @@
                     <renzhengIcon wx:if="{{personDetail.is_award === 1}}" idx="3"/>
                     <renzhengIcon wx:if="{{personDetail.is_level === 1}}" idx="4"/>
                 </view>
-                <view class="msg_desc">个人简介：{{personDetail.desc || "暂无"}} 
-                    <image class="msg_desc_icon" src="/asserts/public/edit.png" />
+                <view class="msg_desc">乐队简介：{{personDetail.desc || "暂无"}} 
+                    <image wx:if="{{is_team_leader}}" bindtap="onTapEdit" class="msg_desc_icon" src="/asserts/public/edit.png" />
                 </view>
                 <view class="team_title" bindtap="onTapSerachUser">
                     <view class="team_title_left">乐队成员：</view>
@@ -75,7 +75,7 @@
             <view class="empty"></view>
         </view>
     </scroll-view>
-    <view class="invitate_btn">解散乐队</view>
+    <view class="invitate_btn" wx:if="{{is_team_leader}}">解散乐队</view>
     <block wx:if="{{dialogShow}}">
         <tip-dialog
             bindOnClose="onCloseDialog"

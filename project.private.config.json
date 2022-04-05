@@ -191,21 +191,28 @@
         {
           "name": "乐队详情",
           "pathName": "pages/team/detail/detail",
-          "query": "user_id=38",
+          "query": "user_id=39",
           "launchMode": "default",
           "scene": null
         },
         {
           "name": "乐队成员",
           "pathName": "pages/team/users/users",
-          "query": "team_id=19",
+          "query": "team_id=20",
           "launchMode": "default",
           "scene": null
         },
         {
           "name": "成员编辑",
           "pathName": "pages/team/editUsers/editUsers",
-          "query": "team_user_id=13",
+          "query": "team_user_id=40",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "乐队编辑",
+          "pathName": "pages/team/editTeam/editTeam",
+          "query": "user_id=39",
           "launchMode": "default",
           "scene": null
         }

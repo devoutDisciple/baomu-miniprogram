@@ -37,8 +37,9 @@ Page({
 
 	// 点击发布
 	onTapPublish: function () {
+		const user_id = wx.getStorageSync('user_id');
 		wx.navigateTo({
-			url: '/pages/square/publish/publish',
+			url: `/pages/my/productionPublish/productionPublish?user_id=${user_id}&type=2`,
 		});
 	},
 });

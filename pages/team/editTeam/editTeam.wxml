@@ -1,0 +1,43 @@
+<scroll-view class="wrap" scroll-y="{{true}}" enhanced="{{true}}" show-scrollbar="{{false}}">
+    <view class="con">
+        <view class="chunk" bindtap="onChoosePhotoImg">
+            <view class="label">头像</view>
+            <view class="value">
+                <block wx:if="{{photo}}">
+                    <image class="value_img" src="{{photo}}" />
+                </block>
+                <block wx:else>
+                    <image class="value_img" src="/asserts/public/defalut_photo.png" />
+                </block>
+            </view>
+            <image class="icon" src="/asserts/public/left.png" />
+        </view>
+        <view class="chunk">
+            <view class="label">昵称</view>
+            <view class="value">
+                <input class="value_ipt" value="{{nickname}}" data-key="nickname" bindblur="onBlurIpt" placeholder="请输入" />
+            </view>
+            <image class="icon" src="/asserts/public/left.png" />
+        </view>
+        <view class="chunk2">
+            <view class="chunk_con">
+                <view class="label">乐队简介</view>
+                <view class="value"></view>
+                <image class="icon" src="/asserts/public/left.png" />
+            </view>
+            <textarea class="desc" cursor-spacing="{{40}}" value="{{desc}}" placeholder="乐队简介" maxlength="{{300}}" bindblur="onBlurDesc"/>
+        </view>
+        <view class="chunk" bindtap="onTapInvitationUser">
+            <view class="label">乐队成员</view>
+            <view class="value">
+                <block wx:if="{{teamUsers && teamUsers.length !== 0}}">
+                    <block wx:for="{{teamUsers}}" wx:key="index">
+                        <image class="team_user_photo" src="{{item.userDetail.photo}}" />
+                    </block>
+                </block>
+                
+            </view>
+            <image class="icon" src="/asserts/public/left.png" />
+        </view>
+    </view>
+</scroll-view>

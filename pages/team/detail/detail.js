@@ -10,7 +10,9 @@ Page({
 	data: {
 		firstTime: true, // 是否是第一次
 		showHeader: false, // 是否展示滑动之后的header
-		own_id: '', // 当前账户的id
+		local_user_id: '', // 当前账户的id
+		team_leader_id: '', // 队长id
+		is_team_leader: false, // 是否是队长 默认不是
 		user_id: '', // 当前用户的id
 		personDetail: {}, // 个人信息
 		teamUsers: [], // 乐队成员
@@ -36,13 +38,20 @@ Page({
 			});
 		}
 		loading.showLoading();
-		const own_id = wx.getStorageSync('user_id');
-		this.setData({ user_id: Number(user_id), own_id: Number(own_id), firstTime: false }, () => {
-			// 获取个人信息
-			this.getPersonDetail();
-			// 获取一个作品和一个动态
-			this.getTeamOneProduction();
-		});
+		const local_user_id = wx.getStorageSync('user_id');
+		this.setData(
+			{
+				user_id: Number(user_id),
+				local_user_id: Number(local_user_id),
+				firstTime: false,
+			},
+			() => {
+				// 获取个人信息
+				this.getPersonDetail();
+				// 获取一个作品和一个动态
+				this.getTeamOneProduction();
+			},
+		);
 	},
 
 	onShow: function () {
@@ -94,11 +103,17 @@ Page({
 
 	// 获取乐队成员
 	getTeamUser: async function () {
-		const { personDetail } = this.data;
+		const { personDetail, local_user_id } = this.data;
 		loading.showLoading();
 		let result = await request.get({ url: '/team/teamsUsersByTeamId', data: { team_id: personDetail.team_id } });
 		if (Array.isArray(result)) {
 			result.forEach((item) => {
+				// 1-队长 2-队员
+				if (item.is_owner === 1) {
+					const is_team_leader = Number(item.user_id) === Number(local_user_id);
+					// 保留团队队长id
+					this.setData({ team_leader_id: item.user_id, is_team_leader: is_team_leader });
+				}
 				item.stateName = TEAM_USER_STATE.filter((state) => item.state === state.id)[0].name;
 				const NEW_TEAM_USER_SKILL = [{ id: -1, name: '未知' }, ...TEAM_USER_SKILL];
 				item.typeName = NEW_TEAM_USER_SKILL.filter((state) => item.type === state.id)[0].name;
@@ -110,11 +125,20 @@ Page({
 		loading.hideLoading();
 	},
 
+	// 点击编辑按钮
+	onTapEdit: function () {
+		const { user_id } = this.data;
+		wx.navigateTo({
+			url: `/pages/team/editTeam/editTeam?user_id=${user_id}`,
+		});
+	},
+
 	// 跳转到作品或者动态展示页面
 	onTapProductionDetail: function (e) {
 		const { type } = e.currentTarget.dataset;
-		const { user_id, own_id, teamUsers } = this.data;
-		const isTeamer = !!teamUsers.filter((item) => item.user_id === own_id)[0];
+		const { user_id, local_user_id, teamUsers } = this.data;
+		const isTeamer = !!teamUsers.filter((item) => item.user_id === local_user_id)[0];
+		// return;
 		wx.navigateTo({
 			url: `/pages/my/productionShow/productionShow?user_id=${user_id}&type=${type}&showPublishBtn=${isTeamer}`,
 		});

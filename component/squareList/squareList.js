@@ -21,8 +21,9 @@ Component({
 	methods: {
 		onSeachDetail: function () {
 			const { id } = this.data.data;
+			console.log(this.data.data, 7238);
 			wx.navigateTo({
-				url: `/pages/my/productionDetail/productionDetail?id=${id}`,
+				url: `/pages/my/productionDetail/productionDetail?id=${id}&type=${this.data.data.type}`,
 			});
 		},
 	},

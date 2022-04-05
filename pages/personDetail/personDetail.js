@@ -23,6 +23,7 @@ Page({
 		awardDetail: {}, // 获奖记录
 		productionList: [], // 作品列表
 		personShowList: [], // 动态列表
+		showInvitationBtn: false, // 是否展示邀请按钮
 	},
 
 	/**
@@ -37,7 +38,11 @@ Page({
 		}
 		loading.showLoading();
 		const own_id = wx.getStorageSync('user_id');
-		this.setData({ user_id: Number(user_id), own_id: Number(own_id) }, () => {
+		const pages = getCurrentPages();
+		const currentPage = pages[pages.length - 2];
+		console.log(currentPage, 2389);
+		const showInvitationBtn = currentPage.route === 'pages/home/index/index';
+		this.setData({ user_id: Number(user_id), own_id: Number(own_id), showInvitationBtn }, () => {
 			// 获取个人信息
 			this.getPersonDetail();
 			// 获取个人技能列表

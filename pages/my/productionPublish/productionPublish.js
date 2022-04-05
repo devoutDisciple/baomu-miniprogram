@@ -8,6 +8,7 @@ Page({
 	 */
 	data: {
 		user_id: '', // 当前用户id，可能是用户或者乐团
+		type: 1, // 1-作品 2-动态
 		instrumentList: [], // 选择乐器的list
 		instrumentSelectName: '',
 		instrumentSelectId: '',
@@ -21,8 +22,17 @@ Page({
 	 * 生命周期函数--监听页面加载
 	 */
 	onLoad: function (options) {
-		const { user_id } = options;
-		this.setData({ user_id }, () => {
+		const { user_id, type } = options;
+		if (Number(type) === 1) {
+			wx.setNavigationBarTitle({
+				title: '添加作品',
+			});
+		} else {
+			wx.setNavigationBarTitle({
+				title: '发布动态',
+			});
+		}
+		this.setData({ user_id, type }, () => {
 			this.getAllInstruments();
 		});
 	},
@@ -134,7 +144,7 @@ Page({
 	// 点击发布
 	onPublish: async function () {
 		try {
-			const user_id = wx.getStorageSync('user_id');
+			const { user_id, type } = this.data;
 			const { instrumentSelectId, tempImgUrlPaths, videoDetail, desc, title } = this.data;
 			if (!desc || !title || !instrumentSelectId) {
 				return wx.showToast({
@@ -180,7 +190,7 @@ Page({
 				desc,
 				img_url: uploadImgUrls,
 				video: fileDetail,
-				type: 1,
+				type: type,
 			};
 			const result = await request.post({ url: '/production/add', data: params });
 			if (result === 'success') {

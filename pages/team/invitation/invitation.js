@@ -86,7 +86,7 @@ Page({
 		const route = currentPage.route;
 		const userIds = currentPage.data.userIds;
 		// 是否是乐队邀请新成员，老成员无法操作
-		const flag = route === 'pages/team/users/users';
+		const flag = route === 'pages/team/users/users' || route === 'pages/team/editTeam/editTeam';
 		// 将选取的user_id进行赋值
 		actors.forEach((item) => {
 			if (userIds.includes(item.id) && !Object.keys(item).includes('invitation')) {
@@ -203,6 +203,16 @@ Page({
 		}
 		// 乐队编辑页面
 		if (route === 'pages/team/users/users') {
+			currentPage.setData({ newAddUserIds: user_ids }, () => {
+				wx.navigateBack({
+					complete: () => {
+						currentPage.addNewTeamUser();
+					},
+				});
+			});
+		}
+		// 乐队编辑页面
+		if (route === 'pages/team/editTeam/editTeam') {
 			currentPage.setData({ newAddUserIds: user_ids }, () => {
 				wx.navigateBack({
 					complete: () => {
