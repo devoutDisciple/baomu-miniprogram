@@ -18,10 +18,13 @@ Page({
 	 * 生命周期函数--监听页面加载
 	 */
 	onLoad: function (options) {
-		const { user_id, type } = options;
+		// 如果是团队页面跳转过来的，团队成员需要展示发布按钮
+		const { user_id, type, showPublishBtn } = options;
 		const owner_id = wx.getStorageSync('user_id');
-		console.log(user_id, owner_id);
-		const showBtn = Number(user_id) === Number(owner_id);
+		let showBtn = Number(user_id) === Number(owner_id);
+		if (showPublishBtn) {
+			showBtn = true;
+		}
 		this.setData({ user_id, type, owner_id, showBtn }, () => {
 			if (Number(type) === 1) {
 				wx.setNavigationBarTitle({

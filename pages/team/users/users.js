@@ -8,8 +8,12 @@ Page({
 	 * 页面的初始数据
 	 */
 	data: {
+		userIds: [], // 现有乐队成员id
+		newAddUserIds: [], // 薪添加的乐队成员id
 		isFirstTime: true,
 		usersList: [],
+		team_id: '', // 团队id
+		teamDetail: {}, // 乐队详情
 	},
 
 	/**
@@ -18,6 +22,7 @@ Page({
 	onLoad(options) {
 		const { team_id } = options;
 		this.setData({ team_id, isFirstTime: false }, () => {
+			// 查询成员
 			this.onSearchUsers();
 		});
 	},
@@ -31,17 +36,25 @@ Page({
 	// 查询成员
 	async onSearchUsers() {
 		loading.showLoading();
-		const { team_id } = this.data;
+		const { team_id, userIds } = this.data;
 		const result = await request.get({ url: '/team/teamsUsersByTeamId', data: { team_id } });
 		if (Array.isArray(result)) {
 			result.forEach((item) => {
 				item.stateName = TEAM_USER_STATE.filter((state) => item.state === state.id)[0].name;
 				const NEW_TEAM_USER_SKILL = [{ id: -1, name: '未知' }, ...TEAM_USER_SKILL];
 				item.typeName = NEW_TEAM_USER_SKILL.filter((state) => item.type === state.id)[0].name;
+				userIds.push(item.user_id);
 			});
 		}
-		this.setData({ usersList: result || [] });
+		this.setData({ usersList: result || [], userIds });
 		loading.hideLoading();
+	},
+
+	// 查询乐队详情
+	async onSearchTeamDetail() {
+		const { team_id } = this.data;
+		const teamDetail = await request.get({ url: '/team/detailByTeamId', data: { team_id: team_id } });
+		this.setData({ teamDetail: teamDetail });
 	},
 
 	// 编辑成员
@@ -55,7 +68,8 @@ Page({
 	// 删除成员
 	async onTapDeleteItem(e) {
 		const { item } = e.currentTarget.dataset;
-		const { id } = item;
+		const { id: team_user_id, user_id } = item;
+		const { team_id } = this.data;
 		if (item.is_owner === 1) {
 			return wx.showToast({
 				title: '不可删除队长',
@@ -63,11 +77,36 @@ Page({
 			});
 		}
 		loading.showLoading();
-		await request.post({ url: '/team/deleteTeamUser', data: { id } });
+		await request.post({ url: '/team/deleteTeamUser', data: { team_user_id, user_id, team_id } });
 		loading.hideLoading();
 		this.onSearchUsers();
 		wx.showToast({
 			title: '删除成功',
+		});
+	},
+
+	// 点击单个成员
+	onTapUserDetail: function (e) {
+		const { userid } = e.currentTarget.dataset;
+		wx.navigateTo({
+			url: `/pages/personDetail/personDetail?user_id=${userid}`,
+		});
+	},
+
+	// 添加新成员
+	async addNewTeamUser() {
+		const { newAddUserIds, team_id } = this.data;
+		if (newAddUserIds.length === 0) return;
+		loading.showLoading();
+		await request.post({ url: '/team/addNewTeamUser', data: { team_id: team_id, userIds: newAddUserIds } });
+		loading.hideLoading();
+		this.onSearchUsers();
+	},
+
+	// 点击邀请成员
+	onTapInvitationBtn() {
+		wx.navigateTo({
+			url: '/pages/team/invitation/invitation',
 		});
 	},
 });

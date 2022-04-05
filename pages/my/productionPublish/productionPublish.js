@@ -7,6 +7,7 @@ Page({
 	 * 页面的初始数据
 	 */
 	data: {
+		user_id: '', // 当前用户id，可能是用户或者乐团
 		instrumentList: [], // 选择乐器的list
 		instrumentSelectName: '',
 		instrumentSelectId: '',
@@ -19,8 +20,11 @@ Page({
 	/**
 	 * 生命周期函数--监听页面加载
 	 */
-	onLoad: function () {
-		this.getAllInstruments();
+	onLoad: function (options) {
+		const { user_id } = options;
+		this.setData({ user_id }, () => {
+			this.getAllInstruments();
+		});
 	},
 
 	// 获取所有乐器类型

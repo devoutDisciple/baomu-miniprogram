@@ -37,7 +37,7 @@
                 <view class="team_person">
                     <block wx:if="{{teamUsers && teamUsers.length !== 0}}">
                         <block wx:for="{{teamUsers}}" wx:key="index">
-                            <view class="team_chunk">
+                            <view class="team_chunk" data-userid="{{item.user_id}}" bindtap="onTapUserDetail">
                                 <image class="team_chunk_photo" src="{{item.userDetail.photo}}" />
                                 <view class="team_chunk_name">
                                     <text class="team_chunk_name_desc">{{item.is_owner === 1 ? "队长 " : ""}}</text>

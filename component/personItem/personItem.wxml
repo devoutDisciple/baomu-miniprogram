@@ -15,14 +15,17 @@
                 <view class="person_pingfen_txt2 person_pingfen_num">{{data.distance}}</view>
             </view>
         </view>
-        <view class="person_title_btn" bindtap="onTapInvitation">
-            <block wx:if="{{!data.invitation}}">
-                <view class="person_title_btn_txt">邀请</view>
-            </block>
-            <block wx:else>
-                <view class="person_title_btn_txt person_title_cancle_btn">取消</view>
-            </block>
-        </view>
+        <block wx:if="{{!data.disabled}}">
+            <view class="person_title_btn" bindtap="onTapInvitation">
+                <block wx:if="{{!data.invitation}}">
+                    <view class="person_title_btn_txt">邀请</view>
+                </block>
+                <block wx:else>
+                    <view class="person_title_btn_txt person_title_cancle_btn">取消</view>
+                </block>
+            </view>
+        </block>
+        
     </view>
     <scroll-view class="person_product" scroll-x="{{true}}" enhanced="{{true}}" show-scrollbar="{{false}}">
         <block wx:if="{{data.productionImgs && data.productionImgs.length !== 0}}">

@@ -4,8 +4,8 @@
             <block wx:for="{{usersList}}" wx:key="index">
                 <van-swipe-cell right-width="{{ 100 }}">
                     <view class="chunk">
-                        <image class="photo" src="{{item.userDetail.photo}}" />
-                        <view class="name">
+                        <image class="photo" src="{{item.userDetail.photo}}" data-userid="{{item.userDetail.id}}" bindtap="onTapUserDetail"/>
+                        <view class="name" data-userid="{{item.userDetail.id}}" bindtap="onTapUserDetail">
                             <text class="name_text">{{item.userDetail.nickname}}</text>
                             <text> · </text>
                             <text class="name_desc">{{item.is_owner === 1 ? "队长" : ""}} {{item.typeName}} </text>
@@ -28,5 +28,5 @@
             </view>
         </block>
     </view>
-    <view class="invitate_btn" bindtap="onTapSureBtn">邀请新成员</view>
+    <view class="invitate_btn" bindtap="onTapInvitationBtn">邀请新成员</view>
 </scroll-view>

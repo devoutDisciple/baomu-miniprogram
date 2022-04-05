@@ -79,20 +79,22 @@ Page({
 		const user_id = wx.getStorageSync('user_id');
 		const actors = await request.get({
 			url: '/user/userByLocation',
-			data: { user_id: user_id, current: currentUserPage },
+			data: { user_id: user_id, current: currentUserPage, onlyPerson: true },
 		});
 		const pages = getCurrentPages();
 		const currentPage = pages[pages.length - 2];
+		const route = currentPage.route;
 		const userIds = currentPage.data.userIds;
+		// 是否是乐队邀请新成员，老成员无法操作
+		const flag = route === 'pages/team/users/users';
 		// 将选取的user_id进行赋值
 		actors.forEach((item) => {
 			if (userIds.includes(item.id) && !Object.keys(item).includes('invitation')) {
+				if (flag) item.disabled = true;
 				item.invitation = true;
 			}
 		});
-
 		const newActorList = [...actorList, ...actors];
-
 		this.setData({ actorList: newActorList, currentUserPage: currentUserPage + 1, isLoading: false });
 	},
 
@@ -183,16 +185,31 @@ Page({
 		const { actorList } = this.data;
 		const user_ids = [];
 		actorList.forEach((item) => {
-			if (item.invitation) user_ids.push(item.id);
+			// disabled表示已经在成员邀请页面邀请过得，无法再次操作的
+			if (!item.disabled && item.invitation) user_ids.push(item.id);
 		});
 		const pages = getCurrentPages();
 		const currentPage = pages[pages.length - 2];
-		currentPage.setData({ userIds: user_ids }, () => {
-			wx.navigateBack({
-				complete: () => {
-					currentPage.getUserDetails();
-				},
+		const route = currentPage.route;
+		// 创建乐队页面
+		if (route === 'pages/team/create/create') {
+			currentPage.setData({ userIds: user_ids }, () => {
+				wx.navigateBack({
+					complete: () => {
+						currentPage.getUserDetails();
+					},
+				});
 			});
-		});
+		}
+		// 乐队编辑页面
+		if (route === 'pages/team/users/users') {
+			currentPage.setData({ newAddUserIds: user_ids }, () => {
+				wx.navigateBack({
+					complete: () => {
+						currentPage.addNewTeamUser();
+					},
+				});
+			});
+		}
 	},
 });

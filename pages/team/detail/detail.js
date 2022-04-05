@@ -79,15 +79,15 @@ Page({
 		}
 		const { user_id } = this.data;
 		const result = await request.get({ url: '/production/teamOneProductions', data: { user_id } });
+		let production1 = {};
+		let production2 = {};
 		if (result && result.length !== 0) {
 			result.forEach((item) => {
 				item.instr_name = instruments.filter((ins) => ins.id === item.instr_id)[0].name;
+				if (Number(item.type) === 1) production1 = item;
+				if (Number(item.type) === 2) production2 = item;
 			});
 		}
-		const [production1, production2] = result;
-		console.log(production1, 1111);
-		console.log(production2, 2222);
-
 		this.setData({ production1: production1 || {}, production2: production2 || {} });
 		loading.hideLoading();
 	},
@@ -113,17 +113,26 @@ Page({
 	// 跳转到作品或者动态展示页面
 	onTapProductionDetail: function (e) {
 		const { type } = e.currentTarget.dataset;
-		const { user_id } = this.data;
+		const { user_id, own_id, teamUsers } = this.data;
+		const isTeamer = !!teamUsers.filter((item) => item.user_id === own_id)[0];
 		wx.navigateTo({
-			url: `/pages/my/productionShow/productionShow?user_id=${user_id}&type=${type}`,
+			url: `/pages/my/productionShow/productionShow?user_id=${user_id}&type=${type}&showPublishBtn=${isTeamer}`,
 		});
 	},
 
-	// 点击乐队成员
+	// 点击全部成员
 	onTapSerachUser: function () {
 		const { personDetail } = this.data;
 		wx.navigateTo({
 			url: `/pages/team/users/users?team_id=${personDetail.team_id}`,
+		});
+	},
+
+	// 点击单个成员
+	onTapUserDetail: function (e) {
+		const { userid } = e.currentTarget.dataset;
+		wx.navigateTo({
+			url: `/pages/personDetail/personDetail?user_id=${userid}`,
 		});
 	},
 
