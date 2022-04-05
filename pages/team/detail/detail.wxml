@@ -53,14 +53,24 @@
                     <view class="team_title_left">乐队作品：</view>
                     <view class="team_title_right">全部作品<image class="team_icon" src="/asserts/public/left.png" /></view>
                 </view>
-                <square-list data="{{production1}}"/>
+                <block wx:if="{{production1 && production1.user_id}}">
+                    <square-list data="{{production1}}"/>
+                </block>
+                <block wx:else>
+                    <empty-img />
+                </block>
             </view>
             <view class="production_chunk">
                 <view class="team_title production_chunk_title" data-type="2" bindtap="onTapProductionDetail">
                     <view class="team_title_left">乐队动态：</view>
                     <view class="team_title_right">全部动态<image class="team_icon" src="/asserts/public/left.png" /></view>
                 </view>
-                <square-list data="{{production2}}"/>
+                <block wx:if="{{production2 && production2.user_id}}">
+                    <square-list data="{{production2}}"/>
+                </block>
+                <block wx:else>
+                    <empty-img />
+                </block>
             </view>
             <view class="empty"></view>
         </view>

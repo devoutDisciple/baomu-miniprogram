@@ -7,7 +7,8 @@
         "renzhengIcon": "/component/renzhengIcon/renzhengIcon",
         "production-img": "/component/productionImg/productionImg",
         "square-list": "/component/squareList/squareList",
-		"btm-tip": "/component/btmTip/btmTip"
+		"btm-tip": "/component/btmTip/btmTip",
+        "empty-img": "/component/emptyImg/emptyImg"
 	},
 	"navigationStyle": "custom"
 }

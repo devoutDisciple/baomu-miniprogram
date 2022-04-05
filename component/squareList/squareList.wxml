@@ -13,10 +13,10 @@
             <view class="person_time">{{data.create_time}}</view>
         </view>
         <view class="person_icon">
-            <renzhengIcon idx="1"/>
-            <renzhengIcon idx="2"/>
-            <renzhengIcon idx="3"/>
-            <renzhengIcon idx="4"/>
+            <renzhengIcon wx:if="{{data.userDetail.is_name === 1}}" idx="1"/>
+            <renzhengIcon wx:if="{{data.userDetail.is_scholl === 1}}" idx="2"/>
+            <renzhengIcon wx:if="{{data.userDetail.is_award === 1}}" idx="3"/>
+            <renzhengIcon wx:if="{{data.userDetail.is_level === 1}}" idx="4"/>
         </view>
         <!-- <view class="person_tag">同城</view> -->
         <view class="desc" bindtap="onSeachDetail">{{data.desc}}</view>

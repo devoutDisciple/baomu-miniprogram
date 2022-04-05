@@ -77,7 +77,7 @@ Page({
 		if (!login.isLogin()) {
 			await login.getLogin();
 		}
-		const user_id = wx.getStorageSync('user_id');
+		const { user_id } = this.data;
 		const result = await request.get({ url: '/production/teamOneProductions', data: { user_id } });
 		if (result && result.length !== 0) {
 			result.forEach((item) => {
@@ -85,6 +85,9 @@ Page({
 			});
 		}
 		const [production1, production2] = result;
+		console.log(production1, 1111);
+		console.log(production2, 2222);
+
 		this.setData({ production1: production1 || {}, production2: production2 || {} });
 		loading.hideLoading();
 	},
