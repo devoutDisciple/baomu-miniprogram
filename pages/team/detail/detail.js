@@ -14,6 +14,7 @@ Page({
 		team_leader_id: '', // 队长id
 		is_team_leader: false, // 是否是队长 默认不是
 		user_id: '', // 当前用户的id
+		teamLeaderDetail: {}, // 队长信息
 		personDetail: {}, // 个人信息
 		teamUsers: [], // 乐队成员
 		dialogShow: false,
@@ -54,6 +55,7 @@ Page({
 		);
 	},
 
+	// 页面显示的时候
 	onShow: function () {
 		const { firstTime } = this.data;
 		if (!firstTime) {
@@ -65,6 +67,7 @@ Page({
 		}
 	},
 
+	// 页面滚动的时候
 	onScroll: function (e) {
 		const { scrollTop } = e.detail;
 		this.setData({ showHeader: scrollTop > 126 });
@@ -112,7 +115,9 @@ Page({
 				if (item.is_owner === 1) {
 					const is_team_leader = Number(item.user_id) === Number(local_user_id);
 					// 保留团队队长id
-					this.setData({ team_leader_id: item.user_id, is_team_leader: is_team_leader });
+					this.setData({ team_leader_id: item.user_id, is_team_leader: is_team_leader }, () => {
+						this.getTeamLeaderDetail();
+					});
 				}
 				item.stateName = TEAM_USER_STATE.filter((state) => item.state === state.id)[0].name;
 				const NEW_TEAM_USER_SKILL = [{ id: -1, name: '未知' }, ...TEAM_USER_SKILL];
@@ -122,6 +127,15 @@ Page({
 		// 最多展示四个
 		result = result.splice(0, 4);
 		this.setData({ teamUsers: result });
+		loading.hideLoading();
+	},
+
+	// 获取队长详情
+	getTeamLeaderDetail: async function () {
+		loading.showLoading();
+		const { team_leader_id } = this.data;
+		const result = await request.get({ url: '/user/userDetail', data: { user_id: team_leader_id } });
+		this.setData({ teamLeaderDetail: result });
 		loading.hideLoading();
 	},
 
@@ -206,13 +220,13 @@ Page({
 
 	// 点击发送信息
 	onTapMsg: function () {
-		const { personDetail } = this.data;
+		const { teamLeaderDetail } = this.data;
 		let msgData = wx.getStorageSync('msg_data');
 		let data = [
 			{
-				person_id: personDetail.id,
-				person_name: personDetail.nickname,
-				person_photo: personDetail.photo,
+				person_id: teamLeaderDetail.id,
+				person_name: teamLeaderDetail.nickname,
+				person_photo: teamLeaderDetail.photo,
 				noread: 0,
 				msg: [],
 			},
@@ -225,7 +239,7 @@ Page({
 				let curIdx = 0;
 				// 应当判断是否已经给该用户发过消息
 				msgData.forEach((item, index) => {
-					if (item.person_id === personDetail.id) {
+					if (item.person_id === teamLeaderDetail.id) {
 						flag = false;
 						curUser = item;
 						curIdx = index;
@@ -242,7 +256,34 @@ Page({
 		}
 		wx.setStorageSync('msg_data', JSON.stringify(data));
 		wx.navigateTo({
-			url: `/pages/chat/chat?person_id=${personDetail.id}`,
+			url: `/pages/chat/chat?person_id=${teamLeaderDetail.id}`,
+		});
+	},
+
+	// 点击解散乐队
+	onTapDissolveTeam: function () {
+		const { personDetail } = this.data;
+		wx.showModal({
+			title: '确定解散该乐队?',
+			content: '此过程不可逆，请确认是否解散该乐队',
+			confirmText: '确认解散',
+			confirmColor: '#ff0000',
+			complete: async (e) => {
+				if (e.errMsg === 'showModal:ok' && e.confirm) {
+					await request.post({
+						url: '/team/cancelTeam',
+						data: { user_id: personDetail.id, team_id: personDetail.team_id },
+					});
+					wx.showToast({
+						title: '解散成功',
+					});
+					setTimeout(() => {
+						wx.switchTab({
+							url: '/pages/home/index/index',
+						});
+					}, 1000);
+				}
+			},
 		});
 	},
 });

@@ -75,7 +75,7 @@
             <view class="empty"></view>
         </view>
     </scroll-view>
-    <view class="invitate_btn" wx:if="{{is_team_leader}}">解散乐队</view>
+    <view class="invitate_btn" wx:if="{{is_team_leader}}" bindtap="onTapDissolveTeam">解散乐队</view>
     <block wx:if="{{dialogShow}}">
         <tip-dialog
             bindOnClose="onCloseDialog"

@@ -63,7 +63,6 @@
         <block wx:else>
             <image class="bg_img" mode="widthFix" src="/asserts/public/default_bg.png" />
         </block>
-        
     </view>
     <view class="footer">
         <view class="edit_btn" bindtap="onSend">确认修改</view>
