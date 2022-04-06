@@ -95,6 +95,7 @@ Page({
 			data: { user_id: user_id, current: currentUserPage },
 		});
 		const newActorList = [...actorList, ...actors];
+		console.log(newActorList, 329);
 		this.setData({ actorList: newActorList, currentUserPage: currentUserPage + 1, isLoading: false });
 	},
 

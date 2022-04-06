@@ -4,8 +4,15 @@
         <view class="person_title_desc" bindtap="onTapPerson">
             <view class="person_name">
                 <view class="person_name_text">{{data.nickname || ""}}</view>
-                <image class="person_icon" src="/asserts/public/geren.png" />
-                <image class="person_icon" src="/asserts/public/renzheng.png" />
+                <block wx:if="{{data.type == 1}}">
+                    <image class="person_icon person_icon_one" src="/asserts/public/geren.png" />
+                </block>
+                <block wx:elif="{{data.type == 2}}">
+                    <image class="person_icon person_icon_two" src="/asserts/public/tuandui.png" />
+                </block>
+                <block wx:if="{{data.is_name == 1}}">
+                    <image class="person_icon" src="/asserts/public/renzheng.png" />
+                </block>
             </view>
             <view class="person_pingfen">
                 <image class="person_desc_icon" src="/asserts/public/pingfen.png" />
