@@ -155,7 +155,7 @@
         },
         {
           "name": "个人资料修改",
-          "pathName": "pages/my/editPersonDetail/editPersonDetail",
+          "pathName": "pages/personDetailEdit/personDetailEdit",
           "query": "",
           "launchMode": "default",
           "scene": null

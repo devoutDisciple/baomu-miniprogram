@@ -24,14 +24,14 @@
     "pages/my/productionPublish/productionPublish",
     "pages/my/productionDetail/productionDetail",
     "pages/my/reply/reply",
-    "pages/my/editPersonDetail/editPersonDetail",
     "pages/team/index/index",
     "pages/team/detail/detail",
     "pages/team/create/create",
     "pages/team/invitation/invitation",
     "pages/team/users/users",
     "pages/team/editUsers/editUsers",
-    "pages/team/editTeam/editTeam"
+    "pages/team/editTeam/editTeam",
+    "pages/personDetailEdit/personDetailEdit"
   ],
   "window": {
     "backgroundTextStyle": "light",

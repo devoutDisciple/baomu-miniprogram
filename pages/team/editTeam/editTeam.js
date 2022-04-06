@@ -18,6 +18,7 @@ Page({
 		photo: '', // 用户头像
 		nickname: '', // 用户昵称
 		desc: '', // 乐队简介
+		bg_url: '', // 背景图片
 	},
 
 	/**
@@ -55,6 +56,7 @@ Page({
 			nickname: personDetail.nickname,
 			desc: personDetail.desc,
 			team_id: personDetail.team_id,
+			bg_url: personDetail.bg_url,
 		});
 		loading.hideLoading();
 		// 获取乐队成员
@@ -84,8 +86,10 @@ Page({
 		loading.hideLoading();
 	},
 
-	// 选择头像
-	onChoosePhotoImg: function () {
+	// 选择头像或者背景
+	onChoosePhotoImg: function (e) {
+		// key: photo-头像 bg-背景
+		const { key } = e.currentTarget.dataset;
 		const self = this;
 		const { user_id, team_id } = this.data;
 		wx.chooseImage({
@@ -95,15 +99,23 @@ Page({
 			success: async (res) => {
 				// tempFilePath可以作为img标签的src属性显示图片
 				const { tempFilePaths } = res;
-				self.setData({ photo: tempFilePaths[0] });
+				const params = {};
+				// eslint-disable-next-line prefer-destructuring
+				params[key] = tempFilePaths[0];
+				self.setData(params);
 				const result = await uploadFile({
 					url: '/team/upload',
 					data: tempFilePaths[0],
 					formData: { user_id, type: 1 },
 				});
+				const postParams = {};
+				postParams[key] = result.url;
 				await request.post({
 					url: '/team/updateTeamDetail',
-					data: { user_id, team_id, params: { photo: result.url } },
+					data: { user_id, team_id, params: postParams },
+				});
+				wx.showToast({
+					title: '修改成功',
 				});
 			},
 			fail: function () {
@@ -115,35 +127,25 @@ Page({
 		});
 	},
 
-	// 昵称焦点
+	// 输入框失去焦点
 	onBlurIpt: async function (e) {
+		const { key } = e.currentTarget.dataset;
 		const { user_id, team_id } = this.data;
 		const { value } = e.detail;
 		if (!String(value).trim()) {
 			return wx.showToast({
-				title: '请输入昵称',
+				title: key === 'nickname' ? '请输入昵称' : '请输入简介',
 				icon: 'error',
 			});
 		}
+		const params = {};
+		params[key] = String(value).trim();
 		await request.post({
 			url: '/team/updateTeamDetail',
-			data: { user_id, team_id, params: { nickname: String(value).trim() } },
+			data: { user_id, team_id, params: params },
 		});
-	},
-
-	// 简介焦点
-	onBlurDesc: async function (e) {
-		const { user_id, team_id } = this.data;
-		const { value } = e.detail;
-		if (!String(value).trim()) {
-			return wx.showToast({
-				title: '请输入简介',
-				icon: 'error',
-			});
-		}
-		await request.post({
-			url: '/team/updateTeamDetail',
-			data: { user_id, team_id, params: { desc: String(value).trim() } },
+		wx.showToast({
+			title: '修改成功',
 		});
 	},
 

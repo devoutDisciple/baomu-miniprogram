@@ -1,7 +1,6 @@
-// pages/my/editPersonDetail/editPersonDetail.js
-import { person_style } from '../../../constant/constant';
-import request, { uploadFile } from '../../../utils/request';
-import loading from '../../../utils/loading';
+import { person_style } from '../../constant/constant';
+import request, { uploadFile } from '../../utils/request';
+import loading from '../../utils/loading';
 
 Page({
 	/**

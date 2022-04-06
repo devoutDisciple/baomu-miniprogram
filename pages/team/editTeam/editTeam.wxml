@@ -1,6 +1,6 @@
 <scroll-view class="wrap" scroll-y="{{true}}" enhanced="{{true}}" show-scrollbar="{{false}}">
     <view class="con">
-        <view class="chunk" bindtap="onChoosePhotoImg">
+        <view class="chunk" data-key="photo" bindtap="onChoosePhotoImg">
             <view class="label">头像</view>
             <view class="value">
                 <block wx:if="{{photo}}">
@@ -25,7 +25,7 @@
                 <view class="value"></view>
                 <image class="icon" src="/asserts/public/left.png" />
             </view>
-            <textarea class="desc" cursor-spacing="{{40}}" value="{{desc}}" placeholder="乐队简介" maxlength="{{300}}" bindblur="onBlurDesc"/>
+            <textarea class="desc" cursor-spacing="{{40}}" data-key="desc" value="{{desc}}" placeholder="乐队简介" maxlength="{{300}}" bindblur="onBlurIpt"/>
         </view>
         <view class="chunk" bindtap="onTapInvitationUser">
             <view class="label">乐队成员</view>
@@ -35,9 +35,27 @@
                         <image class="team_user_photo" src="{{item.userDetail.photo}}" />
                     </block>
                 </block>
-                
             </view>
             <image class="icon" src="/asserts/public/left.png" />
         </view>
+        <view class="chunk2" data-key="bg_url" bindtap="onChoosePhotoImg">
+            <view class="chunk_con">
+                <view class="label">背景墙</view>
+                <view class="value"></view>
+                <image class="icon" src="/asserts/public/left.png" />
+            </view>
+            <block wx:if="{{bgUrl}}">
+                <image class="bg_img" mode="widthFix" src="{{bgUrl}}" />
+            </block>
+            <block wx:else>
+                <block wx:if="{{bg_url}}">
+                    <image class="bg_img" mode="widthFix" src="{{bg_url}}" />
+                </block>
+                <block wx:else>
+                    <image class="bg_img" mode="widthFix" src="/asserts/public/default_bg.png" />
+                </block>
+            </block>
+        </view>
+        <view class="empty"></view>
     </view>
 </scroll-view>

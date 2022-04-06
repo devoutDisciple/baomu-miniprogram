@@ -107,7 +107,7 @@ Page({
 		// 我的技能
 		if (type === 'skill') this.jumpPage('/pages/my/skill/skill');
 		// 照片墙
-		if (type === 'photo') this.jumpPage('/pages/my/editPersonDetail/editPersonDetail');
+		if (type === 'photo') this.jumpPage('/pages/personDetailEdit/personDetailEdit');
 		// 可预约时段
 		if (type === 'time') this.jumpPage('/pages/my/myPublish/myPublish');
 		// 作品展示
