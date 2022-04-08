@@ -161,13 +161,6 @@
           "scene": null
         },
         {
-          "name": "工作记录",
-          "pathName": "pages/my/order/order",
-          "query": "",
-          "launchMode": "default",
-          "scene": null
-        },
-        {
           "name": "我的乐队",
           "pathName": "pages/team/index/index",
           "query": "",
@@ -217,8 +210,22 @@
           "scene": null
         },
         {
-          "name": "工作记录详情",
-          "pathName": "pages/my/orderDetail/orderDetail",
+          "name": "工作记录",
+          "pathName": "pages/my/order/order",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "工作记录详情-我发布的",
+          "pathName": "pages/my/orderDetailForPublisher/orderDetailForPublisher",
+          "query": "id=29",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "工作记录详情-我参与的",
+          "pathName": "pages/my/orderDetailForActor/orderDetailForActor",
           "query": "id=29",
           "launchMode": "default",
           "scene": null

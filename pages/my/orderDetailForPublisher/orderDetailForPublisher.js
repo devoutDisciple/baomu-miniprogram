@@ -4,7 +4,7 @@ import loading from '../../../utils/loading';
 import config from '../../../config/config';
 import moment from '../../../utils/moment';
 import login from '../../../utils/login';
-import { plays, instruments, voices } from '../../../constant/constant';
+import { plays, instruments, voices, price_state } from '../../../constant/constant';
 
 Page({
 	/**
@@ -68,7 +68,6 @@ Page({
 		detail.bargain = detail.is_bargain === 2 ? '不可议价' : '可议价';
 		detail.food = detail.is_food === 2 ? '不包食宿' : '包食宿';
 		detail.send = detail.is_send === 2 ? '不包接送' : '包接送';
-		console.log(detail, 2839);
 		// 个人竞标状态：detail.detailState: 1-未参与竞标 2-竞标进行中待商议 3-报名中 4-被拒绝  5-中标
 		this.setData({ detail: detail });
 		loading.hideLoading();
@@ -108,13 +107,6 @@ Page({
 				});
 			}
 			loading.showLoading();
-			// // 当前用户的id
-			// const user_id = wx.getStorageSync('user_id');
-			// // 是否是发布人
-			// const is_publisher = Number(user_id) === Number(detail.user_id);
-			// // if(is_publisher) {
-
-			// // }
 			const { id } = this.data;
 			const result = await request.post({
 				url: '/priceRecord/add',
@@ -133,11 +125,63 @@ Page({
 			if (result === 'success') {
 				this.setData({ priceDialogVisible: false });
 				await this.getPublishDetail();
-				this.setData({ tipDialog: true });
+				this.setData({ tipDialog: true }, () => {
+					this.getPriceRecordList();
+				});
 				loading.hideLoading();
 			}
 			// this.setData({ priceDialogVisible: false });
 		}, 500);
+	},
+
+	// 接受议价
+	onAcceptPrice: async function () {
+		const { priceRecordList, selectPersonIdx } = this.data;
+		loading.showLoading();
+		const { id } = this.data;
+		const records = priceRecordList[selectPersonIdx].records;
+		const lastRecord = records[records.length - 1];
+		const result = await request.post({
+			url: '/priceRecord/acceptPrice',
+			// type: 1-演员报价 2-需求方报价
+			// state 1-未参与竞标 2-竞标进行中待商议 3-被拒绝  4-中标
+			// operation: 第几次谈价
+			data: {
+				id: lastRecord.id,
+				demand_id: id,
+			},
+		});
+		if (result === 'success') {
+			this.setData({ priceDialogVisible: false });
+			this.setData({ tipDialog: true }, () => {
+				this.getPriceRecordList();
+			});
+			loading.hideLoading();
+		}
+	},
+
+	// 拒绝议价
+	onRefusePrice: async function () {
+		const { priceRecordList, selectPersonIdx } = this.data;
+		loading.showLoading();
+		const records = priceRecordList[selectPersonIdx].records;
+		const lastRecord = records[records.length - 1];
+		const result = await request.post({
+			url: '/priceRecord/refusePrice',
+			// type: 1-演员报价 2-需求方报价
+			// state 1-未参与竞标 2-竞标进行中待商议 3-被拒绝  4-中标
+			// operation: 第几次谈价
+			data: {
+				id: lastRecord.id,
+			},
+		});
+		if (result === 'success') {
+			this.setData({ priceDialogVisible: false });
+			this.setData({ tipDialog: true }, () => {
+				this.getPriceRecordList();
+			});
+			loading.hideLoading();
+		}
 	},
 
 	// 不可议价，直接报名，点击报名
@@ -174,19 +218,21 @@ Page({
 			result.forEach((price) => {
 				const records = price.records;
 				if (Array.isArray(records)) {
-					// 最后一条记录是否是演员报价
-					const is_actor_price = Number(records[records.length - 1].type) === 1;
-					console.log(Number(records[records.length - 1].type), 2222);
-					if (is_actor_price) {
+					const lastRecord = records[records.length - 1];
+					const is_actor_price = Number(lastRecord.type) === 1;
+					// 最后一条记录是否是演员报价，并且状态为议价中
+					if (is_actor_price && Number(lastRecord.state) === 2) {
 						// 展示议价按钮
 						price.showPriceBtn = true;
 					} else {
 						price.showPriceBtn = false;
 					}
+					records.forEach((item) => {
+						item.stateName = price_state.filter((p) => p.id === Number(item.state))[0].name;
+					});
 				}
 			});
 		}
-		console.log(result, 1111);
 		this.setData({ priceRecordList: result });
 		loading.hideLoading();
 	},

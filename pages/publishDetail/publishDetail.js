@@ -54,7 +54,6 @@ Page({
 		detail.bargain = detail.is_bargain === 2 ? '不可议价' : '可议价';
 		detail.food = detail.is_food === 2 ? '不包食宿' : '包食宿';
 		detail.send = detail.is_send === 2 ? '不包接送' : '包接送';
-		console.log(detail, 23);
 		// 个人竞标状态：detail.detailState: 1-未参与竞标 2-竞标进行中待商议 3-报名中 4-被拒绝  5-中标
 		this.setData({ detail: detail });
 		loading.hideLoading();

@@ -1,12 +1,12 @@
 <view class="order">
-    <view class="title">
+    <view class="title" bindtap="onTapDemandDetail">
         <view class="title_person">
             <image class="title_img" src="{{data.userPhoto}}" />
             {{data.username}}
         </view>
         <view class="title_state">{{data.detailStateName}}</view>
     </view>
-    <view class="con">
+    <view class="con" bindtap="onTapDemandDetail">
         <view class="con_img">
             <img src="{{data.instrumentUrl}}"/>
         </view>
@@ -24,7 +24,7 @@
             </view>
         </view>
     </view>
-    <view class="price">
+    <view class="price" bindtap="onTapDemandDetail">
         费用: <view class="price_text">￥{{data.price}}</view>
     </view>
     <view class="footer">

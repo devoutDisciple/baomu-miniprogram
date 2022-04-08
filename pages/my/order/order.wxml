@@ -16,7 +16,7 @@
     <block wx:if="{{orderList && orderList.length !== 0}}">
         <block wx:for="{{orderList}}" wx:key="index">
             <view class="chunk">
-                <order-item data="{{item}}"/>
+                <order-item data="{{item}}" type="{{selectTabIdx}}"/>
             </view>
         </block>
         <btm-tip />
