@@ -1,6 +1,6 @@
 /* eslint-disable prefer-destructuring */
 import request from '../../../utils/request';
-import { plays, instruments, voices, price_state } from '../../../constant/constant';
+import { plays, instruments, voices, DEMAND_STATE } from '../../../constant/constant';
 import config from '../../../config/config';
 import loading from '../../../utils/loading';
 
@@ -10,6 +10,7 @@ Page({
 	 */
 	data: {
 		orderList: [],
+		selectTabIdx: 1,
 	},
 
 	/**
@@ -19,13 +20,23 @@ Page({
 		this.onSearchOrder();
 	},
 
-	// 查询演出记录
+	// 选择去演出或者找演出
+	onSelectTab: function (e) {
+		let { idx } = e.currentTarget.dataset;
+		idx = Number(idx);
+		this.setData({ selectTabIdx: Number(idx), currentUserPage: 0 }, () => {
+			this.onSearchOrder();
+		});
+	},
+
+	// 查询我参与的需求
 	onSearchOrder: async function () {
 		try {
 			loading.showLoading();
+			const { selectTabIdx } = this.data;
 			const user_id = wx.getStorageSync('user_id');
-			const orders = await request.get({ url: '/demand/demandByUserId', data: { user_id } });
-			console.log(orders, 1111);
+			// type 1-发布的 2-参与的
+			const orders = await request.get({ url: '/demand/demandByUserId', data: { user_id, type: selectTabIdx } });
 			if (Array.isArray(orders)) {
 				orders.forEach((item) => {
 					// 获取演奏类型
@@ -41,8 +52,7 @@ Page({
 					let { name: instrumentName, url: instrumentUrl } = instrItem;
 					instrumentUrl = config.baseUrl + instrumentUrl;
 					item = Object.assign(item, { playName, instrumentName, instrumentUrl });
-					console.log(price_state, 111);
-					item.detailStateName = price_state.filter((p) => p.id === item.detailState)[0].name;
+					item.detailStateName = DEMAND_STATE.filter((p) => p.id === item.state)[0].name;
 				});
 			}
 			this.setData({ orderList: orders });

@@ -3,6 +3,7 @@
     height: 100vh;
     background: #f7f7f7;
     padding: 0 20rpx;
+    padding-top: 100rpx;
 }
 
 .chunk {
@@ -20,4 +21,46 @@
     align-items: center;
     justify-content: center;
     color: #6a6a6a;
+}
+
+.tab {
+    width: 100vw;
+    position: fixed;
+    left: 0;
+    top: 0;
+    background: #fff;
+    height: 100rpx;
+    display: flex;
+}
+
+.tab_work {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.tab_text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 14rpx;
+    font-size: 30rpx;
+}
+
+.tab_text_select {
+    font-weight: 600;
+    font-size: 34rpx;
+}
+
+.tab_border {
+    height: 5rpx;
+    width: 74rpx;
+    background: #333;
+    margin-top: 10rpx;
+    border-radius: 10rpx;
+    position: absolute;
+    bottom: 10rpx;
 }

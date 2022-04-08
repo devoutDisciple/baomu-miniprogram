@@ -13,14 +13,14 @@
         <view class="con_desc">
             <view class="con_desc_title">{{data.title}}</view>
             <view class="con_desc_img">
-                <view class="chunk">
-                    <image class="desc_img" src="/asserts/temp/photo.png" />
-                    <view class="con_desc_name">张小龙</view>
-                </view>
-                <view class="chunk">
-                    <image class="desc_img" src="/asserts/temp/photo.png" />
-                    <view class="con_desc_name">张小龙</view>
-                </view>
+                <block wx:if="{{data.join_users && data.join_users.length !== 0}}">
+                    <block wx:for="{{data.join_users}}" wx:key="index">
+                        <view class="chunk">
+                            <image class="desc_img" src="{{item.photo}}" />
+                            <view class="con_desc_name">{{item.nickname}}</view>
+                        </view>
+                    </block>
+                </block>
             </view>
         </view>
     </view>

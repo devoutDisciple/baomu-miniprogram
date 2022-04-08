@@ -1,10 +1,10 @@
 /* eslint-disable prefer-destructuring */
-import request from '../../utils/request';
-import loading from '../../utils/loading';
-import config from '../../config/config';
-import moment from '../../utils/moment';
-import login from '../../utils/login';
-import { plays, instruments, voices } from '../../constant/constant';
+import request from '../../../utils/request';
+import loading from '../../../utils/loading';
+import config from '../../../config/config';
+import moment from '../../../utils/moment';
+import login from '../../../utils/login';
+import { plays, instruments, voices } from '../../../constant/constant';
 
 Page({
 	/**
@@ -16,6 +16,9 @@ Page({
 		priceDialogVisible: false, // 报价弹框
 		price: 0, // 报价
 		tipDialog: false, // 提示弹框
+		selectTabIdx: 2, // 选择的tab的
+		userList: [1, 2, 3], // 报名的人的列表
+		selectPersonIdx: 0, // 选择报名人的下标
 	},
 
 	/**
@@ -28,6 +31,14 @@ Page({
 		});
 	},
 
+	// 选择需求详情或者议价详情
+	onSelectTab: function (e) {
+		let { idx } = e.currentTarget.dataset;
+		idx = Number(idx);
+		this.setData({ selectTabIdx: Number(idx), currentUserPage: 0 });
+	},
+
+	// 获取发布详情
 	getPublishDetail: async function () {
 		loading.showLoading();
 		const { id } = this.data;
@@ -54,7 +65,7 @@ Page({
 		detail.bargain = detail.is_bargain === 2 ? '不可议价' : '可议价';
 		detail.food = detail.is_food === 2 ? '不包食宿' : '包食宿';
 		detail.send = detail.is_send === 2 ? '不包接送' : '包接送';
-		console.log(detail, 23);
+		console.log(detail, 2839);
 		// 个人竞标状态：detail.detailState: 1-未参与竞标 2-竞标进行中待商议 3-报名中 4-被拒绝  5-中标
 		this.setData({ detail: detail });
 		loading.hideLoading();
@@ -132,5 +143,12 @@ Page({
 				icon: 'success',
 			});
 		}
+	},
+
+	// 点击参与人
+	onTapUser: function (e) {
+		console.log(e);
+		const { idx } = e.currentTarget.dataset;
+		this.setData({ selectPersonIdx: idx });
 	},
 });

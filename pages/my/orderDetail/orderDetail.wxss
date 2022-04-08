@@ -1,0 +1,266 @@
+.wrap {
+    height: 100vh;
+    width: 100vw;
+    background: #f7f7f7;
+    position: relative;
+}
+
+.con {
+    height: 100vh;
+    width: 100vw;
+    position: relative;
+    background: #fff;
+}
+
+.invitate_btn {
+    position: fixed;
+    bottom: 40rpx;
+    left: 40rpx;
+    width: calc(100vw - 80rpx);
+    height: 100rpx;
+    z-index: 111;
+    background: #000;
+    color: #fff;
+    border-radius: 20rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 40rpx;
+}
+
+.success_btn {
+    background: #666;
+    color: #fff;
+}
+
+.fail_btn {
+    background: #666;
+    color: #fff;
+}
+
+.process_btn {
+    background: #b5b58d;
+    color: #fff;
+}
+
+.img {
+    width: 100%;
+}
+
+.content {
+    width: calc(100vw - 80rpx);
+    margin-left: 20rpx;
+    padding: 20rpx;
+    font-size: 30rpx;
+    color: #666666;
+    padding-bottom: 200rpx;
+}
+
+.title {
+    font-size: 40rpx;
+    color: #000;
+}
+
+.price {
+    margin-top: 20rpx;
+    padding-bottom: 40rpx;
+    border-bottom: 1rpx solid #f7f7f7;
+}
+
+.desc {
+    padding-top: 60rpx;
+    
+}
+
+.chunk {
+    display: flex;
+    margin-top: 60rpx;
+    align-items: center;
+}
+
+.icon {
+    margin-right: 20rpx;
+}
+
+.icon1, .icon3, .icon5 {
+    width: 40rpx;
+    height: 40rpx;
+}
+
+.icon4 {
+    width: 40rpx;
+    height: 33rpx;
+}
+
+.icon2{
+    width: 35rpx;
+    height: 45rpx;
+}
+
+.ipt_con {
+    padding-top: 40rpx;
+}
+
+.ipt {
+    height: 80rpx;
+    padding: 0 20rpx;
+    border: 1rpx solid #f2f2f2;
+    margin: 0 20rpx;
+}
+
+.footer {
+    display: flex;
+    border-top: 0.5rpx solid #f2f2f2;
+    margin-top: 40rpx;
+}
+
+.footer_btn {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30rpx 0;
+}
+
+.footer_left {
+    flex: 1;
+    border-right: 1rpx solid #f2f2f2;
+    color: #6a6a6a;
+}
+
+.footer_right {
+    flex: 1;
+    color: #b5b58d;
+}
+
+.tab_con {
+    width: 100%;    
+    height: 100rpx;
+    position: relative;
+}
+
+.tab {
+    position: absolute;
+    left: -20rpx;
+    top: 0;
+    width: 100vw;
+    background: #fff;
+    height: 100rpx;
+    display: flex;
+    border-bottom: 1rpx solid #f7f7f7;
+}
+
+.tab_work {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.tab_text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 14rpx;
+    font-size: 30rpx;
+}
+
+.tab_text_select {
+    font-weight: 600;
+    font-size: 34rpx;
+}
+
+.tab_border {
+    height: 5rpx;
+    width: 74rpx;
+    background: #333;
+    margin-top: 10rpx;
+    border-radius: 10rpx;
+    position: absolute;
+    bottom: 10rpx;
+}
+
+.price_chunk {
+    display: flex;
+    align-items: center;
+    padding: 40rpx 0;
+    color: #6a6a6a;
+}
+
+.price_chunk_label {
+    width: 160rpx;
+}
+
+.price_chunk_value {
+    flex: 1;
+    display: flex;
+    justify-content: space-around;
+}
+
+.person_chunk {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.person_chunk_photo {
+    width: 80rpx;
+    height: 80rpx;
+    margin-bottom: 10rpx;
+    color: #6a6a6a;
+    font-size: 28rpx;
+    border-radius: 100%;
+}
+
+.person_chunk_active {
+    font-size: 34rpx;
+    color: #333;
+}
+
+.person_chunk_active .person_chunk_photo {
+    width: 100rpx;
+    height: 100rpx;
+    border: 1rpx solid #B5B58D;
+}
+
+.price_record {
+    display: flex;
+    padding-left: 80rpx;
+    color: #9f9f9f;
+    justify-content: space-around;
+    margin-bottom: 40rpx;
+}
+
+.price_time {
+    padding-left: 80rpx;
+    color: #9f9f9f;
+    margin-bottom: 20rpx;
+}
+
+.btn {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 80rpx;
+}
+
+.btn_item {
+    background: red;
+    padding: 20rpx 50rpx;
+    border-radius: 80rpx;
+    color: #fff;
+}
+
+.btn_success {
+    background: #B5B58D;
+}
+
+.btn_fail {
+    background: #6a6a6a;
+}
+
+.btn_process {
+    background: #93ad6e;
+}

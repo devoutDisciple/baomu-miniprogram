@@ -3,46 +3,53 @@
     <scroll-view class="con" scroll-y="{{true}}" enhanced="{{true}}" show-scrollbar="{{false}}">
         <image class="img" mode="widthFix" src="{{detail.instrumentUrl}}" />
         <view class="content">
-            <view class="title">{{detail.title}}</view>
-            <view class="price">标价：￥{{detail.price}}</view>
-            <view class="desc">简介：{{detail.desc}}</view>
+            <view class="title">{{detail.title || ""}}</view>
+            <view class="price">标价：￥{{detail.price || ""}}</view>
+            <view class="desc">简介：{{detail.desc || ""}}</view>
             <view class="chunk">
                 <image class="icon icon1" src="/asserts/public/time_icon.png" />
-                <view class="value">演出时长 {{detail.hours}}h/天 {{detail.date}}</view> 
+                <view class="value">演出时长 {{detail.hours || ""}}h/天 {{detail.date || ""}}</view> 
             </view>
             <view class="chunk">
                 <image class="icon icon2" src="/asserts/public/address_icon.png" />
-                <view class="value">演出地点 {{detail.addressAll}}</view> 
+                <view class="value">演出地点 {{detail.addressName || ""}}</view> 
+            </view>
+            <view class="chunk">
+                <image class="icon icon2" src="/asserts/public/address_icon.png" />
+                <view class="value">演奏方式 {{detail.playName || ""}}</view> 
+            </view>
+            <view class="chunk">
+                <image class="icon icon2" src="/asserts/public/address_icon.png" />
+                <view class="value">演奏乐器 {{detail.instrumentName || ""}}</view> 
             </view>
             <view class="chunk">
                 <image class="icon icon3" src="/asserts/public/talk_icon.png" />
-                <view class="value">{{detail.bargain}}</view> 
+                <view class="value">{{detail.bargain || ""}}</view> 
             </view>
             <view class="chunk">
                 <image class="icon icon4" src="/asserts/public/car_icon.png" />
-                <view class="value">{{detail.send}}</view> 
+                <view class="value">{{detail.send || ""}}</view> 
             </view>
             <view class="chunk">
                 <image class="icon icon5" src="/asserts/public/food_icon.png" />
-                <view class="value">{{detail.food}}</view> 
+                <view class="value">{{detail.food || ""}}</view> 
             </view>
         </view>
     </scroll-view>
     <!-- 需求竞标中 -->
-    <block wx:if="{{detail.state === 2}}">
+    <block wx:if="{{detail.state === 1}}">
          <!-- 可以议价 -->
         <block wx:if="{{detail.is_bargain === 1}}">
             <view wx:if="{{detail.detailState === 1}}" class="invitate_btn" bindtap="onTapPrice">竞标</view>
-            <view wx:if="{{detail.detailState === 2}}" class="invitate_btn success_btn">竞标结束</view>
-            <view wx:if="{{detail.detailState === 3}}" class="invitate_btn fail_btn">已拒绝</view>
-            <view wx:if="{{detail.detailState === 4}}" class="invitate_btn process_btn">竞标中</view>
+            <view wx:if="{{detail.detailState === 2}}" class="invitate_btn success_btn">竞标中</view>
         </block>
         <!-- 不可以议价 -->
         <block wx:else>
             <view wx:if="{{detail.detailState === 1}}" class="invitate_btn" bindtap="onTapSign">报名</view>
-            <view wx:if="{{detail.detailState === 5}}" class="invitate_btn process_btn">已报名</view>
-            <view wx:if="{{detail.detailState === 3}}" class="invitate_btn fail_btn" bindtap="onTapSign">已拒绝</view>
+            <view wx:if="{{detail.detailState === 2}}" class="invitate_btn fail_btn">已报名</view>
         </block>
+        <view wx:if="{{detail.detailState === 3}}" class="invitate_btn fail_btn">已拒绝</view>
+        <view wx:if="{{detail.detailState === 4}}" class="invitate_btn process_btn">已中标</view>
     </block>
     <block wx:else>
         <view class="invitate_btn success_btn">竞标结束</view>

@@ -13,12 +13,13 @@ Page({
 				end_time: '2022-03-21',
 			},
 		],
+		personDetail: {}, // 被雇佣人的详情
 		playList: [], // 演奏方式
-		playName: '', // 演奏方式
-		playId: '', // 演奏方式
+		playId: '', // 演奏方式id
+		playName: '', // 演奏方式name
 		instrumentList: [], // 选择乐器的list
-		instrumentSelectName: '',
 		instrumentSelectId: '',
+		instrumentSelectName: '',
 		calendarVisible: false, // 日历开关
 		startTime: '', // 日期开始时间
 		endTime: '', // 日期结束时间
@@ -42,12 +43,38 @@ Page({
 	/**
 	 * 生命周期函数--监听页面加载
 	 */
-	onLoad: async function () {
+	onLoad: async function (options) {
+		// 被邀请人的id
+		const { person_id } = options;
+		if (!person_id) {
+			return wx.switchTab({
+				url: '/pages/home/index/index',
+			});
+		}
+		this.setData({ person_id }, () => {
+			this.onSearchUserDetail();
+		});
 		// 获取所有演奏方式
 		this.getAllPlayList();
 		// 获取所有乐器类型
-		await this.getAllInstruments(instruments);
+		this.getAllInstruments(instruments);
+		// 获取演出时长
 		this.generatorHourList();
+	},
+
+	// 查询用户详情
+	onSearchUserDetail: async function () {
+		const { person_id } = this.data;
+		const detail = await request.get({ url: '/user/userDetail', data: { user_id: person_id } });
+		this.setData({ personDetail: detail });
+	},
+
+	// 点击进去用户详情页面
+	onGoToUserDetail: function () {
+		const { personDetail } = this.data;
+		wx.navigateTo({
+			url: `/pages/personDetail/personDetail?user_id=${personDetail.id}`,
+		});
 	},
 
 	// 获取所有演奏类型

@@ -19,7 +19,7 @@
                        
                     </view>
                     <view class="person_mgs_name">
-                        {{userDetail.username}}
+                        {{userDetail.username || ""}}
                     </view>
                 </view>
             </view>
@@ -38,7 +38,7 @@
                 </view>
             </view>
             <view class="desc">
-                个人简介: {{userDetail.desc}}
+                个人简介: {{userDetail.desc || "暂无简介"}}
             </view>
             <scroll-view class="detail" scroll-y="{{true}}" show-scrollbar="{{false}}" enhanced="{{true}}">
                 <view class="opt work_msg">

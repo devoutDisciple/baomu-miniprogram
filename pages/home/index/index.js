@@ -12,7 +12,7 @@ Page({
 	 * 页面的初始数据
 	 */
 	data: {
-		selectTabIdx: 1, // 1-找演出 2-去演出
+		selectTabIdx: 2, // 1-找演出 2-去演出
 		actorList: [], // 演员列表
 		demandsList: [], // 需求列表
 		userDialogVisible: false, // 获取用户基本信息
@@ -28,11 +28,12 @@ Page({
 	 */
 	onLoad: async function () {
 		try {
-			loading.showLoading();
+			const { selectTabIdx } = this.data;
 			// 判断用户是否登录
 			if (!login.isLogin()) {
 				await login.getLogin();
 			}
+			loading.showLoading();
 			// 判断是否已经获取用户手机号
 			const phone = wx.getStorageSync('phone');
 			const photo = wx.getStorageSync('photo');
@@ -52,10 +53,13 @@ Page({
 				withShareTicket: true,
 				menus: ['shareAppMessage'],
 			});
-			// 查询演员
-			await this.getActorList();
-		} catch (error) {
-			console.log(error);
+			if (Number(selectTabIdx) === 1) {
+				// 查询演员
+				await this.getActorList();
+			} else {
+				// 查询需求
+				await this.getDemandsList();
+			}
 		} finally {
 			loading.hideLoading();
 		}
@@ -75,7 +79,6 @@ Page({
 		if (!isLoading) {
 			this.setData({ isLoading: true }, async () => {
 				const { selectTabIdx } = this.data;
-				console.log(selectTabIdx, 23823);
 				if (selectTabIdx === 1) {
 					await this.getActorList();
 				} else {
@@ -95,7 +98,6 @@ Page({
 			data: { user_id: user_id, current: currentUserPage },
 		});
 		const newActorList = [...actorList, ...actors];
-		console.log(newActorList, 329);
 		this.setData({ actorList: newActorList, currentUserPage: currentUserPage + 1, isLoading: false });
 	},
 

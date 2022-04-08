@@ -4,11 +4,11 @@
             <calendar-component selectTimeRange="{{selectTimeRange}}"/>
         </view>
         <view class="desc">
-            <view class="person">
+            <view class="person" bindtap="onGoToUserDetail">
                 <view class="person_txt">被雇佣人</view>
                 <view class="person_name">
-                    <image class="person_photo" src="/asserts/temp/photo.png" />
-                    周杰伦
+                    <image class="person_photo" src="{{personDetail.photo}}" />
+                    {{personDetail.nickname}}
                 </view>
             </view>
             <view class="chunk">

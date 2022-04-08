@@ -43,6 +43,12 @@
 .con_desc_title {
     height: 40rpx;
     font-size: 32rpx;
+    display: -webkit-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-all;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
 }
 
 .con_desc_img {

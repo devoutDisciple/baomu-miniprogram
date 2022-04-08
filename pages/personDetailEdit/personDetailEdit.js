@@ -30,7 +30,13 @@ Page({
 		const user_id = wx.getStorageSync('user_id');
 		const result = await request.get({ url: '/user/userDetail', data: { user_id } });
 		const { photo, nickname, username, desc, style_id, bg_url } = result;
-		const { id: styleId, name: styleName } = person_style.filter((item) => item.id === style_id)[0];
+		let styleId = '';
+		let styleName = '';
+		if (style_id) {
+			const selectItem = person_style.filter((item) => item.id === style_id)[0];
+			styleId = selectItem.id;
+			styleName = selectItem.name;
+		}
 		this.setData({ photo: photo, nickname: nickname, username, desc, styleId, styleName, bgUrl: bg_url });
 		loading.hideLoading();
 	},
