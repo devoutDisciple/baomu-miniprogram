@@ -4,7 +4,7 @@ import loading from '../../utils/loading';
 import config from '../../config/config';
 import moment from '../../utils/moment';
 import login from '../../utils/login';
-import { plays, instruments, voices } from '../../constant/constant';
+import { PLAYS_STYLE, instruments, voices } from '../../constant/constant';
 
 Page({
 	/**
@@ -37,7 +37,7 @@ Page({
 		}
 		let detail = await request.get({ url: '/demand/detailById', data: { id, user_id } });
 		// 获取演奏类型
-		const { name: playName } = plays.filter((p) => p.id === Number(detail.play_id))[0];
+		const { name: playName } = PLAYS_STYLE.filter((p) => p.id === Number(detail.play_id))[0];
 		let instrItem = {};
 		// 获取乐器类型
 		if (detail.play_id === 1) {

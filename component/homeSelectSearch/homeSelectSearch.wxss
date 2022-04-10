@@ -1,0 +1,51 @@
+
+.type {
+    height: 140rpx;
+    width: calc(100vw - 40rpx);
+    margin-left: 20rpx;
+}
+
+.type_con {
+    height: 100%;
+    align-items: center;
+    display: inline-flex;
+    padding-right: 20rpx;
+}
+
+.type_item {
+    padding: 10rpx 40rpx;
+    height: 60rpx;
+    background: #e6e6e6;
+    margin-right: 20rpx;
+    flex: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50rpx;
+    position: relative;
+}
+
+.type_item_picker {
+    position: absolute;
+    background: red;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+}
+
+.type_img {
+    height: 30rpx;
+    width: 30rpx;
+}
+
+.type_item_icon {
+    margin-left: 10rpx;
+    height: 10rpx;
+    width: 20rpx;
+}
+
+.type_empty {
+    height: 100%;
+    width: 20rpx;
+    opacity: 0;
+}

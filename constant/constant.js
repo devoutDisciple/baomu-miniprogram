@@ -1,7 +1,27 @@
+// 乐队类型
+export const TEAM_TYPE = [
+	{ id: 1, name: '单人' },
+	{ id: 2, name: '乐队(2-8人)' },
+	{ id: 3, name: '乐团' },
+];
+
 // 演奏方式
-export const plays = [
+export const PLAYS_STYLE = [
 	{ id: 1, name: '器乐' },
 	{ id: 2, name: '人声' },
+];
+
+// 擅长风格
+export const person_style = [
+	{ id: 1, name: '古典' },
+	{ id: 2, name: '电子' },
+	{ id: 3, name: '流行' },
+	{ id: 4, name: '国风' },
+	{ id: 5, name: '摇滚' },
+	{ id: 6, name: '爵士' },
+	{ id: 7, name: '布鲁斯' },
+	{ id: 8, name: '独立音乐' },
+	{ id: 9, name: '阿卡贝拉' },
 ];
 
 // 器乐类型
@@ -437,19 +457,6 @@ export const study_type = [
 	{ id: 4, name: '大学' },
 	{ id: 5, name: '硕士' },
 	{ id: 6, name: '博士' },
-];
-
-// 擅长风格
-export const person_style = [
-	{ id: 1, name: '古典' },
-	{ id: 2, name: '电子' },
-	{ id: 3, name: '流行' },
-	{ id: 4, name: '国风' },
-	{ id: 5, name: '摇滚' },
-	{ id: 6, name: '爵士' },
-	{ id: 7, name: '布鲁斯' },
-	{ id: 8, name: '独立音乐' },
-	{ id: 9, name: '阿卡贝拉' },
 ];
 
 // 参与报价的状态 1-未参与竞标 2-竞标进行中待商议 3-被拒绝  4-中标

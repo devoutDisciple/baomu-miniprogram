@@ -1,95 +1,96 @@
 {
-  "pages": [
-    "pages/home/index/index",
-    "pages/square/index/index",
-    "pages/rest/index/index",
-    "pages/my/index/index",
-    "pages/calendar/index/index",
-    "pages/personDetail/personDetail",
-    "pages/chat/chat",
-    "pages/message/message",
-    "pages/systemMsg/systemMsg",
-    "pages/home/publish1/publish1",
-    "pages/home/publish2/publish2",
-    "pages/home/publish3/publish3",
-    "pages/invitation/invitation",
-    "pages/publishDetail/publishDetail",
-    "pages/my/myPublish/myPublish",
-    "pages/my/idcard/idcard",
-    "pages/my/school/school",
-    "pages/my/level/level",
-    "pages/my/skill/skill",
-    "pages/my/order/order",
-    "pages/my/productionShow/productionShow",
-    "pages/my/productionPublish/productionPublish",
-    "pages/my/productionDetail/productionDetail",
-    "pages/my/reply/reply",
-    "pages/team/index/index",
-    "pages/team/detail/detail",
-    "pages/team/create/create",
-    "pages/team/invitation/invitation",
-    "pages/team/users/users",
-    "pages/team/editUsers/editUsers",
-    "pages/team/editTeam/editTeam",
-    "pages/personDetailEdit/personDetailEdit",
-    "pages/my/orderDetailForPublisher/orderDetailForPublisher",
-    "pages/my/orderDetailForActor/orderDetailForActor"
-  ],
-  "window": {
-    "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "Weixin",
-    "navigationBarTextStyle": "black"
-  },
-  "sitemapLocation": "sitemap.json",
-  "usingComponents": {
-    "van-progress": "@vant/weapp/progress/index",
-    "van-rate": "@vant/weapp/rate/index",
-    "van-popup": "@vant/weapp/popup/index",
-    "van-calendar": "@vant/weapp/calendar/index",
-    "van-swipe-cell": "@vant/weapp/swipe-cell/index",
-    "van-dialog": "@vant/weapp/dialog/index"
-  },
-  "permission": {
-    "scope.userLocation": {
-      "desc": "用于为您提供更细致的服务"
-    }
-  },
-  "tabBar": {
-    "color": "#d8d8d8",
-    "selectedColor": "#313131",
-    "position": "bottom",
-    "list": [
-      {
-        "pagePath": "pages/home/index/index",
-        "text": "首页",
-        "iconPath": "asserts/tabBar/home.png",
-        "selectedIconPath": "asserts/tabBar/home_select.png"
-      },
-      {
-        "pagePath": "pages/square/index/index",
-        "text": "广场",
-        "iconPath": "asserts/tabBar/square.png",
-        "selectedIconPath": "asserts/tabBar/square_select.png"
-      },
-      {
-        "pagePath": "pages/rest/index/index",
-        "text": "其他",
-        "iconPath": "asserts/tabBar/rest.png",
-        "selectedIconPath": "asserts/tabBar/rest_select.png"
-      },
-      {
-        "pagePath": "pages/calendar/index/index",
-        "text": "档期",
-        "iconPath": "asserts/tabBar/calendar.png",
-        "selectedIconPath": "asserts/tabBar/calendar_select.png"
-      },
-      {
-        "pagePath": "pages/my/index/index",
-        "text": "我的",
-        "iconPath": "asserts/tabBar/my.png",
-        "selectedIconPath": "asserts/tabBar/my_select.png"
-      }
-    ]
-  }
+	"pages": [
+		"pages/home/index/index",
+		"pages/square/index/index",
+		"pages/rest/index/index",
+		"pages/my/index/index",
+		"pages/calendar/index/index",
+		"pages/personDetail/personDetail",
+		"pages/chat/chat",
+		"pages/message/message",
+		"pages/systemMsg/systemMsg",
+		"pages/home/publish1/publish1",
+		"pages/home/publish2/publish2",
+		"pages/home/publish3/publish3",
+		"pages/invitation/invitation",
+		"pages/publishDetail/publishDetail",
+		"pages/my/myPublish/myPublish",
+		"pages/my/idcard/idcard",
+		"pages/my/school/school",
+		"pages/my/level/level",
+		"pages/my/skill/skill",
+		"pages/my/order/order",
+		"pages/my/productionShow/productionShow",
+		"pages/my/productionPublish/productionPublish",
+		"pages/my/productionDetail/productionDetail",
+		"pages/my/reply/reply",
+		"pages/team/index/index",
+		"pages/team/detail/detail",
+		"pages/team/create/create",
+		"pages/team/invitation/invitation",
+		"pages/team/users/users",
+		"pages/team/editUsers/editUsers",
+		"pages/team/editTeam/editTeam",
+		"pages/personDetailEdit/personDetailEdit",
+		"pages/my/orderDetailForPublisher/orderDetailForPublisher",
+		"pages/my/orderDetailForActor/orderDetailForActor",
+		"pages/home/condition/condition"
+	],
+	"window": {
+		"backgroundTextStyle": "light",
+		"navigationBarBackgroundColor": "#fff",
+		"navigationBarTitleText": "Weixin",
+		"navigationBarTextStyle": "black"
+	},
+	"sitemapLocation": "sitemap.json",
+	"usingComponents": {
+		"van-progress": "@vant/weapp/progress/index",
+		"van-rate": "@vant/weapp/rate/index",
+		"van-popup": "@vant/weapp/popup/index",
+		"van-calendar": "@vant/weapp/calendar/index",
+		"van-swipe-cell": "@vant/weapp/swipe-cell/index",
+		"van-dialog": "@vant/weapp/dialog/index"
+	},
+	"permission": {
+		"scope.userLocation": {
+			"desc": "用于为您提供更细致的服务"
+		}
+	},
+	"tabBar": {
+		"color": "#d8d8d8",
+		"selectedColor": "#313131",
+		"position": "bottom",
+		"list": [
+			{
+				"pagePath": "pages/home/index/index",
+				"text": "首页",
+				"iconPath": "asserts/tabBar/home.png",
+				"selectedIconPath": "asserts/tabBar/home_select.png"
+			},
+			{
+				"pagePath": "pages/square/index/index",
+				"text": "广场",
+				"iconPath": "asserts/tabBar/square.png",
+				"selectedIconPath": "asserts/tabBar/square_select.png"
+			},
+			{
+				"pagePath": "pages/rest/index/index",
+				"text": "其他",
+				"iconPath": "asserts/tabBar/rest.png",
+				"selectedIconPath": "asserts/tabBar/rest_select.png"
+			},
+			{
+				"pagePath": "pages/calendar/index/index",
+				"text": "档期",
+				"iconPath": "asserts/tabBar/calendar.png",
+				"selectedIconPath": "asserts/tabBar/calendar_select.png"
+			},
+			{
+				"pagePath": "pages/my/index/index",
+				"text": "我的",
+				"iconPath": "asserts/tabBar/my.png",
+				"selectedIconPath": "asserts/tabBar/my_select.png"
+			}
+		]
+	}
 }

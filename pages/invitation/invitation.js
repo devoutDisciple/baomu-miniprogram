@@ -1,6 +1,6 @@
 import request from '../../utils/request';
 import moment from '../../utils/moment';
-import { instruments, plays, voices } from '../../constant/constant';
+import { instruments, PLAYS_STYLE, voices } from '../../constant/constant';
 
 Page({
 	/**
@@ -80,14 +80,14 @@ Page({
 	// 获取所有演奏类型
 	getAllPlayList: function () {
 		const playList = [];
-		plays.forEach((item) => playList.push(item.name));
+		PLAYS_STYLE.forEach((item) => playList.push(item.name));
 		this.setData({ playList: playList || [] });
 	},
 
 	// 选择演奏类型
 	onSelectPlay: function (e) {
 		const { value } = e.detail;
-		const { name, id } = plays[value];
+		const { name, id } = PLAYS_STYLE[value];
 		this.setData({ playName: name, playId: id, instrumentSelectName: '', instrumentSelectId: '' });
 		// 获取所有乐器类型
 		this.getAllInstruments(Number(value) === 1 ? voices : instruments);

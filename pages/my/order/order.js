@@ -1,7 +1,7 @@
 /* eslint-disable prefer-destructuring */
 import request from '../../../utils/request';
 import {
-	plays,
+	PLAYS_STYLE,
 	instruments,
 	voices,
 	DEMAND_STATE,
@@ -47,7 +47,7 @@ Page({
 			if (Array.isArray(orders)) {
 				orders.forEach((item) => {
 					// 获取演奏类型
-					const { name: playName } = plays.filter((p) => p.id === Number(item.play_id))[0];
+					const { name: playName } = PLAYS_STYLE.filter((p) => p.id === Number(item.play_id))[0];
 					let instrItem = {};
 					// 获取乐器类型
 					if (item.play_id === 1) {

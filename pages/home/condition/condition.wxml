@@ -1,0 +1,33 @@
+<scroll-view class="wrap" scroll-y="{{true}}" enhanced="{{true}}" lower-threshold="300"show-scrollbar="{{false}}" >
+    <view class="chunk">
+        <view class="chunk_title">地址</view>
+        <view class="chunk_con">
+            <view class="chunk_item">成都市</view>
+        </view>
+    </view>
+    <view class="chunk">
+        <view class="chunk_title">乐团类型</view>
+        <view class="chunk_con">
+            <block wx:for="{{TEAM_TYPE}}" wx:key="index">
+                <view class="chunk_item">{{item.name}}</view>
+            </block>
+        </view>
+    </view>
+    <view class="chunk">
+        <view class="chunk_title">演奏方式</view>
+        <view class="chunk_con">
+            <block wx:for="{{PLAYS_STYLE}}" wx:key="index">
+                <view class="chunk_item">{{item.name}}</view>
+            </block>
+        </view>
+    </view>
+    <view class="chunk">
+        <view class="chunk_title">擅长风格</view>
+        <view class="chunk_con">
+            <block wx:for="{{instruments}}" wx:key="index">
+                <view class="chunk_item">{{item.name}}</view>
+            </block>
+        </view>
+    </view>
+    <view class="invitate_btn">确定</view>
+</scroll-view>

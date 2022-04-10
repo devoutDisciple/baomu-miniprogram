@@ -4,7 +4,7 @@ import request from '../../../utils/request';
 import deviceUtil from '../../../utils/deviceUtil';
 import loading from '../../../utils/loading';
 import moment from '../../../utils/moment';
-import { plays, instruments, voices } from '../../../constant/constant';
+import { PLAYS_STYLE, instruments, voices } from '../../../constant/constant';
 import config from '../../../config/config';
 
 Page({
@@ -48,6 +48,7 @@ Page({
 			this.getUserLocation();
 			// 获取设备信息
 			this.getDeviceStatus();
+
 			// 分享按钮
 			wx.showShareMenu({
 				withShareTicket: true,
@@ -117,7 +118,7 @@ Page({
 					timeFormat,
 				)}`;
 				// 获取演奏类型
-				const { name: playName } = plays.filter((p) => p.id === Number(item.play_id))[0];
+				const { name: playName } = PLAYS_STYLE.filter((p) => p.id === Number(item.play_id))[0];
 				let instrItem = {};
 				// 获取乐器类型
 				if (item.play_id === 1) {
@@ -161,13 +162,13 @@ Page({
 		wx.getLocation({
 			isHighAccuracy: true,
 			type: 'gcj02',
-			complete: function (res) {
+			complete: async function (res) {
 				if (res.errMsg === 'getLocation:ok') {
 					const { latitude, longitude } = res;
 					const user_id = wx.getStorageSync('user_id');
 					if (!user_id) return;
 					// 更新用户位置
-					request.post({ url: '/user/updateLocation', data: { latitude, longitude, user_id } });
+					await request.post({ url: '/user/updateLocation', data: { latitude, longitude, user_id } });
 				} else {
 					self.hadGetUserPermission();
 				}

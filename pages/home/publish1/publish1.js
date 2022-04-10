@@ -1,5 +1,5 @@
 // import request from '../../../utils/request';
-import { instruments, plays, voices } from '../../../constant/constant';
+import { instruments, PLAYS_STYLE, voices } from '../../../constant/constant';
 import config from '../../../config/config';
 // eslint-disable-next-line import/named
 import { getStoragePublishMsg, setStoragePublishMsg } from '../../../utils/util';
@@ -36,7 +36,7 @@ Page({
 		if (publish && publish.title) {
 			const tempList = Number(publish.playId) === 1 ? instruments : voices;
 			const instrumentSelectItem = tempList.filter((item) => item.id === publish.instrumentSelectId)[0];
-			const playSelectItem = plays.filter((item) => item.id === publish.playId)[0];
+			const playSelectItem = PLAYS_STYLE.filter((item) => item.id === publish.playId)[0];
 			this.setData({
 				title: publish.title,
 				instrumentSelectId: instrumentSelectItem.id,
@@ -50,14 +50,14 @@ Page({
 	// 获取所有演奏类型
 	getAllPlayList: function () {
 		const playList = [];
-		plays.forEach((item) => playList.push(item.name));
+		PLAYS_STYLE.forEach((item) => playList.push(item.name));
 		this.setData({ playList: playList || [] });
 	},
 
 	// 选择演奏类型
 	onSelectPlay: function (e) {
 		const { value } = e.detail;
-		const { name, id } = plays[value];
+		const { name, id } = PLAYS_STYLE[value];
 		this.setData({ playName: name, playId: id, instrumentSelectName: '', instrumentSelectId: '' });
 		// 获取所有乐器类型
 		this.getAllInstruments(Number(value) === 1 ? voices : instruments);

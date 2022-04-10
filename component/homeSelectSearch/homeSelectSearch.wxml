@@ -1,0 +1,37 @@
+<scroll-view class="type" scroll-x="{{true}}" enhanced="{{true}}" show-scrollbar="{{false}}">
+    <view class="type_con">
+        <view class="type_item" bindtap="goToSearchPage">
+            <image class="type_img" src="/asserts/public/home_sort.png" />
+        </view>
+        <view class="type_item">
+            成都
+            <image class="type_item_icon" src="/asserts/public/arrow_bottom.png" />
+        </view>
+        <view class="type_item">
+            {{team_type_select_name || "乐团类型"}}
+            <image class="type_item_icon" src="/asserts/public/arrow_bottom.png" />
+            <picker class="type_item_picker" bindchange="onSelectPlay" range-key="name" range="{{TEAM_TYPE}}">
+                乐团类型乐团类型乐团类型
+            </picker>
+        </view>
+        <view class="type_item">
+            {{person_style_selecg_name || "擅长风格"}}
+            <image class="type_item_icon" src="/asserts/public/arrow_bottom.png" />
+            <picker class="type_item_picker" bindchange="onSelectPlay" range-key="name" range="{{person_style}}">
+                擅长风格擅长风格擅长风格
+            </picker>
+        </view>
+        <view class="type_item">
+            {{plays_style_select_name || "演奏方式"}}
+            <image class="type_item_icon" src="/asserts/public/arrow_bottom.png" />
+            <picker class="type_item_picker" bindchange="onSelectPlay" range-key="name" range="{{PLAYS_STYLE}}">
+                演奏方式演奏方式演奏方式
+            </picker>
+        </view>
+        <view class="type_item">
+            合作类型
+            <image class="type_item_icon" src="/asserts/public/arrow_bottom.png" />
+        </view>
+        <view class="type_item type_empty">...</view>
+    </view>
+</scroll-view>

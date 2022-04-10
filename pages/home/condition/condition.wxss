@@ -1,0 +1,50 @@
+.wrap {
+    width: 100vw;
+    height: 100vh;
+    padding-top: 60rpx;
+}
+
+.chunk {
+    padding: 0 20rpx;
+    margin-bottom: 60rpx;
+}
+
+.chunk_title {
+    font-size: 34rpx;
+    color: #333;
+}
+
+.chunk_con {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.chunk_item {
+    padding: 20rpx 40rpx;
+    background: #e6e6e6;
+    margin-right: 20rpx;
+    border-radius: 40rpx;
+    font-size: 28rpx;
+    margin-top: 20rpx;
+}
+
+
+
+
+
+.invitate_btn {
+    position: fixed;
+    bottom: 10rpx;
+    left: 40rpx;
+    width: calc(100vw - 80rpx);
+    height: 100rpx;
+    z-index: 111;
+    background: #000;
+    color: #fff;
+    border-radius: 20rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 38rpx;
+    margin: 50rpx 0;
+}

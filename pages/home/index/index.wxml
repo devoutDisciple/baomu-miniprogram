@@ -54,34 +54,8 @@
     <view class="search">
         <search-ipt />
     </view>
-    <scroll-view class="type" scroll-x="{{true}}" enhanced="{{true}}" show-scrollbar="{{false}}">
-        <view class="type_con">
-            <view class="type_item">
-                <image class="type_img" src="/asserts/public/home_sort.png" />
-            </view>
-            <view class="type_item">
-                成都
-                <image class="type_item_icon" src="/asserts/public/arrow_bottom.png" />
-            </view>
-            <view class="type_item">
-                乐团类型
-                <image class="type_item_icon" src="/asserts/public/arrow_bottom.png" />
-            </view>
-            <view class="type_item">
-                擅长风格
-                <image class="type_item_icon" src="/asserts/public/arrow_bottom.png" />
-            </view>
-            <view class="type_item">
-                演奏方式
-                <image class="type_item_icon" src="/asserts/public/arrow_bottom.png" />
-            </view>
-            <view class="type_item">
-                合作类型
-                <image class="type_item_icon" src="/asserts/public/arrow_bottom.png" />
-            </view>
-            <view class="type_item type_empty">...</view>
-        </view>
-    </scroll-view>
+    <home-select-search />
+    
     <view class="person_con">
         <block wx:if="{{selectTabIdx === 1}}">
             <block wx:if="{{actorList && actorList.length !== 0}}">
@@ -93,7 +67,10 @@
                 <view class="empty_txt">没有更多啦~</view>
             </block>
             <block wx:else>
-                <view class="empty">暂无数据</view>
+                <view class="empty_con">
+                    <empty-img />
+                    暂无数据
+                </view>
             </block>
         </block>
         <block wx:if="{{selectTabIdx === 2}}">
@@ -106,7 +83,10 @@
                 <view class="empty_txt">没有更多啦~</view>
             </block>
             <block wx:else>
-                <view class="empty">暂无数据</view>
+                <view class="empty_con">
+                    <empty-img />
+                    暂无数据
+                </view>
             </block>
         </block>
     </view>
