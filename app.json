@@ -32,7 +32,6 @@
     "pages/team/editUsers/editUsers",
     "pages/team/editTeam/editTeam",
     "pages/personDetailEdit/personDetailEdit",
-    "pages/my/orderDetail/orderDetail",
     "pages/my/orderDetailForPublisher/orderDetailForPublisher",
     "pages/my/orderDetailForActor/orderDetailForActor"
   ],

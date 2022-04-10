@@ -24,8 +24,22 @@
             </view>
         </view>
     </view>
-    <view class="price" bindtap="onTapDemandDetail">
-        费用: <view class="price_text">￥{{data.price}}</view>
+    <view class="price">
+        <view class="price_con" bindtap="onTapDemandDetail">
+            费用: <view class="price_text">￥{{data.price}}</view>
+        </view>
+        <!-- 需求方展示 -->
+        <block wx:if="{{type === 1}}">
+            <!-- 同意报价，但是未支付 -->
+            <block wx:if="{{data.state === 2}}">
+                <view class="pay_btn" bindtap="onTapPay">支付</view>
+            </block>
+            <!-- 演出结束，支付给用户 -->
+            <block wx:if="{{data.state === 5}}">
+                <view class="pay_btn" bindtap="onTapSuccess">付款</view>
+            </block>
+        </block>
+        
     </view>
     <view class="footer">
         <view class="footer_left">

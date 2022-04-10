@@ -94,7 +94,6 @@
                     </view>
                 </block>
             </block>
-            
         </view>
     </scroll-view>
     <van-dialog

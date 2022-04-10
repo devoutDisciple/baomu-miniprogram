@@ -18,7 +18,7 @@
 }
 
 .title_state {
-    width: 140rpx;
+    width: 170rpx;
     display: flex;
     align-items: center;
     justify-content: flex-end;
@@ -80,8 +80,25 @@
     justify-content: flex-end;
     font-size: 28rpx;
     color: #333;
-    align-items: flex-end;
+    align-items: center;
     border-bottom: 1rpx solid #f2f2f2;
+}
+
+.pay_btn {
+    padding: 20rpx 40rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50rpx;
+    background: #B5B58D;
+    color: #fff;
+    margin-left: 20rpx;
+}
+
+.price_con {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .price_text {
@@ -123,3 +140,4 @@
     color: #6a6a6a;
     padding-left: 40rpx;
 }
+

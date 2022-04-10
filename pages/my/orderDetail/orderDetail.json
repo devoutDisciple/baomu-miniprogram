@@ -1,9 +1,0 @@
-{
-    "usingComponents": {
-      "header": "/component/header/header",
-      "tip-dialog": "/component/tipDialog/tipDialog",
-      "empty-img": "/component/emptyImg/emptyImg",
-      "btm-tip": "/component/btmTip/btmTip"
-    },
-    "navigationStyle": "custom"
-  }

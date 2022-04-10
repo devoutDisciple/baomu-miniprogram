@@ -2,10 +2,14 @@ const config = require('../config/config');
 
 const { baseUrl } = config;
 
+const getUrl = (params) => {
+	return baseUrl + params.url;
+};
+
 module.exports = {
 	get: (params = {}) => {
 		return new Promise((resolve, reject) => {
-			const url = baseUrl + params.url;
+			const url = getUrl(params);
 			console.log(`请求url: 传入的url: ${params.url}  拼接之后的url： ${url}`);
 			wx.request({
 				method: 'GET',
@@ -44,7 +48,7 @@ module.exports = {
 	},
 	post: (params = {}) => {
 		return new Promise((resolve, reject) => {
-			const url = baseUrl + params.url;
+			const url = getUrl(params);
 			console.log(`请求url: 传入的url: ${params.url}  拼接之后的url： ${url}`);
 			wx.request({
 				method: 'POST',
@@ -85,7 +89,7 @@ module.exports = {
 	},
 	uploadFile: (params = {}) => {
 		return new Promise((resolve, reject) => {
-			const url = baseUrl + params.url;
+			const url = getUrl(params);
 			wx.uploadFile({
 				filePath: params.data,
 				name: 'file',

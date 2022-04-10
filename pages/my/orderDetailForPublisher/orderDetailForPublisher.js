@@ -16,7 +16,7 @@ Page({
 		priceDialogVisible: false, // 报价弹框
 		price: 0, // 报价
 		tipDialog: false, // 提示弹框
-		selectTabIdx: 2, // 选择的tab的
+		selectTabIdx: 1, // 选择的tab的
 		selectPersonIdx: 0, // 选择报名人的下标
 		priceRecordList: [], // 议价记录
 	},
@@ -164,6 +164,7 @@ Page({
 	onRefusePrice: async function () {
 		const { priceRecordList, selectPersonIdx } = this.data;
 		loading.showLoading();
+		const { id } = this.data;
 		const records = priceRecordList[selectPersonIdx].records;
 		const lastRecord = records[records.length - 1];
 		const result = await request.post({
@@ -173,6 +174,7 @@ Page({
 			// operation: 第几次谈价
 			data: {
 				id: lastRecord.id,
+				demand_id: id,
 			},
 		});
 		if (result === 'success') {
