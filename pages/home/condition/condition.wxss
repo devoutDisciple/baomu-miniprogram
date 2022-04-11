@@ -28,7 +28,30 @@
     margin-top: 20rpx;
 }
 
+.chunk_item_active {
+    background: #000;
+    color: #fff;
+}
 
+.chunk_item_address {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.type_item_picker {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+}
+
+.chunk_item_icon {
+    margin-left: 10rpx;
+    height: 40rpx;
+    width: 40rpx;
+}
 
 
 

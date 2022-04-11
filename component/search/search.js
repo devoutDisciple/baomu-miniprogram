@@ -13,5 +13,12 @@ Component({
 	/**
 	 * 组件的方法列表
 	 */
-	methods: {},
+	methods: {
+		onConfirm: function (e) {
+			console.log(e, 22122);
+			let { value } = e.detail;
+			value = String(value).trim();
+			this.triggerEvent('OnSearch', { value });
+		},
+	},
 });

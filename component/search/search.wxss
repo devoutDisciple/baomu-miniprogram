@@ -18,5 +18,5 @@
 
 .nav_ipt_container {
     flex: 1;
-    font-size: 24rpx;
+    font-size: 30rpx;
 }

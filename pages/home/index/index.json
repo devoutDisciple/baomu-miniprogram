@@ -7,7 +7,8 @@
         "phone-component": "/component/getPhone/getPhone",
         "userinfo-component": "/component/getUserInfo/getUserInfo",
         "empty-img": "/component/emptyImg/emptyImg",
-        "home-select-search": "/component/homeSelectSearch/homeSelectSearch"
+        "home-select-search": "/component/homeSelectSearch/homeSelectSearch",
+        "btm-tip": "/component/btmTip/btmTip"
 
 	},
 	"navigationStyle": "custom"

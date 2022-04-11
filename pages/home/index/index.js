@@ -21,6 +21,14 @@ Page({
 		tabTop: '60px', // tab距离顶部的距离
 		isLoading: false, // 是否在加载中
 		currentUserPage: 0, // 当前演员的页码
+		// -----筛选条件
+		address_select: '', // 选择的地址
+		team_type_id: '', // 乐团类型
+		team_type_name: '', // 乐团类型
+		person_style_id: '', // 擅长风格
+		person_style_name: '', // 擅长风格
+		plays_style_id: '', // 演奏方式
+		plays_style_name: '', // 演奏方式
 	},
 
 	/**
@@ -28,7 +36,6 @@ Page({
 	 */
 	onLoad: async function () {
 		try {
-			const { selectTabIdx } = this.data;
 			// 判断用户是否登录
 			if (!login.isLogin()) {
 				await login.getLogin();
@@ -44,26 +51,32 @@ Page({
 			if (!photo || !username) {
 				this.setData({ userDialogVisible: true });
 			}
-			// 获取用户地理位置
-			this.getUserLocation();
 			// 获取设备信息
 			this.getDeviceStatus();
-
+			// 获取用户地理位置, 获取用户位置之后在进行查询
+			this.getUserLocation();
 			// 分享按钮
 			wx.showShareMenu({
 				withShareTicket: true,
 				menus: ['shareAppMessage'],
 			});
-			if (Number(selectTabIdx) === 1) {
-				// 查询演员
-				await this.getActorList();
-			} else {
-				// 查询需求
-				await this.getDemandsList();
-			}
 		} finally {
 			loading.hideLoading();
 		}
+	},
+
+	// 查询，给查询页面用的
+	onSearch: async function () {
+		const { selectTabIdx } = this.data;
+		loading.showLoading();
+		if (Number(selectTabIdx) === 1) {
+			// 查询演员
+			await this.getActorList(true);
+		} else {
+			// 查询需求
+			await this.getDemandsList(true);
+		}
+		loading.hideLoading();
 	},
 
 	// 页面滚动
@@ -91,47 +104,71 @@ Page({
 	},
 
 	// 根据地理位置获取演员
-	getActorList: async function () {
-		const { currentUserPage, actorList } = this.data;
-		const user_id = wx.getStorageSync('user_id');
-		const actors = await request.get({
-			url: '/user/userByLocation',
-			data: { user_id: user_id, current: currentUserPage },
+	getActorList: async function (is_clear) {
+		try {
+			if (is_clear) loading.showLoading();
+			const { currentUserPage, actorList, address_select, person_style_id, plays_style_id, team_type_id } =
+				this.data;
+			const user_id = wx.getStorageSync('user_id');
+			const actors = await request.get({
+				url: '/user/userByLocation',
+				data: {
+					user_id: user_id,
+					current: is_clear ? 0 : currentUserPage,
+					address_select,
+					person_style_id,
+					plays_style_id,
+					team_type_id,
+				},
+			});
+			if (is_clear) {
+				return this.setData({ actorList: actors, currentUserPage: 1, isLoading: false });
+			}
+			const newActorList = [...actorList, ...actors];
+			this.setData({ actorList: newActorList, currentUserPage: currentUserPage + 1, isLoading: false });
+		} finally {
+			if (is_clear) loading.hideLoading();
+		}
+	},
+
+	handDeamndsData: function (demands) {
+		if (!Array.isArray(demands) || demands.length === 0) {
+			return [];
+		}
+		const result = [];
+		const timeFormat = 'YYYY.MM.DD';
+		demands.forEach((item) => {
+			item.date = `${moment(item.start_time).format(timeFormat)} - ${moment(item.end_time).format(timeFormat)}`;
+			// 获取演奏类型
+			const { name: playName } = PLAYS_STYLE.filter((p) => p.id === Number(item.play_id))[0];
+			let instrItem = {};
+			// 获取乐器类型
+			if (item.play_id === 1) {
+				instrItem = instruments.filter((p) => p.id === Number(item.instrument_id))[0];
+			} else {
+				instrItem = voices.filter((p) => p.id === Number(item.instrument_id))[0];
+			}
+			// eslint-disable-next-line prefer-const
+			let { name: instrumentName, url: instrumentUrl } = instrItem;
+			instrumentUrl = config.baseUrl + instrumentUrl;
+			item = Object.assign(item, { playName, instrumentName, instrumentUrl });
+			result.push(item);
 		});
-		const newActorList = [...actorList, ...actors];
-		this.setData({ actorList: newActorList, currentUserPage: currentUserPage + 1, isLoading: false });
+		return result;
 	},
 
 	// 获取需求
-	getDemandsList: async function () {
+	getDemandsList: async function (is_clear) {
+		if (is_clear) loading.showLoading();
 		const user_id = wx.getStorageSync('user_id');
-		const { demandsList, currentUserPage } = this.data;
+		const { demandsList, currentUserPage, address_select, plays_style_id } = this.data;
 		const demands = await request.get({
 			url: '/demand/demandByAddress',
-			data: { user_id: user_id, current: currentUserPage },
+			data: { user_id: user_id, current: is_clear ? 0 : currentUserPage, address_select, plays_style_id },
 		});
-		const result = [];
-		if (Array.isArray(demands)) {
-			const timeFormat = 'YYYY.MM.DD';
-			demands.forEach((item) => {
-				item.date = `${moment(item.start_time).format(timeFormat)} - ${moment(item.end_time).format(
-					timeFormat,
-				)}`;
-				// 获取演奏类型
-				const { name: playName } = PLAYS_STYLE.filter((p) => p.id === Number(item.play_id))[0];
-				let instrItem = {};
-				// 获取乐器类型
-				if (item.play_id === 1) {
-					instrItem = instruments.filter((p) => p.id === Number(item.instrument_id))[0];
-				} else {
-					instrItem = voices.filter((p) => p.id === Number(item.instrument_id))[0];
-				}
-				// eslint-disable-next-line prefer-const
-				let { name: instrumentName, url: instrumentUrl } = instrItem;
-				instrumentUrl = config.baseUrl + instrumentUrl;
-				item = Object.assign(item, { playName, instrumentName, instrumentUrl });
-				result.push(item);
-			});
+		const result = this.handDeamndsData(demands);
+		if (is_clear) {
+			return this.setData({ demandsList: result, currentUserPage: 1, isLoading: false });
 		}
 		const newResult = [...demandsList, ...result];
 		this.setData({ demandsList: newResult, currentUserPage: currentUserPage + 1, isLoading: false });
@@ -159,6 +196,7 @@ Page({
 	// 获取用户位置
 	getUserLocation: function () {
 		const self = this;
+		const { selectTabIdx } = this.data;
 		wx.getLocation({
 			isHighAccuracy: true,
 			type: 'gcj02',
@@ -168,7 +206,15 @@ Page({
 					const user_id = wx.getStorageSync('user_id');
 					if (!user_id) return;
 					// 更新用户位置
-					await request.post({ url: '/user/updateLocation', data: { latitude, longitude, user_id } });
+					const result = await request.post({
+						url: '/user/updateLocation',
+						data: { latitude, longitude, user_id },
+					});
+					console.log(result, 1111);
+					const { city } = result;
+					self.setData({ address_select: city }, async () => {
+						self.onSearch();
+					});
 				} else {
 					self.hadGetUserPermission();
 				}
@@ -222,11 +268,7 @@ Page({
 		let { idx } = e.currentTarget.dataset;
 		idx = Number(idx);
 		this.setData({ selectTabIdx: Number(idx), currentUserPage: 0 }, () => {
-			if (idx === 1) {
-				this.getActorList();
-			} else {
-				this.getDemandsList();
-			}
+			this.onSearch();
 		});
 	},
 
@@ -234,5 +276,38 @@ Page({
 	onShow: function () {
 		// 清空发布的缓存
 		wx.removeStorageSync('publish');
+	},
+
+	// 当选择条件改变的时候
+	onChangeConditions: function (e) {
+		const { address_select, person_style_id, plays_style_id, team_type_id } = e.detail;
+		this.setData({ address_select, person_style_id, plays_style_id, team_type_id }, () => {
+			this.onSearch();
+		});
+	},
+
+	// 输入框搜索
+	onIptSearch: async function (e) {
+		const { selectTabIdx } = this.data;
+		const { value } = e.detail;
+		if (!value) {
+			return this.setData({ isLoading: true }, () => {
+				this.onSearch();
+			});
+		}
+		const user_id = wx.getStorageSync('user_id');
+		loading.showLoading();
+		if (selectTabIdx === 1) {
+			const actors = await request.get({ url: '/user/userBySearchValue', data: { value: value, user_id } });
+			this.setData({ actorList: actors, currentUserPage: 0, isLoading: true });
+		} else {
+			const demands = await request.get({
+				url: '/demand/deamandByIptValue',
+				data: { value: value, user_id },
+			});
+			const result = this.handDeamndsData(demands);
+			this.setData({ demandsList: result, currentUserPage: 0, isLoading: true });
+		}
+		loading.hideLoading();
 	},
 });

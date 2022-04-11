@@ -6,6 +6,7 @@
         bindconfirm="onConfirm" 
         class="nav_ipt_container" 
         placeholder="输入需要查找的人" 
+        confirm-type="search"
         bindinput="onChange"
         style="height: {{conHegiht - 2}}px"/>
 </view> 

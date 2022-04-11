@@ -52,10 +52,19 @@
         </view>
     </view>
     <view class="search">
-        <search-ipt />
+        <search-ipt bindOnSearch="onIptSearch"/>
     </view>
-    <home-select-search />
-    
+    <home-select-search 
+        type="{{selectTabIdx}}"
+        bindOnChange="onChangeConditions" 
+        address_select="{{address_select}}" 
+        team_type_select_id="{{team_type_id}}" 
+        team_type_select_name="{{team_type_name}}"
+        person_style_selecg_id="{{person_style_id}}"
+        person_style_selecg_name="{{person_style_name}}"
+        plays_style_select_id="{{plays_style_id}}"
+        plays_style_select_name="{{plays_style_name}}"
+        />
     <view class="person_con">
         <block wx:if="{{selectTabIdx === 1}}">
             <block wx:if="{{actorList && actorList.length !== 0}}">
@@ -64,7 +73,7 @@
                         <person-item data="{{item}}"/>
                     </view>
                 </block>
-                <view class="empty_txt">没有更多啦~</view>
+                <btm-tip />
             </block>
             <block wx:else>
                 <view class="empty_con">
@@ -80,7 +89,7 @@
                         <task-item data="{{item}}"/>
                     </view>
                 </block>
-                <view class="empty_txt">没有更多啦~</view>
+                <btm-tip />
             </block>
             <block wx:else>
                 <view class="empty_con">

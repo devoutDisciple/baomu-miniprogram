@@ -2,32 +2,60 @@
     <view class="chunk">
         <view class="chunk_title">地址</view>
         <view class="chunk_con">
-            <view class="chunk_item">成都市</view>
+            <view class="chunk_item chunk_item_address chunk_item_active">
+                {{address || "城市"}}<image class="chunk_item_icon" src="/asserts/public/arrow_bottom_white.png" />
+                <picker class="type_item_picker" data-key="address" mode="region" level="city" bindchange="onTapSelectItem">
+                地址地址地址地址地址地址地址地址地址
+            </picker>
+            </view>
         </view>
     </view>
-    <view class="chunk">
-        <view class="chunk_title">乐团类型</view>
-        <view class="chunk_con">
-            <block wx:for="{{TEAM_TYPE}}" wx:key="index">
-                <view class="chunk_item">{{item.name}}</view>
-            </block>
+    <block wx:if="{{type === 1}}">
+        <view class="chunk">
+            <view class="chunk_title">乐团类型</view>
+            <view class="chunk_con">
+                <block wx:for="{{TEAM_TYPE}}" wx:key="index">
+                    <view 
+                        data-item="{{item}}" 
+                        data-key="team_type" 
+                        bindtap="onTapSelectItem" 
+                        class="chunk_item {{team_type_select_id === item.id ? 'chunk_item_active' : ''}}">
+                        {{item.name}}
+                    </view>
+                </block>
+            </view>
         </view>
-    </view>
+    </block>
     <view class="chunk">
         <view class="chunk_title">演奏方式</view>
         <view class="chunk_con">
             <block wx:for="{{PLAYS_STYLE}}" wx:key="index">
-                <view class="chunk_item">{{item.name}}</view>
+                <view 
+                    data-item="{{item}}" 
+                    data-key="plays_style" 
+                    bindtap="onTapSelectItem" 
+                    class="chunk_item {{plays_style_select_id === item.id ? 'chunk_item_active' : ''}}">
+                    {{item.name}}
+                </view>
             </block>
         </view>
     </view>
-    <view class="chunk">
-        <view class="chunk_title">擅长风格</view>
-        <view class="chunk_con">
-            <block wx:for="{{instruments}}" wx:key="index">
-                <view class="chunk_item">{{item.name}}</view>
-            </block>
+    <block wx:if="{{type === 1}}">
+        <view class="chunk">
+            <view class="chunk_title">擅长风格</view>
+            <view class="chunk_con">
+                <block wx:for="{{person_style}}" wx:key="index">
+                    <view 
+                        data-item="{{item}}" 
+                        data-key="person_style" 
+                        bindtap="onTapSelectItem" 
+                        class="chunk_item {{person_style_selecg_id === item.id ? 'chunk_item_active' : ''}}">
+                        {{item.name}}
+                    </view>
+                </block>
+            </view>
         </view>
-    </view>
-    <view class="invitate_btn">确定</view>
+    </block>
+    
+    <view class="invitate_btn" bindtap="onTapSure">确定</view>
 </scroll-view>
