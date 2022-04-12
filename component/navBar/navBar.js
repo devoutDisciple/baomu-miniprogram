@@ -22,7 +22,6 @@ Component({
 		disWidth: 101, // 按钮占用的宽度
 		paddingLeft: 7, // 左边留白宽度
 		paddingTop: 4, // 上方留白高度
-		value: '', // 输入框的值
 	},
 
 	methods: {
@@ -52,32 +51,11 @@ Component({
 				});
 			});
 		},
-		// input输入改变
-		onChange: function (e) {
-			const { value } = e.detail;
-			this.setData({ value });
-			this.triggerEvent('OnChange', { value });
-		},
 		// 输入确定
-		onConfirm: function () {
-			this.triggerEvent('OnConfirm');
-		},
-		// 点击输入框
-		onTapIpt: function () {
-			const pages = getCurrentPages();
-			const currentPage = pages[pages.length - 1];
-			if (currentPage.route !== 'pages/search/search') {
-				wx.navigateTo({
-					url: '/pages/search/search',
-				});
-			}
-		},
-
-		// 返回
-		onGoback: function () {
-			wx.navigateBack({
-				complete: () => {},
-			});
+		onConfirm: function (e) {
+			let { value } = e.detail;
+			value = String(value).trim();
+			this.triggerEvent('OnSearch', { value });
 		},
 	},
 

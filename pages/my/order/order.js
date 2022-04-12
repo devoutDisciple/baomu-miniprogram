@@ -17,7 +17,7 @@ Page({
 	 */
 	data: {
 		orderList: [],
-		selectTabIdx: 2,
+		selectTabIdx: 1,
 	},
 
 	/**
@@ -72,6 +72,7 @@ Page({
 					}
 				});
 			}
+			console.log(orders, 12321);
 			this.setData({ orderList: orders });
 		} finally {
 			loading.hideLoading();

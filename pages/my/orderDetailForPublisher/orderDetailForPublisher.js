@@ -216,6 +216,7 @@ Page({
 		loading.showLoading();
 		const { id } = this.data;
 		const result = await request.get({ url: '/priceRecord/priceRecordByDemandId', data: { demand_id: id } });
+		console.log(result, 1287);
 		if (Array.isArray(result)) {
 			result.forEach((price) => {
 				const records = price.records;

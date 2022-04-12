@@ -6,7 +6,6 @@
             <block wx:if="{{showBack}}">
                 <image 
                     class="nav_img"
-                    bindtap="onGoback"
                     style="width: {{conHegiht * 2 / 3}}px; height: {{conHegiht * 2 / 3}}px" 
                     src="/asserts/public/back.png" />
             </block>
@@ -18,15 +17,6 @@
             </block>
         </view>
         <view class="nav_ipt" bindtap="onTapIpt">
-            <!-- <van-field
-                value="{{ value }}"
-                placeholder="搜索"
-                custom-style="height: {{conHegiht-2}}px; padding: {{paddingTop}}px 0px;"
-                border="{{ false }}"
-                left-icon="search"
-                bind:change="onChange"
-                bind:confirm="onConfirm"
-            /> -->
             <image class="nav_ipt_search" src="/asserts/public/search2.png" style="height: {{conHegiht / 2 - 2}}px; width: {{conHegiht / 2 - 2}}px"/>
             <input 
                 value="{{ value }}"
@@ -34,7 +24,7 @@
                 bindconfirm="onConfirm" 
                 class="nav_ipt_container" 
                 placeholder="搜索" 
-                bindinput="onChange"
+                confirm-type="search"
                 style="height: {{conHegiht - 2}}px"/>
         </view> 
     </view>

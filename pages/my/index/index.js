@@ -2,8 +2,6 @@ import deviceUtil from '../../../utils/deviceUtil';
 import request from '../../../utils/request';
 import loading from '../../../utils/loading';
 
-const app = getApp();
-
 Page({
 	/**
 	 * 页面的初始数据

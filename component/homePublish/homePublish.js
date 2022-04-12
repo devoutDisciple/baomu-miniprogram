@@ -102,6 +102,7 @@ Component({
 					is_send: publish3.send === '是' ? 1 : 2,
 					price: publish3.price,
 					state: 1, // 需求开启竞价
+					type: 1, // 1-发布需求 2-直接邀请的需求
 				};
 				const res = await request.post({ url: '/demand/addDemand', data: params });
 				if (res === 'success') {

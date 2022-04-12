@@ -7,7 +7,7 @@
     bindscrolltolower="onScrollBottom"
     bindscroll="onPageScroll">
     <block wx:if="{{scrollOver}}">
-        <header></header>
+        <header bindOnSearch="onIptSearch"></header>
         <view class="tab_fix" style="{{'top: ' + tabTop}}">
             <view class="tab2">
                 <view class="tab_work">

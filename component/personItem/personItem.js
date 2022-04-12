@@ -20,9 +20,18 @@ Component({
 	 */
 	methods: {
 		onTapPerson: function () {
-			wx.navigateTo({
-				url: `/pages/personDetail/personDetail?user_id=${this.data.data.id}`,
-			});
+			const { data } = this.data;
+			const { type } = data;
+			// 如果是个人
+			if (type === 1) {
+				wx.navigateTo({
+					url: `/pages/personDetail/personDetail?user_id=${data.id}`,
+				});
+			} else {
+				wx.navigateTo({
+					url: `/pages/team/detail/detail?user_id=${data.id}`,
+				});
+			}
 		},
 		onTapInvitation: function () {
 			const pages = getCurrentPages();

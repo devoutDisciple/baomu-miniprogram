@@ -12,6 +12,9 @@
                 </view>
             </view>
             <view class="chunk">
+                <input value="{{title}}" bindblur="onIptBlur" placeholder="填写需求名称" />
+            </view>
+            <view class="chunk">
                 <select-item>
                     <picker class="picker" bindchange="onSelectPlay" range="{{playList}}">
                         <block wx:if="{{playName}}">
@@ -64,7 +67,7 @@
                     <picker class="picker" bindchange="timePickSelect" range="{{hourList}}">
                         <block wx:if="{{selectHour}}">
                             <view class="picker_value">
-                                {{selectHour}}
+                                {{selectHour}} 小时/天
                             </view>
                         </block>
                         <block wx:else>
@@ -145,7 +148,7 @@
             <view class="chunk">
                 <input placeholder="演出费用" value="{{price}}" type="number" bindblur="onBlurPrice"/>
             </view>
-            <view class="invitate_btn">邀请</view>
+            <view class="invitate_btn" bindtap="onTapSure">邀请</view>
         </view>
     </scroll-view>
     <van-calendar
@@ -154,4 +157,11 @@
         bind:close="onChangeCalendarVisible"
         bind:confirm="onConfirmDate"
         />
+    <block wx:if="{{dialogVisible}}">
+        <tip-dialog
+            bindOnClose="onCloseDialog"
+            src="{{dialogDetail.src}}" 
+            title="{{dialogDetail.title}}" 
+            desc="{{dialogDetail.desc}}"/> 
+    </block>
 </view>

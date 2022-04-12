@@ -12,7 +12,7 @@ Page({
 	 * 页面的初始数据
 	 */
 	data: {
-		selectTabIdx: 2, // 1-找演出 2-去演出
+		selectTabIdx: 1, // 1-找演出 2-去演出
 		actorList: [], // 演员列表
 		demandsList: [], // 需求列表
 		userDialogVisible: false, // 获取用户基本信息

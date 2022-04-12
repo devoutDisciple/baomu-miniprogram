@@ -2,22 +2,22 @@
     <view class="title" bindtap="onTapDemandDetail">
         <view class="title_person">
             <image class="title_img" src="{{data.userPhoto}}" />
-            {{data.username}}
+            {{data.username || ""}}
         </view>
-        <view class="title_state">{{data.detailStateName}}</view>
+        <view class="title_state">{{data.detailStateName || ""}}</view>
     </view>
     <view class="con" bindtap="onTapDemandDetail">
         <view class="con_img">
             <img src="{{data.instrumentUrl}}"/>
         </view>
         <view class="con_desc">
-            <view class="con_desc_title">{{data.title}}</view>
+            <view class="con_desc_title">{{data.title || ""}}</view>
             <view class="con_desc_img">
                 <block wx:if="{{data.join_users && data.join_users.length !== 0}}">
                     <block wx:for="{{data.join_users}}" wx:key="index">
                         <view class="chunk">
                             <image class="desc_img" src="{{item.photo}}" />
-                            <view class="con_desc_name">{{item.nickname}}</view>
+                            <view class="con_desc_name">{{item.nickname || ""}}</view>
                         </view>
                     </block>
                 </block>

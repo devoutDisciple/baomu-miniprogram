@@ -2,7 +2,8 @@
 	"usingComponents": {
 		"calendar-component": "/component/calendar/calendar",
 		"beard-list": "/component/beardList/beardList",
-        "select-item": "/component/selectItem/selectItem"
+        "select-item": "/component/selectItem/selectItem",
+        "tip-dialog": "/component/tipDialog/tipDialog"
 	},
 	"navigationBarTitleText": "邀请"
 }

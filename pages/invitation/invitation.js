@@ -1,18 +1,22 @@
 import request from '../../utils/request';
 import moment from '../../utils/moment';
 import { instruments, PLAYS_STYLE, voices } from '../../constant/constant';
+import loading from '../../utils/loading';
 
 Page({
 	/**
 	 * 页面的初始数据
 	 */
 	data: {
+		person_id: '', // 用户的id
+		dialogDetail: {}, // 弹框详情
 		selectTimeRange: [
 			{
 				start_time: '2022-03-02',
 				end_time: '2022-03-21',
 			},
 		],
+		title: '',
 		personDetail: {}, // 被雇佣人的详情
 		playList: [], // 演奏方式
 		playId: '', // 演奏方式id
@@ -143,7 +147,7 @@ Page({
 	timePickSelect: function (e) {
 		const { value } = e.detail;
 		const selectHour = this.data.hourList[value];
-		this.setData({ selectHour: `${selectHour} 小时/天` });
+		this.setData({ selectHour: `${selectHour}` });
 	},
 
 	// 选择演出地点
@@ -184,6 +188,13 @@ Page({
 		this.setData({ selectFoods });
 	},
 
+	// 当输入框失焦
+	onIptBlur: function (e) {
+		let { value } = e.detail;
+		value = String(value).trim();
+		this.setData({ title: value });
+	},
+
 	// 简介输入框失焦
 	onBlurDesc: function (e) {
 		let { value } = e.detail;
@@ -204,38 +215,94 @@ Page({
 		this.setData({ price: value });
 	},
 
-	/**
-	 * 生命周期函数--监听页面初次渲染完成
-	 */
-	onReady: function () {},
+	// 点击确定
+	onTapSure: async function () {
+		const self = this;
+		setTimeout(async () => {
+			const {
+				person_id,
+				title,
+				playId,
+				instrumentSelectId,
+				startTime,
+				endTime,
+				selectBargain,
+				selectHour,
+				selectAddress,
+				selectFoods,
+				selectSend,
+				desc,
+				price,
+			} = self.data;
+			const user_id = wx.getStorageSync('user_id');
+			if (!user_id || !person_id) {
+				return wx.showToast({
+					title: '发布失败',
+					icon: 'error',
+				});
+			}
+			loading.showLoading();
+			if (
+				!title ||
+				!playId ||
+				!instrumentSelectId ||
+				!startTime ||
+				!endTime ||
+				!selectBargain ||
+				!selectHour ||
+				!selectAddress.address ||
+				!desc ||
+				!selectFoods ||
+				!selectSend ||
+				!price
+			) {
+				return wx.showToast({
+					title: '请完善信息',
+					icon: 'error',
+				});
+			}
+			// 所有校验通过后，上传需求详情
+			const params = {
+				user_id: user_id,
+				join_ids: person_id,
+				title: title,
+				play_id: playId,
+				instrument_id: instrumentSelectId,
+				start_time: startTime,
+				end_time: endTime,
+				is_bargain: selectBargain === '是' ? 1 : 2,
+				hours: selectHour,
+				addressAll: selectAddress.address,
+				addressName: selectAddress.name,
+				latitude: selectAddress.latitude,
+				longitude: selectAddress.longitude,
+				desc: desc,
+				is_food: selectFoods === '是' ? 1 : 2,
+				is_send: selectSend === '是' ? 1 : 2,
+				price: price,
+				state: 1, // 需求开启竞价
+				type: 2, // 1-发布需求 2-直接邀请的需求
+			};
+			const res = await request.post({ url: '/demand/addDemand', data: params });
+			if (res === 'success') {
+				loading.hideLoading();
+				self.setData({
+					dialogDetail: {
+						title: '邀请成功!',
+						src: '/asserts/public/publish.png',
+						desc: '请耐心等待对方确认!',
+					},
+					dialogVisible: true,
+				});
+			}
+		}, 500);
+	},
 
-	/**
-	 * 生命周期函数--监听页面显示
-	 */
-	onShow: function () {},
-
-	/**
-	 * 生命周期函数--监听页面隐藏
-	 */
-	onHide: function () {},
-
-	/**
-	 * 生命周期函数--监听页面卸载
-	 */
-	onUnload: function () {},
-
-	/**
-	 * 页面相关事件处理函数--监听用户下拉动作
-	 */
-	onPullDownRefresh: function () {},
-
-	/**
-	 * 页面上拉触底事件的处理函数
-	 */
-	onReachBottom: function () {},
-
-	/**
-	 * 用户点击右上角分享
-	 */
-	onShareAppMessage: function () {},
+	// 关闭提示弹框
+	onCloseDialog: function () {
+		this.setData({ dialogVisible: false });
+		wx.switchTab({
+			url: '/pages/home/index/index',
+		});
+	},
 });

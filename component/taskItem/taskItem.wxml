@@ -5,19 +5,19 @@
         </view>
         <view class="task_desc_right">
             <view class="task_title">
-                <view class="task_title_name">{{data.title}}</view>
+                <view class="task_title_name">{{data.title || ""}}</view>
                 <view class="task_title_money">
                     <text class="task_title_money_txt">￥ {{data.price}}</text>/总价
                 </view>
             </view>
             <view class="task_desc_item">
-                <view class="task_desc_item_txt">工作地点：{{data.addressName}}</view>
+                <view class="task_desc_item_txt">工作地点：{{data.addressName || ""}}</view>
             </view>
             <view class="task_desc_item">
-                <view class="task_desc_item_txt">演出时间：{{data.date}}</view>
+                <view class="task_desc_item_txt">演出时间：{{data.date || ""}}</view>
             </view>
             <view class="task_desc_item">
-                <view class="task_desc_item_txt">技能要求：{{data.playName}} {{data.instrumentName}}</view>
+                <view class="task_desc_item_txt">技能要求：{{data.playName || ""}} {{data.instrumentName || ""}}</view>
             </view>
         </view>
     </view>
