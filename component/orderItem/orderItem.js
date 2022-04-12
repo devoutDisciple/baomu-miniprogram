@@ -88,5 +88,21 @@ Component({
 				title: '已付款给用户',
 			});
 		},
+
+		// 点击评价
+		onTapEvaluate: function () {
+			console.log(this.data.data, 3289);
+			const { data } = this.data;
+			if (!data.final_user_id) {
+				return wx.showToast({
+					title: '系统错误',
+					icon: 'error',
+				});
+			}
+			console.log(`/pages/evaluate/evaluate?user_id=${data.final_user_id}&demand_id=${data.id}`, 112);
+			wx.navigateTo({
+				url: `/pages/evaluate/evaluate?user_id=${data.final_user_id}&demand_id=${data.id}`,
+			});
+		},
 	},
 });

@@ -244,6 +244,13 @@
           "name": "筛选条件",
           "pathName": "pages/home/condition/condition",
           "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "需求评价页面",
+          "pathName": "pages/evaluate/evaluate",
+          "query": "",
           "scene": null,
           "launchMode": "default"
         }

@@ -34,7 +34,8 @@
 		"pages/personDetailEdit/personDetailEdit",
 		"pages/my/orderDetailForPublisher/orderDetailForPublisher",
 		"pages/my/orderDetailForActor/orderDetailForActor",
-		"pages/home/condition/condition"
+		"pages/home/condition/condition",
+		"pages/evaluate/evaluate"
 	],
 	"window": {
 		"backgroundTextStyle": "light",

@@ -18,7 +18,7 @@
 }
 
 .title_state {
-    width: 170rpx;
+    width: 190rpx;
     display: flex;
     align-items: center;
     justify-content: flex-end;
@@ -85,7 +85,7 @@
 }
 
 .pay_btn {
-    padding: 20rpx 40rpx;
+    padding: 15rpx 40rpx;
     display: flex;
     align-items: center;
     justify-content: center;

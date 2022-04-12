@@ -1,0 +1,16 @@
+<scroll-view class="wrap" scroll-y="{{true}}" enhanced="{{true}}" show-scrollbar="{{false}}">
+    <textarea class="textarea" auto-height cursor-spacing="{{40}}" maxlength="{{200}}" placeholder="请输入您的评价" bindblur="onBlurIpt"></textarea>
+    <view class="grade">
+        <text class="grade_title">评分:</text>
+        <van-rate
+            value="{{ value }}"
+            allow-half
+            size="{{ 25 }}"
+            color="#ffd21e"
+            void-icon="star"
+            void-color="#ededed"
+            bind:change="onChange"
+            />
+    </view>
+    <view class="send" bindtap="onSend">发布</view>
+</scroll-view>

@@ -1,0 +1,41 @@
+.wrap {
+    width: calc(100vw - 40rpx);
+    height: 100vh;
+    margin-left: 20rpx;
+}
+
+
+.textarea {
+    margin-top: 50rpx;
+    border: 1rpx solid #f2f2f2;
+    width: calc(100vw - 82rpx);
+    /* background: #666; */
+    padding: 20rpx;
+    min-height: 350rpx;
+}
+
+.grade {
+    display: flex;
+    align-items: center;
+    margin-top: 60rpx;
+}
+
+.grade_title {
+    margin-right: 20rpx;
+    padding-top: 10rpx;
+}
+
+.send {
+    width: calc(100vw - 80rpx);
+    margin-left: 20rpx;
+    height: 100rpx;
+    z-index: 111;
+    background: #000;
+    color: #fff;
+    border-radius: 20rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 38rpx;
+    margin-top: 200rpx;
+}
