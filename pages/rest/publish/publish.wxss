@@ -1,1 +1,109 @@
-/* pages/rest/publish/publish.wxss */
+.wrap {
+    height: 100vh;
+    width: 100vw;
+    background: #f7f7f7;
+}
+
+.con {
+    height: 100vh;
+    width: 100vw;
+}
+
+.invitate_btn {
+    width: calc(100vw - 80rpx);
+    height: 100rpx;
+    z-index: 111;
+    background: #000;
+    color: #fff;
+    border-radius: 20rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 38rpx;
+    margin: 50rpx 0;
+}
+
+.calendar {
+    width: calc(100vw - 40rpx);
+    margin-left: 20rpx;
+    margin-top: 20rpx;
+}
+
+.desc {
+    background: #fff;
+    width: calc(100vw - 80rpx);
+    margin-left: 20rpx;
+    margin-top: 20rpx;
+    padding: 20rpx;
+    border-radius: 20rpx;
+}
+
+.person {
+     color: #333;
+     display: flex;
+     margin-bottom: 40rpx;
+}
+
+.person_txt {
+    width: 200rpx;
+    display: flex;
+    align-items: center;
+    font-size: 34rpx;
+}
+
+.person_name {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.person_photo {
+    width: 70rpx;
+    height: 70rpx;
+    border-radius: 100%;
+    margin-right: 20rpx;
+}
+
+.chunk {
+    padding: 50rpx 0;
+    border-bottom: 1rpx solid #ececec;
+}
+
+.picker {
+    position: absolute;
+    width: 100%;
+    align-items: center;
+    height: 40rpx;
+    left: 0;
+    top: 0;
+}
+
+.picker_init {
+    color: #6a6a6a;
+}
+
+.picker_value {
+    color: #333;
+}
+
+.wrap .van-calendar__day--start {
+    background: #d2d2ba!important;
+    color: #333!important;
+}
+
+.wrap .van-calendar__day--end {
+    background: #d2d2ba!important;
+    color: #333!important;
+}
+
+.wrap .van-calendar__day--middle {
+    background: #f1f1ea!important;
+    color: #333!important;
+}
+
+.wrap .van-button--danger {
+    background: #d2d2ba!important;
+    border-color: #d2d2ba!important;
+    color: #333!important;
+}
