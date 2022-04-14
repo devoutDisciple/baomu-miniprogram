@@ -45,10 +45,11 @@
     "minifyWXML": true,
     "showES6CompileOption": false,
     "useCompilerPlugins": false,
-    "ignoreUploadUnusedFiles": true
+    "ignoreUploadUnusedFiles": true,
+    "useStaticServer": true
   },
   "compileType": "miniprogram",
-  "libVersion": "2.19.4",
+  "libVersion": "2.20.3",
   "appid": "wx3141bfc9a71cbe70",
   "projectname": "minibaomu",
   "editorSetting": {

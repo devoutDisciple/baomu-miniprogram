@@ -50,7 +50,8 @@
 		"van-popup": "@vant/weapp/popup/index",
 		"van-calendar": "@vant/weapp/calendar/index",
 		"van-swipe-cell": "@vant/weapp/swipe-cell/index",
-		"van-dialog": "@vant/weapp/dialog/index"
+		"van-dialog": "@vant/weapp/dialog/index",
+        "van-icon": "@vant/weapp/icon/index"
 	},
 	"permission": {
 		"scope.userLocation": {

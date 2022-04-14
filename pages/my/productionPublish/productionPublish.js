@@ -16,6 +16,7 @@ Page({
 		videoDetail: {}, // 选取的视频
 		desc: '', // 描述信息
 		title: '', // 标题
+		audioDetail: {}, // 选取的音乐
 	},
 
 	/**

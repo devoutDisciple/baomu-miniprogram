@@ -16,7 +16,7 @@ App({
 		} else {
 			setInterval(() => {
 				this.getMyMessage();
-			}, 1000);
+			}, 10000);
 		}
 	},
 

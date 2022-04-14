@@ -16,7 +16,7 @@
     <block wx:if="{{orderList && orderList.length !== 0}}">
         <block wx:for="{{orderList}}" wx:key="index">
             <view class="chunk">
-                <order-item data="{{item}}" type="{{selectTabIdx}}"/>
+                <order-item data="{{item}}" type="{{selectTabIdx}}" bindOnTapEvaluate="onTapEvaluate"/>
             </view>
         </block>
         <btm-tip />
@@ -27,4 +27,30 @@
             <view>暂无演出记录</view>
         </view>
     </block>
+    <van-popup
+        round
+        close-icon="close"
+        show="{{ evaluateVisible }}"
+        position="bottom"
+        bind:close="onCloseEvaluateDialog">
+        <view class="evaluate">
+            <view class="evaluate_title">
+                <image class="evaluate_img" src="{{evaluateDetail.userDetail.photo}}" />
+                {{evaluateDetail.userDetail.nickname || ""}}
+                <view class="evaluate_time">2021.01.03</view>
+            </view>
+            <view class="evaluate_grade">
+                <van-rate
+                    value="{{evaluateDetail.grade}}"
+                    allow-half
+                    readonly
+                    size="{{ 16 }}"
+                    color="#ffd21e"
+                    void-icon="star"
+                    void-color="#ededed"
+                    />
+            </view>
+            <view class="evaluate_con">{{evaluateDetail.desc}}</view>
+        </view>
+    </van-popup>
 </scroll-view>

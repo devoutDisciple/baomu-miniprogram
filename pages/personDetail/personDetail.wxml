@@ -150,13 +150,22 @@
                 <view class="common_title">
                     评价
                     <view class="common_more">
-                        全部评价（169条）
+                        全部评价（{{evaluates.length}}条）
                         <image class="common_more_icon" src="/asserts/public/left.png" />
                     </view>
                 </view>
-                <comment-item />
-                <comment-item />
-                <comment-item />
+                <block wx:if="{{evaluates && evaluates.length !== 0}}">
+                    <block wx:for="{{evaluates}}" wx:key="index">
+                        <comment-item data="{{item}}"/>
+                    </block>
+                    <btm-tip />
+                </block>
+                <block wx:else>
+                    <view class="empty_con">
+                        <empty-img/>
+                        <view>暂无评价记录</view>
+                    </view>
+                </block>
             </view>
             <view class="empty"></view>
         </view>

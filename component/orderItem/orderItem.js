@@ -91,7 +91,6 @@ Component({
 
 		// 点击评价
 		onTapEvaluate: function () {
-			console.log(this.data.data, 3289);
 			const { data } = this.data;
 			if (!data.final_user_id) {
 				return wx.showToast({
@@ -99,10 +98,16 @@ Component({
 					icon: 'error',
 				});
 			}
-			console.log(`/pages/evaluate/evaluate?user_id=${data.final_user_id}&demand_id=${data.id}`, 112);
 			wx.navigateTo({
 				url: `/pages/evaluate/evaluate?user_id=${data.final_user_id}&demand_id=${data.id}`,
 			});
+		},
+
+		// 点击查看评价详情
+		onSearchEvaluate: function () {
+			const { data } = this.data;
+			console.log(data);
+			this.triggerEvent('OnTapEvaluate', { data: data });
 		},
 	},
 });

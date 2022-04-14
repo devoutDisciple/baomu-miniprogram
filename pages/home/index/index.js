@@ -13,6 +13,7 @@ Page({
 	 */
 	data: {
 		selectTabIdx: 1, // 1-找演出 2-去演出
+		searchValue: '', // 搜索框的内容
 		actorList: [], // 演员列表
 		demandsList: [], // 需求列表
 		userDialogVisible: false, // 获取用户基本信息
@@ -60,29 +61,33 @@ Page({
 				withShareTicket: true,
 				menus: ['shareAppMessage'],
 			});
-		} finally {
+		} catch (e) {
 			loading.hideLoading();
 		}
 	},
 
 	// 查询，给查询页面用的
-	onSearch: async function () {
+	onSearch: async function (params) {
 		const { selectTabIdx } = this.data;
-		loading.showLoading();
 		if (Number(selectTabIdx) === 1) {
 			// 查询演员
-			await this.getActorList(true);
+			await this.getActorList(params);
 		} else {
 			// 查询需求
-			await this.getDemandsList(true);
+			await this.getDemandsList(params);
 		}
-		loading.hideLoading();
 	},
 
 	// 页面滚动
 	onPageScroll: function (e) {
+		const { scrollOver } = this.data;
 		const { scrollTop } = e.detail;
-		this.setData({ scrollOver: scrollTop > 210 });
+		if (scrollTop > 210 && !scrollOver) {
+			this.setData({ scrollOver: true });
+		}
+		if (scrollTop < 210 && scrollOver) {
+			this.setData({ scrollOver: false });
+		}
 	},
 
 	/**
@@ -94,19 +99,19 @@ Page({
 			this.setData({ isLoading: true }, async () => {
 				const { selectTabIdx } = this.data;
 				if (selectTabIdx === 1) {
-					await this.getActorList();
+					await this.getActorList({ showLoading: false, is_clear: false });
 				} else {
 					// 查询需求
-					await this.getDemandsList();
+					await this.getDemandsList({ showLoading: false, is_clear: false });
 				}
 			});
 		}
 	},
 
 	// 根据地理位置获取演员
-	getActorList: async function (is_clear) {
+	getActorList: async function ({ showLoading, is_clear }) {
 		try {
-			if (is_clear) loading.showLoading();
+			if (showLoading) loading.showLoading();
 			const { currentUserPage, actorList, address_select, person_style_id, plays_style_id, team_type_id } =
 				this.data;
 			const user_id = wx.getStorageSync('user_id');
@@ -127,7 +132,7 @@ Page({
 			const newActorList = [...actorList, ...actors];
 			this.setData({ actorList: newActorList, currentUserPage: currentUserPage + 1, isLoading: false });
 		} finally {
-			if (is_clear) loading.hideLoading();
+			if (showLoading) loading.hideLoading();
 		}
 	},
 
@@ -158,20 +163,24 @@ Page({
 	},
 
 	// 获取需求
-	getDemandsList: async function (is_clear) {
-		if (is_clear) loading.showLoading();
-		const user_id = wx.getStorageSync('user_id');
-		const { demandsList, currentUserPage, address_select, plays_style_id } = this.data;
-		const demands = await request.get({
-			url: '/demand/demandByAddress',
-			data: { user_id: user_id, current: is_clear ? 0 : currentUserPage, address_select, plays_style_id },
-		});
-		const result = this.handDeamndsData(demands);
-		if (is_clear) {
-			return this.setData({ demandsList: result, currentUserPage: 1, isLoading: false });
+	getDemandsList: async function ({ showLoading, is_clear }) {
+		try {
+			if (showLoading) loading.showLoading();
+			const user_id = wx.getStorageSync('user_id');
+			const { demandsList, currentUserPage, address_select, plays_style_id } = this.data;
+			const demands = await request.get({
+				url: '/demand/demandByAddress',
+				data: { user_id: user_id, current: is_clear ? 0 : currentUserPage, address_select, plays_style_id },
+			});
+			const result = this.handDeamndsData(demands);
+			if (is_clear) {
+				return this.setData({ demandsList: result, currentUserPage: 1, isLoading: false });
+			}
+			const newResult = [...demandsList, ...result];
+			this.setData({ demandsList: newResult, currentUserPage: currentUserPage + 1, isLoading: false });
+		} finally {
+			if (showLoading) loading.hideLoading();
 		}
-		const newResult = [...demandsList, ...result];
-		this.setData({ demandsList: newResult, currentUserPage: currentUserPage + 1, isLoading: false });
 	},
 
 	// 获取设备信息
@@ -196,7 +205,6 @@ Page({
 	// 获取用户位置
 	getUserLocation: function () {
 		const self = this;
-		const { selectTabIdx } = this.data;
 		wx.getLocation({
 			isHighAccuracy: true,
 			type: 'gcj02',
@@ -210,10 +218,9 @@ Page({
 						url: '/user/updateLocation',
 						data: { latitude, longitude, user_id },
 					});
-					console.log(result, 1111);
 					const { city } = result;
 					self.setData({ address_select: city }, async () => {
-						self.onSearch();
+						self.onSearch({ showLoading: true, is_clear: false });
 					});
 				} else {
 					self.hadGetUserPermission();
@@ -267,8 +274,8 @@ Page({
 	onSelectTab: function (e) {
 		let { idx } = e.currentTarget.dataset;
 		idx = Number(idx);
-		this.setData({ selectTabIdx: Number(idx), currentUserPage: 0 }, () => {
-			this.onSearch();
+		this.setData({ selectTabIdx: Number(idx), currentUserPage: 0, searchValue: '' }, () => {
+			this.onSearch({ showLoading: true, is_clear: true });
 		});
 	},
 
@@ -282,7 +289,7 @@ Page({
 	onChangeConditions: function (e) {
 		const { address_select, person_style_id, plays_style_id, team_type_id } = e.detail;
 		this.setData({ address_select, person_style_id, plays_style_id, team_type_id }, () => {
-			this.onSearch();
+			this.onSearch({ showLoading: true, is_clear: true });
 		});
 	},
 
@@ -292,7 +299,7 @@ Page({
 		const { value } = e.detail;
 		if (!value) {
 			return this.setData({ isLoading: true }, () => {
-				this.onSearch();
+				this.onSearch({ showLoading: true, is_clear: true });
 			});
 		}
 		const user_id = wx.getStorageSync('user_id');

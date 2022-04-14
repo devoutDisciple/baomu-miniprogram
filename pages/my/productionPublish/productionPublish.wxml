@@ -40,12 +40,11 @@
             </block>
         </view>
     </scroll-view>
-   
     <view class="btm">
         <view class="btm_left">
             <image bindtap="onChooseImg" class="btm_icon btm_icon1" src="/asserts/public/img.png" />
             <image bindtap="onChooseVideo" class="btm_icon btm_icon2" src="/asserts/public/video.png" />
-            <image class="btm_icon btm_icon3" src="/asserts/public/music.png" />
+            <!-- <image class="btm_icon btm_icon3" bindtap="onChooseMusic" src="/asserts/public/music.png" /> -->
         </view>
         <view class="btm_right">
             <view class="btm_pub" bindtap="onPublish">发布</view>

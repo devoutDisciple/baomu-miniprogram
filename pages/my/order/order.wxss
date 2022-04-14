@@ -64,3 +64,36 @@
     position: absolute;
     bottom: 10rpx;
 }
+
+.evaluate {
+    padding: 40rpx;
+}
+
+.evaluate_title {
+    display: flex;
+    align-items: center;
+    font-size: 32rpx;
+    color: #666;
+}
+
+.evaluate_img {
+    width: 60rpx;
+    height: 60rpx;
+    margin-right: 20rpx;
+}
+
+.evaluate_time {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    font-size: 28rpx;
+}
+
+.evaluate_grade {
+    margin-top: 10rpx;
+}
+
+.evaluate_con {
+    padding: 40rpx 0;
+}

@@ -16,14 +16,14 @@ Page({
 	 * 页面的初始数据
 	 */
 	data: {
+		is_first: true,
 		orderList: [],
 		selectTabIdx: 1,
+		evaluateVisible: false, // 评价弹框
+		evaluateDetail: {}, // 评价详情
 	},
 
-	/**
-	 * 生命周期函数--监听页面加载
-	 */
-	onLoad: function () {
+	onShow: function () {
 		this.onSearchOrder();
 	},
 
@@ -72,10 +72,30 @@ Page({
 					}
 				});
 			}
-			console.log(orders, 12321);
-			this.setData({ orderList: orders });
+			this.setData({ orderList: orders, is_first: false });
 		} finally {
 			loading.hideLoading();
+		}
+	},
+
+	// 关闭评价弹框
+	onCloseEvaluateDialog: function () {
+		this.setData({ evaluateVisible: false });
+	},
+
+	// 点击查看评论详情
+	onTapEvaluate: async function (e) {
+		try {
+			this.setData({ evaluateDetail: {} }, async () => {
+				const { data } = e.detail;
+				const result = await request.get({
+					url: '/demandEvaluate/evaluateDetail',
+					data: { demand_id: data.id },
+				});
+				this.setData({ evaluateDetail: result, evaluateVisible: true });
+			});
+		} catch (error) {
+			this.setData({ evaluateDetail: {}, evaluateVisible: false });
 		}
 	},
 });

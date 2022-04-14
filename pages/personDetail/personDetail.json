@@ -5,7 +5,9 @@
         "beard-list": "/component/beardList/beardList",
         "tip-dialog": "/component/tipDialog/tipDialog",
         "renzhengIcon": "/component/renzhengIcon/renzhengIcon",
-        "production-img": "/component/productionImg/productionImg"
+        "production-img": "/component/productionImg/productionImg",
+        "empty-img": "/component/emptyImg/emptyImg",
+        "btm-tip": "/component/btmTip/btmTip"
 	},
 	"navigationStyle": "custom"
 }

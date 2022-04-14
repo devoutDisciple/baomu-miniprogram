@@ -12,6 +12,7 @@
     width: 80rpx;
     height: 80rpx;
     margin-right: 20rpx;
+    border-radius: 100%;
 }
 
 .comment_grade {

@@ -7,7 +7,12 @@
     bindscrolltolower="onScrollBottom"
     bindscroll="onPageScroll">
     <block wx:if="{{scrollOver}}">
-        <header bindOnSearch="onIptSearch"></header>
+        <block wx:if="{{selectTabIdx === 1}}">
+            <header class="hello_{{selectTabIdx}}" bindOnSearch="onIptSearch"></header>
+        </block>
+        <block wx:else>
+            <header class="world_{{selectTabIdx}}" bindOnSearch="onIptSearch"></header>
+        </block>
         <view class="tab_fix" style="{{'top: ' + tabTop}}">
             <view class="tab2">
                 <view class="tab_work">
@@ -52,7 +57,12 @@
         </view>
     </view>
     <view class="search">
-        <search-ipt bindOnSearch="onIptSearch"/>
+        <block wx:if="{{selectTabIdx === 1}}">
+            <search-ipt class="hello_{{selectTabIdx}}" bindOnSearch="onIptSearch"/>
+        </block>
+        <block wx:else>
+            <search-ipt class="world_{{selectTabIdx}}" bindOnSearch="onIptSearch"/>
+        </block>
     </view>
     <home-select-search 
         type="{{selectTabIdx}}"

@@ -9,6 +9,10 @@ Component({
 		// 	type: Boolean,
 		// 	value: false,
 		// },
+		searchValue: {
+			type: String,
+			value: '',
+		},
 		showBack: {
 			type: Boolean,
 			value: false,
@@ -62,5 +66,11 @@ Component({
 	// 组件生命周期函数-在组件实例进入页面节点树时执行)
 	attached() {
 		this.getDeviceData();
+	},
+
+	observers: {
+		searchValue: function (value) {
+			this.setData({ value: value });
+		},
 	},
 });

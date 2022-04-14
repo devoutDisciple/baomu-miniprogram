@@ -24,6 +24,7 @@ Page({
 		productionList: [], // 作品列表
 		personShowList: [], // 动态列表
 		showInvitationBtn: false, // 是否展示邀请按钮
+		evaluates: [], // 评价列表
 	},
 
 	/**
@@ -40,8 +41,11 @@ Page({
 		const own_id = wx.getStorageSync('user_id');
 		const pages = getCurrentPages();
 		const currentPage = pages[pages.length - 2];
-		console.log(currentPage, 2389);
-		const showInvitationBtn = currentPage.route === 'pages/home/index/index';
+		// 如果是从首页进来的，显示邀请按钮
+		let showInvitationBtn = false;
+		if (currentPage && currentPage.route === 'pages/home/index/index') {
+			showInvitationBtn = true;
+		}
 		this.setData({ user_id: Number(user_id), own_id: Number(own_id), showInvitationBtn }, () => {
 			// 获取个人信息
 			this.getPersonDetail();
@@ -53,6 +57,8 @@ Page({
 			this.getPersonProduction();
 			// 获取个人动态
 			this.getPersonShowList();
+			// 获取用户全部评价
+			this.getUserEvaluates();
 		});
 	},
 
@@ -63,6 +69,7 @@ Page({
 
 	// 获取个人信息
 	getPersonDetail: async function () {
+		loading.showLoading();
 		const { user_id } = this.data;
 		const personDetail = await request.get({ url: '/user/userDetail', data: { user_id } });
 		this.setData({ personDetail });
@@ -71,16 +78,20 @@ Page({
 
 	// 获取作品展示
 	getPersonProduction: async function () {
+		loading.showLoading();
 		const { user_id } = this.data;
 		const productionList = await request.get({ url: '/user/productionList', data: { user_id, type: 1 } });
 		this.setData({ productionList: productionList });
+		loading.hideLoading();
 	},
 
 	// 获取动态展示
 	getPersonShowList: async function () {
+		loading.showLoading();
 		const { user_id } = this.data;
 		const personShowList = await request.get({ url: '/user/productionList', data: { user_id, type: 2 } });
 		this.setData({ personShowList: personShowList });
+		loading.hideLoading();
 	},
 
 	// 跳转到作品或者动态展示页面
@@ -94,6 +105,7 @@ Page({
 
 	// 获取技能列表
 	getUserSkill: async function () {
+		loading.showLoading();
 		const { user_id } = this.data;
 		const lists = await request.get({ url: '/skill/all', data: { user_id } });
 		lists.forEach((item) => {
@@ -103,6 +115,14 @@ Page({
 		});
 		this.setData({ skillList: lists });
 		loading.hideLoading();
+	},
+
+	// 获取用户全部评价
+	getUserEvaluates: async function () {
+		const { user_id } = this.data;
+		const result = await request.get({ url: '/demandEvaluate/allEvaluatesByUserId', data: { user_id } });
+		console.log(result, 328);
+		this.setData({ evaluates: result || [] });
 	},
 
 	// 获取获奖记录
