@@ -5,24 +5,18 @@ Page({
 	data: {
 		selectTimeRange: [
 			{
-				start_time: '2022-02-03',
-				end_time: '2022-02-10',
+				start_time: '2022-04-03',
+				end_time: '2022-04-10',
 			},
 			{
-				start_time: '2022-02-21',
-				end_time: '2022-03-21',
+				start_time: '2022-04-23',
+				end_time: '2022-05-21',
 			},
+		],
+		selectTimeRange2: [
 			{
-				start_time: '2022-02-16',
-				end_time: '2022-02-16',
-			},
-			{
-				start_time: '2022-01-16',
-				end_time: '2022-01-16',
-			},
-			{
-				start_time: '2022-02-18',
-				end_time: '2022-02-19',
+				start_time: '2022-04-11',
+				end_time: '2022-04-14',
 			},
 		],
 	},

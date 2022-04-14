@@ -1,5 +1,5 @@
 <view class="wrap">
-    <calendar-component selectTimeRange="{{selectTimeRange}}"/>
+    <calendar-component selectTimeRange="{{selectTimeRange}}" selectTimeRange2="{{selectTimeRange2}}"/>
     <view class="thing">
         <view class="thing_title">具体事项</view>
         <beard-list text="2019年11月 荣获xx比赛二等奖"/>

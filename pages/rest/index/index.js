@@ -3,7 +3,17 @@ Page({
 	/**
 	 * 页面的初始数据
 	 */
-	data: {},
+	data: {
+		selectTabIdx: 1,
+		// -----筛选条件
+		address_select: '', // 选择的地址
+		team_type_id: '', // 乐团类型
+		team_type_name: '', // 乐团类型
+		person_style_id: '', // 擅长风格
+		person_style_name: '', // 擅长风格
+		plays_style_id: '', // 演奏方式
+		plays_style_name: '', // 演奏方式
+	},
 
 	/**
 	 * 生命周期函数--监听页面加载

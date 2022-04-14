@@ -1,33 +1,16 @@
 <scroll-view class="con" scroll-y="{{true}}" enhanced="{{true}}" show-scrollbar="{{false}}">
     <view class="wrap">
-        <scroll-view class="type" scroll-x="{{true}}" enhanced="{{true}}" show-scrollbar="{{false}}">
-            <view class="type_con">
-                <view class="type_item">
-                    <image class="type_img" src="/asserts/public/home_sort.png" />
-                </view>
-                <view class="type_item">
-                    成都
-                    <image class="type_item_icon" src="/asserts/public/arrow_bottom.png" />
-                </view>
-                <view class="type_item">
-                    乐团类型
-                    <image class="type_item_icon" src="/asserts/public/arrow_bottom.png" />
-                </view>
-                <view class="type_item">
-                    擅长风格
-                    <image class="type_item_icon" src="/asserts/public/arrow_bottom.png" />
-                </view>
-                <view class="type_item">
-                    演奏方式
-                    <image class="type_item_icon" src="/asserts/public/arrow_bottom.png" />
-                </view>
-                <view class="type_item">
-                    合作类型
-                    <image class="type_item_icon" src="/asserts/public/arrow_bottom.png" />
-                </view>
-                <view class="type_item type_empty">...</view>
-            </view>
-        </scroll-view>
+        <home-select-search 
+            type="{{selectTabIdx}}"
+            bindOnChange="onChangeConditions" 
+            address_select="{{address_select}}" 
+            team_type_select_id="{{team_type_id}}" 
+            team_type_select_name="{{team_type_name}}"
+            person_style_selecg_id="{{person_style_id}}"
+            person_style_selecg_name="{{person_style_name}}"
+            plays_style_select_id="{{plays_style_id}}"
+            plays_style_select_name="{{plays_style_name}}"
+            />
         <view class="chunk">
             <rest-list />
         </view>

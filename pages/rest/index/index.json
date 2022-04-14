@@ -1,7 +1,8 @@
 {
 	"usingComponents": {
         "rest-list": "/component/restList/restList",
-        "btm-tip": "/component/btmTip/btmTip"
+        "btm-tip": "/component/btmTip/btmTip",
+        "home-select-search": "/component/homeSelectSearch/homeSelectSearch"
     },
 	"navigationBarTitleText": "其他"
 }

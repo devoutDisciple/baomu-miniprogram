@@ -244,6 +244,13 @@
           "query": "",
           "launchMode": "default",
           "scene": null
+        },
+        {
+          "name": "其他发布页",
+          "pathName": "pages/rest/publish/publish",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
         }
       ]
     }

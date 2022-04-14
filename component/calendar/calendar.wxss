@@ -74,6 +74,10 @@
     background: #f1f1ea;
 }
 
+.days_ranger_2 {
+    background: #f6efe0;
+}
+
 .days_start {
     border-top-left-radius: 100%;
     border-bottom-left-radius: 100%;
@@ -102,6 +106,10 @@
     z-index: 10;
 }
 
+.days_item_modal_2 {
+    background: #E2CB99;
+}
+
 .days_item_color_start {
     position: absolute;
     right: 0;
@@ -118,5 +126,37 @@
     width: 50%;
     height: 100%;
     background: #f1f1ea;
+}
+
+.is_start_tip {
+    position: absolute;
+    top: -85rpx;
+    left: -27rpx;
+    background: #fff;
+    color: #B5B58D ;
+    width: 144rpx;
+    border-radius: 14rpx;
+    font-size: 26rpx;
+    padding: 10rpx 20rpx;
+    box-shadow:  -1rpx 2rpx 21rpx 2rpx #666;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+}
+
+.is_start_tip::before {
+    background: #fff;
+    color: #fff;
+    content: '';
+    position: absolute;
+    left: 66rpx;
+    bottom: -6rpx;
+    width: 14rpx;
+    height: 14rpx;
+    margin-top: -10rpx;
+    background: inherit;
+    /*自动继承父元素的背景*/
+    transform: rotate(45deg);
 }
 
