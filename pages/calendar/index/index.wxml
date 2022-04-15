@@ -1,8 +1,14 @@
 <view class="wrap">
-    <calendar-component selectTimeRange="{{selectTimeRange}}" selectTimeRange2="{{selectTimeRange2}}"/>
+    <calendar-component selectTimeRange="{{selectTimeRange}}" bindOnChangeMonth="onChangeMonth"/>
     <view class="thing">
         <view class="thing_title">具体事项</view>
-        <beard-list text="2019年11月 荣获xx比赛二等奖"/>
-        <beard-list text="2019年11月 荣获xx比赛二等奖"/>
+        <block wx:if="{{demands && demands.length !== 0}}">
+            <block wx:for="{{demands}}" wx:key="index">
+                <beard-list text="{{item.show_start_time}}-{{item.show_end_time}} {{item.title}}"/>
+            </block>
+        </block>
+        <block wx:else>
+            <view class="empty">暂无事项</view>
+        </block>
     </view>
 </view>

@@ -1,63 +1,47 @@
+import request from '../../../utils/request';
+import moment from '../../../utils/moment';
+import loading from '../../../utils/loading';
+
 Page({
 	/**
 	 * 页面的初始数据
 	 */
 	data: {
-		selectTimeRange: [
-			{
-				start_time: '2022-04-03',
-				end_time: '2022-04-10',
-			},
-			{
-				start_time: '2022-04-23',
-				end_time: '2022-05-21',
-			},
-		],
-		selectTimeRange2: [
-			{
-				start_time: '2022-04-11',
-				end_time: '2022-04-14',
-			},
-		],
+		demands: [], // 需求
+		selectTimeRange: [],
 	},
 
 	/**
 	 * 生命周期函数--监听页面加载
 	 */
-	onLoad: function () {},
+	onLoad: function () {
+		const year = moment(new Date()).format('YYYY');
+		const month = moment(new Date()).format('MM');
+		this.onSearchDemand(year, month);
+	},
 
-	/**
-	 * 生命周期函数--监听页面初次渲染完成
-	 */
-	onReady: function () {},
+	// 查看参与的需求
+	onSearchDemand: async function (year, month) {
+		loading.showLoading();
+		const user_id = wx.getStorageSync('user_id');
+		const result = await request.get({ url: '/demand/demandsByUserMonth', data: { user_id, year, month } });
+		const selectTimeRange = [];
+		if (Array.isArray(result) && result.length !== 0) {
+			result.forEach((item) => {
+				selectTimeRange.push({
+					start_time: item.start_time,
+					end_time: item.end_time,
+					type: 2,
+				});
+			});
+		}
+		this.setData({ demands: result, selectTimeRange });
+		loading.hideLoading();
+	},
 
-	/**
-	 * 生命周期函数--监听页面显示
-	 */
-	onShow: function () {},
-
-	/**
-	 * 生命周期函数--监听页面隐藏
-	 */
-	onHide: function () {},
-
-	/**
-	 * 生命周期函数--监听页面卸载
-	 */
-	onUnload: function () {},
-
-	/**
-	 * 页面相关事件处理函数--监听用户下拉动作
-	 */
-	onPullDownRefresh: function () {},
-
-	/**
-	 * 页面上拉触底事件的处理函数
-	 */
-	onReachBottom: function () {},
-
-	/**
-	 * 用户点击右上角分享
-	 */
-	onShareAppMessage: function () {},
+	// 更改月份
+	onChangeMonth: function (e) {
+		const { year, month } = e.detail;
+		this.onSearchDemand(year, month);
+	},
 });

@@ -17,3 +17,9 @@
     font-size: 34rpx;
     font-weight: 600;
 }
+
+.empty {
+    font-size: 28rpx;
+    color: #666;
+    margin-left: 20rpx;
+}

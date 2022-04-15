@@ -12,41 +12,22 @@
                 </view>
             </view>
             <view class="chunk">
-                <input value="{{title}}" bindblur="onIptBlur" placeholder="填写工作室名称" />
-            </view>
-             <view class="chunk">
-                <input value="{{title}}" bindblur="onIptBlur" placeholder="地址" />
+                <input value="{{title}}" bindblur="onIptBlur" placeholder="工作室名称" />
             </view>
             <view class="chunk">
                 <select-item>
-                    <picker class="picker" bindchange="onSelectPlay" range="{{playList}}">
-                        <block wx:if="{{playName}}">
+                    <view class="picker" bindtap="onChooseAddress">
+                        <block wx:if="{{selectAddress.name}}">
                             <view class="picker_value">
-                                {{playName}}
+                                {{selectAddress.name}}
                             </view>
                         </block>
                         <block wx:else>
                             <view class="picker_init">
-                                演奏方式
+                                地点
                             </view>
                         </block>
-                    </picker>
-                </select-item>
-            </view>
-            <view class="chunk">
-                <select-item>
-                    <picker class="picker" bindchange="onPickInstruments" range="{{instrumentList}}">
-                        <block wx:if="{{instrumentSelectName}}">
-                            <view class="picker_value">
-                                {{instrumentSelectName}}
-                            </view>
-                        </block>
-                        <block wx:else>
-                            <view class="picker_init">
-                                乐器类型
-                            </view>
-                        </block>
-                    </picker>
+                    </view>
                 </select-item>
             </view>
             <view class="chunk">
@@ -59,99 +40,35 @@
                         </block>
                         <block wx:else>
                             <view class="picker_init">
-                                演出日期
+                                档期
                             </view>
                         </block>
                     </view>
                 </select-item>
             </view>
             <view class="chunk">
+                <input placeholder="价格" value="{{price}}" type="number" bindblur="onBlurPrice"/>
+            </view>
+            <view class="chunk">
+                <textarea cursor-spacing="{{40}}" value="{{desc}}" placeholder="简介" maxlength="{{200}}" bindblur="onBlurDesc"/>
+            </view>
+            <view class="chunk">
                 <select-item>
-                    <picker class="picker" bindchange="timePickSelect" range="{{hourList}}">
-                        <block wx:if="{{selectHour}}">
+                    <picker class="picker" bindchange="onSelectApprove" range="{{playList}}">
+                        <block wx:if="{{playName}}">
                             <view class="picker_value">
-                                {{selectHour}} 小时/天
+                                {{playName}}
                             </view>
                         </block>
                         <block wx:else>
                             <view class="picker_init">
-                                演出时长(小时/天)
+                                专业设备认证
                             </view>
                         </block>
                     </picker>
                 </select-item>
             </view>
-            <view class="chunk">
-                <select-item>
-                    <view class="picker" bindtap="onChooseAddress">
-                        <block wx:if="{{selectAddress.name}}">
-                            <view class="picker_value">
-                                {{selectAddress.name}}
-                            </view>
-                        </block>
-                        <block wx:else>
-                            <view class="picker_init">
-                                演出地点
-                            </view>
-                        </block>
-                    </view>
-                </select-item>
-            </view>
-            <view class="chunk">
-                <select-item>
-                    <picker class="picker" bindchange="onPickSend" range="{{isYesList}}">
-                        <block wx:if="{{selectSend}}">
-                            <view class="picker_value">
-                                {{selectSend}}
-                            </view>
-                        </block>
-                        <block wx:else>
-                            <view class="picker_init">
-                                是否接送
-                            </view>
-                        </block>
-                    </picker>
-                </select-item>
-            </view>
-            <view class="chunk">
-                <select-item>
-                    <picker class="picker" bindchange="onPickFoods" range="{{isYesList}}">
-                        <block wx:if="{{selectFoods}}">
-                            <view class="picker_value">
-                                {{selectFoods}}
-                            </view>
-                        </block>
-                        <block wx:else>
-                            <view class="picker_init">
-                                是否包食宿
-                            </view>
-                        </block>
-                    </picker>
-                </select-item>
-            </view>
-            <view class="chunk">
-                <select-item>
-                    <picker class="picker" bindchange="onPickBargain" range="{{isYesList}}">
-                        <block wx:if="{{selectBargain}}">
-                            <view class="picker_value">
-                                {{selectBargain}}
-                            </view>
-                        </block>
-                        <block wx:else>
-                            <view class="picker_init">
-                                是否议价
-                            </view>
-                        </block>
-                    </picker>
-                </select-item>
-            </view>
-            <view class="chunk">
-                <textarea cursor-spacing="{{40}}" value="{{desc}}" placeholder="演出简介" maxlength="{{200}}" bindblur="onBlurDesc"/>
-            </view>
-            <view class="chunk">
-                <input placeholder="演出费用" value="{{price}}" type="number" bindblur="onBlurPrice"/>
-            </view>
-            <view class="invitate_btn" bindtap="onTapSure">邀请</view>
+            <view class="invitate_btn" bindtap="onTapSure">提交</view>
         </view>
     </scroll-view>
     <van-calendar

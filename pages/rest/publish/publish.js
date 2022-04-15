@@ -12,8 +12,8 @@ Page({
 		dialogDetail: {}, // 弹框详情
 		selectTimeRange: [
 			{
-				start_time: '2022-03-02',
-				end_time: '2022-03-21',
+				start_time: '2022-04-02',
+				end_time: '2022-04-21',
 			},
 		],
 		title: '',
