@@ -254,7 +254,6 @@ Page({
 					icon: 'error',
 				});
 			}
-			loading.showLoading();
 			if (
 				!title ||
 				!playId ||
@@ -274,6 +273,7 @@ Page({
 					icon: 'error',
 				});
 			}
+			loading.showLoading();
 			// 所有校验通过后，上传需求详情
 			const params = {
 				user_id: user_id,

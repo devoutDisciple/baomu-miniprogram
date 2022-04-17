@@ -8,6 +8,7 @@
     width: calc(100vw - 40rpx);
     height: 100vh;
     margin-left: 20rpx;
+    margin-top: 20rpx;
 }
 
 .type {
@@ -70,4 +71,14 @@
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.empty_con {
+    width: 100%;
+    margin-top: 300rpx;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #666;
 }

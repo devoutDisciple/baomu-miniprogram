@@ -3,6 +3,7 @@
 		"calendar-component": "/component/calendar/calendar",
 		"beard-list": "/component/beardList/beardList",
 		"select-item": "/component/selectItem/selectItem",
+        "my-img": "/component/img/img",
 		"tip-dialog": "/component/tipDialog/tipDialog"
 	},
 	"navigationBarTitleText": "发布"

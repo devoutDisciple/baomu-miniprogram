@@ -70,6 +70,15 @@
     border-bottom: 1rpx solid #ececec;
 }
 
+.chunk_title {
+    font-size: 34rpx;
+    margin-bottom: 40rpx;
+}
+
+.photo_img {
+    width: 100%;
+}
+
 .picker {
     position: absolute;
     width: 100%;
@@ -106,4 +115,40 @@
     background: #d2d2ba!important;
     border-color: #d2d2ba!important;
     color: #333!important;
+}
+
+.img_con {
+    bottom: 170rpx;
+    left: 20rpx;
+    width: calc(100vw - 40rpx);
+    min-height: 20rpx;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.img_chunk {
+    height: calc((100vw - 140rpx) / 3);
+    width: calc((100vw - 140rpx) / 3);
+    padding-top: 20rpx;
+    position: relative;
+}
+
+.img_close {
+    height: 30rpx;
+    width: 30rpx;
+    position: absolute;
+    right: 19rpx;
+    top: 16px;
+}
+
+.img_chunk:nth-child(2) {
+    margin: 0 30rpx;
+}
+
+.img_chunk:nth-child(5) {
+    margin: 0 30rpx;
+}
+
+.img_chunk:nth-child(8) {
+    margin: 0 30rpx;
 }

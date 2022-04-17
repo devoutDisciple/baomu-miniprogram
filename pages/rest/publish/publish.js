@@ -1,6 +1,5 @@
-import request from '../../../utils/request';
+import request, { uploadFile } from '../../../utils/request';
 import moment from '../../../utils/moment';
-import { instruments, PLAYS_STYLE, voices } from '../../../constant/constant';
 import loading from '../../../utils/loading';
 
 Page({
@@ -8,28 +7,14 @@ Page({
 	 * 页面的初始数据
 	 */
 	data: {
-		person_id: '', // 用户的id
 		dialogDetail: {}, // 弹框详情
-		selectTimeRange: [
-			{
-				start_time: '2022-04-02',
-				end_time: '2022-04-21',
-			},
-		],
+		selectTimeRange: [{}],
 		title: '',
 		personDetail: {}, // 被雇佣人的详情
-		playList: [], // 演奏方式
-		playId: '', // 演奏方式id
-		playName: '', // 演奏方式name
-		instrumentList: [], // 选择乐器的list
-		instrumentSelectId: '',
-		instrumentSelectName: '',
 		calendarVisible: false, // 日历开关
 		startTime: '', // 日期开始时间
 		endTime: '', // 日期结束时间
 		selectDate: '', // 选择的日期区间
-		hourList: [], // 时长list
-		selectHour: '', // 选择的小时
 		selectAddress: {
 			name: '',
 			address: '',
@@ -37,34 +22,27 @@ Page({
 			longitude: '',
 		}, // 演出地点
 		isYesList: ['是', '否'],
-		selectBargain: '', // 是否议价
-		selectSend: '', // 是否接送
-		selectFoods: '', // 是否包食宿
+		is_authentication: '', // 专业设备认证
 		desc: '', // 演出描述
 		price: '', // 价格
+		tempImgUrlPaths: [], // 设备图
 	},
 
 	/**
 	 * 生命周期函数--监听页面加载
 	 */
-	onLoad: async function (options) {
+	onLoad: async function () {
 		// 被邀请人的id
 		const user_id = wx.getStorageSync('user_id');
-		this.setData({ person_id: user_id }, () => {
+		this.setData({ user_id }, () => {
 			this.onSearchUserDetail();
 		});
-		// 获取所有演奏方式
-		this.getAllPlayList();
-		// 获取所有乐器类型
-		this.getAllInstruments(instruments);
-		// 获取演出时长
-		this.generatorHourList();
 	},
 
 	// 查询用户详情
 	onSearchUserDetail: async function () {
-		const { person_id } = this.data;
-		const detail = await request.get({ url: '/user/userDetail', data: { user_id: person_id } });
+		const { user_id } = this.data;
+		const detail = await request.get({ url: '/user/userDetail', data: { user_id } });
 		this.setData({ personDetail: detail });
 	},
 
@@ -74,47 +52,6 @@ Page({
 		wx.navigateTo({
 			url: `/pages/personDetail/personDetail?user_id=${personDetail.id}`,
 		});
-	},
-
-	// 获取所有演奏类型
-	getAllPlayList: function () {
-		const playList = [];
-		PLAYS_STYLE.forEach((item) => playList.push(item.name));
-		this.setData({ playList: playList || [] });
-	},
-
-	// 选择演奏类型
-	onSelectPlay: function (e) {
-		const { value } = e.detail;
-		const { name, id } = PLAYS_STYLE[value];
-		this.setData({ playName: name, playId: id, instrumentSelectName: '', instrumentSelectId: '' });
-		// 获取所有乐器类型
-		this.getAllInstruments(Number(value) === 1 ? voices : instruments);
-	},
-
-	// 获取所有乐器类型
-	getAllInstruments: function (list) {
-		const instrumentList = [];
-		list.forEach((item) => instrumentList.push(item.name));
-		this.setData({ instrumentList: instrumentList || [] });
-	},
-
-	// 选择乐器类型的时候
-	onPickInstruments: function (e) {
-		const { value } = e.detail;
-		const { playId } = this.data;
-		const tempList = Number(playId) === 1 ? instruments : voices;
-		const { name, id } = tempList[value];
-		this.setData({ instrumentSelectName: name, instrumentSelectId: id });
-	},
-
-	// 生成时长list
-	generatorHourList: function () {
-		const hourList = [];
-		for (let index = 1; index < 17; index++) {
-			hourList.push(index * 0.5);
-		}
-		this.setData({ hourList });
 	},
 
 	// calendarVisible 日历开关
@@ -132,17 +69,17 @@ Page({
 				icon: 'error',
 			});
 		}
+		const selectTimeRange = [
+			{
+				start_time: moment(detail[0]).format('YYYY-MM-DD'),
+				end_time: moment(detail[1]).format('YYYY-MM-DD'),
+				type: 3,
+			},
+		];
 		const startTime = moment(detail[0]).format('YYYY.MM.DD');
 		const endTime = moment(detail[1]).format('YYYY.MM.DD');
-		this.setData({ startTime, endTime, selectDate: `${startTime} - ${endTime}` });
+		this.setData({ startTime, endTime, selectDate: `${startTime} - ${endTime}`, selectTimeRange });
 		this.onChangeCalendarVisible();
-	},
-
-	// 选择时长
-	timePickSelect: function (e) {
-		const { value } = e.detail;
-		const selectHour = this.data.hourList[value];
-		this.setData({ selectHour: `${selectHour}` });
 	},
 
 	// 选择演出地点
@@ -160,27 +97,6 @@ Page({
 				self.setData({ selectAddress: { address, latitude, longitude, name } });
 			},
 		});
-	},
-
-	// 选择是否议价
-	onPickBargain: function (e) {
-		const { value } = e.detail;
-		const selectBargain = this.data.isYesList[value];
-		this.setData({ selectBargain: selectBargain });
-	},
-
-	// 选择是否接送
-	onPickSend: function (e) {
-		const { value } = e.detail;
-		const selectSend = this.data.isYesList[value];
-		this.setData({ selectSend });
-	},
-
-	// 选择是否包食宿
-	onPickFoods: function (e) {
-		const { value } = e.detail;
-		const selectFoods = this.data.isYesList[value];
-		this.setData({ selectFoods });
 	},
 
 	// 当输入框失焦
@@ -210,82 +126,118 @@ Page({
 		this.setData({ price: value });
 	},
 
+	// 选择专业设备认证
+	onSelectApprove: function (e) {
+		const { isYesList } = this.data;
+		const { value } = e.detail;
+		this.setData({ is_authentication: isYesList[value] });
+	},
+
+	// 选择设备图
+	onChooseImg: function () {
+		const self = this;
+		wx.chooseImage({
+			count: 9,
+			sizeType: ['original', 'compressed'],
+			sourceType: ['album', 'camera'],
+			success(res) {
+				const { tempImgUrlPaths } = self.data;
+				// tempFilePath可以作为img标签的src属性显示图片
+				const { tempFilePaths } = res;
+				const len = tempFilePaths.length + tempImgUrlPaths.length;
+				if (len > 9) {
+					return wx.showToast({
+						title: '最多9张图片',
+						icon: 'error',
+					});
+				}
+				self.setData({ tempImgUrlPaths: [...tempImgUrlPaths, ...tempFilePaths] });
+			},
+			fail: function () {
+				wx.showToast({
+					title: '请重新选择',
+					icon: 'error',
+				});
+			},
+		});
+	},
+
+	// 移除图片
+	onRemoveImg: function (e) {
+		const { idx } = e.currentTarget.dataset;
+		const { tempImgUrlPaths } = this.data;
+		tempImgUrlPaths.splice(idx, 1);
+		this.setData({ tempImgUrlPaths });
+	},
+
 	// 点击确定
 	onTapSure: async function () {
 		const self = this;
 		setTimeout(async () => {
-			const {
-				person_id,
-				title,
-				playId,
-				instrumentSelectId,
-				startTime,
-				endTime,
-				selectBargain,
-				selectHour,
-				selectAddress,
-				selectFoods,
-				selectSend,
-				desc,
-				price,
-			} = self.data;
+			const { title, startTime, endTime, selectAddress, is_authentication, desc, price, tempImgUrlPaths } =
+				self.data;
 			const user_id = wx.getStorageSync('user_id');
-			if (!user_id || !person_id) {
+			if (!user_id) {
 				return wx.showToast({
 					title: '发布失败',
 					icon: 'error',
 				});
 			}
-			loading.showLoading();
+			if (!(Number(price) > 0)) {
+				return wx.showToast({
+					title: '价格不正确',
+				});
+			}
 			if (
 				!title ||
-				!playId ||
-				!instrumentSelectId ||
 				!startTime ||
 				!endTime ||
-				!selectBargain ||
-				!selectHour ||
-				!selectAddress.address ||
+				!is_authentication ||
+				!price ||
 				!desc ||
-				!selectFoods ||
-				!selectSend ||
-				!price
+				!selectAddress.address ||
+				tempImgUrlPaths.length === 0
 			) {
 				return wx.showToast({
 					title: '请完善信息',
 					icon: 'error',
 				});
 			}
+			loading.showLoading();
+			const uploadImgUrls = [];
+			if (tempImgUrlPaths && tempImgUrlPaths.length !== 0) {
+				let len = tempImgUrlPaths.length;
+				loading.showLoading();
+				while (len > 0) {
+					len -= 1;
+					// eslint-disable-next-line no-await-in-loop
+					const fileDetail = await uploadFile({ url: '/device/upload', data: tempImgUrlPaths[len] });
+					uploadImgUrls.push(fileDetail.url);
+				}
+			}
 			// 所有校验通过后，上传需求详情
 			const params = {
 				user_id: user_id,
-				join_ids: person_id,
-				title: title,
-				play_id: playId,
-				instrument_id: instrumentSelectId,
+				name: title,
 				start_time: startTime,
 				end_time: endTime,
-				is_bargain: selectBargain === '是' ? 1 : 2,
-				hours: selectHour,
+				img_urls: JSON.stringify(uploadImgUrls),
 				addressAll: selectAddress.address,
 				addressName: selectAddress.name,
 				latitude: selectAddress.latitude,
 				longitude: selectAddress.longitude,
 				desc: desc,
-				is_food: selectFoods === '是' ? 1 : 2,
-				is_send: selectSend === '是' ? 1 : 2,
 				price: price,
-				state: 1, // 需求开启竞价
-				type: 2, // 1-发布需求 2-直接邀请的需求
+				is_authentication: is_authentication === '是' ? 1 : 2,
 			};
-			const res = await request.post({ url: '/demand/addDemand', data: params });
+			const res = await request.post({ url: '/device/add', data: params });
 			if (res === 'success') {
 				loading.hideLoading();
 				self.setData({
 					dialogDetail: {
-						title: '邀请成功!',
+						title: '发布成功!',
 						src: '/asserts/public/publish.png',
-						desc: '请耐心等待对方确认!',
+						desc: '请前往我的发布页面查看详细内容!',
 					},
 					dialogVisible: true,
 				});
@@ -297,7 +249,7 @@ Page({
 	onCloseDialog: function () {
 		this.setData({ dialogVisible: false });
 		wx.switchTab({
-			url: '/pages/home/index/index',
+			url: '/pages/rest/index/index',
 		});
 	},
 });

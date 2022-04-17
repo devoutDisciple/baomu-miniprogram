@@ -5,8 +5,20 @@
     "miniprogram": {
       "list": [
         {
-          "name": "我的",
-          "pathName": "pages/my/index/index",
+          "name": "首页",
+          "pathName": "pages/home/index/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "广场",
+          "pathName": "pages/square/index/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "其他",
+          "pathName": "pages/rest/index/index",
           "query": "",
           "scene": null
         },
@@ -17,14 +29,8 @@
           "scene": null
         },
         {
-          "name": "首页",
-          "pathName": "pages/home/index/index",
-          "query": "",
-          "scene": null
-        },
-        {
-          "name": "广场",
-          "pathName": "pages/square/index/index",
+          "name": "我的",
+          "pathName": "pages/my/index/index",
           "query": "",
           "scene": null
         },
@@ -39,12 +45,6 @@
           "name": "发送信息",
           "pathName": "pages/chat/chat",
           "query": "person_id=17",
-          "scene": null
-        },
-        {
-          "name": "其他",
-          "pathName": "pages/rest/index/index",
-          "query": "",
           "scene": null
         },
         {
@@ -256,6 +256,13 @@
           "name": "乐队接受邀请页面",
           "pathName": "pages/team/accept/accept",
           "query": "team_id=20",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "其他详情页面",
+          "pathName": "pages/rest/detail/detail",
+          "query": "id=9",
           "launchMode": "default",
           "scene": null
         }

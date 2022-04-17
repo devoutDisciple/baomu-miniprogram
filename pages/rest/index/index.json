@@ -2,6 +2,7 @@
 	"usingComponents": {
         "rest-list": "/component/restList/restList",
         "btm-tip": "/component/btmTip/btmTip",
+        "empty-img": "/component/emptyImg/emptyImg",
         "home-select-search": "/component/homeSelectSearch/homeSelectSearch"
     },
 	"navigationBarTitleText": "其他"

@@ -47,17 +47,17 @@
                 </select-item>
             </view>
             <view class="chunk">
-                <input placeholder="价格" value="{{price}}" type="number" bindblur="onBlurPrice"/>
+                <input placeholder="价格(每天)" value="{{price}}" type="number" bindblur="onBlurPrice"/>
             </view>
             <view class="chunk">
                 <textarea cursor-spacing="{{40}}" value="{{desc}}" placeholder="简介" maxlength="{{200}}" bindblur="onBlurDesc"/>
             </view>
             <view class="chunk">
                 <select-item>
-                    <picker class="picker" bindchange="onSelectApprove" range="{{playList}}">
-                        <block wx:if="{{playName}}">
+                    <picker class="picker" bindchange="onSelectApprove" range="{{isYesList}}">
+                        <block wx:if="{{is_authentication}}">
                             <view class="picker_value">
-                                {{playName}}
+                                {{is_authentication}}
                             </view>
                         </block>
                         <block wx:else>
@@ -68,8 +68,26 @@
                     </picker>
                 </select-item>
             </view>
+            <view class="chunk chunk2" data-type="1">
+                <view class="chunk_title">设备展示图</view>
+                <block wx:if="{{tempImgUrlPaths && tempImgUrlPaths.length !== 0}}">
+                    <view class="img_con">
+                        <block wx:for="{{tempImgUrlPaths}}" wx:key="index">
+                            <view class="img_chunk">
+                                <my-img src="{{item}}"/>
+                                <image data-idx="{{index}}" bindtap="onRemoveImg" class="img_close" src="/asserts/public/close.png" />
+                            </view>
+                        </block>
+                    </view>
+                </block>
+                <block wx:else>
+                    <image class="photo_img" bindtap="onChooseImg" src="/asserts/public/team_bg.png" />
+                </block>
+            </view>
+            
             <view class="invitate_btn" bindtap="onTapSure">提交</view>
         </view>
+        
     </scroll-view>
     <van-calendar
         show="{{ calendarVisible }}"

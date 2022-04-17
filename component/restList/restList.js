@@ -3,7 +3,12 @@ Component({
 	/**
 	 * 组件的属性列表
 	 */
-	properties: {},
+	properties: {
+		data: {
+			type: Object,
+			value: {},
+		},
+	},
 
 	/**
 	 * 组件的初始数据
@@ -13,5 +18,12 @@ Component({
 	/**
 	 * 组件的方法列表
 	 */
-	methods: {},
+	methods: {
+		onSearchDetail: function () {
+			const { data } = this.data;
+			wx.navigateTo({
+				url: `/pages/rest/detail/detail?id=${data.id}`,
+			});
+		},
+	},
 });

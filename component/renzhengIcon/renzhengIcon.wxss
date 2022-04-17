@@ -35,3 +35,8 @@
     background: #dfe9d1;
     color: #7b9b50;
 }
+
+.msg_tubiao_item_device {
+    background: #f4ecdb;
+    color: #987F49;
+}

@@ -1,0 +1,74 @@
+<scroll-view 
+    class="wrap" 
+    scroll-y="{{true}}" 
+    enhanced="{{true}}" 
+    show-scrollbar="{{false}}" >
+    <view class="con">
+        <image class="bg_url" mode="widthFix" src="{{detail.show_img}}" />
+        <image class="person_msg" src="{{detail.userDetail.photo}}" />
+    </view>
+    <view class="chunk">
+        <view class="title">{{detail.name}}</view>
+        <view class="address">地址：{{detail.addressName}}</view>
+        <view class="intro">工作室简介：{{detail.desc}}</view>
+        <view class="desc">
+            <view class="desc_money">￥ {{detail.price}}<text class="desc_day"> /天</text></view>
+            <view class="desc_pingfen">
+                <image class="desc_pingfen_icon" src="/asserts/public/pingfen.png" />
+                <text class="desc_pingfen_fen">{{detail.grade}}</text>
+                <text class="desc_pingfen_txt">({{detail.comment_num}}评论)</text>
+            </view>
+        </view>
+    </view>
+    <view class="common_chunk">
+        <view class="common_title device_title">
+            设备展示<renzhengIcon wx:if="{{detail.is_authentication === 1}}" class="device_renzheng" idx="5"/>
+        </view>
+        <scroll-view class="person_product" scroll-x="{{true}}" enhanced="{{true}}" show-scrollbar="{{false}}">
+            <block wx:if="{{detail.newImgs && detail.newImgs.length !== 0}}">
+                <view class="person_product_con">
+                    <block wx:for="{{detail.newImgs}}" wx:key="index">
+                        <block wx:if="{{item.type === 'img'}}">
+                            <view class="product_img">
+                                <production-img data="{{item}}"/>
+                            </view>
+                        </block>
+                        <block wx:elif="{{item.type === 'video'}}">
+                            <view class="product_video">
+                                <production-img data="{{item}}"/>
+                            </view>
+                        </block>
+                    </block>
+                </view>
+            </block>
+            <block wx:else>
+                <view class="production_empty">
+                    <image class="production_empty_img" src="/asserts/public/empty.png" />
+                    <view>暂无作品展示</view>
+                </view>
+            </block>
+        </scroll-view>
+    </view>
+    <view class="common_chunk">
+        <view class="common_title">
+            评价 {{detail.comment_num}}
+            <view class="common_more">
+                全部评价 
+                <image class="common_more_icon" src="/asserts/public/left.png" />
+            </view>
+        </view>
+        <block wx:if="{{evaluates && evaluates.length !== 0}}">
+            <block wx:for="{{evaluates}}" wx:key="index">
+                <comment-item data="{{item}}"/>
+            </block>
+            <btm-tip />
+        </block>
+        <block wx:else>
+            <view class="empty_con">
+                <empty-img/>
+                <view>暂无评价记录</view>
+            </view>
+        </block>
+    </view>
+    <view class="empty"></view>
+</scroll-view>

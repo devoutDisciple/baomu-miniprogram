@@ -46,6 +46,14 @@ Component({
 				class: 'msg_tubiao_item_kaoji',
 				name: '考级',
 			},
+			{
+				title: '专业设备认证标识',
+				src: '/asserts/public/renzhengshebei.png',
+				desc: '有此标识的用户通过平台审核设备真实有效',
+				icon: '/asserts/public/device.png',
+				class: 'msg_tubiao_item_device',
+				name: '专业设备认证',
+			},
 		],
 	},
 

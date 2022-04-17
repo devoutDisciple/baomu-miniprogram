@@ -1,0 +1,173 @@
+.wrap {
+    width: 100vw;
+    height: 100vh;
+    background: #f7f7f7;
+}
+
+.con {
+    background: #fff;
+    position: relative;
+}
+
+.bg_url {
+    width: 100%;
+}
+
+.person_msg {
+    height: 120rpx;
+    width: 120rpx;
+    position: absolute;
+    bottom: -60rpx;
+    right: 40rpx;
+    border-radius: 100%;
+    z-index: 99;
+}
+
+.chunk {
+    padding: 60rpx 30rpx;
+    background: #fff;
+    margin-bottom: 20rpx;
+}
+
+.title {
+    font-size: 40rpx;
+    font-weight: 600;
+}
+
+.address {
+    margin-top: 10rpx;
+    color: #666;
+}
+
+.intro {
+    color: #333;
+    margin-top: 30rpx;
+}
+
+.desc {
+    margin-top: 20rpx;
+    display: flex;
+    align-items: center;
+}
+
+.desc_money {
+    flex: 1;
+    font-size: 36rpx;
+    font-weight: 600;
+}
+
+.desc_day{
+    font-size: 26rpx;
+    color: #666;
+}
+
+.desc_pingfen {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    font-size: 30rpx;
+}
+
+.desc_pingfen_icon {
+    height: 34rpx;
+    width: 34rpx;
+}
+
+.desc_pingfen_fen {
+    font-weight: 600;
+    margin: 0 8rpx;
+}
+
+.desc_pingfen_txt {
+    color: #666;
+}
+
+
+.common_chunk {
+    padding: 40rpx 30rpx;
+    background: #fff;
+    margin-bottom: 20rpx;
+}
+
+.common_title {
+    font-size: 34rpx;
+    margin-bottom: 30rpx;
+    display: flex;
+}
+
+.device_title {
+    align-items: center;
+}
+
+.device_renzheng {
+    margin-left: 20rpx;
+}
+
+.common_more {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    font-size: 26rpx;
+    color: #686868;
+    font-weight: 400;
+}
+
+.common_more_icon {
+    width: 10rpx;
+    height: 18rpx;
+    margin-left: 5rpx;
+}
+
+.skill_title {
+    color: #686868;
+    font-size: 26rpx;
+    margin-top: 30rpx;
+    margin-bottom: 20rpx;
+}
+
+.person_product_con {
+    align-items: center;
+    display: inline-flex;
+    padding-right: 20rpx;
+}
+
+.product_img {
+    height: 200rpx;
+    display: flex;
+    margin-right: 20rpx;
+}
+
+.product_video {
+    height: 200rpx;
+    width: 300rpx;
+    margin-right: 20rpx;
+}
+
+.production_empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #6a6a6a;
+    padding: 30rpx;
+}
+
+.production_empty_img {
+    width: 294rpx;
+    height: 243rpx;
+    margin-bottom: 20rpx;
+}
+
+.empty {
+    height: 100rpx;
+}
+
+.empty_con {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #6a6a6a;
+}

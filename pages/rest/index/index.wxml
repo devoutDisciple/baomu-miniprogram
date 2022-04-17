@@ -1,6 +1,12 @@
-<scroll-view class="con" scroll-y="{{true}}" enhanced="{{true}}" show-scrollbar="{{false}}">
+<scroll-view 
+    class="con" 
+    scroll-y="{{true}}" 
+    enhanced="{{true}}" 
+    show-scrollbar="{{false}}" 
+    lower-threshold="300"
+    bindscrolltolower="onScrollBottom">
     <view class="wrap">
-        <home-select-search 
+        <!-- <home-select-search 
             type="{{selectTabIdx}}"
             bindOnChange="onChangeConditions" 
             address_select="{{address_select}}" 
@@ -10,14 +16,21 @@
             person_style_selecg_name="{{person_style_name}}"
             plays_style_select_id="{{plays_style_id}}"
             plays_style_select_name="{{plays_style_name}}"
-            />
-        <view class="chunk">
-            <rest-list />
-        </view>
-        <view class="chunk">
-            <rest-list />
-        </view>
-        <btm-tip />
+            /> -->
+        <block wx:if="{{deviceList && deviceList.length !== 0}}">
+            <block wx:for="{{deviceList}}" wx:key="index">
+                <view class="chunk">
+                    <rest-list data="{{item}}"/>
+                </view>
+            </block>
+            <btm-tip />
+        </block>
+        <block wx:else>
+            <view class="empty_con">
+                <empty-img />
+                暂无数据
+            </view>
+        </block>
     </view>
-    <view class="publish_btn">发布</view>
+    <view class="publish_btn" bindtap="onTapPublish">发布</view>
 </scroll-view>

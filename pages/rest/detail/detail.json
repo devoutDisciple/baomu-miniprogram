@@ -1,0 +1,8 @@
+{
+	"usingComponents": {
+        "production-img": "/component/productionImg/productionImg",
+        "renzhengIcon": "/component/renzhengIcon/renzhengIcon",
+        "empty-img": "/component/emptyImg/emptyImg"
+    },
+	"navigationBarTitleText": "详情"
+}

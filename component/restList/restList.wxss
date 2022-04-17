@@ -74,9 +74,10 @@
 }
 
 .person_msg {
-    height: 100rpx;
-    width: 100rpx;
+    height: 120rpx;
+    width: 120rpx;
     position: absolute;
-    top: -80rpx;
+    top: -90rpx;
     right: 40rpx;
+    border-radius: 100%;
 }

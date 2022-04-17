@@ -37,7 +37,8 @@
     "pages/rest/publish/publish",
     "pages/message/index/index",
     "pages/message/systemMsg/systemMsg",
-    "pages/team/accept/accept"
+    "pages/team/accept/accept",
+    "pages/rest/detail/detail"
   ],
   "window": {
     "backgroundTextStyle": "light",
