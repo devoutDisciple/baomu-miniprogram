@@ -10,12 +10,7 @@ Page({
 	data: {
 		person_id: '', // 用户的id
 		dialogDetail: {}, // 弹框详情
-		selectTimeRange: [
-			{
-				start_time: '2022-03-02',
-				end_time: '2022-03-21',
-			},
-		],
+		selectTimeRange: [],
 		title: '',
 		personDetail: {}, // 被雇佣人的详情
 		playList: [], // 演奏方式
@@ -55,8 +50,11 @@ Page({
 				url: '/pages/home/index/index',
 			});
 		}
-		this.setData({ person_id }, () => {
-			this.onSearchUserDetail();
+		this.setData({ person_id }, async () => {
+			loading.showLoading();
+			await this.onSearchUserDetail();
+			await this.getUserInvitationTime();
+			loading.hideLoading();
 		});
 		// 获取所有演奏方式
 		this.getAllPlayList();
@@ -71,6 +69,21 @@ Page({
 		const { person_id } = this.data;
 		const detail = await request.get({ url: '/user/userDetail', data: { user_id: person_id } });
 		this.setData({ personDetail: detail });
+	},
+
+	// 获取用户已被邀请时段
+	getUserInvitationTime: async function () {
+		const { person_id } = this.data;
+		const result = await request.get({ url: '/demand/invitationTime', data: { user_id: person_id } });
+		const selectTimeRange = [];
+		result.forEach((item) => {
+			selectTimeRange.push({
+				start_time: item.start_time,
+				end_time: item.end_time,
+				type: 1,
+			});
+		});
+		this.setData({ selectTimeRange });
 	},
 
 	// 点击进去用户详情页面
@@ -284,8 +297,8 @@ Page({
 				type: 2, // 1-发布需求 2-直接邀请的需求
 			};
 			const res = await request.post({ url: '/demand/addDemand', data: params });
+			loading.hideLoading();
 			if (res === 'success') {
-				loading.hideLoading();
 				self.setData({
 					dialogDetail: {
 						title: '邀请成功!',

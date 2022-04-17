@@ -40,7 +40,7 @@ Page({
 		loading.showLoading();
 		const { team_id, userIds } = this.data;
 		const local_user_id = wx.getStorageSync('user_id');
-		const result = await request.get({ url: '/team/teamsUsersByTeamId', data: { team_id } });
+		const result = await request.get({ url: '/team/teamsUsersByTeamId', data: { team_id, type: 2 } });
 		if (Array.isArray(result)) {
 			result.forEach((item) => {
 				// 1-队长 2-队员

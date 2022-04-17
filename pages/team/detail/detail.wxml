@@ -34,7 +34,7 @@
                     <view class="team_title_left">乐队成员：</view>
                     <view class="team_title_right">全部成员<image class="team_icon" src="/asserts/public/left.png" /></view>
                 </view>
-                <view class="team_person">
+                <view class="team_person {{teamUsers && teamUsers.length === 2 ? 'team_person_two' : ''}}">
                     <block wx:if="{{teamUsers && teamUsers.length !== 0}}">
                         <block wx:for="{{teamUsers}}" wx:key="index">
                             <view class="team_chunk" data-userid="{{item.user_id}}" bindtap="onTapUserDetail">

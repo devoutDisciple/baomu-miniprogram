@@ -52,7 +52,7 @@ Page({
 	onSearchTeamUser: async function () {
 		loading.showLoading();
 		const { team_id } = this.data;
-		const teamUsers = await request.get({ url: '/team/teamsUsersByTeamId', data: { team_id: team_id } });
+		const teamUsers = await request.get({ url: '/team/teamsUsersByTeamId', data: { team_id: team_id, type: 1 } });
 		this.setData({ teamUsers: teamUsers });
 		loading.hideLoading();
 	},

@@ -10,7 +10,7 @@ Page({
 	data: {
 		showHeader: false, // 是否展示滑动之后的header
 		own_id: '', // 当前账户的id
-		user_id: '', // 当前用户的id
+		user_id: '', // 当前用户详情的用户id
 		personDetail: {}, // 个人信息
 		dialogShow: false,
 		// 弹框的显示文案
@@ -25,6 +25,7 @@ Page({
 		personShowList: [], // 动态列表
 		showInvitationBtn: false, // 是否展示邀请按钮
 		evaluates: [], // 评价列表
+		invitationTime: [], // 被邀请时段
 	},
 
 	/**
@@ -46,19 +47,22 @@ Page({
 		if (currentPage && currentPage.route === 'pages/home/index/index') {
 			showInvitationBtn = true;
 		}
-		this.setData({ user_id: Number(user_id), own_id: Number(own_id), showInvitationBtn }, () => {
+		this.setData({ user_id: Number(user_id), own_id: Number(own_id), showInvitationBtn }, async () => {
 			// 获取个人信息
-			this.getPersonDetail();
+			await this.getPersonDetail();
 			// 获取个人技能列表
-			this.getUserSkill();
+			await this.getUserSkill();
 			// 获取个人获奖记录
-			this.getUserAward();
+			await this.getUserAward();
 			// 获取作品列表
-			this.getPersonProduction();
+			await this.getPersonProduction();
 			// 获取个人动态
-			this.getPersonShowList();
+			await this.getPersonShowList();
 			// 获取用户全部评价
-			this.getUserEvaluates();
+			await this.getUserEvaluates();
+			// 获取用户的可用时段
+			await this.getUserInvitationTime();
+			loading.hideLoading();
 		});
 	},
 
@@ -69,29 +73,23 @@ Page({
 
 	// 获取个人信息
 	getPersonDetail: async function () {
-		loading.showLoading();
 		const { user_id } = this.data;
 		const personDetail = await request.get({ url: '/user/userDetail', data: { user_id } });
 		this.setData({ personDetail });
-		loading.hideLoading();
 	},
 
 	// 获取作品展示
 	getPersonProduction: async function () {
-		loading.showLoading();
 		const { user_id } = this.data;
 		const productionList = await request.get({ url: '/user/productionList', data: { user_id, type: 1 } });
 		this.setData({ productionList: productionList });
-		loading.hideLoading();
 	},
 
 	// 获取动态展示
 	getPersonShowList: async function () {
-		loading.showLoading();
 		const { user_id } = this.data;
 		const personShowList = await request.get({ url: '/user/productionList', data: { user_id, type: 2 } });
 		this.setData({ personShowList: personShowList });
-		loading.hideLoading();
 	},
 
 	// 跳转到作品或者动态展示页面
@@ -105,7 +103,6 @@ Page({
 
 	// 获取技能列表
 	getUserSkill: async function () {
-		loading.showLoading();
 		const { user_id } = this.data;
 		const lists = await request.get({ url: '/skill/all', data: { user_id } });
 		lists.forEach((item) => {
@@ -114,7 +111,6 @@ Page({
 			item.percent = Number((Number(item.grade) / 5) * 100).toFixed(0);
 		});
 		this.setData({ skillList: lists });
-		loading.hideLoading();
 	},
 
 	// 获取用户全部评价
@@ -239,5 +235,12 @@ Page({
 		wx.navigateTo({
 			url: `/pages/chat/chat?person_id=${personDetail.id}`,
 		});
+	},
+
+	// 获取用户已被邀请时段
+	getUserInvitationTime: async function () {
+		const { user_id } = this.data;
+		const result = await request.get({ url: '/demand/invitationTime', data: { user_id } });
+		this.setData({ invitationTime: result || [] });
 	},
 });

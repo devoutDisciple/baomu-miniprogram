@@ -179,6 +179,14 @@
     justify-content: space-between;
 }
 
+.team_person_two {
+    justify-content: flex-start;
+}
+
+.team_person_two .team_chunk{
+    margin-right: 30rpx;
+}
+
 .team_chunk {
     display: flex;
     flex-direction: column;

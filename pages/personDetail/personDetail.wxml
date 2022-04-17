@@ -59,10 +59,15 @@
                 <view class="address_chunk">
                     <view class="address_chunk_icon">
                         <image class="address_chunk_icon_img" src="/asserts/public/yaoqing_time.png" />
-                        可邀请时段
+                        已被邀请时段
                     </view>
                     <view class="address_chunk_desc">
-                        11.8-12.9 9:00-18:00 工作日
+                        <block wx:if="{{invitationTime && invitationTime.length !== 0}}">
+                            <block wx:for="{{invitationTime}}" wx:key="index">
+                                <view>{{item.invitation_time}}</view>
+                            </block>
+                        </block>
+                        <block wx:else>接单中</block>
                     </view>
                 </view>
             </view>

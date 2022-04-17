@@ -44,7 +44,6 @@ Page({
 			{
 				user_id: Number(user_id),
 				local_user_id: Number(local_user_id),
-				firstTime: false,
 			},
 			() => {
 				// 获取个人信息
@@ -77,7 +76,7 @@ Page({
 	getPersonDetail: async function () {
 		const { user_id } = this.data;
 		const personDetail = await request.get({ url: '/user/userDetail', data: { user_id } });
-		this.setData({ personDetail });
+		this.setData({ personDetail, firstTime: false });
 		loading.hideLoading();
 		// 获取乐队成员
 		this.getTeamUser();
@@ -108,7 +107,10 @@ Page({
 	getTeamUser: async function () {
 		const { personDetail, local_user_id } = this.data;
 		loading.showLoading();
-		let result = await request.get({ url: '/team/teamsUsersByTeamId', data: { team_id: personDetail.team_id } });
+		let result = await request.get({
+			url: '/team/teamsUsersByTeamId',
+			data: { team_id: personDetail.team_id, type: 1 },
+		});
 		if (Array.isArray(result)) {
 			result.forEach((item) => {
 				// 1-队长 2-队员
@@ -120,7 +122,7 @@ Page({
 					});
 				}
 				item.stateName = TEAM_USER_STATE.filter((state) => item.state === state.id)[0].name;
-				const NEW_TEAM_USER_SKILL = [{ id: -1, name: '未知' }, ...TEAM_USER_SKILL];
+				const NEW_TEAM_USER_SKILL = [{ id: -1, name: item.userDetail.nickname }, ...TEAM_USER_SKILL];
 				item.typeName = NEW_TEAM_USER_SKILL.filter((state) => item.type === state.id)[0].name;
 			});
 		}
