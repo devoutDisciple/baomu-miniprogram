@@ -23,9 +23,7 @@ Component({
 	data: {},
 
 	lifetimes: {
-		attached: function () {
-			console.log(this.data);
-		},
+		attached: function () {},
 	},
 
 	/**
@@ -35,39 +33,37 @@ Component({
 		// 点击消息
 		onTapMsg: function (e) {
 			const { msgtype } = e.currentTarget.dataset;
-			// 个人信息
-			if (!msgtype) {
-				const { msg, msgData, personId } = this.data;
-				let num = 0;
+
+			const { msg, msgData, personId } = this.data;
+			let num = 0;
+			// // 1-用户消息 2-系统通知 3-订单推送信息 4-邀请信息
+			if (!msgtype || msgtype === 1) {
 				msgData.forEach((item) => {
 					if (String(item.person_id) === String(personId)) {
 						num = item.noread;
 						item.noread = 0;
 					}
 				});
-				const totalNum = Number(getApp().globalData.msgsNum) - Number(num);
-				getApp().globalData.msgsNum = totalNum;
-				wx.setStorageSync('msg_data', JSON.stringify(msgData));
+			}
+			if (msgtype === 2 || msgtype === 3 || msgtype === 4) {
+				msgData.forEach((item) => {
+					if (String(item.msgType) === String(msgtype)) {
+						num = item.noread;
+						item.noread = 0;
+					}
+				});
+			}
+			const totalNum = Number(getApp().globalData.msgsNum) - Number(num);
+			getApp().globalData.msgsNum = totalNum;
+			wx.setStorageSync('msg_data', JSON.stringify(msgData));
+			if (msgtype === 1) {
 				wx.navigateTo({
 					url: `/pages/chat/chat?person_id=${msg.person_id}`,
 				});
 			}
-			// 系统通知
-			if (msgtype === 2) {
+			if (msgtype === 2 || msgtype === 3 || msgtype === 4) {
 				wx.navigateTo({
-					url: '/pages/systemMsg/systemMsg',
-				});
-			}
-			// 系统通知
-			if (msgtype === 3) {
-				wx.navigateTo({
-					url: '/pages/systemMsg/systemMsg',
-				});
-			}
-			// 系统通知
-			if (msgtype === 4) {
-				wx.navigateTo({
-					url: '/pages/systemMsg/systemMsg',
+					url: `/pages/message/systemMsg/systemMsg?type=${msgtype}`,
 				});
 			}
 		},

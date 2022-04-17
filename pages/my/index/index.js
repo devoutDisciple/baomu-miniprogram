@@ -101,7 +101,7 @@ Page({
 		// 考级认证
 		if (type === 'level') this.jumpPage('/pages/my/level/level');
 		// 消息中心
-		if (type === 'message') this.jumpPage('/pages/message/message');
+		if (type === 'message') this.jumpPage('/pages/message/index/index');
 		// 我的技能
 		if (type === 'skill') this.jumpPage('/pages/my/skill/skill');
 		// 照片墙

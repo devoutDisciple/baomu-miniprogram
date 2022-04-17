@@ -42,18 +42,6 @@
           "scene": null
         },
         {
-          "name": "消息页面",
-          "pathName": "pages/message/message",
-          "query": "",
-          "scene": null
-        },
-        {
-          "name": "系统消息通知",
-          "pathName": "pages/systemMsg/systemMsg",
-          "query": "",
-          "scene": null
-        },
-        {
           "name": "其他",
           "pathName": "pages/rest/index/index",
           "query": "",
@@ -249,6 +237,25 @@
           "name": "其他发布页",
           "pathName": "pages/rest/publish/publish",
           "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "消息页面",
+          "pathName": "pages/message/index/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "系统消息通知",
+          "pathName": "pages/message/systemMsg/systemMsg",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "乐队接受邀请页面",
+          "pathName": "pages/team/accept/accept",
+          "query": "team_id=20",
           "launchMode": "default",
           "scene": null
         }

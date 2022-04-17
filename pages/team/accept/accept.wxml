@@ -1,0 +1,23 @@
+<scroll-view class="wrap" scroll-y="{{true}}" enhanced="{{true}}" show-scrollbar="{{false}}">
+    <image class="img" mode="widthFix" src="{{bgUrl}}" />
+    <header showBack/>
+    <view class="con">
+        <view class="title">{{teamDetail.name || ""}}</view>
+        <view class="title_desc">邀请您和我们组队接单～～</view>
+        <view class="desc_tittle">乐队简介：</view>
+        <view class="desc_con">{{teamDetail.desc || ""}}</view>
+        <view class="team_title">乐队成员：</view>
+        <view class="team_person">
+            <block wx:if="{{teamUsers && teamUsers.length !== 0}}">
+                <block wx:for="{{teamUsers}}" wx:key="index">
+                    <image bindtap="onTapUserDetail" class="team_person_item" data-item="{{item.userDetail}}" src="{{item.userDetail.photo}}" />
+                </block>
+            </block>
+        </view>
+        <block wx:if="{{teamUserState === 1}}">
+            <view class="accpt_btn" data-state="2" bindtap="onTapSure">接受</view>
+            <view class="reject_btn" data-state="3" bindtap="onTapSure">拒绝</view>
+        </block>
+    </view>
+   
+</scroll-view>

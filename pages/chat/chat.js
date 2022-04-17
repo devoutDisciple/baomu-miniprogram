@@ -33,6 +33,7 @@ Page({
 		await this.getUserMsg();
 		let originData = wx.getStorageSync('msg_data');
 		originData = JSON.parse(originData);
+		console.log(originData, 2837);
 		if (Array.isArray(originData)) {
 			const nowData = originData.filter((item) => String(item.person_id) === String(person_id))[0];
 			if (!nowData) return;

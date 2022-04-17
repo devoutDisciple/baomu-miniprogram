@@ -1,6 +1,6 @@
 // eslint-disable-next-line import/named
-import util, { formatTime } from '../../utils/util';
-import moment from '../../utils/moment';
+import util, { formatTime } from '../../../utils/util';
+import moment from '../../../utils/moment';
 
 Page({
 	/**
@@ -31,7 +31,7 @@ Page({
 				msgType: 2, // 1-用户消息 2-系统通知 3-订单推送信息 4-邀请信息
 				msg: [
 					{
-						content: 'sjdfjdks', // 消息内容
+						content: 'sjdf系统通知jdks', // 消息内容
 						time: '2022-02-22 12:00:00', // 发送时间
 					},
 				], // 具体信息
@@ -43,7 +43,7 @@ Page({
 				msgType: 3, // 1-用户消息 2-系统通知 3-订单推送信息 4-邀请信息
 				msg: [
 					{
-						content: 'sjdfjdks', // 消息内容
+						content: '订单推送', // 消息内容
 						time: '2022-02-22 12:00:00', // 发送时间
 					},
 				], // 具体信息
@@ -55,7 +55,7 @@ Page({
 				msgType: 4, // 1-用户消息 2-系统通知 3-订单推送信息 4-邀请信息
 				msg: [
 					{
-						content: 'sjdfjdks', // 消息内容
+						content: '邀请信息', // 消息内容
 						time: '2022-02-22 12:00:00', // 发送时间
 					},
 				], // 具体信息
@@ -118,33 +118,13 @@ Page({
 		// }, 3000);
 	},
 
-	/**
-	 * 生命周期函数--监听页面初次渲染完成
-	 */
-	onReady: function () {},
-
-	/**
-	 * 生命周期函数--监听页面隐藏
-	 */
-	onHide: function () {},
-
-	/**
-	 * 生命周期函数--监听页面卸载
-	 */
-	onUnload: function () {},
-
-	/**
-	 * 页面相关事件处理函数--监听用户下拉动作
-	 */
-	onPullDownRefresh: function () {},
-
-	/**
-	 * 页面上拉触底事件的处理函数
-	 */
-	onReachBottom: function () {},
-
-	/**
-	 * 用户点击右上角分享
-	 */
-	onShareAppMessage: function () {},
+	// 删除信息
+	onDeleteItem: function (e) {
+		let msgData = wx.getStorageSync('msg_data');
+		msgData = JSON.parse(msgData);
+		const { item } = e.currentTarget.dataset;
+		const newMsgData = msgData.filter((msg) => msg.person_id !== item.person_id);
+		wx.setStorageSync('msg_data', JSON.stringify(newMsgData));
+		this.getStorageMsg();
+	},
 });

@@ -1,0 +1,78 @@
+.wrap {
+    height: 100vh;
+    width: 100vw;
+}
+
+.img {
+    width: 100%;
+    display: flex;
+}
+
+.con {
+    padding: 60rpx 20rpx;
+}
+
+.title {
+    font-size: 50rpx;
+    font-weight: 600;
+}
+
+.title_desc {
+    margin-top: 20rpx;
+}
+
+.desc_tittle {
+    font-size: 34rpx;
+    margin-top: 100rpx;
+}
+
+.desc_con {
+    color: #666;
+    margin-top: 20rpx;
+}
+
+.team_title {
+    margin-top: 60rpx;
+}
+
+.team_person {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.team_person_item {
+    width: 100rpx;
+    height: 100rpx;
+    margin-right: 20rpx;
+    margin-top: 20rpx;
+    border-radius: 100%;
+}
+
+.accpt_btn {
+    width: calc(100vw - 80rpx);
+    height: 100rpx;
+    background: #000;
+    color: #fff;
+    border-radius: 20rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 38rpx;
+    margin-left: 20rpx;
+    margin-top: 100rpx;
+}
+
+.reject_btn {
+    width: calc(100vw - 80rpx);
+    height: 100rpx;
+    color: #666;
+    border-radius: 20rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 38rpx;
+    margin-left: 20rpx;
+    margin-top: 40rpx;
+    border: 1rpx solid #666;
+}
+

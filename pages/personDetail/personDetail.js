@@ -121,7 +121,6 @@ Page({
 	getUserEvaluates: async function () {
 		const { user_id } = this.data;
 		const result = await request.get({ url: '/demandEvaluate/allEvaluatesByUserId', data: { user_id } });
-		console.log(result, 328);
 		this.setData({ evaluates: result || [] });
 	},
 
@@ -208,6 +207,7 @@ Page({
 				person_id: personDetail.id,
 				person_name: personDetail.nickname,
 				person_photo: personDetail.photo,
+				msgType: 1, /// / 1-用户消息 2-系统通知 3-订单推送信息 4-邀请信息
 				noread: 0,
 				msg: [],
 			},

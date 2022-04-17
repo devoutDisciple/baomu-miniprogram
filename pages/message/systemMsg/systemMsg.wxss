@@ -60,6 +60,18 @@
     justify-content: center;
 }
 
+.chat_con_img1 {
+    background: #000;
+}
+
+.chat_con_img2 {
+    background: #e2cb99;
+}
+
+.chat_con_img3 {
+    background: #b5b58d;
+}
+
 .chat_con_img_img {
     width: 40rpx;
     height: 40rpx;
@@ -72,4 +84,6 @@
     background: #fff;
     color: #333;
     border-radius: 0rpx 15rpx 15rpx 15rpx;
+    word-break: break-all;
+    flex: 1;
 }

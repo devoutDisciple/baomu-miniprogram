@@ -14,3 +14,13 @@
 .empty {
     margin-top: 100rpx;
 }
+
+.msg_delete {
+    display: flex;
+    background: red;
+    color: #fff;
+    height: 100%;
+    width: 100rpx;
+    justify-content: center;
+    align-items: center;
+}

@@ -1,0 +1,33 @@
+<view class="wrap">
+    <scroll-view class="con" scroll-y="{{true}}" enhanced="{{true}}" show-scrollbar="{{false}}"> 
+        <block wx:if="{{msg && msg.length !== 0}}">
+            <block wx:for="{{msg}}" wx:key="index">
+                <view class="chat">
+                    <view class="chat_time">{{item.showTime}}</view>
+                    <view class="chat_con">
+                        <block wx:if="{{type === 2}}">
+                            <view class="chat_con_img chat_con_img1">
+                                <image class="chat_con_img_img" src="/asserts/public/msg_notify.png" />
+                            </view>
+                            <view class="chat_con_txt">{{item.content}}</view>
+                        </block>
+                        <block wx:if="{{type === 3}}">
+                            <view class="chat_con_img chat_con_img2" >
+                                <image class="chat_con_img_img" src="/asserts/public/msg_order.png" />
+                            </view>
+                            <view class="chat_con_txt">{{item.content}}</view>
+                        </block>
+                        <block wx:if="{{type === 4}}">
+                            <view class="chat_con_img chat_con_img3">
+                                <image class="chat_con_img_img" src="/asserts/public/msg_xiaoxi.png" />
+                            </view>
+                            <view class="chat_con_txt" data-item="{{item}}" bindtap="onTapTeamInvitation">{{item.content}}</view>
+                        </block>
+                    </view>
+                </view>
+            </block>
+        </block>
+        <view class="empty"></view>
+    </scroll-view>
+    <view class="btn">在线客服</view>
+</view>

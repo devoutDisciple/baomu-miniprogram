@@ -7,8 +7,6 @@
     "pages/calendar/index/index",
     "pages/personDetail/personDetail",
     "pages/chat/chat",
-    "pages/message/message",
-    "pages/systemMsg/systemMsg",
     "pages/home/publish1/publish1",
     "pages/home/publish2/publish2",
     "pages/home/publish3/publish3",
@@ -36,7 +34,10 @@
     "pages/my/orderDetailForActor/orderDetailForActor",
     "pages/home/condition/condition",
     "pages/evaluate/evaluate",
-    "pages/rest/publish/publish"
+    "pages/rest/publish/publish",
+    "pages/message/index/index",
+    "pages/message/systemMsg/systemMsg",
+    "pages/team/accept/accept"
   ],
   "window": {
     "backgroundTextStyle": "light",
