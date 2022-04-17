@@ -38,7 +38,8 @@
     "pages/message/index/index",
     "pages/message/systemMsg/systemMsg",
     "pages/team/accept/accept",
-    "pages/rest/detail/detail"
+    "pages/rest/detail/detail",
+    "pages/my/myReply/myReply"
   ],
   "window": {
     "backgroundTextStyle": "light",

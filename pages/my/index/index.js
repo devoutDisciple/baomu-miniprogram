@@ -91,7 +91,7 @@ Page({
 		// 我的乐队
 		if (type === 'team') this.jumpPage('/pages/team/index/index');
 		// 我的评论
-		if (type === 'comment') this.jumpPage('/pages/my/myPublish/myPublish');
+		if (type === 'comment') this.jumpPage('/pages/my/myReply/myReply');
 		// 工作记录
 		if (type === 'order') this.jumpPage('/pages/my/order/order');
 		// 获奖认证

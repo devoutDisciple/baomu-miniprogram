@@ -1,0 +1,21 @@
+.wrap {
+    width: 100vw;
+    height: 100vh;
+    background: #f7f7f7;
+}
+
+.con {
+    min-height: 100vh;
+    width: calc(100vw - 40rpx);
+    background: #fff;
+    margin: 20rpx;
+}
+
+.empty_con {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding-top: 300rpx;
+    color: #fff;
+}

@@ -9,7 +9,7 @@
     <view class="con">
         <view class="title">
             <image class="logo" src="{{logoUrl}}" />
-            <text>驰昂教育想要获取您的手机号</text>
+            <text>鲍姆演艺想要获取您的手机号</text>
         </view>
         <view class="btn_con">
             <button class="btn" type="default" bindtap="onClose">拒绝</button>

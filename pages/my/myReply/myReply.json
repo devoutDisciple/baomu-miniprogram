@@ -1,0 +1,6 @@
+{
+	"usingComponents": {
+        "empty-img": "/component/emptyImg/emptyImg"
+    },
+	"navigationBarTitleText": "我的评论"
+}

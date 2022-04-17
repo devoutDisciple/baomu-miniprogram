@@ -199,6 +199,9 @@ Page({
 					title: '发布成功',
 					icon: 'success',
 				});
+				setTimeout(() => {
+					wx.navigateBack({});
+				}, 1000);
 			}
 			loading.hideLoading();
 		} catch (error) {

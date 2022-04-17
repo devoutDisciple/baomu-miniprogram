@@ -1,0 +1,8 @@
+<scroll-view class="wrap" scroll-y="{{true}}" show-scrollbar="{{false}}" enhanced="{{true}}">
+    <view class="con">
+        <view class="empty_con">
+            <empty-img />
+            暂无评价
+        </view>
+    </view>
+</scroll-view>

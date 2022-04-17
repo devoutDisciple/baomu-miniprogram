@@ -265,6 +265,13 @@
           "query": "id=9",
           "launchMode": "default",
           "scene": null
+        },
+        {
+          "name": "我的评论",
+          "pathName": "pages/my/myReply/myReply",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
         }
       ]
     }
