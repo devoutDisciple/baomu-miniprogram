@@ -15,7 +15,7 @@
                             <view class="chat_con_img chat_con_img2" >
                                 <image class="chat_con_img_img" src="/asserts/public/msg_order.png" />
                             </view>
-                            <view class="chat_con_txt">{{item.content}}</view>
+                            <view class="chat_con_txt" data-item="{{item}}" bindtap="onTapOrderDetail">{{item.content}}</view>
                         </block>
                         <block wx:if="{{type === 4}}">
                             <view class="chat_con_img chat_con_img3">

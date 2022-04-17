@@ -39,11 +39,27 @@ Page({
 
 	// 点击邀请信息
 	onTapTeamInvitation: function (e) {
-		const { item } = e.currentTarget.dataset;
-		const { teamDetail } = item;
-		console.log(item, 111);
+		const { teamDetail } = e.currentTarget.dataset.item;
 		wx.navigateTo({
 			url: `/pages/team/accept/accept?team_id=${teamDetail.team_id}`,
 		});
+	},
+
+	// 点击订单详情
+	onTapOrderDetail: function (e) {
+		const { orderDetail } = e.currentTarget.dataset.item;
+		const user_id = wx.getStorageSync('user_id');
+		console.log(user_id, orderDetail.user_id, 999);
+		if (Number(user_id) === Number(orderDetail.user_id)) {
+			// 我发布的
+			wx.navigateTo({
+				url: `/pages/my/orderDetailForPublisher/orderDetailForPublisher?id=${orderDetail.demand_id}`,
+			});
+		} else {
+			// 我参与的
+			wx.navigateTo({
+				url: `/pages/my/orderDetailForActor/orderDetailForActor?id=${orderDetail.demand_id}`,
+			});
+		}
 	},
 });

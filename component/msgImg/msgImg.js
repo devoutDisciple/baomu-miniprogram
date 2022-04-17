@@ -20,10 +20,6 @@ Component({
 	 */
 	data: {},
 
-	lifetimes: {
-		attached: function () {},
-	},
-
 	/**
 	 * 组件的方法列表
 	 */

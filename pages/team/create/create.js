@@ -158,15 +158,16 @@ Page({
 
 	// 获取邀请用户的详情
 	getUserDetails: async function () {
-		let { userIds } = this.data;
+		const { userIds } = this.data;
 		if (userIds.length === 0) {
 			this.setData({ userDetails: [] });
 			return;
 		}
-		if (userIds.length > 2) {
-			userIds = userIds.splice(0, 3);
+		let newUserIds = [...userIds];
+		if (newUserIds.length > 2) {
+			newUserIds = newUserIds.splice(0, 3);
 		}
-		const result = await request.get({ url: '/user/invitationUserDetail', data: { user_ids: userIds } });
+		const result = await request.get({ url: '/user/invitationUserDetail', data: { user_ids: newUserIds } });
 		this.setData({ userDetails: result });
 	},
 

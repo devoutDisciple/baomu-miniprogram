@@ -240,29 +240,32 @@
     margin-bottom: 20rpx;
 }
 
-.btn {
-    display: flex;
-    justify-content: space-around;
-    margin-top: 80rpx;
-}
-
 .btn_item {
-    background: red;
-    padding: 20rpx 50rpx;
-    border-radius: 80rpx;
-    color: #fff;
+    width: calc(100vw - 80rpx);
+    height: 100rpx;
+    border-radius: 20rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 38rpx;
+    margin-left: 20rpx;
+    margin-top: 30rpx;
 }
 
 .btn_success {
-    background: #B5B58D;
+    margin-top: 100rpx;
+    background: #000;
+    color: #fff;
 }
 
 .btn_fail {
-    background: #6a6a6a;
+    color: #666;
+    border: 1rpx solid #666;
 }
 
 .btn_process {
-    background: #93ad6e;
+    color: #666;
+    border: 1rpx solid #666;
 }
 
 .price_empty {

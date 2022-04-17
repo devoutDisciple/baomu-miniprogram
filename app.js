@@ -13,13 +13,17 @@ App({
 	onLaunch: function () {
 		console.log('apppppp');
 		// 统计各种信息
-		if (config.env === 'dev') {
+		// if (config.env === 'dev') {
+		// 	this.getMyMessage();
+		// } else {
+		// 	setInterval(() => {
+		// 		this.getMyMessage();
+		// 	}, 4000);
+		// }
+
+		setInterval(() => {
 			this.getMyMessage();
-		} else {
-			setInterval(() => {
-				this.getMyMessage();
-			}, 4000);
-		}
+		}, 20000);
 	},
 
 	// 获取消息
@@ -85,10 +89,8 @@ App({
 				}
 				// 订单推送
 				if (item.type === 3) {
-					console.log(item, 111);
-					// content - {demand_id, user_id}
+					// content - {demand_id, user_id} demand_id: 需求id user_id: 发布方的id
 					item.content = JSON.parse(item.content);
-					console.log(item.content, 3289);
 					const currentMsg = msgData.filter((msg) => Number(msg.msgType) === item.type)[0];
 					const msgTxt = {
 						content: '您好，您有一份工作信息，请点击查看详情',
@@ -126,7 +128,7 @@ App({
 					} else {
 						msgData.push({
 							person_id: -1, // 发送信息的人
-							person_name: '订单推送', // 发送信息人的名字
+							person_name: '邀请信息', // 发送信息人的名字
 							noread: 1,
 							msgType: item.type, // 1-用户消息 2-系统通知 3-订单推送信息 4-邀请信息
 							msg: [msgTxt],

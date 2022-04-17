@@ -23,7 +23,9 @@ Component({
 	data: {},
 
 	lifetimes: {
-		attached: function () {},
+		attached: function () {
+			console.log(this.data.msg, this.data.msgData, 222);
+		},
 	},
 
 	/**
@@ -66,6 +68,12 @@ Component({
 					url: `/pages/message/systemMsg/systemMsg?type=${msgtype}`,
 				});
 			}
+		},
+	},
+
+	observers: {
+		msg: function (msg) {
+			console.log(msg, 3333);
 		},
 	},
 });

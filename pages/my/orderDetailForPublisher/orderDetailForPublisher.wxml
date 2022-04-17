@@ -80,11 +80,9 @@
                         </view>
                     </block>
                     <block wx:if="{{priceRecordList[selectPersonIdx].showPriceBtn}}">
-                        <view class="btn">
-                            <view class="btn_item btn_success" bindtap="onAcceptPrice">接受</view>
-                            <view class="btn_item btn_fail" bindtap="onRefusePrice">拒绝</view>
-                            <view class="btn_item btn_process" bindtap="onTapPrice">议价</view>
-                        </view>
+                        <view class="btn_item btn_success" bindtap="onAcceptPrice">接受</view>
+                        <view class="btn_item btn_process" bindtap="onTapPrice">议价</view>
+                        <view class="btn_item btn_fail" bindtap="onRefusePrice">拒绝</view>
                     </block>
                 </block>
                 <block wx:else>

@@ -16,7 +16,7 @@ Page({
 		priceDialogVisible: false, // 报价弹框
 		price: 0, // 报价
 		tipDialog: false, // 提示弹框
-		selectTabIdx: 1, // 选择的tab的
+		selectTabIdx: 2, // 选择的tab的
 		selectPersonIdx: 0, // 选择报名人的下标
 		priceRecordList: [], // 议价记录
 		showPriceBtn: false, // 默认不展示议价按钮

@@ -99,7 +99,7 @@ Page({
 					}
 				});
 			}
-
+			console.log(msgData, 111);
 			this.setData({ msgData: msgData });
 		}
 	},

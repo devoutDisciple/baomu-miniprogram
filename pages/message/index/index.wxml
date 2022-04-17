@@ -2,7 +2,7 @@
     <block wx:if="{{msgData && msgData.length !== 0}}">
         <block wx:for="{{msgData}}" wx:key="person_id">
             <van-swipe-cell right-width="{{ 65 }}">
-                <list-item msg="{{item}}" msgData="{{msgData}}" personId="{{item.person_id}}" wx:if="{{item.person_id && item.person_name}}"/>
+                <list-item msg="{{item}}" msgData="{{msgData}}" personId="{{item.person_id}}"/>
                 <view class="msg_delete" data-item="{{item}}" bindtap="onDeleteItem" slot="right">删除</view>
             </van-swipe-cell>
         </block>
