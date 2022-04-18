@@ -185,4 +185,9 @@ Page({
 			this.setData({ dialogShow: true });
 		}
 	},
+
+	onCloseDialog: function () {
+		this.setData({ dialogShow: false });
+		wx.navigateBack({});
+	},
 });
