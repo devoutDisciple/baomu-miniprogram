@@ -145,65 +145,74 @@ Page({
 	// 点击发布
 	onPublish: async function () {
 		try {
-			const { user_id, type } = this.data;
-			const { instrumentSelectId, tempImgUrlPaths, videoDetail, desc, title } = this.data;
-			if (!desc || !title || !instrumentSelectId) {
-				return wx.showToast({
-					title: '请完善信息',
-					icon: 'error',
-				});
-			}
-			if (tempImgUrlPaths.length === 0 && !videoDetail.duration) {
-				return wx.showToast({
-					title: '请上传作品',
-					icon: 'error',
-				});
-			}
-			loading.showLoading();
-			const uploadImgUrls = [];
-			if (tempImgUrlPaths && tempImgUrlPaths.length !== 0) {
-				let len = tempImgUrlPaths.length;
-				loading.showLoading();
-				while (len > 0) {
-					len -= 1;
-					// eslint-disable-next-line no-await-in-loop
-					const fileDetail = await uploadFile({ url: '/production/uploadImg', data: tempImgUrlPaths[len] });
-					uploadImgUrls.push(fileDetail.url);
+			const self = this;
+			setTimeout(async () => {
+				const { user_id, type } = this.data;
+				const { instrumentSelectId, tempImgUrlPaths, videoDetail, desc, title } = this.data;
+				if (!desc || !title || !instrumentSelectId) {
+					return wx.showToast({
+						title: '请完善信息',
+						icon: 'error',
+					});
 				}
-			}
-			let fileDetail = {};
-			if (videoDetail && videoDetail.duration) {
-				const videoUrl = await uploadFile({ url: '/video/upload', data: videoDetail.url });
-				const coverImgDetail = await uploadFile({ url: '/production/uploadCoverImg', data: videoDetail.photo });
-				fileDetail = {
-					url: videoUrl.url,
-					height: videoDetail.height,
-					width: videoDetail.width,
-					duration: videoDetail.duration,
-					size: videoDetail.size,
-					photo: coverImgDetail,
+				if (tempImgUrlPaths.length === 0 && !videoDetail.duration) {
+					return wx.showToast({
+						title: '请上传作品',
+						icon: 'error',
+					});
+				}
+				loading.showLoading();
+				const uploadImgUrls = [];
+				if (tempImgUrlPaths && tempImgUrlPaths.length !== 0) {
+					let len = tempImgUrlPaths.length;
+					loading.showLoading();
+					while (len > 0) {
+						len -= 1;
+						// eslint-disable-next-line no-await-in-loop
+						const fileDetail = await uploadFile({
+							url: '/production/uploadImg',
+							data: tempImgUrlPaths[len],
+						});
+						uploadImgUrls.push(fileDetail.url);
+					}
+				}
+				let fileDetail = {};
+				if (videoDetail && videoDetail.duration) {
+					const videoUrl = await uploadFile({ url: '/video/upload', data: videoDetail.url });
+					const coverImgDetail = await uploadFile({
+						url: '/production/uploadCoverImg',
+						data: videoDetail.photo,
+					});
+					fileDetail = {
+						url: videoUrl.url,
+						height: videoDetail.height,
+						width: videoDetail.width,
+						duration: videoDetail.duration,
+						size: videoDetail.size,
+						photo: coverImgDetail,
+					};
+				}
+				const params = {
+					user_id,
+					title,
+					instr_id: instrumentSelectId,
+					desc,
+					img_url: uploadImgUrls,
+					video: fileDetail,
+					type: type,
 				};
-			}
-			const params = {
-				user_id,
-				title,
-				instr_id: instrumentSelectId,
-				desc,
-				img_url: uploadImgUrls,
-				video: fileDetail,
-				type: type,
-			};
-			const result = await request.post({ url: '/production/add', data: params });
-			if (result === 'success') {
-				wx.showToast({
-					title: '发布成功',
-					icon: 'success',
-				});
-				setTimeout(() => {
-					wx.navigateBack({});
-				}, 1000);
-			}
-			loading.hideLoading();
+				const result = await request.post({ url: '/production/add', data: params });
+				if (result === 'success') {
+					wx.showToast({
+						title: '发布成功',
+						icon: 'success',
+					});
+					setTimeout(() => {
+						wx.navigateBack({});
+					}, 1000);
+				}
+				loading.hideLoading();
+			}, 500);
 		} catch (error) {
 			console.log(error);
 			loading.hideLoading();

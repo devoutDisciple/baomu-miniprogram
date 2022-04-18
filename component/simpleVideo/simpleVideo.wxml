@@ -2,9 +2,9 @@
     <video 
         id="{{videoId}}"
         class="video"
-        style="height: {{videoHeight}}px; width: {{videoWidth}}px"
         src="{{videoDetail.url}}"
         controls="{{true}}"
+        object-fit="contain"
         show-progress="{{true}}"
         show-play-btn="{{false}}"
         enable-progress-gesture="{{false}}"
