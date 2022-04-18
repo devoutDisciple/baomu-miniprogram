@@ -11,19 +11,14 @@ App({
 	data: {},
 
 	onLaunch: function () {
-		console.log('apppppp');
 		// 统计各种信息
-		// if (config.env === 'dev') {
-		// 	this.getMyMessage();
-		// } else {
-		// 	setInterval(() => {
-		// 		this.getMyMessage();
-		// 	}, 4000);
-		// }
-
-		setInterval(() => {
+		if (config.env === 'dev') {
 			this.getMyMessage();
-		}, 20000);
+		} else {
+			setInterval(() => {
+				this.getMyMessage();
+			}, 5000);
+		}
 	},
 
 	// 获取消息

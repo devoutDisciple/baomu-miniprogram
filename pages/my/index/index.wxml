@@ -77,14 +77,14 @@
                     <listItem text="我的技能" iconName="my_skill" data-type="skill" bindtap="goOtherPage"/>
                     <listItem text="个人信息修改" iconName="photo_wall" data-type="photo" bindtap="goOtherPage"/>
                     <listItem text="工作地点" iconName="work_location" data-type="address" bindtap="goOtherPage"/>
-                    <listItem text="可预约时段" iconName="order _time" data-type="time" bindtap="goOtherPage" isLast/>
                 </view>
                 <view class="opt">
                     <listItem text="作品展示" iconName="production_show" data-type="productionShow" bindtap="goOtherPage" isFirst/>
                     <listItem text="去组团" iconName="cluster" data-type="getTeam" bindtap="goOtherPage"/>
-                    <listItem text="客服中心" iconName="call_center" isLast>
+                    <listItem text="客服中心" iconName="call_center">
                         <button class="service_btn" open-type="contact" bindcontact="handleContact">联系客服</button>
                     </listItem>
+                    <listItem text="临时支付" iconName="order _time" data-type="pay" bindtap="goOtherPage" isLast/>
                 </view>
                 <view class="btm"/>
             </scroll-view>

@@ -272,6 +272,13 @@
           "query": "",
           "launchMode": "default",
           "scene": null
+        },
+        {
+          "name": "支付",
+          "pathName": "pages/temPay/temPay",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
         }
       ]
     }

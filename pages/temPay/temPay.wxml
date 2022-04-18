@@ -1,0 +1,3 @@
+<view class="con">
+    <view class="primary" bindtap="onTapPay"> 支付</view>
+</view>

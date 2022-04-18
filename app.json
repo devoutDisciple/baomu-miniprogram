@@ -39,7 +39,8 @@
     "pages/message/systemMsg/systemMsg",
     "pages/team/accept/accept",
     "pages/rest/detail/detail",
-    "pages/my/myReply/myReply"
+    "pages/my/myReply/myReply",
+    "pages/temPay/temPay"
   ],
   "window": {
     "backgroundTextStyle": "light",

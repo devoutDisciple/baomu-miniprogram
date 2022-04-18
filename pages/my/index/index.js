@@ -107,7 +107,7 @@ Page({
 		// 照片墙
 		if (type === 'photo') this.jumpPage('/pages/personDetailEdit/personDetailEdit');
 		// 可预约时段
-		if (type === 'time') this.jumpPage('/pages/my/myPublish/myPublish');
+		if (type === 'pay') this.jumpPage('/pages/temPay/temPay');
 		// 作品展示
 		if (type === 'productionShow') {
 			this.jumpPage(`/pages/my/productionShow/productionShow?user_id=${user_id}&type=1`);

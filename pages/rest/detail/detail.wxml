@@ -9,7 +9,7 @@
     </view>
     <view class="chunk">
         <view class="title">{{detail.name}}</view>
-        <view class="address">地址：{{detail.addressName}}</view>
+        <view class="address">地址：{{detail.addressName}} · 档期：{{detail.start_time}} - {{detail.end_time}}</view>
         <view class="intro">工作室简介：{{detail.desc}}</view>
         <view class="desc">
             <view class="desc_money">￥ {{detail.price}}<text class="desc_day"> /天</text></view>

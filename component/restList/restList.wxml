@@ -3,7 +3,7 @@
     <view class="con" bindtap="onSearchDetail">
         <view class="title">{{data.name}}</view>
         <view class="address">地址：{{data.addressName || ""}}</view>
-        <view class="address">简介：{{data.desc || ""}}</view>
+        <view class="address">档期：{{data.start_time}}-{{data.end_time}}</view>
         <view class="desc">
             <view class="desc_money">￥ {{data.price}}<text class="desc_day"> /天</text></view>
             <view class="desc_pingfen">
