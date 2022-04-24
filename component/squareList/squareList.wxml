@@ -14,7 +14,7 @@
         </view>
         <view class="person_icon">
             <renzhengIcon wx:if="{{data.userDetail.is_name === 1}}" idx="1"/>
-            <renzhengIcon wx:if="{{data.userDetail.is_scholl === 1}}" idx="2"/>
+            <renzhengIcon wx:if="{{data.userDetail.is_school === 1}}" idx="2"/>
             <renzhengIcon wx:if="{{data.userDetail.is_award === 1}}" idx="3"/>
             <renzhengIcon wx:if="{{data.userDetail.is_level === 1}}" idx="4"/>
         </view>

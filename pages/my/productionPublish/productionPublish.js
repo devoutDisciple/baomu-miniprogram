@@ -147,8 +147,8 @@ Page({
 		try {
 			const self = this;
 			setTimeout(async () => {
-				const { user_id, type } = this.data;
-				const { instrumentSelectId, tempImgUrlPaths, videoDetail, desc, title } = this.data;
+				const { user_id, type } = self.data;
+				const { instrumentSelectId, tempImgUrlPaths, videoDetail, desc, title } = self.data;
 				if (!desc || !title || !instrumentSelectId) {
 					return wx.showToast({
 						title: '请完善信息',

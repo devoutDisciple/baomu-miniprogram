@@ -16,7 +16,7 @@
             </view>
             <view class="msg_tubiao">
                 <renzhengIcon wx:if="{{detail.userDetail.is_name === 1}}" idx="1"/>
-                <renzhengIcon wx:if="{{detail.userDetail.is_scholl === 1}}" idx="2"/>
+                <renzhengIcon wx:if="{{detail.userDetail.is_school === 1}}" idx="2"/>
                 <renzhengIcon wx:if="{{detail.userDetail.is_award === 1}}" idx="3"/>
                 <renzhengIcon wx:if="{{detail.userDetail.is_level === 1}}" idx="4"/>
             </view>
