@@ -1,6 +1,7 @@
 {
   "component": true,
   "usingComponents": {
+      "my-img": "/component/img/img",
       "simple-video": "/component/simpleVideo/simpleVideo"
   }
 }

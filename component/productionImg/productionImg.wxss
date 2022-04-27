@@ -1,3 +1,4 @@
-.img {
+.img_container {
     height: 100%;
+    width: 200rpx;
 }

@@ -37,7 +37,7 @@
         {
           "name": "个人信息页面",
           "pathName": "pages/personDetail/personDetail",
-          "query": "user_id=8",
+          "query": "user_id=50",
           "launchMode": "default",
           "scene": null
         },

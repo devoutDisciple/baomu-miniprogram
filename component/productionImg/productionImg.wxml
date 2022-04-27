@@ -1,6 +1,8 @@
 <!-- {type: "img", url: "http://localhost:9999/production/FGUQJ6WN5ZHSL8HV-1648132641423.png"} -->
 <block wx:if="{{data.type === 'img'}}">
-    <image bindtap="onPreviewImg" data-src="{{data.url}}" class="img" src="{{data.url}}" mode="heightFix"/>
+    <view class="img_container" bindtap="onPreviewImg" data-src="{{data.url}}">
+        <my-img src="{{data.url}}" />
+    </view>
 </block>
 <block wx:elif="{{data.type === 'video'}}">
     <simple-video videoDetail="{{data}}" videoId="{{data.url}}" showCoverImg/>

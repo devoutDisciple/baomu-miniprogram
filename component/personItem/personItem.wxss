@@ -116,7 +116,7 @@
 }
 
 .product_img {
-    height: 200rpx;
+    height: 140rpx;
     display: flex;
     margin-right: 20rpx;
 }
