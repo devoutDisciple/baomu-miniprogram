@@ -49,7 +49,8 @@
     </view>
     <view class="desc">
         <view class="desc_left">
-            <image class="desc_title" src="/asserts/public/baomu_font.png" />
+            <!-- <image class="desc_title" src="/asserts/public/baomu_font.png" /> -->
+            <view class="desc_title">鲍姆演艺</view>
             <view class="desc_text">为您找到合适的演员</view>
         </view>
         <view class="desc_right">

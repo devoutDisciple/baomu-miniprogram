@@ -88,9 +88,11 @@
 .desc_title {
     width: 180rpx;
     margin-top: 10rpx;
-    height: 45rpx;
     overflow: hidden;
     display: flex;
+    font-weight: 700;
+    color: #fff;
+    font-size: 46rpx;
 }
 
 .desc_text {

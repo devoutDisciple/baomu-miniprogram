@@ -5,7 +5,7 @@
     <image mode="widthFix" class="background_img" src="/asserts/public/home_bg.png"/>
     <view class="con">
         <header text="我的"/>
-        <view class="intro" style="{{' top: ' + statusHeight + '; height: calc(100vh - ' + statusHeight  +')' }}">
+        <scroll-view scroll-y="{{true}}" show-scrollbar="{{false}}" enhanced="{{true}}" class="intro" style="{{' top: ' + statusHeight + '; height: calc(100vh - ' + statusHeight  +')' }}">
             <view class="person" bindtap="onTapUserPhoto">
                 <image class="person_photo" src="{{userDetail.photo}}" />
                 <view class="person_msg">
@@ -40,7 +40,7 @@
             <view class="desc">
                 个人简介: {{userDetail.desc || "暂无简介"}}
             </view>
-            <scroll-view class="detail" scroll-y="{{true}}" show-scrollbar="{{false}}" enhanced="{{true}}">
+            <view class="detail">
                 <view class="opt work_msg">
                     <view class="opt_chunk" data-type="publish" bindtap="goOtherPage">
                         <view class="opt_chunk_icon">
@@ -87,7 +87,7 @@
                     <listItem text="临时支付" iconName="order _time" data-type="pay" bindtap="goOtherPage" isLast/>
                 </view>
                 <view class="btm"/>
-            </scroll-view>
-        </view>
+            </view>
+        </scroll-view>
     </view>
 </view>

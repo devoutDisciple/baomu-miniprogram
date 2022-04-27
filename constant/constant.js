@@ -36,6 +36,7 @@ export const instruments = [
 	{ id: 8, name: '民乐·吹管乐器', url: '/instruments/minyue_chuiguan.jpg' },
 	{ id: 9, name: '民乐·拉弦乐器', url: '/instruments/minyue_laxuanyue.jpg' },
 	{ id: 10, name: '民乐·打击乐器', url: '/instruments/minyue_dajiyue.jpg' },
+	{ id: 10, name: '其他', url: '/instruments/minyue_dajiyue.jpg' },
 ];
 
 // 人声类型
@@ -441,22 +442,24 @@ export const schools = [
 
 // 证书等级
 export const levels = [
-	{ id: 1, name: 'SSS级' },
-	{ id: 2, name: 'S级' },
-	{ id: 3, name: 'A级' },
-	{ id: 4, name: 'B级' },
-	{ id: 5, name: 'C级' },
-	{ id: 6, name: 'D级' },
+	{ id: 1, name: '一级' },
+	{ id: 2, name: '二级' },
+	{ id: 3, name: '三级' },
+	{ id: 4, name: '四级' },
+	{ id: 5, name: '五级' },
+	{ id: 6, name: '六级' },
+	{ id: 7, name: '七级' },
+	{ id: 8, name: '八级' },
+	{ id: 9, name: '九级' },
+	{ id: 10, name: '十级' },
+	{ id: 11, name: '演奏级' },
 ];
 
 // 学习形式
 export const study_type = [
-	{ id: 1, name: '小学' },
-	{ id: 2, name: '初中' },
-	{ id: 3, name: '高中' },
-	{ id: 4, name: '大学' },
-	{ id: 5, name: '硕士' },
-	{ id: 6, name: '博士' },
+	{ id: 1, name: '全日制' },
+	{ id: 2, name: '非全日制' },
+	{ id: 3, name: '成人大学' },
 ];
 
 // 参与报价的状态 1-未参与竞标 2-竞标进行中待商议 3-被拒绝  4-中标

@@ -88,7 +88,7 @@
     display: flex;
     align-items: center;
     font-size: 34rpx;
-    color: #5c5c5c;
+    color: #fff;
 }
 
 .data {
@@ -105,7 +105,7 @@
 
 .data_chunk_txt {
     height: 50rpx;
-    color: #999;
+    color: #fff;
     text-align: center;
 }
 
