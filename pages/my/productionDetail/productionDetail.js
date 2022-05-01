@@ -1,6 +1,7 @@
 import request from '../../../utils/request';
 import { instruments } from '../../../constant/constant';
 import loading from '../../../utils/loading';
+import util from '../../../utils/util';
 
 Page({
 	/**
@@ -48,6 +49,16 @@ Page({
 			const detail = await request.get({ url: '/production/detailById', data: { id } });
 			if (detail && detail.instr_id) {
 				detail.instr_name = instruments.filter((ins) => ins.id === detail.instr_id)[0].name;
+			}
+			if (detail.video) {
+				const { screenWidth } = await util.getVideoSize({
+					height: detail.video.height,
+					width: detail.video.width,
+				});
+				const newWidth = screenWidth - 20;
+				const newHeight = (newWidth / detail.video.width) * detail.video.height;
+				detail.video.videoWidth = newWidth;
+				detail.video.videoHeight = newHeight;
 			}
 			this.setData({ detail });
 			loading.hideLoading();

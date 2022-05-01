@@ -20,6 +20,7 @@ Component({
 
 	observers: {
 		data: async function (data) {
+			console.log(data, 838238);
 			const { height, width } = data.video;
 			const { newHeight, newWidth } = await util.getVideoSize({ height, width });
 			data.video = { ...data.video, videoWidth: newWidth, videoHeight: newHeight };

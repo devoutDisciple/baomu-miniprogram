@@ -25,10 +25,10 @@
                     {{personDetail.username || ""}}
                 </view>
                 <view class="msg_tubiao">
-                    <renzhengIcon wx:if="{{personDetail.is_name === 1}}" idx="1"/>
-                    <renzhengIcon wx:if="{{personDetail.is_school === 1}}" idx="2"/>
-                    <renzhengIcon wx:if="{{personDetail.is_award === 1}}" idx="3"/>
-                    <renzhengIcon wx:if="{{personDetail.is_level === 1}}" idx="4"/>
+                    <renzhengIcon wx:if="{{personDetail.is_name === 1}}" userid="{{personDetail.id}}" idx="1"/>
+                    <renzhengIcon wx:if="{{personDetail.is_school === 1}}" userid="{{personDetail.id}}" idx="2"/>
+                    <renzhengIcon wx:if="{{personDetail.is_award === 1}}" userid="{{personDetail.id}}" idx="3"/>
+                    <renzhengIcon wx:if="{{personDetail.is_level === 1}}" userid="{{personDetail.id}}" idx="4"/>
                 </view>
                 <view class="msg_desc">个人简介：{{personDetail.desc || "暂无"}}</view>
                 <view class="msg_data">
