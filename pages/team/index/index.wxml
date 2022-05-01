@@ -13,30 +13,7 @@
                         <image class="team_icon" src="/asserts/public/left.png" />
                     </view>
                 </view>
-                <scroll-view class="person_product" scroll-x="{{true}}" enhanced="{{true}}" show-scrollbar="{{false}}">
-                    <block wx:if="{{item.productionImgs && item.productionImgs.length !== 0}}">
-                        <view class="person_product_con">
-                            <block wx:for="{{item.productionImgs}}" wx:for-item="production" wx:key="index">
-                                <block wx:if="{{production.type === 'img'}}">
-                                    <view class="product_img">
-                                        <production-img data="{{production}}"/>
-                                    </view>
-                                </block>
-                                <block wx:elif="{{production.type === 'video'}}">
-                                    <view class="product_video">
-                                        <production-img data="{{production}}"/>
-                                    </view>
-                                </block>
-                            </block>
-                        </view>
-                    </block>
-                    <block wx:else>
-                        <view class="production_empty">
-                            <image class="production_empty_img" src="/asserts/public/empty.png" />
-                            <view>暂无作品展示</view>
-                        </view>
-                    </block>
-                </scroll-view>
+                <production-scroll data="{{item.productionImgs}}"/>
                 <view class="time">创建时间 {{item.create_time}}</view>
             </view>
         </block>

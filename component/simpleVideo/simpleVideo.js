@@ -18,33 +18,6 @@ Component({
 		},
 	},
 
-	observers: {
-		videoDetail: function (videoDetail) {
-			console.log(videoDetail, 888);
-			// const self = this;
-			// if (!videoDetail || !videoDetail.url) return;
-			// wx.createSelectorQuery()
-			// 	.in(this)
-			// 	.select(`.video_container`)
-			// 	.boundingClientRect(function (rect) {
-			// 		const { width, height } = videoDetail;
-			// 		const conWidth = rect.width;
-			// 		const conHeight = rect.height;
-			// 		let videoHeight;
-			// 		let videoWidth;
-			// 		if (width > height) {
-			// 			videoHeight = parseInt((Number(height) * conWidth) / Number(width));
-			// 			videoWidth = conWidth;
-			// 		} else {
-			// 			videoWidth = parseInt((Number(width) * conHeight) / Number(height));
-			// 			videoHeight = conHeight;
-			// 		}
-			// 		self.setData({ videoWidth, videoHeight });
-			// 	})
-			// 	.exec();
-		},
-	},
-
 	/**
 	 * 组件的初始数据
 	 */
@@ -53,6 +26,13 @@ Component({
 		hasPlay: false, // 是否已经播放过
 		controllerShow: false, // 控制条显示隐藏
 		videoContext: {}, // 当前视频上下文
+		curVideoDetail: {},
+	},
+
+	observers: {
+		videoDetail: function (detail) {
+			console.log(detail, 72382);
+		},
 	},
 
 	/**
@@ -61,6 +41,7 @@ Component({
 	methods: {
 		// 点击视频，控制视频播放和结束
 		onTapModalImg: function () {
+			console.log(this.data, 12321);
 			const pages = getCurrentPages();
 			const currentPage = pages[pages.length - 1];
 			// 将当前播放的视频上下文保存在当前页面，以确保当前只有一个视频在播放
@@ -93,7 +74,7 @@ Component({
 			const currentPage = pages[pages.length - 1];
 			// 将当前播放的视频上下文保存在当前页面，以确保当前只有一个视频在播放
 			const { videoContext: pageVideoContext } = currentPage.data;
-			if (pageVideoContext) {
+			if (pageVideoContext !== this.videoContext) {
 				pageVideoContext.pause();
 			}
 			this.videoContext.play();

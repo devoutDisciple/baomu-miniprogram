@@ -1,24 +1,20 @@
-.container {
+.img {
     width: 100%;
-    font-size: 34rpx;
+    height: 100%;
+    overflow: hidden;
     display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10rpx;
     position: relative;
 }
 
-.video {
-    width: 100%;
-}
-
 .fix_height {
-    width: 60vw;
+    height: 100%;
 }
 
-.video_cover_con {
-    position: absolute;
-    height: 100%;
+.fix_width {
     width: 100%;
-    top: 0;
-    left: 0;
 }
 
 .video_play_container {
@@ -38,9 +34,4 @@
 .video_play_img {
     height: 60rpx;
     width: 60rpx;
-}
-
-.video_pause_img {
-    height: 40rpx;
-    width: 40rpx;
 }

@@ -1,0 +1,17 @@
+<block wx:if="{{data && data.length !== 0}}">
+    <scroll-view class="person_product" scroll-x="{{true}}" enhanced="{{true}}" show-scrollbar="{{false}}">
+        <view class="person_product_con">
+            <block wx:for="{{data}}" wx:key="index">
+                <view class="product_img">
+                    <production-img data="{{item}}"/>
+                </view>
+            </block>
+        </view>
+    </scroll-view>
+</block>
+<block wx:else>
+    <view class="production_empty">
+        <image class="production_empty_img" src="/asserts/public/empty.png" />
+        <view>暂无作品展示</view>
+    </view>
+</block>

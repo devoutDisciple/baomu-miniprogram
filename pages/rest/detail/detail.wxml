@@ -24,30 +24,7 @@
         <view class="common_title device_title">
             设备展示<renzhengIcon wx:if="{{detail.is_authentication === 1}}" class="device_renzheng" idx="5"/>
         </view>
-        <scroll-view class="person_product" scroll-x="{{true}}" enhanced="{{true}}" show-scrollbar="{{false}}">
-            <block wx:if="{{detail.newImgs && detail.newImgs.length !== 0}}">
-                <view class="person_product_con">
-                    <block wx:for="{{detail.newImgs}}" wx:key="index">
-                        <block wx:if="{{item.type === 'img'}}">
-                            <view class="product_img">
-                                <production-img data="{{item}}"/>
-                            </view>
-                        </block>
-                        <block wx:elif="{{item.type === 'video'}}">
-                            <view class="product_video">
-                                <production-img data="{{item}}"/>
-                            </view>
-                        </block>
-                    </block>
-                </view>
-            </block>
-            <block wx:else>
-                <view class="production_empty">
-                    <image class="production_empty_img" src="/asserts/public/empty.png" />
-                    <view>暂无作品展示</view>
-                </view>
-            </block>
-        </scroll-view>
+        <production-scroll data="{{detail.newImgs}}"/>
     </view>
     <view class="common_chunk">
         <view class="common_title">

@@ -106,7 +106,7 @@
 .person_product {
     padding: 30rpx 0;
     border-bottom: 2rpx solid #ededed;
-
+    height: 148rpx;
 }
 
 .person_product_con {
@@ -122,13 +122,17 @@
 }
 
 .product_video {
-    height: 200rpx;
+    /* height: 200rpx;
     width: 300rpx;
+    margin-right: 20rpx; */
+    height: 140rpx;
+    display: flex;
     margin-right: 20rpx;
 }
 
 .person_address {
-    margin-top: 30rpx;
+    border-top: 2rpx solid #ededed;
+    padding-top: 30rpx;
     display: flex;
     align-items: center;
     color: #888;

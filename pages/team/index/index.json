@@ -1,6 +1,7 @@
 {
     "usingComponents": {
         "production-img": "/component/productionImg/productionImg",
+        "production-scroll": "/component/productionScroll/productionScroll",
         "btm-tip": "/component/btmTip/btmTip",
         "empty-img": "/component/emptyImg/emptyImg",
         "btm-empty": "/component/btmEmpty/btmEmpty"

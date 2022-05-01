@@ -1,24 +1,26 @@
 <view class="list">
-    <block wx:if="{{data.video && data.video.duration && data.video.url}}">
-        <simple-video class="con_con" videoId="{{data.video.url}}" videoDetail="{{data.video}}"/>
+    <block wx:if="{{detail.video && detail.video.duration && detail.video.url}}">
+        <view class="video">
+            <simple-video videoId="{{detail.video.url}}" videoDetail="{{detail.video}}"/>
+        </view>
     </block>
-    <block wx:elif="{{data.showImg}}">
-        <my-img src="{{data.showImg}}"/>
+    <block wx:elif="{{detail.showImg}}">
+        <my-img src="{{detail.showImg}}"/>
     </block>
     <view class="con">
-        <view class="title" bindtap="onSeachDetail">{{data.title}}</view>
+        <view class="title" bindtap="onSeachDetail">{{detail.title}}</view>
         <view class="person" bindtap="onSeachDetail">
-            <image class="person_img" src="{{data.userDetail.photo}}" />
-            <view class="person_name">{{data.userDetail.nickname}}</view>
-            <view class="person_time">{{data.create_time}}</view>
+            <image class="person_img" src="{{detail.userDetail.photo}}" />
+            <view class="person_name">{{detail.userDetail.nickname}}</view>
+            <view class="person_time">{{detail.create_time}}</view>
         </view>
         <view class="person_icon">
-            <renzhengIcon wx:if="{{data.userDetail.is_name === 1}}" idx="1"/>
-            <renzhengIcon wx:if="{{data.userDetail.is_school === 1}}" idx="2"/>
-            <renzhengIcon wx:if="{{data.userDetail.is_award === 1}}" idx="3"/>
-            <renzhengIcon wx:if="{{data.userDetail.is_level === 1}}" idx="4"/>
+            <renzhengIcon wx:if="{{detail.userDetail.is_name === 1}}" idx="1"/>
+            <renzhengIcon wx:if="{{detail.userDetail.is_school === 1}}" idx="2"/>
+            <renzhengIcon wx:if="{{detail.userDetail.is_award === 1}}" idx="3"/>
+            <renzhengIcon wx:if="{{detail.userDetail.is_level === 1}}" idx="4"/>
         </view>
         <!-- <view class="person_tag">同城</view> -->
-        <view class="desc" bindtap="onSeachDetail">{{data.desc}}</view>
+        <view class="desc" bindtap="onSeachDetail">{{detail.desc}}</view>
     </view>
 </view>

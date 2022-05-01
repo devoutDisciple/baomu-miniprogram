@@ -1,0 +1,6 @@
+{
+	"component": true,
+	"usingComponents": {
+		"production-img": "/component/productionImg/productionImg"
+	}
+}

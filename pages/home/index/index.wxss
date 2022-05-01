@@ -86,7 +86,6 @@
 }
 
 .desc_title {
-    width: 180rpx;
     margin-top: 10rpx;
     overflow: hidden;
     display: flex;

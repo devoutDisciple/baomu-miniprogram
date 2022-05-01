@@ -20,9 +20,7 @@
     font-size: 36rpx;
 }
 
-.con_con {
-    width: 100%;
-    min-height: 100rpx;
+.video {
 }
 
 .person {

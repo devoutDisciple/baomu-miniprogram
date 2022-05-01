@@ -1,0 +1,33 @@
+.person_product {
+    padding: 30rpx 0;
+    height: 148rpx;
+}
+
+.person_product_con {
+    height: 140rpx;
+    align-items: center;
+    padding-right: 20rpx;
+    display: inline-flex;
+    scroll-snap-align: none;
+}
+
+.product_img {
+    height: 140rpx;
+    width: 220rpx;
+    margin-right: 20rpx;
+}
+
+.production_empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #6a6a6a;
+    padding: 30rpx;
+}
+
+.production_empty_img {
+    width: 294rpx;
+    height: 243rpx;
+    margin-bottom: 20rpx;
+}

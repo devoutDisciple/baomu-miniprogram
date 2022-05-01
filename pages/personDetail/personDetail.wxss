@@ -201,6 +201,10 @@
     display: flex;
 }
 
+.common_title2 {
+    margin-bottom: 0;
+}
+
 .common_more {
     flex: 1;
     display: flex;

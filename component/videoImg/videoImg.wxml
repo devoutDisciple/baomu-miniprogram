@@ -1,0 +1,11 @@
+<view class="img" bind:tap="onPreviewImg" data-src="{{src}}">
+    <block wx:if="{{width > height}}">
+        <image wx:if="{{src}}" class="fix_height" src="{{src}}" mode="aspectFill"/>
+    </block>
+    <block wx:else>
+        <image wx:if="{{src}}" class="fix_width" src="{{src}}" mode="aspectFill"/>
+    </block>
+    <view class="video_play_container">
+        <image class="video_play_img" src="/asserts/public/play.png" />
+    </view>
+</view>

@@ -12,6 +12,9 @@
 
 .chunk {
     margin-top: 20rpx;
+    border-top-left-radius: 20rpx;
+    overflow: hidden;
+    border-top-right-radius: 20rpx;
 }
 
 .publish_btn {

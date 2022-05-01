@@ -5,5 +5,7 @@
     </view>
 </block>
 <block wx:elif="{{data.type === 'video'}}">
-    <simple-video videoDetail="{{data}}" videoId="{{data.url}}" showCoverImg/>
+    <view class="img_container">
+        <video-img videoDetail="{{data}}" videoId="{{data.url}}"/>
+    </view>
 </block>

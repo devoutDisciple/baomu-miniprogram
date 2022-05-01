@@ -205,10 +205,12 @@ Page({
 	// 获取用户位置
 	getUserLocation: function () {
 		const self = this;
+		console.log(1111);
 		wx.getLocation({
 			isHighAccuracy: true,
 			type: 'gcj02',
 			complete: async function (res) {
+				console.log(res, 23);
 				if (res.errMsg === 'getLocation:ok') {
 					const { latitude, longitude } = res;
 					const user_id = wx.getStorageSync('user_id');
@@ -225,6 +227,9 @@ Page({
 				} else {
 					self.hadGetUserPermission();
 				}
+			},
+			fail: function (e) {
+				console.log(e, 37);
 			},
 		});
 	},

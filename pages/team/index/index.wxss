@@ -65,7 +65,7 @@
 .person_product {
     padding: 30rpx 0;
     border-bottom: 2rpx solid #ededed;
-
+    height: 148rpx;
 }
 
 .person_product_con {
