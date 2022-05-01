@@ -110,9 +110,15 @@ Page({
 				const {
 					tempFilePaths: [tempFilePath],
 				} = res;
-				const params = {};
-				params[type] = tempFilePath;
-				self.setData(params);
+				wx.editImage({
+					src: tempFilePath,
+					success: async function (filePath) {
+						const params = {};
+						params[type] = filePath;
+						self.setData(params);
+					},
+					fail: function () {},
+				});
 			},
 			fail: function () {
 				wx.showToast({

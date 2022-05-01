@@ -79,8 +79,14 @@ Page({
 			success: async (res) => {
 				// tempFilePath可以作为img标签的src属性显示图片
 				const { tempFilePaths } = res;
-				self.setData({ photo: tempFilePaths[0] });
-				await uploadFile({ url: '/user/upload', data: tempFilePaths[0], formData: { user_id, type: 1 } });
+				wx.editImage({
+					src: tempFilePaths[0],
+					success: async function (filePath) {
+						self.setData({ photo: filePath });
+						await uploadFile({ url: '/user/upload', data: filePath, formData: { user_id, type: 1 } });
+					},
+					fail: function () {},
+				});
 			},
 			fail: function () {
 				wx.showToast({
@@ -102,8 +108,18 @@ Page({
 			success: async (res) => {
 				// tempFilePath可以作为img标签的src属性显示图片
 				const { tempFilePaths } = res;
-				self.setData({ bgUrl: tempFilePaths[0] });
-				await uploadFile({ url: '/user/upload', data: tempFilePaths[0], formData: { user_id, type: 2 } });
+				wx.editImage({
+					src: tempFilePaths[0],
+					success: async function (filePath) {
+						self.setData({ bgUrl: filePath });
+						await uploadFile({
+							url: '/user/upload',
+							data: filePath,
+							formData: { user_id, type: 2 },
+						});
+					},
+					fail: function () {},
+				});
 			},
 			fail: function () {
 				wx.showToast({

@@ -102,23 +102,29 @@ Page({
 			success: async (res) => {
 				// tempFilePath可以作为img标签的src属性显示图片
 				const { tempFilePaths } = res;
-				const params = {};
-				// eslint-disable-next-line prefer-destructuring
-				params[key] = tempFilePaths[0];
-				self.setData(params);
-				const result = await uploadFile({
-					url: '/team/upload',
-					data: tempFilePaths[0],
-					formData: { user_id, type: 1 },
-				});
-				const postParams = {};
-				postParams[key] = result.url;
-				await request.post({
-					url: '/team/updateTeamDetail',
-					data: { user_id, team_id, params: postParams },
-				});
-				wx.showToast({
-					title: '修改成功',
+				wx.editImage({
+					src: tempFilePaths[0],
+					success: async function (filePath) {
+						const params = {};
+						// eslint-disable-next-line prefer-destructuring
+						params[key] = filePath;
+						self.setData(params);
+						const result = await uploadFile({
+							url: '/team/upload',
+							data: filePath,
+							formData: { user_id, type: 1 },
+						});
+						const postParams = {};
+						postParams[key] = result.url;
+						await request.post({
+							url: '/team/updateTeamDetail',
+							data: { user_id, team_id, params: postParams },
+						});
+						wx.showToast({
+							title: '修改成功',
+						});
+					},
+					fail: function () {},
 				});
 			},
 			fail: function () {

@@ -114,8 +114,7 @@ Page({
 					self.setData({ videoDetail });
 				}
 			},
-			fail: function (err) {
-				console.log(err, 1111);
+			fail: function () {
 				wx.showToast({
 					title: '请重新选择',
 					icon: 'error',

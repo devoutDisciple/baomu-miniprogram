@@ -50,11 +50,17 @@ Page({
 			success(res) {
 				// tempFilePath可以作为img标签的src属性显示图片
 				const { tempFilePaths } = res;
-				if (Number(type) === 1) {
-					self.setData({ idcard1: tempFilePaths[0] });
-				} else {
-					self.setData({ idcard2: tempFilePaths[0] });
-				}
+				wx.editImage({
+					src: tempFilePaths[0],
+					success: async function (filePath) {
+						if (Number(type) === 1) {
+							self.setData({ idcard1: filePath });
+						} else {
+							self.setData({ idcard2: filePath });
+						}
+					},
+					fail: function () {},
+				});
 			},
 			fail: function () {
 				wx.showToast({
