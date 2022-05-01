@@ -5,7 +5,7 @@
     -->
     <video 
         id="{{videoId}}"
-        class="{{videoDetail.height > videoDetail.width ? 'video fix_height' : 'video fix_width'}}"
+        class="video"
         style="height: {{videoDetail.videoHeight}}px; width: {{videoDetail.videoWidth}}px"
         src="{{videoDetail.url}}"
         controls="{{true}}"

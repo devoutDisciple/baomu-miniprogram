@@ -64,7 +64,7 @@
                         <image class="photo_img" src="/asserts/public/shenfen1.png" />
                     </block>
                 </view>
-                <view class="photo_desc">毕业证照片上传(请务必上传真实信息平台会人工审核)</view>
+                <view class="photo_desc">院校信息或者学信网学籍信息(请务必上传真实信息平台会人工审核)</view>
             </view>
             <view class="chunk chunk2" data-type="1">
                 <view class="chunk_title">获奖认证</view>

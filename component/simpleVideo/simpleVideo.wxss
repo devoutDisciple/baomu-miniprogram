@@ -3,16 +3,11 @@
     font-size: 34rpx;
     display: flex;
     position: relative;
+    border-radius: 20rpx;
+    overflow: hidden;
 }
 
 .video {
-    width: 100%;
-}
-
-.fix_height {
-}
-
-.fix_width {
     width: 100%;
 }
 

@@ -21,6 +21,7 @@ Page({
 		this.getDeviceData();
 		await this.getUserInfo();
 		loading.hideLoading();
+		this.getNoReadNum();
 	},
 
 	// 获取未读消息数量
@@ -52,14 +53,6 @@ Page({
 		wx.navigateTo({
 			url: `/pages/personDetail/personDetail?user_id=${user_id}`,
 		});
-	},
-
-	/**
-	 * 生命周期函数--监听页面初次渲染完成
-	 */
-	onShow: function () {
-		this.getUserInfo();
-		this.getNoReadNum();
 	},
 
 	/**

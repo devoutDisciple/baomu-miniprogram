@@ -26,7 +26,7 @@
                 </block>
                 <block wx:else>
                     <view class="picker_init">
-                        演出时长(小时/天)
+                        实际演奏时长约为(小时/天)
                     </view>
                 </block>
             </picker>

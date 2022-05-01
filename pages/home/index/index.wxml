@@ -54,7 +54,7 @@
             <view class="desc_text">为您找到合适的演员</view>
         </view>
         <view class="desc_right">
-            <view class="desc_right_btn" bindtap="onPublish">发布需求</view>
+            <view class="desc_right_btn" bindtap="onPublish">发布演出</view>
         </view>
     </view>
     <view class="search">

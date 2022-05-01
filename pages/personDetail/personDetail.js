@@ -243,4 +243,12 @@ Page({
 		const result = await request.get({ url: '/demand/invitationTime', data: { user_id } });
 		this.setData({ invitationTime: result || [] });
 	},
+
+	// 点击邀请
+	onTapInvitation: function () {
+		const { user_id } = this.data;
+		wx.navigateTo({
+			url: `/pages/invitation/invitation?person_id=${user_id}`,
+		});
+	},
 });

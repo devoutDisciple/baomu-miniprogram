@@ -129,7 +129,7 @@
             <view class="empty"></view>
         </view>
     </scroll-view>
-    <view class="invitate_btn" wx:if="{{showInvitationBtn}}">邀请</view>
+    <view class="invitate_btn" bindtap="onTapInvitation" wx:if="{{showInvitationBtn}}">邀请</view>
     <block wx:if="{{dialogShow}}">
         <tip-dialog
             bindOnClose="onCloseDialog"

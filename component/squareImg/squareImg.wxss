@@ -6,8 +6,7 @@
     align-items: center;
     justify-content: center;
     background: #333;
-    border-top-left-radius: 20rpx;
-    border-top-right-radius: 20rpx;
+    border-radius: 20rpx;
 }
 
 .fix_height {
