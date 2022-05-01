@@ -10,7 +10,10 @@
 }
 
 .fix_height {
-    width: 60vw;
+}
+
+.fix_width {
+    width: 100%;
 }
 
 .video_cover_con {

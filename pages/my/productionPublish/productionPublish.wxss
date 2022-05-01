@@ -116,7 +116,6 @@
 
 .video {
     position: relative;
-    width: 100%;
     padding-top: 20rpx;
 }
 

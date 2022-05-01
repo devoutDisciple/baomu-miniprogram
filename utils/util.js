@@ -1,5 +1,6 @@
 /* eslint-disable max-len */
 import moment from './moment';
+import deviceUtil from './deviceUtil';
 
 const formatNumber = (n) => {
 	n = n.toString();
@@ -78,6 +79,13 @@ const getRandomStr = () => {
 	return str;
 };
 
+const getVideoSize = async ({ height, width }) => {
+	const { screenWidth } = await deviceUtil.getDeviceInfo();
+	const newHeight = 0.9 * screenWidth;
+	const newWidth = (newHeight / height) * width;
+	return { newHeight, newWidth };
+};
+
 module.exports = {
 	formatTime,
 	getMsgShowTime,
@@ -87,4 +95,5 @@ module.exports = {
 	getStoragePublishMsg,
 	setStoragePublishMsg,
 	getRandomStr,
+	getVideoSize,
 };

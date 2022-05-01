@@ -1,6 +1,7 @@
 import loading from '../../../utils/loading';
 import { instruments } from '../../../constant/constant';
 import request, { uploadFile } from '../../../utils/request';
+import util from '../../../utils/util';
 
 Page({
 	/**
@@ -90,22 +91,29 @@ Page({
 			sizeType: ['original', 'original'],
 			mediaType: ['video'], // 文件类型
 			sourceType: ['album', 'camera'], // 视频来源
-			success(res) {
+			success: async (res) => {
 				// tempFilePath可以作为img标签的src属性显示图片
 				// const { tempFilePaths } = res;
 				loading.hideLoading();
 				if (res && res.errMsg === 'chooseMedia:ok' && Array.isArray(res.tempFiles)) {
 					const tempFile = res.tempFiles[0];
-					self.setData({
-						videoDetail: {
-							url: tempFile.tempFilePath,
+					const videoDetail = {
+						url: tempFile.tempFilePath,
+						height: tempFile.height,
+						width: tempFile.width,
+						duration: tempFile.duration,
+						size: tempFile.size,
+						photo: tempFile.thumbTempFilePath,
+					};
+					if (Number(tempFile.height) > Number(tempFile.width)) {
+						const { newHeight, newWidth } = await util.getVideoSize({
 							height: tempFile.height,
 							width: tempFile.width,
-							duration: tempFile.duration,
-							size: tempFile.size,
-							photo: tempFile.thumbTempFilePath,
-						},
-					});
+						});
+						videoDetail.videoWidth = newWidth;
+						videoDetail.videoHeight = newHeight;
+					}
+					self.setData({ videoDetail });
 				}
 			},
 			fail: function () {

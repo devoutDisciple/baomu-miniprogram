@@ -1,4 +1,4 @@
-import deviceUtil from '../../utils/deviceUtil';
+import util from '../../utils/util';
 
 Component({
 	/**
@@ -15,25 +15,16 @@ Component({
 	 * 组件的初始数据
 	 */
 	data: {
-		screenWidth: 0,
 		detail: {},
 	},
 
 	observers: {
 		data: async function (data) {
-			let { screenWidth } = this.data;
-			if (!screenWidth) {
-				screenWidth = await this.getScreenWidth();
-			}
-			console.log(screenWidth, 1111);
 			const { height, width } = data.video;
 			if (Number(height) > Number(width)) {
-				let newWidth = screenWidth;
-				newWidth = Number((screenWidth * 3) / 5).toFixed(0);
-				data.video.videoWidth = newWidth;
-				data.video.videoHeight = newWidth * 1.3 < height ? newWidth * 1.3 : height;
+				const { newHeight, newWidth } = await util.getVideoSize({ height, width });
+				data.video = { ...data.video, videoWidth: newWidth, videoHeight: newHeight };
 			}
-			console.log(data, 2222);
 			this.setData({ detail: data });
 		},
 	},
@@ -42,11 +33,6 @@ Component({
 	 * 组件的方法列表
 	 */
 	methods: {
-		getScreenWidth: async function () {
-			const { screenWidth } = await deviceUtil.getDeviceInfo();
-			this.setData({ screenWidth: screenWidth });
-			return screenWidth || 390;
-		},
 		onSeachDetail: function () {
 			const { id } = this.data.data;
 			wx.navigateTo({

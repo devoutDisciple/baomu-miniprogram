@@ -41,7 +41,6 @@ Component({
 	methods: {
 		// 点击视频，控制视频播放和结束
 		onTapModalImg: function () {
-			console.log(this.data, 12321);
 			const pages = getCurrentPages();
 			const currentPage = pages[pages.length - 1];
 			// 将当前播放的视频上下文保存在当前页面，以确保当前只有一个视频在播放
