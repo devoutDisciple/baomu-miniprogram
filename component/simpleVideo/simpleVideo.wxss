@@ -11,6 +11,13 @@
     width: 100%;
 }
 
+.fix_height {
+}
+
+.fix_width {
+    width: 100%;
+}
+
 .video_cover_con {
     position: absolute;
     height: 100%;

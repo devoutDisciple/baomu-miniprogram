@@ -438,6 +438,10 @@ export const schools = [
 		id: 97,
 		name: '新疆艺术馆',
 	},
+	{
+		id: 98,
+		name: '英国皇家音乐学院',
+	},
 ];
 
 // 证书等级

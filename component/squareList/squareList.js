@@ -21,10 +21,8 @@ Component({
 	observers: {
 		data: async function (data) {
 			const { height, width } = data.video;
-			if (Number(height) > Number(width)) {
-				const { newHeight, newWidth } = await util.getVideoSize({ height, width });
-				data.video = { ...data.video, videoWidth: newWidth, videoHeight: newHeight };
-			}
+			const { newHeight, newWidth } = await util.getVideoSize({ height, width });
+			data.video = { ...data.video, videoWidth: newWidth, videoHeight: newHeight };
 			this.setData({ detail: data });
 		},
 	},

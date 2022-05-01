@@ -105,18 +105,17 @@ Page({
 						size: tempFile.size,
 						photo: tempFile.thumbTempFilePath,
 					};
-					if (Number(tempFile.height) > Number(tempFile.width)) {
-						const { newHeight, newWidth } = await util.getVideoSize({
-							height: tempFile.height,
-							width: tempFile.width,
-						});
-						videoDetail.videoWidth = newWidth;
-						videoDetail.videoHeight = newHeight;
-					}
+					const { newHeight, newWidth } = await util.getVideoSize({
+						height: tempFile.height,
+						width: tempFile.width,
+					});
+					videoDetail.videoWidth = newWidth;
+					videoDetail.videoHeight = newHeight;
 					self.setData({ videoDetail });
 				}
 			},
-			fail: function () {
+			fail: function (err) {
+				console.log(err, 1111);
 				wx.showToast({
 					title: '请重新选择',
 					icon: 'error',

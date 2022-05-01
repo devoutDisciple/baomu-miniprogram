@@ -61,6 +61,14 @@ Page({
 
 	// 点击竞价
 	onTapPrice: function () {
+		const cur_user_id = wx.getStorageSync('user_id');
+		const { user_id } = this.data.detail;
+		if (Number(cur_user_id) === Number(user_id)) {
+			return wx.showToast({
+				title: '己方不可参与',
+				icon: 'error',
+			});
+		}
 		this.setData({ priceDialogVisible: true });
 	},
 
@@ -116,14 +124,21 @@ Page({
 
 	// 不可议价，直接报名，点击报名
 	onTapSign: async function () {
-		const user_id = wx.getStorageSync('user_id');
+		const cur_user_id = wx.getStorageSync('user_id');
+		const { user_id } = this.data.detail;
+		if (Number(cur_user_id) === Number(user_id)) {
+			return wx.showToast({
+				title: '己方不可参与',
+				icon: 'error',
+			});
+		}
 		const { id } = this.data;
 		const result = await request.post({
 			url: '/demand/signDemand',
 			// type: 1-演员报价 2-需求方报价
 			// state 1-未参与竞标 2-竞标进行中待商议 3-被拒绝  4-中标
 			// operation: 第几次谈价
-			data: { user_id, id: id },
+			data: { user_id: cur_user_id, id: id },
 		});
 		if (result === 'success') {
 			return wx.showToast({

@@ -30,9 +30,7 @@ Component({
 	},
 
 	observers: {
-		videoDetail: function (detail) {
-			console.log(detail, 72382);
-		},
+		videoDetail: function () {},
 	},
 
 	/**

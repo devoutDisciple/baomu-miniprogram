@@ -81,9 +81,16 @@ const getRandomStr = () => {
 
 const getVideoSize = async ({ height, width }) => {
 	const { screenWidth } = await deviceUtil.getDeviceInfo();
-	const newHeight = 0.9 * screenWidth;
-	const newWidth = (newHeight / height) * width;
-	return { newHeight, newWidth };
+	let newHeight = 0;
+	let newWidth = 0;
+	if (Number(height) > Number(width)) {
+		newHeight = 0.9 * screenWidth;
+		newWidth = (newHeight / height) * width;
+	} else {
+		newWidth = screenWidth - 20;
+		newHeight = (newWidth / width) * height;
+	}
+	return { newHeight, newWidth, screenWidth };
 };
 
 module.exports = {

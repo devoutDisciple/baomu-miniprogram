@@ -251,4 +251,10 @@ Page({
 			url: `/pages/invitation/invitation?person_id=${user_id}`,
 		});
 	},
+
+	// 预览头像
+	onPreviewPhoto: function () {
+		const { personDetail } = this.data;
+		wx.previewImage({ urls: [personDetail.photo] });
+	},
 });

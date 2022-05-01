@@ -15,7 +15,7 @@
         <view class="con">
             <view class="msg">
                 <view class="msg_title">
-                    <image class="msg_photo" src="{{personDetail.photo}}" />
+                    <image class="msg_photo" bindtap="onPreviewPhoto" src="{{personDetail.photo}}" />
                     <view class="msg_name">{{personDetail.nickname || ""}}</view>
                     <block wx:if="{{own_id !== user_id}}">
                         <image bindtap = "onTapMsg" class="msg_icon" src="/asserts/public/message.png" />
