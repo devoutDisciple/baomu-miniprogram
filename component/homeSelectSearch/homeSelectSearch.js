@@ -129,5 +129,20 @@ Component({
 				);
 			}
 		},
+
+		// 点击取消筛选
+		onCancleTap: function () {
+			this.setData(
+				{
+					team_type_select_id: '', // 选择的乐团类型的id
+					team_type_select_name: '', // 选择的乐团类型的name
+					person_style_selecg_id: '', // 选择的擅长风格的id
+					person_style_selecg_name: '', // 选择的擅长风格的name
+					plays_style_select_id: '', // 选择的演奏方式的id
+					plays_style_select_name: '', // 选择的演奏方式的name
+				},
+				this.triggerCallback,
+			);
+		},
 	},
 });

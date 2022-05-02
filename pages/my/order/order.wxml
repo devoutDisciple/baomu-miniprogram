@@ -1,15 +1,15 @@
 <scroll-view class="wrap" scroll-y="{{true}}" show-scrollbar="{{false}}" enhanced="{{true}}">
      <view class="tab">
         <view class="tab_work">
-            <view class="tab_text {{selectTabIdx === 1 && 'tab_text_select'}}" data-idx="1" bindtap = "onSelectTab">
+            <view class="tab_text {{selectTabIdx == 1 && 'tab_text_select'}}" data-idx="1" bindtap = "onSelectTab">
                 我发布的需求
-                <block wx:if="{{selectTabIdx === 1}}"><view class="tab_border" /></block>
+                <block wx:if="{{selectTabIdx == 1}}"><view class="tab_border" /></block>
             </view>
         </view>
         <view class="tab_work">
-            <view class="tab_text {{selectTabIdx === 2 && 'tab_text_select'}}" data-idx="2" bindtap = "onSelectTab">
+            <view class="tab_text {{selectTabIdx == 2 && 'tab_text_select'}}" data-idx="2" bindtap = "onSelectTab">
                 我参与的需求
-                <block wx:if="{{selectTabIdx === 2}}"><view class="tab_border" /></block>
+                <block wx:if="{{selectTabIdx == 2}}"><view class="tab_border" /></block>
             </view>
         </view>
     </view>

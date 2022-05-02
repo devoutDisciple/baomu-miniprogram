@@ -8,7 +8,7 @@ Page({
 	data: {
 		isYesList: ['是', '否'],
 		selectSend: '', // 是否接送
-		selectFoods: '', // 是否包食宿
+		selectFoods: '', // 是否包住宿
 		desc: '',
 		price: '',
 	},
@@ -38,7 +38,7 @@ Page({
 		setStoragePublishMsg('publish3', { send: selectSend });
 	},
 
-	// 选择是否包食宿
+	// 选择是否包住宿
 	onPickFoods: function (e) {
 		const { value } = e.detail;
 		const selectFoods = this.data.isYesList[value];

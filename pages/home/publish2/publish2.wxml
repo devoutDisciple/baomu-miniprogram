@@ -10,7 +10,7 @@
                 </block>
                 <block wx:else>
                     <view class="picker_init">
-                        演出日期
+                        演出日期(包含去程回程)
                     </view>
                 </block>
             </view>

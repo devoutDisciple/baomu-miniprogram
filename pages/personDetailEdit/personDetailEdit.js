@@ -150,7 +150,6 @@ Page({
 					title: '修改成功',
 					icon: 'success',
 				});
-				this.getUserInfo();
 			}
 		}, 100);
 	},

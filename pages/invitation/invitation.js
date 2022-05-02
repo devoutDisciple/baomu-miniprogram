@@ -34,7 +34,7 @@ Page({
 		isYesList: ['是', '否'],
 		selectBargain: '', // 是否议价
 		selectSend: '', // 是否接送
-		selectFoods: '', // 是否包食宿
+		selectFoods: '', // 是否包住宿
 		desc: '', // 演出描述
 		price: '', // 价格
 	},
@@ -194,7 +194,7 @@ Page({
 		this.setData({ selectSend });
 	},
 
-	// 选择是否包食宿
+	// 选择是否包住宿
 	onPickFoods: function (e) {
 		const { value } = e.detail;
 		const selectFoods = this.data.isYesList[value];

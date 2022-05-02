@@ -25,6 +25,11 @@
     position: relative;
 }
 
+.type_cancle {
+    background: #333;
+    color: #fff;
+}
+
 .type_item_picker {
     position: absolute;
     width: 100%;

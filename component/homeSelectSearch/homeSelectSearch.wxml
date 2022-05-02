@@ -3,6 +3,9 @@
         <view class="type_item" bindtap="goToSearchPage">
             <image class="type_img" src="/asserts/public/home_sort.png" />
         </view>
+        <view class="type_item type_cancle" bindtap="onCancleTap" wx:if="{{team_type_select_id || person_style_selecg_id || plays_style_select_id}}">
+            取消筛选
+        </view>
         <view class="type_item">
             {{address_select || "城市"}}
             <image class="type_item_icon" src="/asserts/public/arrow_bottom.png" />
