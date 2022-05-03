@@ -22,7 +22,7 @@ Page({
 			longitude: '',
 		}, // 演出地点
 		isYesList: ['是', '否'],
-		is_authentication: '', // 专业设备认证
+		authentication: '', // 专业设备认证
 		desc: '', // 演出描述
 		price: '', // 价格
 		tempImgUrlPaths: [], // 设备图
@@ -101,16 +101,12 @@ Page({
 
 	// 当输入框失焦
 	onIptBlur: function (e) {
+		const { key } = e.currentTarget.dataset;
 		let { value } = e.detail;
 		value = String(value).trim();
-		this.setData({ title: value });
-	},
-
-	// 简介输入框失焦
-	onBlurDesc: function (e) {
-		let { value } = e.detail;
-		value = String(value).trim();
-		this.setData({ desc: value });
+		const params = {};
+		params[key] = value;
+		this.setData(params);
 	},
 
 	// 费用输入框失焦
@@ -124,13 +120,6 @@ Page({
 			});
 		}
 		this.setData({ price: value });
-	},
-
-	// 选择专业设备认证
-	onSelectApprove: function (e) {
-		const { isYesList } = this.data;
-		const { value } = e.detail;
-		this.setData({ is_authentication: isYesList[value] });
 	},
 
 	// 选择设备图
@@ -174,7 +163,7 @@ Page({
 	onTapSure: async function () {
 		const self = this;
 		setTimeout(async () => {
-			const { title, startTime, endTime, selectAddress, is_authentication, desc, price, tempImgUrlPaths } =
+			const { title, startTime, endTime, selectAddress, authentication, desc, price, tempImgUrlPaths } =
 				self.data;
 			const user_id = wx.getStorageSync('user_id');
 			if (!user_id) {
@@ -192,7 +181,7 @@ Page({
 				!title ||
 				!startTime ||
 				!endTime ||
-				!is_authentication ||
+				!authentication ||
 				!price ||
 				!desc ||
 				!selectAddress.address ||
@@ -228,7 +217,7 @@ Page({
 				longitude: selectAddress.longitude,
 				desc: desc,
 				price: price,
-				is_authentication: is_authentication === '是' ? 1 : 2,
+				authentication: authentication,
 			};
 			const res = await request.post({ url: '/device/add', data: params });
 			if (res === 'success') {

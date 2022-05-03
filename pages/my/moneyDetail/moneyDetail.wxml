@@ -1,0 +1,30 @@
+<scroll-view
+    class="wrap"
+    scroll-y="{{true}}"
+    enhanced="{{true}}"
+    enable-flex="{{true}}"
+    refresher-background="#fff"
+    refresher-triggered="{{refresherTriggered}}"
+    refresher-enabled="{{true}}"
+    bindrefresherrefresh="onRefresh"
+    show-scrollbar="{{false}}">
+        <block wx:if="{{payList && payList.length !== 0}}">
+            <block wx:for="{{payList}}" wx:key="id">
+                <view class="chunk">
+                    <view class="desc">
+                        <!-- <view class="desc_left">单号：{{item.out_trade_no}}</view> -->
+                        <view class="desc_right">{{item.typeName}}</view>
+                    </view>
+                    <view class="desc2">
+                        <view class="desc_left">时间：{{item.create_time}}</view>
+                        <view class="desc_right">{{item.money}} 元</view>
+                    </view>
+                </view>
+            </block>
+            <btm-tip />
+        </block>
+        <block wx:else>
+            <view class="empty"></view>
+            <empty-img />
+        </block>
+</scroll-view>

@@ -514,3 +514,10 @@ export const TEAM_USER_SKILL = [
 	{ id: 5, name: '主唱' },
 	{ id: 6, name: '手风琴手' },
 ];
+
+// 支付类型
+export const PAY_TYPE = [
+	{ id: 1, name: '支出' },
+	{ id: 2, name: '收入' },
+	{ id: 3, name: '退款' },
+];

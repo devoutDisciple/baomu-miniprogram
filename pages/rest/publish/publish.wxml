@@ -12,7 +12,7 @@
                 </view>
             </view>
             <view class="chunk">
-                <input value="{{title}}" bindblur="onIptBlur" placeholder="工作室名称" />
+                <input value="{{title}}" bindblur="onIptBlur" data-key="title" placeholder="工作室名称" />
             </view>
             <view class="chunk">
                 <select-item>
@@ -50,23 +50,10 @@
                 <input placeholder="价格(每天)" value="{{price}}" type="number" bindblur="onBlurPrice"/>
             </view>
             <view class="chunk">
-                <textarea cursor-spacing="{{40}}" value="{{desc}}" placeholder="简介" maxlength="{{200}}" bindblur="onBlurDesc"/>
+                <textarea cursor-spacing="{{40}}" value="{{desc}}" placeholder="简介" maxlength="{{200}}" data-key="desc" bindblur="onIptBlur"/>
             </view>
             <view class="chunk">
-                <select-item>
-                    <picker class="picker" bindchange="onSelectApprove" range="{{isYesList}}">
-                        <block wx:if="{{is_authentication}}">
-                            <view class="picker_value">
-                                {{is_authentication}}
-                            </view>
-                        </block>
-                        <block wx:else>
-                            <view class="picker_init">
-                                专业设备认证
-                            </view>
-                        </block>
-                    </picker>
-                </select-item>
+                <input placeholder="专业设备认证(15字以内)" maxlength="{{16}}" value="{{authentication}}"  data-key="authentication" bindblur="onIptBlur" />
             </view>
             <view class="chunk chunk2" data-type="1">
                 <view class="chunk_title">设备展示图</view>

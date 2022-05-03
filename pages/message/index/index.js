@@ -1,6 +1,4 @@
-// eslint-disable-next-line import/named
-import util, { formatTime } from '../../../utils/util';
-import moment from '../../../utils/moment';
+import util from '../../../utils/util';
 
 Page({
 	/**

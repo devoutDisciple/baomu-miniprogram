@@ -77,6 +77,7 @@
                 </view>
                 <view class="opt">
                     <listItem text="消息中心" iconName="msg_center" data-type="message" bindtap="goOtherPage" msgNum="{{msgsNum}}" isFirst/>
+                    <listItem text="收支记录" iconName="my_money" data-type="money" bindtap="goOtherPage"/>
                     <listItem text="我的技能" iconName="my_skill" data-type="skill" bindtap="goOtherPage"/>
                     <listItem text="个人信息修改" iconName="photo_wall" data-type="photo" bindtap="goOtherPage"/>
                     <listItem text="工作地点" iconName="work_location" data-type="address" bindtap="goOtherPage"/>

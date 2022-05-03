@@ -1,0 +1,8 @@
+{
+	"usingComponents": {
+		"btm-empty": "/component/btmEmpty/btmEmpty",
+		"empty-img": "/component/emptyImg/emptyImg",
+		"btm-tip": "/component/btmTip/btmTip"
+	},
+	"navigationBarTitleText": "账单详情"
+}

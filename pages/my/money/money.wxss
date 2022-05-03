@@ -1,0 +1,76 @@
+.money {
+    font-size: 34rpx;
+    overflow: hidden;
+    height: 100vh;
+    width: 100vw;
+}
+
+.money ::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+    color: transparent;
+}
+
+.money_img {
+    width: 100%;
+}
+
+.money_title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28rpx;
+    color: #333;
+    margin-top: 50rpx;
+}
+
+.money_num {
+    margin-top: 20rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 28rpx;
+}
+
+.money_num_txt {
+    font-size: 46rpx;
+    font-weight: 800;
+    margin-left: 5rpx;
+}
+
+.btn {
+    margin-top: 40rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn_txt {
+    padding: 20rpx 120rpx;
+    background: #333;
+    color: #fff;
+    border-radius: 10rpx;
+}
+
+.desc {
+    padding: 40rpx;
+    font-size: 26rpx;
+    color: #9a9a9a;
+}
+
+.msg_con {
+    position: fixed;
+    width: 100%;
+    height: 100rpx;
+    left: 0;
+    bottom: 50rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 26rpx;
+    color: #B5B58D;
+}
+
+.empty {
+    margin-top: 100rpx;
+}

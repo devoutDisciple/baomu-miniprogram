@@ -281,6 +281,20 @@
           "query": "",
           "launchMode": "default",
           "scene": null
+        },
+        {
+          "name": "收支记录",
+          "pathName": "pages/my/money/money",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "收入详细记录",
+          "pathName": "pages/my/moneyDetail/moneyDetail",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
         }
       ]
     }
