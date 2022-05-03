@@ -18,9 +18,8 @@ Page({
 			src: '/asserts/public/publish.png',
 			desc: '',
 		},
-		// addList: [{ id: 'id', selectSkillId: '', selectSkillName: '', selectGradeId: '', selectGradeName: '' }], // 添加技能的id的list
+		// addList: [{ id: 'id',  selectSkillName: '', selectGradeId: '', selectGradeName: '' }], // 添加技能的id的list
 		addList: [], // 添加技能的id的list
-		skillListForSelect: [], // 技能的名称
 		gradeList: [1, 2, 3, 4, 5], // 自评分
 	},
 
@@ -28,8 +27,6 @@ Page({
 	 * 生命周期函数--监听页面加载
 	 */
 	onLoad: async function () {
-		// 获取下拉框的技能选项
-		this.getSkillListForSelect();
 		// 获取技能列表
 		await this.getSkillList();
 	},
@@ -41,19 +38,11 @@ Page({
 		loading.showLoading();
 		const lists = await request.get({ url: '/skill/all', data: { user_id } });
 		lists.forEach((item) => {
-			item.skillName = skills.filter((skill) => skill.id === item.skill_id)[0].name;
 			item.grade = Number(item.grade).toFixed(1);
 			item.percent = Number((Number(item.grade) / 5) * 100).toFixed(0);
 		});
 		this.setData({ skillList: lists });
 		loading.hideLoading();
-	},
-
-	// 获取技能名称
-	getSkillListForSelect: function () {
-		const skillListForSelect = [];
-		skills.forEach((item) => skillListForSelect.push(item.name));
-		this.setData({ skillListForSelect });
 	},
 
 	// 提交审核
@@ -69,10 +58,10 @@ Page({
 		let flag = true;
 		const params = [];
 		addList.forEach((item) => {
-			if (!item.selectSkillId || !item.selectGradeId) flag = false;
+			if (!item.selectSkillName || !item.selectGradeId) flag = false;
 			params.push({
 				user_id,
-				skill_id: item.selectSkillId,
+				skill_name: item.selectSkillName,
 				grade: item.selectGradeId,
 			});
 		});
@@ -99,7 +88,7 @@ Page({
 	onAddSkill: function () {
 		const { addList } = this.data;
 		const randomStr = util.getRandomStr();
-		addList.push({ id: randomStr, selectSkillId: '', selectSkillName: '', selectGradeId: '', selectGradeName: '' });
+		addList.push({ id: randomStr, selectSkillName: '', selectGradeId: '', selectGradeName: '' });
 		this.setData({ addList: addList });
 	},
 
@@ -108,8 +97,9 @@ Page({
 		const { idx } = e.currentTarget.dataset;
 		const user_id = wx.getStorageSync('user_id');
 		const { skillList } = this.data;
+		console.log(skillList, 2222);
 		const currentItem = skillList[idx];
-		const result = await request.post({ url: '/skill/delete', data: { skill_id: currentItem.skill_id, user_id } });
+		const result = await request.post({ url: '/skill/delete', data: { skill_id: currentItem.id, user_id } });
 		if (result === 'success') {
 			wx.showToast({
 				title: '已删除',
@@ -131,12 +121,12 @@ Page({
 		this.setData({ addList: addList });
 	},
 
-	// 选择技能
-	onPickSkill: function (e) {
+	// 输入技能
+	onInputSkill: function (e) {
 		const { value } = e.detail;
 		const { idx } = e.currentTarget.dataset;
 		const { addList } = this.data;
-		addList[idx] = { ...addList[idx], selectSkillName: skills[value].name, selectSkillId: skills[value].id };
+		addList[idx] = { ...addList[idx], selectSkillName: value };
 		this.setData({ addList });
 	},
 
@@ -148,39 +138,4 @@ Page({
 		addList[idx] = { ...addList[idx], selectGradeName: Number(value) + 1, selectGradeId: Number(value) + 1 };
 		this.setData({ addList });
 	},
-
-	/**
-	 * 生命周期函数--监听页面初次渲染完成
-	 */
-	onReady: function () {},
-
-	/**
-	 * 生命周期函数--监听页面显示
-	 */
-	onShow: function () {},
-
-	/**
-	 * 生命周期函数--监听页面隐藏
-	 */
-	onHide: function () {},
-
-	/**
-	 * 生命周期函数--监听页面卸载
-	 */
-	onUnload: function () {},
-
-	/**
-	 * 页面相关事件处理函数--监听用户下拉动作
-	 */
-	onPullDownRefresh: function () {},
-
-	/**
-	 * 页面上拉触底事件的处理函数
-	 */
-	onReachBottom: function () {},
-
-	/**
-	 * 用户点击右上角分享
-	 */
-	onShareAppMessage: function () {},
 });
