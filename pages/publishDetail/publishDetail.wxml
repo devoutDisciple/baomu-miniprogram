@@ -64,7 +64,7 @@
         showCancelButton="{{false}}"
         >
         <view class="ipt_con">
-            <input class="ipt" bindblur="onBlurIpt" type="number" placeholder="请输入您的报价" />
+            <input class="ipt" bindblur="onBlurIpt" type="number" placeholder="{{placeholder}}" />
             <view class="footer">
                 <view class="footer_btn footer_left" bindtap="onClose">取消</view>
                 <view class="footer_btn footer_right" bindtap="onConfirmPrice">确定</view>

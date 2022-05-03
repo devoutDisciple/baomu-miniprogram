@@ -16,6 +16,8 @@ Page({
 		priceDialogVisible: false, // 报价弹框
 		price: 0, // 报价
 		tipDialog: false, // 提示弹框
+		placeholder: '请输入您的报价',
+		referenceMoney: 0, // 参考费用
 	},
 
 	/**
@@ -36,6 +38,7 @@ Page({
 			await login.getLogin();
 		}
 		let detail = await request.get({ url: '/demand/detailById', data: { id, user_id } });
+		console.log(detail, 232);
 		// 获取演奏类型
 		const { name: playName } = PLAYS_STYLE.filter((p) => p.id === Number(detail.play_id))[0];
 		let instrItem = {};
@@ -55,7 +58,9 @@ Page({
 		detail.food = detail.is_food === 2 ? '不包食宿' : '包食宿';
 		detail.send = detail.is_send === 2 ? '不包接送' : '包接送';
 		// 个人竞标状态：detail.detailState: 1-未参与竞标 2-竞标进行中待商议 3-报名中 4-被拒绝  5-中标
-		this.setData({ detail: detail });
+		this.setData({ detail: detail }, () => {
+			this.countPrice();
+		});
 		loading.hideLoading();
 	},
 
@@ -91,11 +96,19 @@ Page({
 	// 确认报价
 	onConfirmPrice: function () {
 		setTimeout(async () => {
-			let { price } = this.data;
+			// eslint-disable-next-line prefer-const
+			let { price, referenceMoney } = this.data;
 			price = String(price).trim();
 			if (!(Number(price) > 0)) {
 				return wx.showToast({
 					title: '报价输入有误',
+					icon: 'error',
+				});
+			}
+			if (Number(price) < Number(referenceMoney)) {
+				this.setData({ price: '' });
+				return wx.showToast({
+					title: '输入费用过低',
 					icon: 'error',
 				});
 			}
@@ -146,5 +159,47 @@ Page({
 				icon: 'success',
 			});
 		}
+	},
+
+	// 计算费用
+	countPrice: function () {
+		let price = 400;
+		const { start_time: startTime, end_time: endTime, hours, is_send, is_food } = this.data.detail;
+		if (startTime && endTime) {
+			const days = moment(endTime).diff(moment(startTime), 'days') + 1;
+			// (（结束日期 — 开始日期）—1)  * 300
+			price += Number(days - 1) * 300;
+		}
+		// 住宿否   +天数*200
+		if (startTime && endTime && Number(is_food) === 2) {
+			const days = moment(endTime).diff(moment(startTime), 'days') + 1;
+			price += days * 200;
+		}
+		// 当演奏时长>3               + 100
+		if (hours && Number(hours) >= 3) {
+			price += 100;
+		}
+		// 接送否                     +100
+		if (Number(is_send) === 2) {
+			price += 100;
+		}
+		if (startTime && endTime) {
+			// 七天95折  14天9折  21天8.5折
+			const days = moment(endTime).diff(moment(startTime), 'days') + 1;
+			switch (days) {
+				case Number(days) >= 21:
+					price = (Number(price) * 0.85).toFixed(0);
+					break;
+				case Number(days) >= 14:
+					price = (Number(price) * 0.9).toFixed(0);
+					break;
+				case Number(days) >= 7:
+					price = (Number(price) * 0.95).toFixed(0);
+					break;
+				default:
+					break;
+			}
+		}
+		this.setData({ placeholder: `请输入您的报价(不可低于${price}元)`, referenceMoney: price });
 	},
 });
