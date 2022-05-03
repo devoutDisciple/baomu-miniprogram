@@ -295,6 +295,13 @@
           "query": "",
           "launchMode": "default",
           "scene": null
+        },
+        {
+          "name": "个人档期详情页面",
+          "pathName": "pages/my/personCalendar/personCalendar",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
         }
       ]
     }

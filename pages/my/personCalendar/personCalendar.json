@@ -1,0 +1,8 @@
+{
+	"usingComponents": {
+		"calendar-component": "/component/calendar/calendar",
+        "beard-list": "/component/beardList/beardList"
+	},
+	"enablePullDownRefresh": true,
+    "navigationBarTitleText": "档期"
+}

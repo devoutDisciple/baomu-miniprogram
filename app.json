@@ -42,7 +42,8 @@
     "pages/my/myReply/myReply",
     "pages/temPay/temPay",
     "pages/my/money/money",
-    "pages/my/moneyDetail/moneyDetail"
+    "pages/my/moneyDetail/moneyDetail",
+    "pages/my/personCalendar/personCalendar"
   ],
   "window": {
     "backgroundTextStyle": "light",

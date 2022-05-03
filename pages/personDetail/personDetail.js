@@ -258,11 +258,20 @@ Page({
 
 	// 点击背景图片
 	onTapBgImg: function () {
-		console.log(1111);
 		const { own_id, user_id } = this.data;
 		if (Number(own_id) === Number(user_id)) {
 			wx.navigateTo({
 				url: '/pages/personDetailEdit/personDetailEdit',
+			});
+		}
+	},
+
+	// 查询已被邀请时段
+	onSearchInvitationTime: function () {
+		const { user_id } = this.data;
+		if (user_id) {
+			wx.navigateTo({
+				url: `/pages/my/personCalendar/personCalendar?user_id=${user_id}`,
 			});
 		}
 	},

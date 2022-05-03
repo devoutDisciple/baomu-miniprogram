@@ -56,7 +56,7 @@
                         {{personDetail.province}}  {{personDetail.city}}
                     </view>
                 </view>
-                <view class="address_chunk">
+                <view class="address_chunk" bindtap="onSearchInvitationTime">
                     <view class="address_chunk_icon">
                         <image class="address_chunk_icon_img" src="/asserts/public/yaoqing_time.png" />
                         已被邀请时段
