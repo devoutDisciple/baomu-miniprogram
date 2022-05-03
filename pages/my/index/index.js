@@ -10,7 +10,7 @@ Page({
 		statusHeight: '80px', // 总高度
 		statusBarHeight: '40px', // 上方状态栏高度
 		showLoading: false, // 加载图标
-		msgNum: 0, // 未读消息数量
+		msgsNum: 0, // 未读消息数量
 	},
 
 	/**
@@ -21,20 +21,22 @@ Page({
 		this.getDeviceData();
 		await this.getUserInfo();
 		loading.hideLoading();
+	},
+
+	onShow: function () {
 		this.getNoReadNum();
 	},
 
 	// 获取未读消息数量
 	getNoReadNum: function () {
-		const num = getApp().globalData.msgsNum;
-		this.setData({ msgNum: num });
-		if (num) {
-			wx.setTabBarBadge({
+		const { msgsNum, demandsNum } = getApp().globalData;
+		this.setData({ msgsNum: msgsNum, demandsNum });
+		if (msgsNum || demandsNum) {
+			wx.showTabBarRedDot({
 				index: 4,
-				text: String(num),
 			});
 		} else {
-			wx.removeTabBarBadge({
+			wx.hideTabBarRedDot({
 				index: 4,
 			});
 		}

@@ -5,7 +5,7 @@
     <view class="list_con" style="{{ !isLast &&  'padding-bottom: 30rpx; border-bottom: 2rpx solid #EDEDED;' }}">
         <view class="list_con_text">{{text}}</view>
         <view class="list_con_icon">
-            <view wx:if="{{msgNum}}" class="list_num">{{msgNum}}</view>
+            <view wx:if="{{msgNum}}" class="list_num" />
             <image class="left_icon" src="/asserts/public/left.png" />
         </view>
     </view>

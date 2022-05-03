@@ -41,12 +41,8 @@
 
 .list_num {
     background: red;
-    width: 50rpx;
-    height: 50rpx;
-    border-radius: 40rpx;
-    color: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    width: 20rpx;
+    height: 20rpx;
+    border-radius: 100%;
     margin-right: 10rpx;
 }

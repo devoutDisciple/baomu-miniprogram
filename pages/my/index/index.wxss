@@ -165,6 +165,20 @@
     justify-content: center;
 }
 
+.opt_chunk_img_con {
+    position: relative;
+}
+
+.opt_chunk_img_dot {
+    width: 20rpx;
+    height: 20rpx;
+    border-radius: 100%;
+    background: red;
+    position: absolute;
+    right: -6rpx;
+    top: 0;
+}
+
 .opt_chunk_img {
     width: 54rpx;
     height: 54rpx;

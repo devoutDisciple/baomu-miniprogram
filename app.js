@@ -6,6 +6,7 @@ App({
 	globalData: {
 		userInfo: null,
 		msgsNum: 0, // 消息数量
+		demandsNum: 0, // 未处理订单数量
 	},
 
 	data: {},
@@ -31,6 +32,7 @@ App({
 			wx.setStorageSync('msg_accept_time', now_time);
 			msg_accept_time = now_time;
 		}
+		// 查询是否有未读信息
 		const res = await get({ url: '/message/msgsByUserId', data: { user_id, msg_accept_time } });
 		wx.setStorageSync('msg_accept_time', moment().format('YYYY-MM-DD HH:mm:ss'));
 		let msgData = wx.getStorageSync('msg_data') || '[]';
@@ -131,7 +133,6 @@ App({
 					}
 				}
 			});
-			console.log(msgData, 283);
 			wx.setStorageSync('msg_data', JSON.stringify(msgData));
 		}
 		let num = 0;
@@ -140,17 +141,23 @@ App({
 				num += Number(item.noread) || 0;
 			});
 		}
-		this.globalData.msgsNum = num > 99 ? '99+' : num;
+		// 查询是否有未支付订单
+		const demands = await get({ url: '/demand/noPayDeamnds', data: { user_id } });
+		if (demands && demands.num) {
+			this.globalData.demandsNum = demands.num;
+			this.globalData.num += Number(demands.num) || 0;
+		}
+		this.globalData.msgsNum = num;
+
 		if (String(num) !== '0') {
-			wx.setTabBarBadge({
+			wx.showTabBarRedDot({
 				index: 4,
-				text: String(num),
 				fail: (err) => {
 					console.log(err);
 				},
 			});
 		} else {
-			wx.removeTabBarBadge({
+			wx.hideTabBarRedDot({
 				index: 4,
 				fail: () => {},
 			});

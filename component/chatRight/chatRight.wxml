@@ -2,12 +2,7 @@
     <view class="time">{{msg.showTime}}</view>
     <view class="con">
         <view class="con_right">
-            <block wx:if="{{msg.type === 1}}">
-                <view class="con_txt">{{msg.content}}</view>
-            </block>
-            <block wx:if="{{msg.type === 2}}">
-                <msg-img class="my_img" data="{{msg.content}}"/>
-            </block>
+            <view class="con_txt">{{msg.content}}</view>
         </view>
         <view class="con_img">
             <image class="con_img_img" src="{{userPhoto}}" />

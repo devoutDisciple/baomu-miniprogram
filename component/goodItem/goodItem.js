@@ -42,12 +42,12 @@ Component({
 				Number(getApp().globalData.myReceiveCommentsNum) +
 				Number(getApp().globalData.msgsNum);
 			if (totalNum) {
-				wx.setTabBarBadge({
+				wx.showTabBarRedDot({
 					index: 2,
 					text: String(totalNum),
 				});
 			} else {
-				wx.removeTabBarBadge({
+				wx.hideTabBarRedDot({
 					index: 2,
 				});
 			}
