@@ -16,14 +16,18 @@
 }
 
 .title {
-    margin: 20rpx 0;
     font-size: 36rpx;
-}
-
-.video {
+    display: -webkit-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-all;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
 }
 
 .person {
+    padding-top: 30rpx;
+    padding-bottom: 30rpx;
     display: flex;
     align-items: center;
 }

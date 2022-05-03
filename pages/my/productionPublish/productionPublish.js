@@ -161,12 +161,12 @@ Page({
 						icon: 'error',
 					});
 				}
-				if (tempImgUrlPaths.length === 0 && !videoDetail.duration) {
-					return wx.showToast({
-						title: '请上传作品',
-						icon: 'error',
-					});
-				}
+				// if (tempImgUrlPaths.length === 0 && !videoDetail.duration) {
+				// 	return wx.showToast({
+				// 		title: '请上传作品',
+				// 		icon: 'error',
+				// 	});
+				// }
 				loading.showLoading();
 				const uploadImgUrls = [];
 				if (tempImgUrlPaths && tempImgUrlPaths.length !== 0) {

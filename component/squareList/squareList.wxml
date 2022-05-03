@@ -8,18 +8,18 @@
         <my-img src="{{detail.showImg}}"/>
     </block>
     <view class="con">
-        <view class="title" bindtap="onSeachDetail">{{detail.title}}</view>
         <view class="person" bindtap="onSeachDetail">
             <image class="person_img" src="{{detail.userDetail.photo}}" />
             <view class="person_name">{{detail.userDetail.nickname}}</view>
             <view class="person_time">{{detail.create_time}}</view>
         </view>
-        <view class="person_icon">
+        <view class="person_icon" wx:if="{{detail.userDetail.is_name === 1 || detail.userDetail.is_school === 1 || detail.userDetail.is_award === 1 || detail.userDetail.is_level === 1}}">
             <renzhengIcon wx:if="{{detail.userDetail.is_name === 1}}" userid="{{detail.user_id}}" idx="1"/>
             <renzhengIcon wx:if="{{detail.userDetail.is_school === 1}}" userid="{{detail.user_id}}" idx="2"/>
             <renzhengIcon wx:if="{{detail.userDetail.is_award === 1}}" userid="{{detail.user_id}}" idx="3"/>
             <renzhengIcon wx:if="{{detail.userDetail.is_level === 1}}" userid="{{detail.user_id}}" idx="4"/>
         </view>
+        <view class="title" bindtap="onSeachDetail">{{detail.title}}</view>
         <!-- <view class="person_tag">同城</view> -->
         <view class="desc" bindtap="onSeachDetail">{{detail.desc}}</view>
     </view>
