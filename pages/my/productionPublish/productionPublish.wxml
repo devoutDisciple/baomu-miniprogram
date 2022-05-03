@@ -50,4 +50,7 @@
             <view class="btm_pub" bindtap="onPublish">发布</view>
         </view>
     </view>
+    <block wx:if="{{progressDialogVisible}}">
+        <progress percent="{{uploadPercent}}"/>
+    </block>
 </view>

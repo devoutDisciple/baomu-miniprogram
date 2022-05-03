@@ -14,10 +14,13 @@ Page({
 		instrumentSelectName: '',
 		instrumentSelectId: '',
 		tempImgUrlPaths: [], // 选择的图片
+		tempFiles: [], // 选择的图片的详细数据
 		videoDetail: {}, // 选取的视频
 		desc: '', // 描述信息
 		title: '', // 标题
 		audioDetail: {}, // 选取的音乐
+		progressDialogVisible: false, // 进度条
+		uploadPercent: 0, // 上传进度
 	},
 
 	/**
@@ -63,7 +66,8 @@ Page({
 			success(res) {
 				const { tempImgUrlPaths } = self.data;
 				// tempFilePath可以作为img标签的src属性显示图片
-				const { tempFilePaths } = res;
+				const { tempFilePaths, tempFiles } = res;
+				console.log(res, 3222);
 				const len = tempFilePaths.length + tempImgUrlPaths.length;
 				if (len > 9) {
 					return wx.showToast({
@@ -71,7 +75,7 @@ Page({
 						icon: 'error',
 					});
 				}
-				self.setData({ tempImgUrlPaths: [...tempImgUrlPaths, ...tempFilePaths] });
+				self.setData({ tempImgUrlPaths: [...tempImgUrlPaths, ...tempFilePaths], tempFiles });
 			},
 			fail: function () {
 				wx.showToast({
@@ -105,6 +109,7 @@ Page({
 						size: tempFile.size,
 						photo: tempFile.thumbTempFilePath,
 					};
+					console.log(videoDetail, 1111);
 					const { newHeight, newWidth } = await util.getVideoSize({
 						height: tempFile.height,
 						width: tempFile.width,
@@ -126,9 +131,10 @@ Page({
 	// 移除图片
 	onRemoveImg: function (e) {
 		const { idx } = e.currentTarget.dataset;
-		const { tempImgUrlPaths } = this.data;
+		const { tempImgUrlPaths, tempFiles } = this.data;
 		tempImgUrlPaths.splice(idx, 1);
-		this.setData({ tempImgUrlPaths });
+		tempFiles.splice(idx, 1);
+		this.setData({ tempImgUrlPaths, tempFiles });
 	},
 
 	// 移除视频
@@ -154,7 +160,7 @@ Page({
 			const self = this;
 			setTimeout(async () => {
 				const { user_id, type } = self.data;
-				const { instrumentSelectId, tempImgUrlPaths, videoDetail, desc, title } = self.data;
+				const { instrumentSelectId, tempImgUrlPaths, tempFiles, videoDetail, desc, title } = self.data;
 				if (!desc || !title || !instrumentSelectId) {
 					return wx.showToast({
 						title: '请完善信息',
@@ -167,11 +173,36 @@ Page({
 				// 		icon: 'error',
 				// 	});
 				// }
-				loading.showLoading();
+				// 计算将要上传的文件的全部大小
+				let fileTotalSize = 0;
+				if (tempFiles && tempFiles.length !== 0) {
+					// eslint-disable-next-line no-return-assign
+					tempFiles.forEach((item) => (fileTotalSize += Number(item.size)));
+				}
+				if (videoDetail && videoDetail.duration) {
+					fileTotalSize += Number(videoDetail.size);
+				}
+				// 单位是M
+				fileTotalSize = parseInt(fileTotalSize / 1000 / 1000);
+				// 大于10M,显示进度条
+				if (fileTotalSize > 10) {
+					this.setData({ progressDialogVisible: true });
+					const times = parseInt(((fileTotalSize / 2) * 1000) / 100);
+					let newPercent = 0;
+					self.timer = setInterval(() => {
+						if (newPercent < 98) {
+							newPercent++;
+							self.setData({ uploadPercent: newPercent });
+						}
+					}, times);
+				} else {
+					// 显示loading
+					loading.showLoading();
+				}
+
 				const uploadImgUrls = [];
 				if (tempImgUrlPaths && tempImgUrlPaths.length !== 0) {
 					let len = tempImgUrlPaths.length;
-					loading.showLoading();
 					while (len > 0) {
 						len -= 1;
 						// eslint-disable-next-line no-await-in-loop
@@ -207,8 +238,15 @@ Page({
 					video: fileDetail,
 					type: type,
 				};
+
 				const result = await request.post({ url: '/production/add', data: params });
 				if (result === 'success') {
+					loading.hideLoading();
+					// 关闭进度条
+					self.setData({ progressDialogVisible: false });
+					if (self.timer) {
+						clearInterval(self.timer);
+					}
 					wx.showToast({
 						title: '发布成功',
 						icon: 'success',
@@ -220,8 +258,25 @@ Page({
 				loading.hideLoading();
 			}, 500);
 		} catch (error) {
-			console.log(error);
-			loading.hideLoading();
+			const self = this;
+			setTimeout(() => {
+				loading.hideLoading();
+				// 关闭进度条
+				self.setData({ progressDialogVisible: false });
+				if (self.timer) {
+					clearInterval(self.timer);
+				}
+			}, 500);
+		} finally {
+			const self = this;
+			setTimeout(() => {
+				loading.hideLoading();
+				// 关闭进度条
+				self.setData({ progressDialogVisible: false });
+				if (self.timer) {
+					clearInterval(self.timer);
+				}
+			}, 500);
 		}
 	},
 });

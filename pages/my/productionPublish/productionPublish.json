@@ -3,7 +3,8 @@
         "home-publish": "/component/homePublish/homePublish",
         "select-item": "/component/selectItem/selectItem",
         "my-img": "/component/img/img",
-        "simple-video": "/component/simpleVideo/simpleVideo"
+        "simple-video": "/component/simpleVideo/simpleVideo",
+        "progress": "/component/progress/progress"
     },
 	"navigationBarTitleText": "添加作品"
 }

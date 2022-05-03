@@ -1,0 +1,6 @@
+<view class="dialog">
+    <view class="dialog_con">
+        <van-progress color="#d6d660" percentage="{{percent}}" />
+        <view class="text">上传中...</view>
+    </view>
+</view>
