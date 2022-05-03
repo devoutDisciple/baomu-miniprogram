@@ -15,20 +15,9 @@
         <view class="chunk">
         <view class="label">乐队担当</view>
             <view class="value">
-                <picker class="picker" bindchange="onPickStudy" range="{{study_list}}">
-                    <block wx:if="{{study_name}}">
-                        <view class="picker_value">
-                            {{study_name}}
-                        </view>
-                    </block>
-                    <block wx:else>
-                        <view class="picker_init">
-                            请选择
-                        </view>
-                    </block>
-                </picker>
+                <input class="value_ipt" value="{{job_name}}" placeholder="请输入" bindblur="onBlurIpt"/>
             </view>
-            <image class="icon" src="/asserts/public/left.png" />
         </view>
+         <view class="invitate_btn" bindtap="onTapSave">保存</view>
     </view>
 </scroll-view>

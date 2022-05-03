@@ -24,7 +24,7 @@
         </view>
         <block wx:if="{{!data.disabled}}">
             <view class="person_title_btn" bindtap="onTapInvitation">
-                <block wx:if="{{!data.invitation && data.type === 1}}">
+                <block wx:if="{{!data.invitation}}">
                     <view class="person_title_btn_txt">邀请</view>
                 </block>
                 <block wx:if="{{data.invitation}}">

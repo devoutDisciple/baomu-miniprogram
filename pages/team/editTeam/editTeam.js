@@ -1,6 +1,6 @@
 import loading from '../../../utils/loading';
 import request, { uploadFile } from '../../../utils/request';
-import { TEAM_USER_STATE, TEAM_USER_SKILL } from '../../../constant/constant';
+import { TEAM_USER_STATE } from '../../../constant/constant';
 
 Page({
 	/**
@@ -80,8 +80,7 @@ Page({
 					this.setData({ team_leader_id: item.user_id, is_team_leader: is_team_leader });
 				}
 				item.stateName = TEAM_USER_STATE.filter((state) => item.state === state.id)[0].name;
-				const NEW_TEAM_USER_SKILL = [{ id: -1, name: '未知' }, ...TEAM_USER_SKILL];
-				item.typeName = NEW_TEAM_USER_SKILL.filter((state) => item.type === state.id)[0].name;
+				item.typeName = item.type || '';
 				userIds.push(item.user_id);
 			});
 		}

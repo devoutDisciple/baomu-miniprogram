@@ -36,13 +36,14 @@ Component({
 		onTapInvitation: function () {
 			const pages = getCurrentPages();
 			const currentPage = pages[pages.length - 1];
-			const { id } = this.data.data;
+			const { id, type } = this.data.data;
 			// 乐队邀请页面
 			if (currentPage.route === 'pages/team/invitation/invitation') {
 				return this.triggerEvent('OnTapInvitation', { user_id: this.data.data.id });
 			}
+			console.log(this.data.data, 888);
 			wx.navigateTo({
-				url: `/pages/invitation/invitation?person_id=${id}`,
+				url: `/pages/invitation/invitation?person_id=${id}&user_type=${type}`,
 			});
 		},
 	},

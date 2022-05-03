@@ -1,5 +1,3 @@
-// pages/team/editUsers/editUsers.js
-import { TEAM_USER_SKILL } from '../../../constant/constant';
 import request from '../../../utils/request';
 import loadding from '../../../utils/loading';
 
@@ -10,9 +8,7 @@ Page({
 	data: {
 		teamUserDetail: '', // 用户信息
 		team_user_id: '', // 用户在团队中的id
-		study_list: [], // 乐队担当
-		study_id: '', // 乐队担当id
-		study_name: '', // 乐队担当名称
+		job_name: '', // 乐队担当名称
 	},
 
 	/**
@@ -26,8 +22,6 @@ Page({
 		this.setData({ team_user_id }, () => {
 			this.onSearchUserDetail();
 		});
-		// 获取队员乐队担当下拉选项
-		this.getStudyType();
 	},
 
 	// 查询用户信息
@@ -35,32 +29,34 @@ Page({
 		loadding.showLoading();
 		const { team_user_id } = this.data;
 		const teamUserDetail = await request.get({ url: '/team/userDetailByTeamUserId', data: { team_user_id } });
-		const NEW_TEAM_USER_SKILL = [{ id: -1, name: '未知' }, ...TEAM_USER_SKILL];
-		const { id: study_id, name: study_name } = NEW_TEAM_USER_SKILL.filter(
-			(item) => item.id === teamUserDetail.type,
-		)[0];
-		this.setData({ teamUserDetail, study_id, study_name });
+		this.setData({ teamUserDetail });
+		if (teamUserDetail.type) {
+			this.setData({ job_name: teamUserDetail.type });
+		}
 		loadding.hideLoading();
 	},
 
-	// 获取队员乐队担当下拉选项
-	getStudyType: function () {
-		const study_list = [];
-		TEAM_USER_SKILL.forEach((item) => study_list.push(item.name));
-		this.setData({ study_list: study_list });
-	},
-
-	// 选择乐队担当
-	onPickStudy: async function (e) {
-		loadding.showLoading();
-		const { team_user_id } = this.data;
+	// 输入框失焦点
+	onBlurIpt: function (e) {
 		const { value } = e.detail;
-		const selectItem = TEAM_USER_SKILL[value];
-		this.setData({ study_id: selectItem.id, study_name: selectItem.name });
-		await request.post({ url: '/team/updateUserDetailByTeamUserId', data: { team_user_id, type: selectItem.id } });
-		wx.showToast({
-			title: '修改成功',
-		});
-		loadding.hideLoading();
+		this.setData({ job_name: String(value).trim() });
+	},
+
+	// 保存
+	onTapSave: async function () {
+		const self = this;
+		setTimeout(async () => {
+			loadding.showLoading();
+			const { team_user_id } = self.data;
+			const { job_name } = self.data;
+			await request.post({
+				url: '/team/updateUserDetailByTeamUserId',
+				data: { team_user_id, job_name: job_name },
+			});
+			wx.showToast({
+				title: '修改成功',
+			});
+			loadding.hideLoading();
+		}, 500);
 	},
 });

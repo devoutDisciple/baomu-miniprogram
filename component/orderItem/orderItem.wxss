@@ -81,7 +81,6 @@
     font-size: 28rpx;
     color: #333;
     align-items: center;
-    border-bottom: 1rpx solid #f2f2f2;
 }
 
 .pay_btn {
@@ -108,7 +107,16 @@
     align-items: flex-end;
 }
 
+.price_desc {
+    color: #B5B58D;
+    font-size: 26rpx;
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 30rpx;
+}
+
 .footer {
+    border-top: 1rpx solid #f2f2f2;
     display: flex;
     padding-top: 30rpx;
 }

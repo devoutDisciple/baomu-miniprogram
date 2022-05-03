@@ -9,6 +9,8 @@ Page({
 	 */
 	data: {
 		person_id: '', // 用户的id
+		user_type: 1, // 1-个人 2-乐队
+		teamDetail: {}, // 乐队详情
 		dialogDetail: {}, // 弹框详情
 		selectTimeRange: [],
 		title: '',
@@ -43,14 +45,15 @@ Page({
 	 * 生命周期函数--监听页面加载
 	 */
 	onLoad: async function (options) {
-		// 被邀请人的id
-		const { person_id } = options;
+		// 被邀请人的id, user_type: 1-个人 2-乐队
+		const { person_id, user_type } = options;
+		console.log(options, 1111);
 		if (!person_id) {
 			return wx.switchTab({
 				url: '/pages/home/index/index',
 			});
 		}
-		this.setData({ person_id }, async () => {
+		this.setData({ person_id, user_type }, async () => {
 			loading.showLoading();
 			await this.onSearchUserDetail();
 			await this.getUserInvitationTime();
@@ -66,9 +69,14 @@ Page({
 
 	// 查询用户详情
 	onSearchUserDetail: async function () {
-		const { person_id } = this.data;
+		const { person_id, user_type } = this.data;
 		const detail = await request.get({ url: '/user/userDetail', data: { user_id: person_id } });
-		this.setData({ personDetail: detail });
+		this.setData({ personDetail: detail }, () => {
+			// 如果是团队
+			if (Number(user_type) === 2) {
+				this.getTeamDetail();
+			}
+		});
 	},
 
 	// 获取用户已被邀请时段
@@ -84,6 +92,14 @@ Page({
 			});
 		});
 		this.setData({ selectTimeRange });
+	},
+
+	// 获取团队信息
+	getTeamDetail: async function () {
+		const { personDetail } = this.data;
+		const result = await request.get({ url: '/team/detailByTeamId', data: { team_id: personDetail.team_id } });
+		console.log(result, 3272728);
+		this.setData({ teamDetail: result || {} });
 	},
 
 	// 点击进去用户详情页面
@@ -234,6 +250,8 @@ Page({
 		setTimeout(async () => {
 			const {
 				person_id,
+				user_type,
+				teamDetail,
 				title,
 				playId,
 				instrumentSelectId,
@@ -278,6 +296,7 @@ Page({
 			const params = {
 				user_id: user_id,
 				join_ids: person_id,
+				user_type: 1, // 1-个人 2-乐队 3-乐团
 				title: title,
 				play_id: playId,
 				instrument_id: instrumentSelectId,
@@ -296,6 +315,23 @@ Page({
 				state: 1, // 需求开启竞价
 				type: 2, // 1-发布需求 2-直接邀请的需求
 			};
+			// 如果邀请的是团队
+			if (Number(user_type) === 2) {
+				// 判断是否是团队成员
+				const { user_ids } = teamDetail;
+				const team_user_arr = user_ids.split(',');
+				if (team_user_arr.includes(String(user_id))) {
+					return wx.showToast({
+						title: '队员不可邀请',
+						icon: 'error',
+					});
+				}
+				// 把邀请人换成队长
+				params.join_ids = teamDetail.ower_id;
+				// user_type 1-个人 2-乐队 3-乐团
+				params.user_type = 2;
+				params.team_id = teamDetail.id;
+			}
 			const res = await request.post({ url: '/demand/addDemand', data: params });
 			loading.hideLoading();
 			if (res === 'success') {

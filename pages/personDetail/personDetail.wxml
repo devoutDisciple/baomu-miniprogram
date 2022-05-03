@@ -7,7 +7,7 @@
     </block>
     <scroll-view class="wrap" scroll-y="{{true}}" enhanced="{{true}}" show-scrollbar="{{false}}" bindscroll="onScroll"> 
         <block wx:if="{{personDetail.bg_url}}">
-            <image class="bg" mode="widthFix" src="{{personDetail.bg_url}}" />
+            <image bindtap="onTapBgImg" class="bg" mode="widthFix" src="{{personDetail.bg_url}}" />
         </block>
         <block wx:else>
             <image class="bg" mode="widthFix" src="/asserts/public/default_bg.png" />
@@ -75,7 +75,7 @@
                 <view class="common_chunk">
                     <view class="common_title">技能</view>
                     <block wx:for="{{skillList}}" wx:key="index">
-                        <view class="skill_title">{{item.skillName}}</view>
+                        <view class="skill_title">{{item.skill_name}}</view>
                         <van-progress show-pivot="{{false}}" color="#b5b58d" percentage="{{item.percent}}" />
                     </block>
                 </view>

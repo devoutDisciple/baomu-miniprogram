@@ -1,6 +1,5 @@
 import loading from '../../utils/loading';
 import request from '../../utils/request';
-import { skills } from '../../constant/constant';
 import moment from '../../utils/moment';
 
 Page({
@@ -106,7 +105,6 @@ Page({
 		const { user_id } = this.data;
 		const lists = await request.get({ url: '/skill/all', data: { user_id } });
 		lists.forEach((item) => {
-			item.skillName = skills.filter((skill) => skill.id === item.skill_id)[0].name;
 			item.grade = Number(item.grade).toFixed(1);
 			item.percent = Number((Number(item.grade) / 5) * 100).toFixed(0);
 		});
@@ -256,5 +254,16 @@ Page({
 	onPreviewPhoto: function () {
 		const { personDetail } = this.data;
 		wx.previewImage({ urls: [personDetail.photo] });
+	},
+
+	// 点击背景图片
+	onTapBgImg: function () {
+		console.log(1111);
+		const { own_id, user_id } = this.data;
+		if (Number(own_id) === Number(user_id)) {
+			wx.navigateTo({
+				url: '/pages/personDetailEdit/personDetailEdit',
+			});
+		}
 	},
 });

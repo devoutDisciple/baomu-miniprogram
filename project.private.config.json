@@ -182,14 +182,14 @@
         {
           "name": "乐队成员",
           "pathName": "pages/team/users/users",
-          "query": "team_id=28",
+          "query": "team_id=31",
           "launchMode": "default",
           "scene": null
         },
         {
           "name": "成员编辑",
           "pathName": "pages/team/editUsers/editUsers",
-          "query": "team_user_id=40",
+          "query": "team_user_id=49",
           "launchMode": "default",
           "scene": null
         },

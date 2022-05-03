@@ -37,7 +37,7 @@
                     <view class="data_chunk_num">{{userDetail.fans_num}}</view>
                 </view>
             </view>
-            <view class="desc">
+            <view class="desc" bindtap="onTapUserPhoto">
                 个人简介: {{userDetail.desc || "暂无简介"}}
             </view>
             <view class="detail">

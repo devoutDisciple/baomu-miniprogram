@@ -12,10 +12,8 @@ Page({
 	onLoad(options) {},
 
 	onTapPay: async function () {
-		console.log(2222);
 		const open_id = wx.getStorageSync('open_id');
 		const result = await request.post({ url: '/baomupay/pay', data: { openid: open_id } });
-		console.log(result);
 		const { appId, paySign, packageSign, nonceStr, timeStamp } = result;
 		if (!paySign || !packageSign)
 			return wx.showToast({

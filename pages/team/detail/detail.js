@@ -1,6 +1,6 @@
 import loading from '../../../utils/loading';
 import request from '../../../utils/request';
-import { instruments, TEAM_USER_STATE, TEAM_USER_SKILL } from '../../../constant/constant';
+import { instruments, TEAM_USER_STATE } from '../../../constant/constant';
 import login from '../../../utils/login';
 
 Page({
@@ -122,8 +122,7 @@ Page({
 					});
 				}
 				item.stateName = TEAM_USER_STATE.filter((state) => item.state === state.id)[0].name;
-				const NEW_TEAM_USER_SKILL = [{ id: -1, name: item.userDetail.nickname }, ...TEAM_USER_SKILL];
-				item.typeName = NEW_TEAM_USER_SKILL.filter((state) => item.type === state.id)[0].name;
+				item.typeName = item.type || '';
 			});
 		}
 		// 最多展示四个
