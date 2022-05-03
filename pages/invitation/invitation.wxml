@@ -146,7 +146,7 @@
                 <textarea cursor-spacing="{{40}}" value="{{desc}}" placeholder="请简单描述活动内容，曲目要求，着装等细节信息" maxlength="{{200}}" bindblur="onBlurDesc"/>
             </view>
             <view class="chunk">
-                <input placeholder="演出费用" value="{{price}}" type="number" bindblur="onBlurPrice"/>
+                <input placeholder="{{placeholder}}" value="{{price}}" type="number" bindblur="onBlurPrice"/>
             </view>
             <view class="invitate_btn" bindtap="onTapSure">邀请</view>
         </view>

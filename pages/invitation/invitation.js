@@ -39,6 +39,8 @@ Page({
 		selectFoods: '', // 是否包住宿
 		desc: '', // 演出描述
 		price: '', // 价格
+		placeholder: '演出费用',
+		referenceMoney: 0, // 参考费用
 	},
 
 	/**
@@ -47,7 +49,6 @@ Page({
 	onLoad: async function (options) {
 		// 被邀请人的id, user_type: 1-个人 2-乐队
 		const { person_id, user_type } = options;
-		console.log(options, 1111);
 		if (!person_id) {
 			return wx.switchTab({
 				url: '/pages/home/index/index',
@@ -98,7 +99,6 @@ Page({
 	getTeamDetail: async function () {
 		const { personDetail } = this.data;
 		const result = await request.get({ url: '/team/detailByTeamId', data: { team_id: personDetail.team_id } });
-		console.log(result, 3272728);
 		this.setData({ teamDetail: result || {} });
 	},
 
@@ -170,6 +170,7 @@ Page({
 		const endTime = moment(detail[1]).format('YYYY.MM.DD');
 		this.setData({ startTime, endTime, selectDate: `${startTime} - ${endTime}` });
 		this.onChangeCalendarVisible();
+		this.countPrice();
 	},
 
 	// 选择时长
@@ -177,6 +178,7 @@ Page({
 		const { value } = e.detail;
 		const selectHour = this.data.hourList[value];
 		this.setData({ selectHour: `${selectHour}` });
+		this.countPrice();
 	},
 
 	// 选择演出地点
@@ -208,6 +210,7 @@ Page({
 		const { value } = e.detail;
 		const selectSend = this.data.isYesList[value];
 		this.setData({ selectSend });
+		this.countPrice();
 	},
 
 	// 选择是否包住宿
@@ -215,6 +218,7 @@ Page({
 		const { value } = e.detail;
 		const selectFoods = this.data.isYesList[value];
 		this.setData({ selectFoods });
+		this.countPrice();
 	},
 
 	// 当输入框失焦
@@ -238,6 +242,14 @@ Page({
 		if (!(value > 0)) {
 			return wx.showToast({
 				title: '请输入费用',
+				icon: 'error',
+			});
+		}
+		const { referenceMoney } = this.data;
+		if (Number(value) < Number(referenceMoney)) {
+			this.setData({ price: '' });
+			return wx.showToast({
+				title: '输入费用过低',
 				icon: 'error',
 			});
 		}
@@ -345,6 +357,71 @@ Page({
 				});
 			}
 		}, 500);
+	},
+
+	// 计算费用
+	countPrice: function () {
+		let price = 400;
+		const { startTime, endTime, selectHour, selectFoods, selectSend, user_type, teamDetail } = this.data;
+		const temp_user_type = Number(user_type);
+		let users_num = 0;
+		if (temp_user_type === 2) {
+			users_num = teamDetail.user_ids.split(',').length;
+		}
+		// 是乐团
+		if (temp_user_type === 2) {
+			// 400     *  人数
+			price *= users_num;
+		}
+		// (（结束日期 — 开始日期）—1)  * 300
+		if (startTime && endTime) {
+			const days = moment(endTime).diff(moment(startTime), 'days') + 1;
+			// 个人
+			if (temp_user_type === 1) {
+				price += Number(days - 1) * 300;
+			} else {
+				// 乐队
+				price += Number(days - 1) * 260 * users_num;
+			}
+		}
+		// 住宿否   +天数*200
+		if (startTime && endTime && selectFoods && selectFoods === '否') {
+			const days = moment(endTime).diff(moment(startTime), 'days') + 1;
+			// 个人
+			if (temp_user_type === 1) {
+				price += days * 200;
+			} else {
+				// 乐队
+				price += (Number(days) * 200 * users_num) / 2;
+			}
+		}
+		// 当演奏时长>3               + 100
+		if (selectHour && Number(selectHour) >= 3) {
+			price += 100;
+		}
+		// 接送否                     +100
+		if (selectSend && selectSend === '否') {
+			price += 100;
+		}
+		if (startTime && endTime) {
+			// 七天95折  14天9折  21天8.5折
+			const days = moment(endTime).diff(moment(startTime), 'days') + 1;
+			switch (days) {
+				case Number(days) >= 21:
+					price = Number(price) * 0.85;
+					break;
+				case Number(days) >= 14:
+					price = Number(price) * 0.9;
+					break;
+				case Number(days) >= 7:
+					price = Number(price) * 0.95;
+					break;
+				default:
+					break;
+			}
+		}
+		price = Number(price).toFixed(0);
+		this.setData({ placeholder: `费用最低为：${price}元`, referenceMoney: price });
 	},
 
 	// 关闭提示弹框
