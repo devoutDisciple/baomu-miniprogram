@@ -77,6 +77,16 @@
 .price {
     padding: 20rpx 0;
     display: flex;
+    align-items: center;
+}
+
+.cancle_btn {
+    color: #409eff;
+}
+
+.price_right {
+    flex: 1;
+    display: flex;
     justify-content: flex-end;
     font-size: 28rpx;
     color: #333;

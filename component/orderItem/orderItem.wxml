@@ -25,24 +25,30 @@
         </view>
     </view>
     <view class="price">
-        <view class="price_con" bindtap="onTapDemandDetail">
-            费用: <view class="price_text">￥{{data.price}}</view>
-        </view>
-        <!-- 需求方展示 -->
-        <block wx:if="{{type === 1}}">
-            <!-- 同意报价，但是未支付 -->
-            <block wx:if="{{data.state === 2}}">
-                <view class="pay_btn" bindtap="onTapPay">支付</view>
-            </block>
-            <!-- 演出结束，支付给用户 -->
-            <block wx:if="{{data.state === 5}}">
-                <view class="pay_btn" bindtap="onTapSuccess">付款</view>
-            </block>
-            <!-- 付款成功，未评价 -->
-            <block wx:if="{{data.state === 6}}">
-                <view class="pay_btn" bindtap="onTapEvaluate">评价</view>
-            </block>
+        <block wx:if="{{data.state === 1 || data.state === 2 ||data.state === 3 }}">
+            <view class="cancle_btn" bindtap="onTapCancle">取消</view>
         </block>
+        <view class="price_right">
+             <view class="price_con" bindtap="onTapDemandDetail">
+                费用: <view class="price_text">￥{{data.price}}</view>
+            </view>
+            <!-- 需求方展示 -->
+            <block wx:if="{{type === 1}}">
+                <!-- 同意报价，但是未支付 -->
+                <block wx:if="{{data.state === 2}}">
+                    <view class="pay_btn" bindtap="onTapPay">支付</view>
+                </block>
+                <!-- 演出结束，支付给用户 -->
+                <block wx:if="{{data.state === 5}}">
+                    <view class="pay_btn" bindtap="onTapSuccess">付款</view>
+                </block>
+                <!-- 付款成功，未评价 -->
+                <block wx:if="{{data.state === 6}}">
+                    <view class="pay_btn" bindtap="onTapEvaluate">评价</view>
+                </block>
+            </block>
+        </view>
+       
     </view>
     <view class="price_desc" wx:if="{{type === 1 && data.state === 2}}">
         付款环节提示款项会到平台，不必担心资金安全

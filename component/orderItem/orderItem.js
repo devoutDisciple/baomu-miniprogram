@@ -106,8 +106,23 @@ Component({
 		// 点击查看评价详情
 		onSearchEvaluate: function () {
 			const { data } = this.data;
-			console.log(data);
 			this.triggerEvent('OnTapEvaluate', { data: data });
+		},
+
+		// 点击取消订单
+		onTapCancle: function () {
+			const { data } = this.data;
+			wx.showModal({
+				title: '取消需求',
+				content: '是否确认取消该需求，该操作不可逆，请谨慎操作',
+				cancelColor: 'cancelColor',
+				success: function (e) {
+					const { confirm, errMsg } = e;
+					if (errMsg === 'showModal:ok' && confirm) {
+						request.post({ url: '/demand/cancle', data: { id: data.id } });
+					}
+				},
+			});
 		},
 	},
 });

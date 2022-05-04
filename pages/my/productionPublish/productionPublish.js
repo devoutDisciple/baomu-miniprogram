@@ -67,7 +67,6 @@ Page({
 				const { tempImgUrlPaths } = self.data;
 				// tempFilePath可以作为img标签的src属性显示图片
 				const { tempFilePaths, tempFiles } = res;
-				console.log(res, 3222);
 				const len = tempFilePaths.length + tempImgUrlPaths.length;
 				if (len > 9) {
 					return wx.showToast({
@@ -109,7 +108,6 @@ Page({
 						size: tempFile.size,
 						photo: tempFile.thumbTempFilePath,
 					};
-					console.log(videoDetail, 1111);
 					const { newHeight, newWidth } = await util.getVideoSize({
 						height: tempFile.height,
 						width: tempFile.width,
