@@ -7,13 +7,7 @@
     bindscrolltolower="onScrollBottom"
     bindscroll="onPageScroll">
     <block wx:if="{{scrollOver}}">
-        <block wx:if="{{selectTabIdx === 1}}">
-            <header class="hello_{{selectTabIdx}}" bindOnSearch="onIptSearch"></header>
-        </block>
-        <block wx:else>
-            <header class="world_{{selectTabIdx}}" bindOnSearch="onIptSearch"></header>
-        </block>
-        <view class="tab_fix" style="{{'top: ' + tabTop}}">
+        <view class="tab_fix">
             <view class="tab2">
                 <view class="tab_work">
                     <view class="tab_text {{selectTabIdx === 1 && 'tab_text_select'}}" data-idx="1" bindtap = "onSelectTab">
@@ -28,6 +22,25 @@
                     </view>
                 </view>
             </view>
+             <view class="search search2">
+                <block wx:if="{{selectTabIdx === 1}}">
+                    <search-ipt class="hello_{{selectTabIdx}}" bindOnSearch="onIptSearch"/>
+                </block>
+                <block wx:else>
+                    <search-ipt class="world_{{selectTabIdx}}" bindOnSearch="onIptSearch"/>
+                </block>
+            </view>
+            <home-select-search 
+                type="{{selectTabIdx}}"
+                bindOnChange="onChangeConditions" 
+                address_select="{{address_select}}" 
+                team_type_select_id="{{team_type_id}}" 
+                team_type_select_name="{{team_type_name}}"
+                person_style_selecg_id="{{person_style_id}}"
+                person_style_selecg_name="{{person_style_name}}"
+                plays_style_select_id="{{plays_style_id}}"
+                plays_style_select_name="{{plays_style_name}}"
+                />
         </view>
     </block>
     <view class="bg_con">
