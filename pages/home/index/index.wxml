@@ -40,6 +40,8 @@
                 person_style_selecg_name="{{person_style_name}}"
                 plays_style_select_id="{{plays_style_id}}"
                 plays_style_select_name="{{plays_style_name}}"
+                instruments_type_select_id="{{instruments_type_id}}"
+                instruments_type_select_name="{{instruments_type_name}}"
                 />
         </view>
     </block>
@@ -88,6 +90,8 @@
         person_style_selecg_name="{{person_style_name}}"
         plays_style_select_id="{{plays_style_id}}"
         plays_style_select_name="{{plays_style_name}}"
+        instruments_type_select_id="{{instruments_type_id}}"
+        instruments_type_select_name="{{instruments_type_name}}"
         />
     <view class="person_con">
         <block wx:if="{{selectTabIdx === 1}}">

@@ -6,17 +6,6 @@
     lower-threshold="300"
     bindscrolltolower="onScrollBottom">
     <view class="wrap">
-        <!-- <home-select-search 
-            type="{{selectTabIdx}}"
-            bindOnChange="onChangeConditions" 
-            address_select="{{address_select}}" 
-            team_type_select_id="{{team_type_id}}" 
-            team_type_select_name="{{team_type_name}}"
-            person_style_selecg_id="{{person_style_id}}"
-            person_style_selecg_name="{{person_style_name}}"
-            plays_style_select_id="{{plays_style_id}}"
-            plays_style_select_name="{{plays_style_name}}"
-            /> -->
         <block wx:if="{{deviceList && deviceList.length !== 0}}">
             <block wx:for="{{deviceList}}" wx:key="index">
                 <view class="chunk">

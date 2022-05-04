@@ -30,6 +30,8 @@ Page({
 		person_style_name: '', // 擅长风格
 		plays_style_id: '', // 演奏方式
 		plays_style_name: '', // 演奏方式
+		instruments_type_id: '', // 选择的演奏方式的id
+		instruments_type_name: '', // 选择的演奏方式的name
 	},
 
 	/**
@@ -167,10 +169,16 @@ Page({
 		try {
 			if (showLoading) loading.showLoading();
 			const user_id = wx.getStorageSync('user_id');
-			const { demandsList, currentUserPage, address_select, plays_style_id } = this.data;
+			const { demandsList, currentUserPage, address_select, plays_style_id, instruments_type_id } = this.data;
 			const demands = await request.get({
 				url: '/demand/demandByAddress',
-				data: { user_id: user_id, current: is_clear ? 0 : currentUserPage, address_select, plays_style_id },
+				data: {
+					user_id: user_id,
+					current: is_clear ? 0 : currentUserPage,
+					address_select,
+					plays_style_id,
+					instruments_type_id,
+				},
 			});
 			const result = this.handDeamndsData(demands);
 			if (is_clear) {
@@ -292,8 +300,8 @@ Page({
 
 	// 当选择条件改变的时候
 	onChangeConditions: function (e) {
-		const { address_select, person_style_id, plays_style_id, team_type_id } = e.detail;
-		this.setData({ address_select, person_style_id, plays_style_id, team_type_id }, () => {
+		const { address_select, person_style_id, plays_style_id, instruments_type_id, team_type_id } = e.detail;
+		this.setData({ address_select, person_style_id, plays_style_id, instruments_type_id, team_type_id }, () => {
 			this.onSearch({ showLoading: true, is_clear: true });
 		});
 	},

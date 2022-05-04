@@ -3,7 +3,7 @@
         <view class="type_item" bindtap="goToSearchPage">
             <image class="type_img" src="/asserts/public/home_sort.png" />
         </view>
-        <view class="type_item type_cancle" bindtap="onCancleTap" wx:if="{{team_type_select_id || person_style_selecg_id || plays_style_select_id}}">
+        <view class="type_item type_cancle" bindtap="onCancleTap" wx:if="{{team_type_select_id || person_style_selecg_id || plays_style_select_id || instruments_type_select_id}}">
             取消筛选
         </view>
         <view class="type_item">
@@ -38,6 +38,16 @@
                 演奏方式演奏方式演奏方式
             </picker>
         </view>
+        <block wx:if="{{type === 2}}">
+            <view class="type_item">
+                {{instruments_type_select_name || "乐器类型"}}
+                <image class="type_item_icon" src="/asserts/public/arrow_bottom.png" />
+                <picker class="type_item_picker" data-key="instruments_type" bindchange="onSelectPlay" range-key="name" range="{{INSTRUMENTS_TYPE}}">
+                    乐器类型乐器类型乐器类型
+                </picker>
+            </view>
+        </block>
+        
         <view class="type_item type_empty" />
     </view>
 </scroll-view>

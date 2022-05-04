@@ -1,5 +1,5 @@
 // component/homeSelectSearch/homeSelectSearch.js
-import { PLAYS_STYLE, TEAM_TYPE, person_style } from '../../constant/constant';
+import { PLAYS_STYLE, TEAM_TYPE, person_style, instruments, voices } from '../../constant/constant';
 
 Component({
 	// address_select: '', // 选择的地址
@@ -9,6 +9,8 @@ Component({
 	// person_style_name: '', // 擅长风格
 	// plays_style_id: '', // 演奏方式
 	// plays_style_name: '', // 演奏方式
+	// instruments_type_select_id: '', // 乐器id
+	// instruments_type_select_name: '', // 乐器名称
 
 	/**
 	 * 组件的属性列表
@@ -46,6 +48,14 @@ Component({
 			type: String,
 			value: '',
 		},
+		instruments_type_select_id: {
+			type: String,
+			value: '',
+		},
+		instruments_type_select_name: {
+			type: String,
+			value: '',
+		},
 	},
 
 	/**
@@ -62,6 +72,9 @@ Component({
 		PLAYS_STYLE: PLAYS_STYLE, // 演奏方式
 		plays_style_select_id: '', // 选择的演奏方式的id
 		plays_style_select_name: '', // 选择的演奏方式的name
+		INSTRUMENTS_TYPE: [...instruments, ...voices], // 乐器类型
+		instruments_type_select_id: '', // 选择的演奏方式的id
+		instruments_type_select_name: '', // 选择的演奏方式的name
 	},
 
 	lifetimes: {
@@ -102,6 +115,7 @@ Component({
 
 		// 选择
 		onSelectPlay: function (e) {
+			const { INSTRUMENTS_TYPE } = this.data;
 			const { value } = e.detail;
 			const { key } = e.currentTarget.dataset;
 			if (key === 'address') {
@@ -128,6 +142,13 @@ Component({
 					this.triggerCallback,
 				);
 			}
+			if (key === 'instruments_type') {
+				const selectItem = INSTRUMENTS_TYPE[value];
+				this.setData(
+					{ instruments_type_select_id: selectItem.id, instruments_type_select_name: selectItem.name },
+					this.triggerCallback,
+				);
+			}
 		},
 
 		// 点击取消筛选
@@ -140,6 +161,8 @@ Component({
 					person_style_selecg_name: '', // 选择的擅长风格的name
 					plays_style_select_id: '', // 选择的演奏方式的id
 					plays_style_select_name: '', // 选择的演奏方式的name
+					instruments_type_select_id: '', // 选择的演奏方式的id
+					instruments_type_select_name: '', // 选择的演奏方式的name
 				},
 				this.triggerCallback,
 			);
