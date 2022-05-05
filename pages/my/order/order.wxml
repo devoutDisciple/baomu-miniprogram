@@ -1,5 +1,5 @@
-<scroll-view class="wrap" scroll-y="{{true}}" show-scrollbar="{{false}}" enhanced="{{true}}">
-     <view class="tab">
+ <view class="wrap">
+    <view class="tab">
         <view class="tab_work">
             <view class="tab_text {{selectTabIdx == 1 && 'tab_text_select'}}" data-idx="1" bindtap = "onSelectTab">
                 我发布的需求
@@ -13,44 +13,47 @@
             </view>
         </view>
     </view>
-    <block wx:if="{{orderList && orderList.length !== 0}}">
-        <block wx:for="{{orderList}}" wx:key="index">
-            <view class="chunk">
-                <order-item data="{{item}}" type="{{selectTabIdx}}" bindOnTapEvaluate="onTapEvaluate"/>
+    <scroll-view class="con" scroll-y="{{true}}" show-scrollbar="{{false}}" enhanced="{{true}}">
+        <block wx:if="{{orderList && orderList.length !== 0}}">
+            <block wx:for="{{orderList}}" wx:key="index">
+                <view class="chunk">
+                    <order-item data="{{item}}" type="{{selectTabIdx}}" bindOnTapEvaluate="onTapEvaluate"/>
+                </view>
+            </block>
+            <btm-tip />
+        </block>
+        <block wx:else>
+            <view class="empty">
+                <empty-img/>
+                <view>暂无演出记录</view>
             </view>
         </block>
-        <btm-tip />
-    </block>
-    <block wx:else>
-        <view class="empty">
-            <empty-img/>
-            <view>暂无演出记录</view>
-        </view>
-    </block>
-    <van-popup
-        round
-        close-icon="close"
-        show="{{ evaluateVisible }}"
-        position="bottom"
-        bind:close="onCloseEvaluateDialog">
-        <view class="evaluate">
-            <view class="evaluate_title">
-                <image class="evaluate_img" src="{{evaluateDetail.userDetail.photo}}" />
-                {{evaluateDetail.userDetail.nickname || ""}}
-                <view class="evaluate_time">2021.01.03</view>
+        <van-popup
+            round
+            close-icon="close"
+            show="{{ evaluateVisible }}"
+            position="bottom"
+            bind:close="onCloseEvaluateDialog">
+            <view class="evaluate">
+                <view class="evaluate_title">
+                    <image class="evaluate_img" src="{{evaluateDetail.userDetail.photo}}" />
+                    {{evaluateDetail.userDetail.nickname || ""}}
+                    <view class="evaluate_time">2021.01.03</view>
+                </view>
+                <view class="evaluate_grade">
+                    <van-rate
+                        value="{{evaluateDetail.grade}}"
+                        allow-half
+                        readonly
+                        size="{{ 16 }}"
+                        color="#ffd21e"
+                        void-icon="star"
+                        void-color="#ededed"
+                        />
+                </view>
+                <view class="evaluate_con">{{evaluateDetail.desc}}</view>
             </view>
-            <view class="evaluate_grade">
-                <van-rate
-                    value="{{evaluateDetail.grade}}"
-                    allow-half
-                    readonly
-                    size="{{ 16 }}"
-                    color="#ffd21e"
-                    void-icon="star"
-                    void-color="#ededed"
-                    />
-            </view>
-            <view class="evaluate_con">{{evaluateDetail.desc}}</view>
-        </view>
-    </van-popup>
-</scroll-view>
+        </van-popup>
+    </scroll-view>
+ </view>
+ 

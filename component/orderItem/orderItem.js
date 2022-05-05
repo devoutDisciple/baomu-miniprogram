@@ -115,7 +115,6 @@ Component({
 			wx.showModal({
 				title: '取消需求',
 				content: '是否确认取消该需求，该操作不可逆，请谨慎操作',
-				cancelColor: 'cancelColor',
 				success: function (e) {
 					const { confirm, errMsg } = e;
 					if (errMsg === 'showModal:ok' && confirm) {

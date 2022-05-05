@@ -23,11 +23,11 @@
     word-break: break-all;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 1;
+    margin-top: 30rpx;
 }
 
 .person {
     padding-top: 30rpx;
-    padding-bottom: 30rpx;
     display: flex;
     align-items: center;
 }

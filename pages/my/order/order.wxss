@@ -1,9 +1,7 @@
 .wrap {
-    width: calc(100vw - 40rpx);
+    width: 100vw;
     height: 100vh;
     background: #f7f7f7;
-    padding: 0 20rpx;
-    padding-top: 100rpx;
 }
 
 .chunk {
@@ -25,9 +23,6 @@
 
 .tab {
     width: 100vw;
-    position: fixed;
-    left: 0;
-    top: 0;
     background: #fff;
     height: 100rpx;
     display: flex;
@@ -63,6 +58,12 @@
     border-radius: 10rpx;
     position: absolute;
     bottom: 10rpx;
+}
+
+.con {
+    width: calc(100vw - 40rpx);
+    height: calc(100vh - 100rpx);
+    padding: 0 20rpx;
 }
 
 .evaluate {
