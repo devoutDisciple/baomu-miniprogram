@@ -104,24 +104,26 @@ Page({
 				wx.editImage({
 					src: tempFilePaths[0],
 					success: async function (filePath) {
-						const params = {};
-						// eslint-disable-next-line prefer-destructuring
-						params[key] = filePath;
-						self.setData(params);
-						const result = await uploadFile({
-							url: '/team/upload',
-							data: filePath,
-							formData: { user_id, type: 1 },
-						});
-						const postParams = {};
-						postParams[key] = result.url;
-						await request.post({
-							url: '/team/updateTeamDetail',
-							data: { user_id, team_id, params: postParams },
-						});
-						wx.showToast({
-							title: '修改成功',
-						});
+						if (filePath.errMsg === 'editImage:ok') {
+							const params = {};
+							// eslint-disable-next-line prefer-destructuring
+							params[key] = filePath.tempFilePath;
+							self.setData(params);
+							const result = await uploadFile({
+								url: '/team/upload',
+								data: filePath.tempFilePath,
+								formData: { user_id, type: 1 },
+							});
+							const postParams = {};
+							postParams[key] = result.url;
+							await request.post({
+								url: '/team/updateTeamDetail',
+								data: { user_id, team_id, params: postParams },
+							});
+							wx.showToast({
+								title: '修改成功',
+							});
+						}
 					},
 					fail: function () {},
 				});

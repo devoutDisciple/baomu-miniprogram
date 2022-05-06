@@ -113,9 +113,11 @@ Page({
 				wx.editImage({
 					src: tempFilePath,
 					success: async function (filePath) {
-						const params = {};
-						params[type] = filePath;
-						self.setData(params);
+						if (filePath.errMsg === 'editImage:ok') {
+							const params = {};
+							params[type] = filePath.tempFilePath;
+							self.setData(params);
+						}
 					},
 					fail: function () {},
 				});

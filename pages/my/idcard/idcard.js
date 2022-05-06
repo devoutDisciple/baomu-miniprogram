@@ -53,10 +53,12 @@ Page({
 				wx.editImage({
 					src: tempFilePaths[0],
 					success: async function (filePath) {
-						if (Number(type) === 1) {
-							self.setData({ idcard1: filePath });
-						} else {
-							self.setData({ idcard2: filePath });
+						if (filePath.errMsg === 'editImage:ok') {
+							if (Number(type) === 1) {
+								self.setData({ idcard1: filePath.tempFilePath });
+							} else {
+								self.setData({ idcard2: filePath.tempFilePath });
+							}
 						}
 					},
 					fail: function () {},

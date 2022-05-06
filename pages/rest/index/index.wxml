@@ -15,9 +15,9 @@
             <btm-tip />
         </block>
         <block wx:else>
-            <view class="empty_con">
-                <empty-img />
-                暂无数据
+            <view class="empty">
+                <image class="empty_img" src="/asserts/public/empty.png" />
+                <view>暂无数据~</view>
             </view>
         </block>
     </view>

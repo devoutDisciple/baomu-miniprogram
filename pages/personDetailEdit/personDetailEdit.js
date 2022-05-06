@@ -82,8 +82,14 @@ Page({
 				wx.editImage({
 					src: tempFilePaths[0],
 					success: async function (filePath) {
-						self.setData({ photo: filePath });
-						await uploadFile({ url: '/user/upload', data: filePath, formData: { user_id, type: 1 } });
+						if (filePath.errMsg === 'editImage:ok') {
+							self.setData({ photo: filePath.tempFilePath });
+							await uploadFile({
+								url: '/user/upload',
+								data: filePath.tempFilePath,
+								formData: { user_id, type: 1 },
+							});
+						}
 					},
 					fail: function () {},
 				});
@@ -111,12 +117,14 @@ Page({
 				wx.editImage({
 					src: tempFilePaths[0],
 					success: async function (filePath) {
-						self.setData({ bgUrl: filePath });
-						await uploadFile({
-							url: '/user/upload',
-							data: filePath,
-							formData: { user_id, type: 2 },
-						});
+						if (filePath.errMsg === 'editImage:ok') {
+							self.setData({ bgUrl: filePath.tempFilePath });
+							await uploadFile({
+								url: '/user/upload',
+								data: filePath.tempFilePath,
+								formData: { user_id, type: 2 },
+							});
+						}
 					},
 					fail: function () {},
 				});

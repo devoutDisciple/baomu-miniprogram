@@ -182,10 +182,10 @@ Page({
 				}
 				// 单位是M
 				fileTotalSize = parseInt(fileTotalSize / 1000 / 1000);
-				// 大于10M,显示进度条
-				if (fileTotalSize > 10) {
-					this.setData({ progressDialogVisible: true });
-					const times = parseInt(((fileTotalSize / 2) * 1000) / 100);
+				// 大于30M,显示进度条
+				if (fileTotalSize > 30) {
+					self.setData({ progressDialogVisible: true });
+					const times = parseInt(((fileTotalSize / 2) * 1000) / 150);
 					let newPercent = 0;
 					self.timer = setInterval(() => {
 						if (newPercent < 98) {
@@ -256,16 +256,6 @@ Page({
 				loading.hideLoading();
 			}, 500);
 		} catch (error) {
-			const self = this;
-			setTimeout(() => {
-				loading.hideLoading();
-				// 关闭进度条
-				self.setData({ progressDialogVisible: false });
-				if (self.timer) {
-					clearInterval(self.timer);
-				}
-			}, 500);
-		} finally {
 			const self = this;
 			setTimeout(() => {
 				loading.hideLoading();

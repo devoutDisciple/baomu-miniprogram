@@ -105,7 +105,9 @@ Page({
 				wx.editImage({
 					src: tempFilePaths[0],
 					success: async function (filePath) {
-						self.setData({ selectImg: filePath });
+						if (filePath.errMsg === 'editImage:ok') {
+							self.setData({ selectImg: filePath.tempFilePath });
+						}
 					},
 					fail: function () {},
 				});

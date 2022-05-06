@@ -2,7 +2,7 @@
     <van-loading size="20" type="spinner"/>
 </view>
 <view class="wrap">
-    <image mode="widthFix" class="background_img" src="/asserts/public/home_bg.png"/>
+    <image mode="widthFix" class="background_img" src="/asserts/public/my_bg.png"/>
     <view class="con">
         <header text="我的"/>
         <scroll-view scroll-y="{{true}}" show-scrollbar="{{false}}" enhanced="{{true}}" class="intro" style="{{' top: ' + statusHeight + '; height: calc(100vh - ' + statusHeight  +')' }}">
