@@ -58,8 +58,17 @@
 .name {
     padding-top: 30rpx;
     color: #666;
+    display: flex;
 }
 
+.item_delete {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    font-size: 26rpx;
+    color: #888;
+    align-items: center;
+}
 
 .add_btn {
     position: fixed;

@@ -12,6 +12,15 @@
 
 .chunk {
     margin-top: 20rpx;
+    background: #fff;
+    border-radius: 20rpx;
+}
+
+.chunk_delete {
+    display: flex;
+    padding: 20rpx;
+    justify-content: flex-end;
+    color: #888;
 }
 
 .publish_btn {

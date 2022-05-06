@@ -119,7 +119,7 @@
         {
           "name": "我的作品",
           "pathName": "pages/my/productionShow/productionShow",
-          "query": "user_id=8&type=1",
+          "query": "user_id=49&type=1",
           "launchMode": "default",
           "scene": null
         },

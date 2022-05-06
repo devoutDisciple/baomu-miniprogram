@@ -42,4 +42,29 @@ Page({
 			url: `/pages/my/productionPublish/productionPublish?user_id=${user_id}&type=2`,
 		});
 	},
+
+	// 删除作品
+	onDeleteItem: function (e) {
+		const { id } = e.currentTarget.dataset.item;
+		const self = this;
+		wx.showModal({
+			title: '删除',
+			content: '是否确认删除该作品',
+			success: async function (res) {
+				if (res.errMsg === 'showModal:ok' && res.confirm) {
+					loading.showLoading();
+					const result = await request.post({ url: '/production/deleteItemById', data: { id: id } });
+					if (result === 'success') {
+						loading.hideLoading();
+						wx.showToast({
+							title: '删除成功',
+						});
+						setTimeout(() => {
+							self.getAllProductions();
+						}, 500);
+					}
+				}
+			},
+		});
+	},
 });

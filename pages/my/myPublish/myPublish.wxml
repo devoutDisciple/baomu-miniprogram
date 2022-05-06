@@ -4,6 +4,7 @@
             <block wx:for="{{list}}" wx:key="index">
                 <view class="chunk">
                     <square-list data="{{item}}"/>
+                    <view class="chunk_delete" bindtap="onDeleteItem" data-item="{{item}}">删除</view>
                 </view>
             </block>
             <btm-tip />

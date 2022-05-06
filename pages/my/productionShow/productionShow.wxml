@@ -14,8 +14,9 @@
                         <view class="con_desc_text">{{item.desc}}</view>
                     </view>
                 </view>
-                <view class="name" data-id="{{item.id}}" bindtap="onShowDetail">
+                <view class="name" data-id="{{item.id}}">
                     <view class="name_type">作品类型：{{item.instr_name}}</view>
+                    <view class="item_delete" data-item="{{item}}" bindtap="onDeleteItem">删除</view>
                 </view>
             </view>
         </block>

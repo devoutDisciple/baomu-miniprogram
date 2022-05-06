@@ -164,7 +164,10 @@ Page({
 	// 计算费用
 	countPrice: function () {
 		let price = 400;
-		const { start_time: startTime, end_time: endTime, hours, is_send, is_food } = this.data.detail;
+		// eslint-disable-next-line prefer-const
+		let { start_time: startTime, end_time: endTime, hours, is_send, is_food } = this.data.detail;
+		endTime = endTime.split('.').join('-');
+		startTime = startTime.split('.').join('-');
 		if (startTime && endTime) {
 			const days = moment(endTime).diff(moment(startTime), 'days') + 1;
 			// (（结束日期 — 开始日期）—1)  * 300

@@ -362,7 +362,10 @@ Page({
 	// 计算费用
 	countPrice: function () {
 		let price = 400;
-		const { startTime, endTime, selectHour, selectFoods, selectSend, user_type, teamDetail } = this.data;
+		// eslint-disable-next-line prefer-const
+		let { startTime, endTime, selectHour, selectFoods, selectSend, user_type, teamDetail } = this.data;
+		endTime = endTime.split('.').join('-');
+		startTime = startTime.split('.').join('-');
 		const temp_user_type = Number(user_type);
 		let users_num = 0;
 		if (temp_user_type === 2) {
