@@ -15,9 +15,9 @@ Page({
 		selectTimeRange: [],
 		title: '',
 		personDetail: {}, // 被雇佣人的详情
-		playList: [], // 演奏方式
-		playId: '', // 演奏方式id
-		playName: '', // 演奏方式name
+		playList: [], // 表演类型
+		playId: '', // 表演类型id
+		playName: '', // 表演类型name
 		instrumentList: [], // 选择乐器的list
 		instrumentSelectId: '',
 		instrumentSelectName: '',
@@ -60,7 +60,7 @@ Page({
 			await this.getUserInvitationTime();
 			loading.hideLoading();
 		});
-		// 获取所有演奏方式
+		// 获取所有表演类型
 		this.getAllPlayList();
 		// 获取所有乐器类型
 		this.getAllInstruments(instruments);

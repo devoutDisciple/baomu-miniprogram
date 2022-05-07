@@ -28,10 +28,10 @@ Page({
 		team_type_name: '', // 乐团类型
 		person_style_id: '', // 擅长风格
 		person_style_name: '', // 擅长风格
-		plays_style_id: '', // 演奏方式
-		plays_style_name: '', // 演奏方式
-		instruments_type_id: '', // 选择的演奏方式的id
-		instruments_type_name: '', // 选择的演奏方式的name
+		plays_style_id: '', // 表演类型
+		plays_style_name: '', // 表演类型
+		instruments_type_id: '', // 选择的表演类型的id
+		instruments_type_name: '', // 选择的表演类型的name
 	},
 
 	/**

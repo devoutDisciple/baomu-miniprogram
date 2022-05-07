@@ -80,7 +80,7 @@
                     <listItem text="收支记录" iconName="my_money" data-type="money" bindtap="goOtherPage"/>
                     <listItem text="我的技能" iconName="my_skill" data-type="skill" bindtap="goOtherPage"/>
                     <listItem text="个人信息修改" iconName="photo_wall" data-type="photo" bindtap="goOtherPage"/>
-                    <listItem text="工作地点" iconName="work_location" data-type="address" bindtap="goOtherPage"/>
+                    <listItem text="工作地点(请设置为当前城市)" iconName="work_location" data-type="address" bindtap="goOtherPage"/>
                 </view>
                 <view class="opt">
                     <listItem text="作品展示" iconName="production_show" data-type="productionShow" bindtap="goOtherPage" isFirst/>

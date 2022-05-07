@@ -24,6 +24,7 @@ Page({
 	},
 
 	onShow: function () {
+		this.getUserInfo();
 		this.getNoReadNum();
 	},
 

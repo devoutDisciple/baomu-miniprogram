@@ -13,7 +13,7 @@
                 </block>
                 <block wx:else>
                     <view class="picker_init">
-                        演奏方式
+                        表演类型
                     </view>
                 </block>
             </picker>

@@ -10,9 +10,9 @@ Page({
 	 */
 	data: {
 		bgUrl: config.defaultPublishUrl, // 背景图片
-		playList: [], // 演奏方式
-		playName: '', // 演奏方式
-		playId: '', // 演奏方式
+		playList: [], // 表演类型
+		playName: '', // 表演类型
+		playId: '', // 表演类型
 		instrumentList: [], // 选择乐器的list
 		instrumentSelectName: '',
 		instrumentSelectId: '',
@@ -24,7 +24,7 @@ Page({
 	 * 生命周期函数--监听页面加载
 	 */
 	onLoad: async function () {
-		// 获取所有演奏方式
+		// 获取所有表演类型
 		this.getAllPlayList();
 		// 获取所有乐器类型
 		await this.getAllInstruments(instruments);

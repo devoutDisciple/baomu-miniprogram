@@ -95,11 +95,9 @@ Page({
 		let { startTime, endTime, hours } = publish2;
 		endTime = endTime.split('.').join('-');
 		startTime = startTime.split('.').join('-');
-		console.log(startTime, endTime, 11111);
 		const { send, foods } = publish3;
 		if (startTime && endTime) {
 			const days = moment(endTime).diff(moment(startTime), 'days') + 1;
-			console.log(days, 22222);
 			// (（结束日期 — 开始日期）—1)  * 300
 			price += Number(days - 1) * 300;
 		}

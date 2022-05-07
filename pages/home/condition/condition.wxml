@@ -27,7 +27,7 @@
         </view>
     </block>
     <view class="chunk">
-        <view class="chunk_title">演奏方式</view>
+        <view class="chunk_title">表演类型</view>
         <view class="chunk_con">
             <block wx:for="{{PLAYS_STYLE}}" wx:key="index">
                 <view 

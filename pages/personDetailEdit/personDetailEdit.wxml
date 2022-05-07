@@ -49,7 +49,7 @@
             <view class="value"></view>
             <image class="icon" src="/asserts/public/left.png" />
         </view>
-        <textarea class="desc" cursor-spacing="{{40}}" value="{{desc}}" placeholder="为了更好的让大家了解您，请认真填写您的个人简介哟" maxlength="{{300}}" bindblur="onBlurDesc"/>
+        <textarea class="desc" cursor-spacing="{{40}}" value="{{desc}}" placeholder="为了更好的让大家了解您，请认真填写您的个人简介哟(别忘了加上个人获奖信息哦)" maxlength="{{300}}" bindblur="onBlurDesc"/>
     </view>
     <view class="chunk2" bindtap="onChooseBgImg">
         <view class="chunk_con">

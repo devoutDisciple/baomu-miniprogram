@@ -32,10 +32,10 @@
             </view>
         </block>
         <view class="type_item">
-            {{plays_style_select_name || "演奏方式"}}
+            {{plays_style_select_name || "表演类型"}}
             <image class="type_item_icon" src="/asserts/public/arrow_bottom.png" />
             <picker class="type_item_picker" data-key="plays_style" bindchange="onSelectPlay" range-key="name" range="{{PLAYS_STYLE}}">
-                演奏方式演奏方式演奏方式
+                表演类型表演类型表演类型
             </picker>
         </view>
         <block wx:if="{{type === 2}}">

@@ -47,3 +47,8 @@
     border-color: #d2d2ba!important;
     color: #333!important;
 }
+
+.wrap .van-calendar__day--start-end {
+    background: #d2d2ba!important;
+    color: #333!important;
+}

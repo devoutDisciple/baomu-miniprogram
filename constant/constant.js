@@ -5,7 +5,7 @@ export const TEAM_TYPE = [
 	{ id: 3, name: '乐团' },
 ];
 
-// 演奏方式
+// 表演类型
 export const PLAYS_STYLE = [
 	{ id: 1, name: '器乐' },
 	{ id: 2, name: '人声' },
@@ -36,7 +36,7 @@ export const instruments = [
 	{ id: 8, name: '民乐·吹管乐器', url: '/instruments/minyue_chuiguan.jpg' },
 	{ id: 9, name: '民乐·拉弦乐器', url: '/instruments/minyue_laxuanyue.jpg' },
 	{ id: 10, name: '民乐·打击乐器', url: '/instruments/minyue_dajiyue.jpg' },
-	{ id: 10, name: '其他', url: '/instruments/bg_defalut.png' },
+	{ id: 11, name: '其他', url: '/instruments/bg_defalut.png' },
 ];
 
 // 人声类型

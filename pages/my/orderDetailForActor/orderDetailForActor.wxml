@@ -33,7 +33,7 @@
                 </view>
                 <view class="chunk">
                     <image class="icon icon3" src="/asserts/public/talk_icon.png" />
-                    <view class="value">演奏方式 {{detail.playName || ""}}</view> 
+                    <view class="value">表演类型 {{detail.playName || ""}}</view> 
                 </view>
                 <view class="chunk">
                     <image class="icon icon3" src="/asserts/public/talk_icon.png" />

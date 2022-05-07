@@ -67,6 +67,7 @@
     <van-calendar
         show="{{ calendarVisible }}"
         type="range"
+        allow-same-day="{{true}}"
         bind:close="onChangeCalendarVisible"
         bind:confirm="onConfirmDate"
         />

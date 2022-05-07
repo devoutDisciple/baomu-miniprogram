@@ -16,8 +16,8 @@ Page({
 		// team_type_name: '', // 乐团类型
 		// person_style_id: '', // 擅长风格
 		// person_style_name: '', // 擅长风格
-		// plays_style_id: '', // 演奏方式
-		// plays_style_name: '', // 演奏方式
+		// plays_style_id: '', // 表演类型
+		// plays_style_name: '', // 表演类型
 	},
 
 	/**

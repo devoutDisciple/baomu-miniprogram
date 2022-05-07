@@ -8,13 +8,13 @@ Page({
 	data: {
 		type: 1, // 1-查询演员 2-查询演出
 		TEAM_TYPE: TEAM_TYPE, // 团队类型
-		PLAYS_STYLE: PLAYS_STYLE, // 演奏方式
+		PLAYS_STYLE: PLAYS_STYLE, // 表演类型
 		person_style: person_style, // 擅长风格
 		address_select: '',
 		team_type_select_id: '', // 选择的乐团类型的id
 		team_type_select_name: '', // 选择的乐团类型的name
-		plays_style_select_id: '', // 选择的演奏方式的id
-		plays_style_select_name: '', // 选择的演奏方式的name
+		plays_style_select_id: '', // 选择的表演类型的id
+		plays_style_select_name: '', // 选择的表演类型的name
 		person_style_selecg_id: '', // 选择的擅长风格的id
 		person_style_selecg_name: '', // 选择的擅长风格的name
 	},
@@ -62,8 +62,8 @@ Page({
 	onTapSure: function () {
 		// team_type_select_id: '', // 选择的乐团类型的id
 		// team_type_select_name: '', // 选择的乐团类型的name
-		// plays_style_select_id: '', // 选择的演奏方式的id
-		// plays_style_select_name: '', // 选择的演奏方式的name
+		// plays_style_select_id: '', // 选择的表演类型的id
+		// plays_style_select_name: '', // 选择的表演类型的name
 		// person_style_selecg_id: '', // 选择的擅长风格的id
 		// person_style_selecg_name: '', // 选择的擅长风格的name
 		const {
@@ -93,8 +93,8 @@ Page({
 			// team_type_name: '', // 乐团类型
 			// person_style_id: '', // 擅长风格
 			// person_style_name: '', // 擅长风格
-			// plays_style_id: '', // 演奏方式
-			// plays_style_name: '', // 演奏方式
+			// plays_style_id: '', // 表演类型
+			// plays_style_name: '', // 表演类型
 			prePage.setData(
 				{
 					address_select: address && address !== 'undefined' ? address : '', // 选择的地址
@@ -102,7 +102,7 @@ Page({
 					team_type_name: team_type_select_name,
 					person_style_id: person_style_selecg_id, // 擅长风格
 					person_style_name: person_style_selecg_name,
-					plays_style_id: plays_style_select_id, // 演奏方式
+					plays_style_id: plays_style_select_id, // 表演类型
 					plays_style_name: plays_style_select_name,
 				},
 				() => {

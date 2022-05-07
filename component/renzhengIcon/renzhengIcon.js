@@ -100,7 +100,7 @@ Component({
 			if (dialogDetail.id === 4) {
 				const result = await request.get({ url: '/level/all', data: { user_id: userid } });
 				const { name: school_name } = schools.filter((item) => item.id === result.school_id)[0];
-				const { name: level_name } = levels.filter((item) => item.id === result.school_id)[0];
+				const { name: level_name } = levels.filter((item) => item.id === result.level_id)[0];
 				dialogDetail.desc = `此用户已获得 由${school_name}颁发${level_name}证书 已通过认证`;
 				this.setData({ dialogDetail, dialogShow: true });
 			}
