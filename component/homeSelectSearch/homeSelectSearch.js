@@ -109,8 +109,15 @@ Component({
 				team_type_select_id: team_type_id,
 				person_style_selecg_id: person_style_id,
 				plays_style_select_id: plays_style_id,
+				instruments_type_select_id: instruments_type_id,
 			} = this.data;
-			this.triggerEvent('OnChange', { address_select, team_type_id, person_style_id, plays_style_id });
+			this.triggerEvent('OnChange', {
+				address_select,
+				team_type_id,
+				person_style_id,
+				plays_style_id,
+				instruments_type_id,
+			});
 		},
 
 		// 选择

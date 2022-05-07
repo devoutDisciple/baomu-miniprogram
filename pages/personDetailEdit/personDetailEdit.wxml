@@ -28,10 +28,28 @@
     <view class="chunk">
         <view class="label">擅长风格</view>
         <view class="value">
-            <picker class="picker" bindchange="stylePickSelect" range="{{styleList}}">
+            <picker class="picker" bindchange="stylePickSelect" range-key="name" range="{{styleList}}">
                 <block wx:if="{{styleName}}">
                     <view class="picker_value">
                         {{styleName}}
+                    </view>
+                </block>
+                <block wx:else>
+                    <view class="picker_init">
+                        请选择
+                    </view>
+                </block>
+            </picker>
+        </view>
+        <image class="icon" src="/asserts/public/left.png" />
+    </view>
+    <view class="chunk">
+        <view class="label">乐器类型</view>
+        <view class="value">
+            <picker class="picker" bindchange="instrumentsPickSelect" range-key="name" range="{{instrumentsList}}">
+                <block wx:if="{{instrumentName}}">
+                    <view class="picker_value">
+                        {{instrumentName}}
                     </view>
                 </block>
                 <block wx:else>

@@ -30,8 +30,8 @@ Page({
 		person_style_name: '', // 擅长风格
 		plays_style_id: '', // 表演类型
 		plays_style_name: '', // 表演类型
-		instruments_type_id: '', // 选择的表演类型的id
-		instruments_type_name: '', // 选择的表演类型的name
+		instruments_type_id: '', // 选择的乐器类型的id
+		instruments_type_name: '', // 选择的乐器类型的name
 	},
 
 	/**
@@ -114,7 +114,7 @@ Page({
 	getActorList: async function ({ showLoading, is_clear }) {
 		try {
 			if (showLoading) loading.showLoading();
-			const { currentUserPage, actorList, address_select, person_style_id, plays_style_id, team_type_id } =
+			const { currentUserPage, actorList, address_select, person_style_id, instruments_type_id, team_type_id } =
 				this.data;
 			const user_id = wx.getStorageSync('user_id');
 			const actors = await request.get({
@@ -124,7 +124,7 @@ Page({
 					current: is_clear ? 0 : currentUserPage,
 					address_select,
 					person_style_id,
-					plays_style_id,
+					instruments_type_id,
 					team_type_id,
 				},
 			});

@@ -1,4 +1,4 @@
-import { person_style } from '../../constant/constant';
+import { person_style, instruments, voices } from '../../constant/constant';
 import request, { uploadFile } from '../../utils/request';
 import loading from '../../utils/loading';
 
@@ -7,9 +7,12 @@ Page({
 	 * 页面的初始数据
 	 */
 	data: {
-		styleList: [], // 擅长风格
+		styleList: [...person_style], // 擅长风格
+		instrumentsList: [...voices, ...instruments], // 乐器类型
 		styleName: '', // 风格名称
 		styleId: '', // 风格id
+		instrumentName: '', // 乐器名称
+		instrumentId: '', // 乐器id
 		photo: '', // 图片
 		nickname: '', // 昵称
 		username: '', // 姓名
@@ -21,29 +24,41 @@ Page({
 	 * 生命周期函数--监听页面加载
 	 */
 	onLoad: function () {
-		this.getPersonStyle();
 		this.getUserInfo();
 	},
 
 	getUserInfo: async function () {
 		loading.showLoading();
 		const user_id = wx.getStorageSync('user_id');
+		const { instrumentsList } = this.data;
 		const result = await request.get({ url: '/user/userDetail', data: { user_id } });
-		const { photo, nickname, username, desc, style_id, bg_url } = result;
+		const { photo, nickname, username, desc, style_id, bg_url, instruments_id } = result;
 		let styleId = '';
 		let styleName = '';
+		let instrumentId = '';
+		let instrumentName = '';
 		if (style_id) {
 			const selectItem = person_style.filter((item) => item.id === style_id)[0];
 			styleId = selectItem.id;
 			styleName = selectItem.name;
 		}
-		this.setData({ photo: photo, nickname: nickname, username, desc, styleId, styleName, bgUrl: bg_url });
+		if (instruments_id) {
+			const selectItem = instrumentsList.filter((item) => item.id === instruments_id)[0];
+			instrumentId = selectItem.id;
+			instrumentName = selectItem.name;
+		}
+		this.setData({
+			photo: photo,
+			nickname: nickname,
+			username,
+			desc,
+			styleId,
+			styleName,
+			instrumentId,
+			instrumentName,
+			bgUrl: bg_url,
+		});
 		loading.hideLoading();
-	},
-
-	getPersonStyle: function () {
-		const styleList = person_style.map((item) => item.name);
-		this.setData({ styleList });
 	},
 
 	// 输入
@@ -66,6 +81,14 @@ Page({
 		const { value } = e.detail;
 		const { id: styleId, name: styleName } = person_style[value];
 		this.setData({ styleId, styleName });
+	},
+
+	// 选择乐器
+	instrumentsPickSelect: function (e) {
+		const { instrumentsList } = this.data;
+		const { value } = e.detail;
+		const { id: instrumentId, name: instrumentName } = instrumentsList[value];
+		this.setData({ instrumentId, instrumentName });
 	},
 
 	// 选择头像
@@ -142,8 +165,8 @@ Page({
 	onSend: async function () {
 		setTimeout(async () => {
 			const user_id = wx.getStorageSync('user_id');
-			const { styleId, nickname, username, desc } = this.data;
-			if (!styleId || !nickname || !username || !desc) {
+			const { styleId, nickname, username, desc, descinstrumentId } = this.data;
+			if (!styleId || !nickname || !username || !desc || !descinstrumentId) {
 				return wx.showToast({
 					title: '请完善信息',
 					icon: 'error',
@@ -151,7 +174,7 @@ Page({
 			}
 			const result = await request.post({
 				url: '/user/updateInfo',
-				data: { style_id: styleId, nickname, username, desc, user_id },
+				data: { style_id: styleId, descinstrument_id: descinstrumentId, nickname, username, desc, user_id },
 			});
 			if (result === 'success') {
 				wx.showToast({
