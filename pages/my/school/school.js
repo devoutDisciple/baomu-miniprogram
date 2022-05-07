@@ -7,6 +7,7 @@ Page({
 	 * 页面的初始数据
 	 */
 	data: {
+		id: '',
 		schoolImg: '', // 毕业证书图片
 		type: 1, // 1-未认证 2-认证中 3-认证失败 4-认证成功
 		dialogShow: false,
@@ -49,6 +50,7 @@ Page({
 		if (result.state && result.school_url) {
 			const { id: study_id, name: study_name } = study_type.filter((item) => item.id === result.study_id)[0];
 			this.setData({
+				id: result.id,
 				study_id,
 				study_name,
 				schoolImg: result.school_url,
@@ -161,5 +163,40 @@ Page({
 	onCloseDialog: function () {
 		this.setData({ dialogShow: false });
 		wx.navigateBack({});
+	},
+
+	// 删除
+	onTapDelete: function () {
+		const self = this;
+		const user_id = wx.getStorageSync('user_id');
+		wx.showModal({
+			title: '删除认证',
+			content: '是否确认删除该认证信息，并重新认证',
+			success: async function (e) {
+				const { confirm, errMsg } = e;
+				if (errMsg === 'showModal:ok' && confirm) {
+					const { id } = self.data;
+					loading.showLoading();
+					await request.post({ url: '/level/deleteItemById', data: { id: id, user_id } });
+					loading.hideLoading();
+					wx.showToast({
+						title: '已删除',
+					});
+					setTimeout(() => {
+						self.setData({
+							id: '',
+							schoolImg: '', // 毕业证书图片
+							type: 1, // 1-未认证 2-认证中 3-认证失败 4-认证成功
+							name: '', // 用户姓名
+							idcard: '', // 身份证号
+							school_name: '', // 学校名称
+							graduation_time: '', // 毕业时间
+							study_id: '', // 选择的学习形式id
+							study_name: '', // 选择的学习形式name
+						});
+					}, 500);
+				}
+			},
+		});
 	},
 });

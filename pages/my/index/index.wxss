@@ -147,6 +147,12 @@
     box-shadow: 0rpx 0rpx 13rpx 4rpx #f3f3f3;
 }
 
+.opt_title {
+    font-size: 26rpx;
+    color: #888;
+    padding-bottom: 40rpx;
+}
+
 .work_msg {
     display: flex;
     flex-direction: row;

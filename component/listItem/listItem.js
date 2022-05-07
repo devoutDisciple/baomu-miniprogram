@@ -12,6 +12,10 @@ Component({
 			type: String,
 			value: '',
 		},
+		desc: {
+			type: String,
+			value: '',
+		},
 		iconName: {
 			type: String,
 			value: 'photo',

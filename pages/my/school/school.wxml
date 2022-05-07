@@ -68,8 +68,11 @@
             </view>
         </view>
     </scroll-view>
-    <block wx:if="{{type === 1 || type === 3}}">
+    <block wx:if="{{type === 1}}">
         <view class="invitate_btn" bindtap="onSend">保存并提交审核</view>
+    </block>
+    <block wx:if="{{type === 3 || type === 4}}">
+        <view class="invitate_btn invitate_btn2" bindtap="onTapDelete">删除并重新认证</view>
     </block>
     <block wx:if="{{dialogShow}}">
         <tip-dialog

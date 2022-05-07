@@ -6,6 +6,7 @@ Page({
 	 * 页面的初始数据
 	 */
 	data: {
+		id: '',
 		idcard1: '', // 身份证正面
 		idcard2: '', // 反面
 		type: 1, // 1-未认证 2-认证中 3-认证失败 4-认证成功
@@ -31,6 +32,7 @@ Page({
 		const result = await request.get({ url: '/idcard/all', data: { user_id } });
 		if (result.state && result.idcard1) {
 			this.setData({
+				id: result.id,
 				idcard1: result.idcard1,
 				idcard2: result.idcard2,
 				type: result.state,
@@ -100,5 +102,35 @@ Page({
 	onCloseDialog: function () {
 		this.setData({ dialogShow: false });
 		wx.navigateBack({});
+	},
+
+	// 删除
+	onTapDelete: function () {
+		const self = this;
+		const user_id = wx.getStorageSync('user_id');
+		wx.showModal({
+			title: '删除认证',
+			content: '是否确认删除该认证信息，并重新认证',
+			success: async function (e) {
+				const { confirm, errMsg } = e;
+				if (errMsg === 'showModal:ok' && confirm) {
+					const { id } = self.data;
+					loading.showLoading();
+					await request.post({ url: '/level/deleteItemById', data: { id: id, user_id } });
+					loading.hideLoading();
+					wx.showToast({
+						title: '已删除',
+					});
+					setTimeout(() => {
+						self.setData({
+							id: '',
+							idcard1: '', // 身份证正面
+							idcard2: '', // 反面
+							type: 1, // 1-未认证 2-认证中 3-认证失败 4-认证成功
+						});
+					}, 500);
+				}
+			},
+		});
 	},
 });

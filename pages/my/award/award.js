@@ -6,6 +6,7 @@ Page({
 	 * 页面的初始数据
 	 */
 	data: {
+		id: '',
 		awardImg: '', // 获奖证书图片
 		type: 1, // 1-未认证 2-认证中 3-认证失败 4-认证成功
 		dialogShow: false,
@@ -33,9 +34,9 @@ Page({
 		loading.showLoading();
 		const user_id = wx.getStorageSync('user_id');
 		const result = await request.get({ url: '/award/all', data: { user_id } });
-		console.log(result, 1111);
 		if (result.state && result.award_url) {
 			this.setData({
+				id: result.id,
 				awardImg: result.award_url,
 				name: result.name,
 				certificate_gov: result.certificate_gov,
@@ -137,5 +138,38 @@ Page({
 	onCloseDialog: function () {
 		this.setData({ dialogShow: false });
 		wx.navigateBack({});
+	},
+
+	// 删除
+	onTapDelete: function () {
+		const self = this;
+		const user_id = wx.getStorageSync('user_id');
+		wx.showModal({
+			title: '删除认证',
+			content: '是否确认删除该认证信息，并重新认证',
+			success: async function (e) {
+				const { confirm, errMsg } = e;
+				if (errMsg === 'showModal:ok' && confirm) {
+					const { id } = self.data;
+					loading.showLoading();
+					await request.post({ url: '/level/deleteItemById', data: { id: id, user_id } });
+					loading.hideLoading();
+					wx.showToast({
+						title: '已删除',
+					});
+					setTimeout(() => {
+						self.setData({
+							id: '',
+							awardImg: '', // 获奖证书图片
+							type: 1, // 1-未认证 2-认证中 3-认证失败 4-认证成功
+							certificate_gov: '', // 证书颁发机构
+							certificate_name: '', // 证书名称
+							certificate_level: '', // 名次
+							certificate_time: '', // 证书颁发时间
+						});
+					}, 500);
+				}
+			},
+		});
 	},
 });

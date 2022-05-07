@@ -27,6 +27,11 @@
     font-size: 34rpx;
 }
 
+.invitate_btn2 {
+    background: #888;
+    color: #fff;
+}
+
 .bg {
     width: 100vw;
     background: #000;

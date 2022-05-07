@@ -7,6 +7,7 @@ Page({
 	 * 页面的初始数据
 	 */
 	data: {
+		id: '',
 		type: 1, // 1-未认证 2-认证中 3-认证失败 4-认证成功
 		dialogShow: false,
 		dialogDetail: {
@@ -47,6 +48,7 @@ Page({
 				(item) => item.id === result.level_id,
 			)[0];
 			this.setData({
+				id: result.id,
 				type: result.state,
 				selectDate: result.date,
 				selectImg: result.url,
@@ -150,38 +152,37 @@ Page({
 		wx.navigateBack({});
 	},
 
-	/**
-	 * 生命周期函数--监听页面初次渲染完成
-	 */
-	onReady: function () {},
-
-	/**
-	 * 生命周期函数--监听页面显示
-	 */
-	onShow: function () {},
-
-	/**
-	 * 生命周期函数--监听页面隐藏
-	 */
-	onHide: function () {},
-
-	/**
-	 * 生命周期函数--监听页面卸载
-	 */
-	onUnload: function () {},
-
-	/**
-	 * 页面相关事件处理函数--监听用户下拉动作
-	 */
-	onPullDownRefresh: function () {},
-
-	/**
-	 * 页面上拉触底事件的处理函数
-	 */
-	onReachBottom: function () {},
-
-	/**
-	 * 用户点击右上角分享
-	 */
-	onShareAppMessage: function () {},
+	// 删除
+	onTapDelete: function () {
+		const self = this;
+		const user_id = wx.getStorageSync('user_id');
+		wx.showModal({
+			title: '删除认证',
+			content: '是否确认删除该认证信息，并重新认证',
+			success: async function (e) {
+				const { confirm, errMsg } = e;
+				if (errMsg === 'showModal:ok' && confirm) {
+					const { id } = self.data;
+					loading.showLoading();
+					await request.post({ url: '/level/deleteItemById', data: { id: id, user_id } });
+					loading.hideLoading();
+					wx.showToast({
+						title: '已删除',
+					});
+					setTimeout(() => {
+						self.setData({
+							id: '',
+							type: 1, // 1-未认证 2-认证中 3-认证失败 4-认证成功
+							selectSchoolId: '', // 选择的颁发机构id
+							selectSchoolName: '', // 选择的颁发机构名称
+							selectLevelId: '', // 选择的证书等级id
+							selectLevelName: '', // 选择的证书等级名称
+							selectDate: '', // 选取的时间
+							selectImg: '', // 选择证书
+						});
+					}, 500);
+				}
+			},
+		});
+	},
 });

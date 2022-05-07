@@ -6,6 +6,7 @@
         <view class="list_con_text">{{text}}</view>
         <view class="list_con_icon">
             <view wx:if="{{msgNum}}" class="list_num" />
+            <view class="list_desc" wx:if="{{desc}}">{{desc}}</view>
             <image class="left_icon" src="/asserts/public/left.png" />
         </view>
     </view>
