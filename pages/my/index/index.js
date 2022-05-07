@@ -90,8 +90,10 @@ Page({
 		if (type === 'comment') this.jumpPage('/pages/my/myReply/myReply');
 		// 工作记录
 		if (type === 'order') this.jumpPage('/pages/my/order/order');
+		// 学校认证
+		if (type === 'school') this.jumpPage('/pages/my/school/school');
 		// 获奖认证
-		if (type === 'honor') this.jumpPage('/pages/my/school/school');
+		if (type === 'award') this.jumpPage('/pages/my/award/award');
 		// 实名认证
 		if (type === 'shenfen') this.jumpPage('/pages/my/idcard/idcard');
 		// 考级认证

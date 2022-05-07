@@ -103,6 +103,13 @@
           "scene": null
         },
         {
+          "name": "获奖认证",
+          "pathName": "pages/my/award/award",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
           "name": "考级认证",
           "pathName": "pages/my/level/level",
           "query": "",

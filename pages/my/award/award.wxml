@@ -1,5 +1,5 @@
 <view class="person">
-    <header text="毕业院校认证" showBack="true" showTop topColor="{{ type === 2 ? '#b5b58d' : type === 3 ? '#f0bcc6' : type=== 4 ? '#55bfb5' : '#000' }}"/>
+    <header text="获奖认证" showBack="true" showTop topColor="{{ type === 2 ? '#b5b58d' : type === 3 ? '#f0bcc6' : type=== 4 ? '#55bfb5' : '#000' }}"/>
     <scroll-view class="wrap" scroll-y="{{true}}" enhanced="{{true}}" show-scrollbar="{{false}}"> 
         <view class="bg {{ type === 2 ? 'bg_process' : type === 3 ? 'bg_fail' : type=== 4 ? 'bg_success' : ''}}">
             <block wx:if="{{type === 2}}">
@@ -14,57 +14,41 @@
         </view>
         <view class="con">
             <view class="chunk" data-type="1">
-                <view class="chunk_title">毕业院校认证</view>
+                <view class="chunk_title">获奖认证</view>
                 <view class="ipt_chunk">
-                    <input placeholder="姓名" value="{{name}}" data-key="name" bindblur="onBlurInput"/>
+                    <input placeholder="证书颁发机构" value="{{certificate_gov}}" data-key="certificate_gov" bindblur="onBlurInput"/>
                 </view>
                 <view class="ipt_chunk">
-                    <input placeholder="身份证号码" value="{{idcard}}" type="idcard" data-key="idcard" bindblur="onBlurInput"/>
+                    <input placeholder="证书名称" value="{{certificate_name}}" data-key="certificate_name" bindblur="onBlurInput"/>
                 </view>
                 <view class="ipt_chunk">
-                    <input placeholder="学校名称" value="{{school_name}}" data-key="school_name" bindblur="onBlurInput"/>
+                    <input placeholder="名次" value="{{certificate_level}}" data-key="certificate_level" bindblur="onBlurInput"/>
                 </view>
                 <view class="ipt_chunk">
                     <select-item>
-                        <picker class="picker" data-key="graduation_time" bindchange="onPickTime" mode="date">
-                            <block wx:if="{{graduation_time}}">
+                        <picker class="picker" data-key="certificate_time" bindchange="onPickTime" mode="date">
+                            <block wx:if="{{certificate_time}}">
                                 <view class="picker_value">
-                                    {{graduation_time}}
+                                    {{certificate_time}}
                                 </view>
                             </block>
                             <block wx:else>
                                 <view class="picker_init">
-                                    毕业时间
+                                    证书颁发时间
                                 </view>
                             </block>
                         </picker>
                     </select-item>
                 </view>
-                <view class="ipt_chunk">
-                    <select-item>
-                        <picker class="picker" bindchange="onPickStudy" range="{{study_list}}">
-                            <block wx:if="{{study_name}}">
-                                <view class="picker_value">
-                                    {{study_name}}
-                                </view>
-                            </block>
-                            <block wx:else>
-                                <view class="picker_init">
-                                    学习形式
-                                </view>
-                            </block>
-                        </picker>
-                    </select-item>
-                </view>
-                <view class="photo_con" data-type="schoolImg" bindtap="{{type === 1 || type === 3 ? 'onChooseImg' : ''}}">
-                    <block wx:if="{{schoolImg}}">
-                        <image class="photo_img" src="{{schoolImg}}" />
+                <view class="photo_con" data-type="awardImg" bindtap="{{type === 1 || type === 3 ? 'onChooseImg' : ''}}">
+                    <block wx:if="{{awardImg}}">
+                        <image class="photo_img" src="{{awardImg}}" />
                     </block>
                     <block wx:else>
                         <image class="photo_img" src="/asserts/public/shenfen1.png" />
                     </block>
                 </view>
-                <view class="photo_desc">院校信息或者学信网学籍信息(请务必上传真实信息平台会人工审核)</view>
+                <view class="photo_desc">获奖证书照片上传</view>
             </view>
         </view>
     </scroll-view>

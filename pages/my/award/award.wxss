@@ -11,6 +11,28 @@
     position: relative;
 }
 
+/* .invitate {
+    margin-top: 40rpx;
+    width: 100%;
+    margin-bottom: 100rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.invitate_btn {
+    width: calc(100vw - 120rpx);
+    height: 100rpx;
+    z-index: 111;
+    background: #000;
+    color: #fff;
+    border-radius: 20rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 40rpx;
+} */
+
 .invitate_btn {
     position: fixed;
     bottom: 40rpx;
@@ -72,6 +94,10 @@
     background: #fff;
     padding: 50rpx 30rpx;
     border-radius: 20rpx;
+}
+
+.chunk2 {
+    margin-top: 40rpx;
     margin-bottom: 200rpx;
 }
 

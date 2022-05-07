@@ -43,7 +43,8 @@
     "pages/temPay/temPay",
     "pages/my/money/money",
     "pages/my/moneyDetail/moneyDetail",
-    "pages/my/personCalendar/personCalendar"
+    "pages/my/personCalendar/personCalendar",
+    "pages/my/award/award"
   ],
   "window": {
     "backgroundTextStyle": "light",
