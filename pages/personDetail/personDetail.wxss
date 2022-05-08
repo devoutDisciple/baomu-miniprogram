@@ -82,7 +82,7 @@
 .msg_icon {
     height: 60rpx;
     width: 60rpx;
-    position: absolute;
+    position: absolute; 
     right: 20rpx;
     top: 20rpx;
 }
@@ -91,10 +91,19 @@
     font-size: 36rpx;
     font-weight: 600;
     height: 60rpx;
+    display: flex;
+    align-items: center;
+}
+
+.attention_icon {
+    width: 40rpx;
+    height: 40rpx;
+    margin-left: 20rpx;
 }
 
 .msg_tubiao {
     display: flex;
+    margin-top: 10rpx;
 }
 
 .msg_tubiao_item {

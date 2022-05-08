@@ -165,8 +165,8 @@ Page({
 	onSend: async function () {
 		setTimeout(async () => {
 			const user_id = wx.getStorageSync('user_id');
-			const { styleId, nickname, username, desc, descinstrumentId } = this.data;
-			if (!styleId || !nickname || !username || !desc || !descinstrumentId) {
+			const { styleId, nickname, username, desc, instrumentId } = this.data;
+			if (!styleId || !nickname || !username || !desc || !instrumentId) {
 				return wx.showToast({
 					title: '请完善信息',
 					icon: 'error',
@@ -174,7 +174,7 @@ Page({
 			}
 			const result = await request.post({
 				url: '/user/updateInfo',
-				data: { style_id: styleId, descinstrument_id: descinstrumentId, nickname, username, desc, user_id },
+				data: { style_id: styleId, instruments_id: instrumentId, nickname, username, desc, user_id },
 			});
 			if (result === 'success') {
 				wx.showToast({

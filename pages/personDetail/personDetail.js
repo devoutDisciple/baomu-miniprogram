@@ -11,6 +11,7 @@ Page({
 		own_id: '', // 当前账户的id
 		user_id: '', // 当前用户详情的用户id
 		personDetail: {}, // 个人信息
+		attentioned: 2, // 1- 已关注 2-未关注
 		dialogShow: false,
 		// 弹框的显示文案
 		dialogDetail: {
@@ -49,6 +50,8 @@ Page({
 		this.setData({ user_id: Number(user_id), own_id: Number(own_id), showInvitationBtn }, async () => {
 			// 获取个人信息
 			await this.getPersonDetail();
+			// 获取是否关注
+			await this.getIsAttention();
 			// 获取个人技能列表
 			await this.getUserSkill();
 			// 获取个人获奖记录
@@ -75,6 +78,17 @@ Page({
 		const { user_id } = this.data;
 		const personDetail = await request.get({ url: '/user/userDetail', data: { user_id } });
 		this.setData({ personDetail });
+	},
+
+	// 获取个人是否关注该用户
+	getIsAttention: async function () {
+		const { user_id, own_id } = this.data;
+		const result = await request.get({
+			url: '/attention/userAttentionUser',
+			data: { user_id: own_id, other_id: user_id },
+		});
+		console.log(result, 2222);
+		this.setData({ attentioned: Number(result) });
 	},
 
 	// 获取作品展示
@@ -274,5 +288,37 @@ Page({
 				url: `/pages/my/personCalendar/personCalendar?user_id=${user_id}`,
 			});
 		}
+	},
+
+	// 点击关注
+	onTapAttention: async function (e) {
+		console.log(e, 1111);
+		let { type } = e.currentTarget.dataset;
+		type = Number(type);
+		loading.showLoading();
+		const { own_id, user_id } = this.data;
+		// 此时已关注
+		if (type === 1) {
+			const result = await request.post({
+				url: '/attention/cancleAttention',
+				data: { user_id: own_id, other_id: user_id },
+			});
+			if (result === 'success') {
+				wx.showToast({
+					title: '已取消关注',
+				});
+			}
+		} else {
+			const result = await request.post({ url: '/attention/add', data: { user_id: own_id, other_id: user_id } });
+			if (result === 'success') {
+				wx.showToast({
+					title: '已关注',
+				});
+			}
+		}
+		setTimeout(() => {
+			this.getIsAttention();
+		}, 500);
+		loading.hideLoading();
 	},
 });
