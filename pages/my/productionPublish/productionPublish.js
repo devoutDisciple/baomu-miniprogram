@@ -250,6 +250,11 @@ Page({
 						icon: 'success',
 					});
 					setTimeout(() => {
+						const pages = getCurrentPages();
+						const prePage = pages[pages.length - 2];
+						if (prePage.route === 'pages/square/index/index') {
+							prePage.getAllProductions();
+						}
 						wx.navigateBack({});
 					}, 1000);
 				}

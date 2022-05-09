@@ -1,8 +1,7 @@
 // 乐队类型
 export const TEAM_TYPE = [
 	{ id: 1, name: '单人' },
-	{ id: 2, name: '乐队(2-8人)' },
-	{ id: 3, name: '乐团' },
+	{ id: 2, name: '乐队' },
 ];
 
 // 表演类型

@@ -23,8 +23,8 @@
                 </view>
                 <view class="msg_sign" wx:if="{{personDetail.username}}">
                     {{personDetail.username || ""}}
-                    <image wx:if="{{own_id !== user_id && attentioned === 2}}" data-type="2" bindtap="onTapAttention" class="attention_icon" src="/asserts/public/attention.png" />
-                    <image wx:if="{{own_id !== user_id && attentioned === 1}}" data-type="1" bindtap="onTapAttention" class="attention_icon" src="/asserts/public/no_attention.png" />
+                    <view wx:if="{{own_id !== user_id && attentioned === 2}}" data-type="2" bindtap="onTapAttention" class="attention_icon">关注</view>
+                    <view wx:if="{{own_id !== user_id && attentioned === 1}}" data-type="1" bindtap="onTapAttention" class="attention_icon">取消关注</view>
                 </view>
                 <view class="msg_tubiao">
                     <renzhengIcon wx:if="{{personDetail.is_name === 1}}" userid="{{personDetail.id}}" idx="1"/>

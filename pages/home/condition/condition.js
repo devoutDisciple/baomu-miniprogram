@@ -75,18 +75,8 @@ Page({
 			person_style_selecg_id,
 			person_style_selecg_name,
 		} = this.data;
-		console.log(
-			address,
-			team_type_select_id,
-			team_type_select_name,
-			plays_style_select_id,
-			plays_style_select_name,
-			person_style_selecg_id,
-			person_style_selecg_name,
-		);
 		const pages = getCurrentPages();
 		const prePage = pages[pages.length - 2];
-		console.log(prePage, 111);
 		if (prePage.route === 'pages/home/index/index') {
 			// address_select: '', // 选择的地址
 			// team_type_id: '', // 乐团类型

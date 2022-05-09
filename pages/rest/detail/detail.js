@@ -26,7 +26,6 @@ Page({
 		loading.showLoading();
 		const { id } = this.data;
 		const result = await request.get({ url: '/device/deviceDetailById', data: { id } });
-		console.log(result, 111);
 		this.setData({ detail: result });
 		loading.hideLoading();
 	},

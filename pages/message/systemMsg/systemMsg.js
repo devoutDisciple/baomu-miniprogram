@@ -33,7 +33,6 @@ Page({
 		let msgData = wx.getStorageSync('msg_data');
 		msgData = JSON.parse(msgData);
 		const systemMsg = msgData.filter((item) => item.msgType === type)[0];
-		console.log(systemMsg, 111);
 		this.setData({ msg: systemMsg.msg || [] });
 	},
 
