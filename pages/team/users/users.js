@@ -38,7 +38,8 @@ Page({
 	// 查询成员
 	async onSearchUsers() {
 		loading.showLoading();
-		const { team_id, userIds } = this.data;
+		const { team_id } = this.data;
+		const userIds = [];
 		const local_user_id = wx.getStorageSync('user_id');
 		const result = await request.get({ url: '/team/teamsUsersByTeamId', data: { team_id, type: 2 } });
 		if (Array.isArray(result)) {
@@ -84,12 +85,22 @@ Page({
 				icon: 'error',
 			});
 		}
-		loading.showLoading();
-		await request.post({ url: '/team/deleteTeamUser', data: { team_user_id, user_id, team_id } });
-		loading.hideLoading();
-		this.onSearchUsers();
-		wx.showToast({
-			title: '删除成功',
+		const self = this;
+		wx.showModal({
+			title: '退出乐队',
+			content: '是否确认此操作',
+			success: async function (re) {
+				const { confirm, errMsg } = re;
+				if (errMsg === 'showModal:ok' && confirm) {
+					loading.showLoading();
+					await request.post({ url: '/team/deleteTeamUser', data: { team_user_id, user_id, team_id } });
+					loading.hideLoading();
+					self.onSearchUsers();
+					wx.showToast({
+						title: '删除成功',
+					});
+				}
+			},
 		});
 	},
 

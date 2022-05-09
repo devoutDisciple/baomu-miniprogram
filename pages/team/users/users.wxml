@@ -16,7 +16,7 @@
                             编辑
                         </view>
                     </view>
-                    <view class="chunk_delete" data-item="{{item}}" bindtap="onTapDeleteItem" slot="right">删除成员</view>
+                    <view class="chunk_delete" data-item="{{item}}" bindtap="onTapDeleteItem" slot="right">退出乐队</view>
                 </van-swipe-cell>   
             </block>
             <view class="empty_txt">没有更多啦~</view>

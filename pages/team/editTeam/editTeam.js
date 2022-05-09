@@ -66,7 +66,8 @@ Page({
 	// 获取乐队成员
 	getTeamUser: async function () {
 		loading.showLoading();
-		const { userIds, personDetail, local_user_id } = this.data;
+		const { personDetail, local_user_id } = this.data;
+		const userIds = [];
 		const result = await request.get({
 			url: '/team/teamsUsersByTeamId',
 			data: { team_id: personDetail.team_id, type: 2 },

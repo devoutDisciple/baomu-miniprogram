@@ -4,8 +4,7 @@
     enhanced="{{true}}" 
     lower-threshold="300"
     show-scrollbar="{{false}}" 
-    bindscrolltolower="onScrollBottom"
-    bindscroll="onPageScroll">
+    bindscrolltolower="onScrollBottom">
     <view class="bg_con">
         <view class="tab">
             <search-ipt />

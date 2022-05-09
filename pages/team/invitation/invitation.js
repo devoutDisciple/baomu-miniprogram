@@ -1,7 +1,6 @@
 /* eslint-disable prefer-destructuring */
 import login from '../../../utils/login';
 import request from '../../../utils/request';
-import deviceUtil from '../../../utils/deviceUtil';
 import loading from '../../../utils/loading';
 
 Page({
@@ -43,9 +42,6 @@ Page({
 			}
 			// 获取用户地理位置
 			this.getUserLocation();
-			// 获取设备信息
-			this.getDeviceStatus();
-
 			// 查询演员
 			await this.getActorList();
 		} catch (error) {
@@ -53,12 +49,6 @@ Page({
 		} finally {
 			loading.hideLoading();
 		}
-	},
-
-	// 页面滚动
-	onPageScroll: function (e) {
-		const { scrollTop } = e.detail;
-		this.setData({ scrollOver: scrollTop > 210 });
 	},
 
 	/**
@@ -82,11 +72,12 @@ Page({
 			data: { user_id: user_id, current: currentUserPage, onlyPerson: true },
 		});
 		const pages = getCurrentPages();
-		const currentPage = pages[pages.length - 2];
-		const route = currentPage.route;
-		const userIds = currentPage.data.userIds;
+		const prePage = pages[pages.length - 2];
+		const route = prePage.route;
+		const userIds = prePage.data.userIds;
 		// 是否是乐队邀请新成员，老成员无法操作
 		const flag = route === 'pages/team/users/users' || route === 'pages/team/editTeam/editTeam';
+
 		// 将选取的user_id进行赋值
 		actors.forEach((item) => {
 			if (userIds.includes(item.id) && !Object.keys(item).includes('invitation')) {
@@ -96,15 +87,6 @@ Page({
 		});
 		const newActorList = [...actorList, ...actors];
 		this.setData({ actorList: newActorList, currentUserPage: currentUserPage + 1, isLoading: false });
-	},
-
-	// 获取设备信息
-	getDeviceStatus: function () {
-		deviceUtil.getDeviceInfo().then((res) => {
-			const { statusBarHeight, navHeight } = res;
-			const tabTop = `${statusBarHeight + navHeight}px`;
-			this.setData({ tabTop });
-		});
 	},
 
 	// 关闭获取用户信息弹框

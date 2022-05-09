@@ -44,7 +44,8 @@
     "pages/my/money/money",
     "pages/my/moneyDetail/moneyDetail",
     "pages/my/personCalendar/personCalendar",
-    "pages/my/award/award"
+    "pages/my/award/award",
+    "pages/test/test"
   ],
   "window": {
     "backgroundTextStyle": "light",

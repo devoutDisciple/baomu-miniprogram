@@ -20,12 +20,33 @@ Page({
 		loading.showLoading();
 		this.getDeviceData();
 		await this.getUserInfo();
+		this.getNoReadNum();
 		loading.hideLoading();
+		this.timer = setInterval(() => {
+			this.getNoReadNum();
+		}, 3000);
 	},
 
 	onShow: function () {
 		this.getUserInfo();
-		this.getNoReadNum();
+	},
+
+	/**
+	 * 生命周期函数--监听页面隐藏
+	 */
+	onHide() {
+		if (this.timer) {
+			clearInterval(this.timer);
+		}
+	},
+
+	/**
+	 * 生命周期函数--监听页面卸载
+	 */
+	onUnload() {
+		if (this.timer) {
+			clearInterval(this.timer);
+		}
 	},
 
 	// 获取未读消息数量

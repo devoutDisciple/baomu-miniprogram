@@ -82,7 +82,9 @@ Page({
 				const {
 					tempFilePaths: [tempFilePath],
 				} = res;
-
+				const aa = {};
+				aa[type] = tempFilePath;
+				self.setData(aa);
 				wx.editImage({
 					src: tempFilePath,
 					success: async function (filePath) {
