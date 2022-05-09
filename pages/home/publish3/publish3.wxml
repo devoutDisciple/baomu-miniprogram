@@ -5,7 +5,7 @@
             <picker class="picker" bindchange="onPickSend" range="{{isYesList}}">
                 <block wx:if="{{selectSend}}">
                     <view class="picker_value">
-                        {{selectSend}}
+                        接送：{{selectSend}}
                     </view>
                 </block>
                 <block wx:else>
@@ -21,7 +21,7 @@
             <picker class="picker" bindchange="onPickFoods" range="{{isYesList}}">
                 <block wx:if="{{selectFoods}}">
                     <view class="picker_value">
-                        {{selectFoods}}
+                        包住宿：{{selectFoods}}
                     </view>
                 </block>
                 <block wx:else>

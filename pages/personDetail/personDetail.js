@@ -292,7 +292,6 @@ Page({
 
 	// 点击关注
 	onTapAttention: async function (e) {
-		console.log(e, 1111);
 		let { type } = e.currentTarget.dataset;
 		type = Number(type);
 		loading.showLoading();

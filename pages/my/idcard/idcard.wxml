@@ -15,7 +15,7 @@
         <view class="con">
             <view class="chunk">
                 <view class="chunk_title">正面</view>
-                <view class="chunk_desc">上传身份证正面照片</view>
+                <view class="chunk_desc">本人手持身份证正面拍照</view>
                 <view class="photo_con" data-type="1" bindtap="{{type === 1 || type === 3 ? 'onChooseImg' : ''}}">
                     <block wx:if="{{idcard1}}">
                         <image class="photo_img" src="{{idcard1}}" />
