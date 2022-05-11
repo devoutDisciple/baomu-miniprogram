@@ -103,7 +103,7 @@ Page({
 		}
 		// 住宿否   +天数*200
 		if (startTime && endTime && publish3 && foods === '否') {
-			const days = moment(endTime).diff(moment(startTime), 'days') + 1;
+			const days = moment(endTime).diff(moment(startTime), 'days');
 			price += days * 200;
 		}
 		// 当演奏时长>3               + 100

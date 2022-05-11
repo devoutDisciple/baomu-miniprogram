@@ -8,6 +8,7 @@ Page({
 	 * 页面的初始数据
 	 */
 	data: {
+		is_first: true,
 		id: '', // 作品id
 		type: 1, // 1-作品 2-动态
 		detail: {}, // 作品详情
@@ -34,18 +35,26 @@ Page({
 				title: '动态详情',
 			});
 		}
-		this.setData({ id, type }, () => {
-			this.onSearchProductionDetail();
+		this.setData({ id, type, is_first: false }, () => {
+			this.onSearchProductionDetail(id);
 			this.onSearchCommonts(id);
 			this.getUserProductionGoods(id);
 		});
 	},
 
+	onShow: function () {
+		const { id, is_first } = this.data;
+		if (!is_first) {
+			this.onSearchProductionDetail(id);
+			this.onSearchCommonts(id);
+			this.getUserProductionGoods(id);
+		}
+	},
+
 	// 查询作品详情
-	onSearchProductionDetail: async function () {
+	onSearchProductionDetail: async function (id) {
 		try {
 			loading.showLoading();
-			const { id } = this.data;
 			const detail = await request.get({ url: '/production/detailById', data: { id } });
 			if (detail && detail.instr_id) {
 				detail.instr_name = instruments.filter((ins) => ins.id === detail.instr_id)[0].name;

@@ -18,7 +18,7 @@
         </view>
         <btm-empty />
     </scroll-view>
-    <reply-btm bindTapGoods="onTapGoodsCallback" bindCallback="onRepluSuccess" hadGoods="{{currentReply.hadGoods}}" type="{{2}}" contentId="{{contentId}}" commentId="{{commentId}}" ownerId="{{currentReply.userId}}"/>
+    <reply-btm showShare="{{false}}" bindTapGoods="onTapGoodsCallback" bindCallback="onRepluSuccess" hadGoods="{{currentReply.hadGoods}}" type="{{2}}" contentId="{{contentId}}" commentId="{{commentId}}" ownerId="{{currentReply.userId}}"/>
     <!-- <reply-ipt 
         type="2" 
         focus="{{focus}}" 

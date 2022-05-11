@@ -131,3 +131,9 @@
     flex: 1;
     color: #b5b58d;
 }
+
+.price_num {
+    font-size: 46rpx;
+    color: #333;
+    font-weight: 800;
+}

@@ -4,7 +4,7 @@
         <image class="img" mode="widthFix" src="{{detail.instrumentUrl}}" />
         <view class="content">
             <view class="title">{{detail.title || ""}}</view>
-            <view class="price">标价：￥{{detail.price || ""}}</view>
+            <view class="price">标价：￥<text class="price_num">{{detail.price || ""}}</text></view>
             <view class="desc">简介：{{detail.desc || ""}}</view>
             <view class="chunk">
                 <image class="icon icon1" src="/asserts/public/time_icon.png" />

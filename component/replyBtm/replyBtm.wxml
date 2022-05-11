@@ -15,8 +15,9 @@
                     <image class="icon" bindtap="onTagGood" src="/asserts/public/good_black.png" />
                 </block>
             </view>
-            <view class="icon_img">
-                <image class="icon" bindtap="onSend" src="/asserts/public/share_black.png" />
+            <view class="icon_img" wx:if="{{showShare}}">
+                <image class="icon" bindtap="onShare" src="/asserts/public/share_black.png" />
+                <button class="share_btn" data-contentid="{{detail.id}}" data-type="{{detail.type}}" open-type="share" />
             </view>
         </view>
     </view>

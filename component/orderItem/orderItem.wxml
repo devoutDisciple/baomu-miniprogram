@@ -1,5 +1,5 @@
 <view class="order">
-    <view class="title" bindtap="onTapDemandDetail">
+    <view class="title" bindtap="onTapPublisherDetail">
         <view class="title_person">
             <image class="title_img" src="{{data.userPhoto}}" />
             {{data.username || ""}}
@@ -26,11 +26,11 @@
     </view>
     <view class="price">
         <block wx:if="{{data.state === 1 || data.state === 2 ||data.state === 3 }}">
-            <view class="cancle_btn" bindtap="onTapCancle">取消</view>
+            <view class="cancle_btn" bindtap="onTapCancle">取消订单</view>
         </block>
         <view class="price_right">
              <view class="price_con" bindtap="onTapDemandDetail">
-                费用: <view class="price_text">￥{{data.price}}</view>
+                费用: <view class="price_text">￥{{data.final_price || data.price}}</view>
             </view>
             <!-- 需求方展示 -->
             <block wx:if="{{type === 1}}">

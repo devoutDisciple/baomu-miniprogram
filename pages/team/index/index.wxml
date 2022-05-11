@@ -3,7 +3,7 @@
         <block wx:for="{{teamList}}" wx:key="index">
              <view class="chunk">
                 <view class="top" bindtap="onTapDetail" data-team="{{item}}">
-                    <image class="team_photo" src="/asserts/temp/photo.png" />
+                    <image class="team_photo" src="{{item.photo}}" />
                     <view class="team_desc">
                         <view class="team_name">{{item.name}}</view>
                         <view class="team_people">乐队成员 <text class="team_people_num">{{item.person_num || 0}}人</text></view>

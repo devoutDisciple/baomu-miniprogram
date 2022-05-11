@@ -7,6 +7,11 @@ Component({
 	 * 组件的属性列表
 	 */
 	properties: {
+		// 是否显示转发
+		showShare: {
+			type: Boolean,
+			value: false,
+		},
 		//  1-给帖子评论 2-二级评论
 		type: {
 			type: Number,

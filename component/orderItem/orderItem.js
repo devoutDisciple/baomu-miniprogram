@@ -123,5 +123,13 @@ Component({
 				},
 			});
 		},
+
+		// 点击发布人头像
+		onTapPublisherDetail: function () {
+			const { data } = this.data;
+			wx.navigateTo({
+				url: `/pages/personDetail/personDetail?user_id=${data.user_id}`,
+			});
+		},
 	},
 });

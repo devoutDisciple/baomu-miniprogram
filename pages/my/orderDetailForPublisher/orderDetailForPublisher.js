@@ -216,7 +216,6 @@ Page({
 		loading.showLoading();
 		const { id } = this.data;
 		const result = await request.get({ url: '/priceRecord/priceRecordByDemandId', data: { demand_id: id } });
-		console.log(result, 888);
 		if (Array.isArray(result)) {
 			result.forEach((price) => {
 				const records = price.records;
@@ -238,5 +237,14 @@ Page({
 		}
 		this.setData({ priceRecordList: result });
 		loading.hideLoading();
+	},
+
+	// 点击联系演员
+	onTapUserDetail: function () {
+		const { priceRecordList, selectPersonIdx } = this.data;
+		const records = priceRecordList[selectPersonIdx].userDetail;
+		wx.navigateTo({
+			url: `/pages/personDetail/personDetail?user_id=${records.id}`,
+		});
 	},
 });

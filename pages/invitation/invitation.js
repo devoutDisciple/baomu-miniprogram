@@ -389,7 +389,7 @@ Page({
 		}
 		// 住宿否   +天数*200
 		if (startTime && endTime && selectFoods && selectFoods === '否') {
-			const days = moment(endTime).diff(moment(startTime), 'days') + 1;
+			const days = moment(endTime).diff(moment(startTime), 'days');
 			// 个人
 			if (temp_user_type === 1) {
 				price += days * 200;

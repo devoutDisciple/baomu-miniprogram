@@ -15,10 +15,10 @@
                 <!-- <image class="user_photo_icon" src="/asserts/public/attention_add.png" /> -->
             </view>
             <view class="msg_tubiao">
-                <renzhengIcon wx:if="{{detail.userDetail.is_name === 1}}" idx="1"/>
-                <renzhengIcon wx:if="{{detail.userDetail.is_school === 1}}" idx="2"/>
-                <renzhengIcon wx:if="{{detail.userDetail.is_award === 1}}" idx="3"/>
-                <renzhengIcon wx:if="{{detail.userDetail.is_level === 1}}" idx="4"/>
+                <renzhengIcon wx:if="{{detail.userDetail.is_name === 1}}" userid="{{detail.user_id}}" idx="1"/>
+                <renzhengIcon wx:if="{{detail.userDetail.is_school === 1}}" userid="{{detail.user_id}}" idx="2"/>
+                <renzhengIcon wx:if="{{detail.userDetail.is_award === 1}}" userid="{{detail.user_id}}" idx="3"/>
+                <renzhengIcon wx:if="{{detail.userDetail.is_level === 1}}" userid="{{detail.user_id}}" idx="4"/>
             </view>
         </view>
         <view class="title">{{detail.title}}</view>
@@ -54,6 +54,6 @@
                 <btm-empty />
             </block>
         </view>
-        <reply-btm bindCallback="onRepluSuccess" hadGoods="{{hadGoods}}" type="{{1}}" contentId="{{detail.id}}" commentId="" ownerId="{{detail.user_id}}"/>
+        <reply-btm showShare="{{true}}" bindCallback="onRepluSuccess" hadGoods="{{hadGoods}}" type="{{1}}" contentId="{{detail.id}}" commentId="" ownerId="{{detail.user_id}}"/>
     </view>
 </scroll-view>

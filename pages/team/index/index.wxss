@@ -19,6 +19,7 @@
 .team_photo {
     width: 90rpx;
     height: 90rpx;
+    border-radius: 100%;
 }
 
 .team_desc {

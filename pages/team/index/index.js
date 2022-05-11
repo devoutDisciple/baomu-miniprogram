@@ -22,6 +22,7 @@ Page({
 		const user_id = wx.getStorageSync('user_id');
 		const result = await request.get({ url: '/team/teamsByUserId', data: { user_id } });
 		this.setData({ teamList: result });
+		console.log(result, 9989);
 		loading.hideLoading();
 	},
 

@@ -4,7 +4,7 @@
         <image class="img" mode="widthFix" src="{{detail.instrumentUrl}}" />
         <view class="content">
             <view class="title">{{detail.title || ""}}</view>
-            <view class="price">标价：￥{{detail.price || ""}}</view>
+            <view class="price">标价：￥<text class="price_num">{{detail.price || ""}}</text></view>
             <view class="tab_con">
                 <view class="tab">
                     <view class="tab_work">

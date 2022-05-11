@@ -275,3 +275,9 @@
     align-items: center;
     margin-top: 100rpx;
 }
+
+.price_num {
+    font-size: 46rpx;
+    color: #333;
+    font-weight: 800;
+}
