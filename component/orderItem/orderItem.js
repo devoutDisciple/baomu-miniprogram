@@ -1,4 +1,5 @@
 import request from '../../utils/request';
+import loading from '../../utils/loading';
 
 Component({
 	/**
@@ -112,13 +113,20 @@ Component({
 		// 点击取消订单
 		onTapCancle: function () {
 			const { data } = this.data;
+			const self = this;
 			wx.showModal({
 				title: '取消需求',
 				content: '是否确认取消该需求，该操作不可逆，请谨慎操作',
-				success: function (e) {
+				success: async function (e) {
 					const { confirm, errMsg } = e;
 					if (errMsg === 'showModal:ok' && confirm) {
-						request.post({ url: '/demand/cancle', data: { id: data.id } });
+						loading.showLoading();
+						await request.post({ url: '/demand/cancle', data: { id: data.id } });
+						loading.hideLoading();
+						wx.showToast({
+							title: '取消成功',
+						});
+						self.triggerEvent('OnSearchForItem');
 					}
 				},
 			});

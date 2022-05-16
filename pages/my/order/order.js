@@ -36,6 +36,11 @@ Page({
 		});
 	},
 
+	// 查询回调
+	onSearchForItem: function () {
+		this.onSearchOrder();
+	},
+
 	// 查询我参与的需求
 	onSearchOrder: async function () {
 		try {

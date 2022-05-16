@@ -7,6 +7,10 @@ Component({
 			type: String,
 			value: '',
 		},
+		noShowPreview: {
+			type: Boolean,
+			value: false,
+		},
 	},
 
 	/**

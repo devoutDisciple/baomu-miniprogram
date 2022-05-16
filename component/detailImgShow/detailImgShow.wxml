@@ -9,14 +9,14 @@
     <block wx:elif="{{imgListLen === 2}}">
         <view class="wrap wrap2">
             <view bindtap="showImg" data-index="{{index}}" class="img" wx:for="{{imgLists}}" wx:key="index">
-                <my-img class="my_img" src="{{item}}"/>
+                <my-img noShowPreview="{{true}}" class="my_img" src="{{item}}"/>
             </view>
         </view>
     </block>
     <block wx:elif="{{imgListLen > 2}}">
         <view class="wrap wrap3 {{showAll ? '' : 'wrap3_ellipsis'}}">
             <view bindtap="showImg" data-index="{{index}}" class="img" wx:for="{{imgLists}}" wx:key="index">
-                <my-img class="my_img" src="{{item}}"/>
+                <my-img noShowPreview="{{true}}" class="my_img" src="{{item}}"/>
             </view>
             <view class="more_num" bindtap="showImg" data-index="5" wx:if="{{!showAll && imgListLen > 6}}">+ {{imgListLen - 6}}</view>
         </view>

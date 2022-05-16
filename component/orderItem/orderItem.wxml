@@ -40,7 +40,7 @@
                 </block>
                 <!-- 演出结束，支付给用户 -->
                 <block wx:if="{{data.state === 5}}">
-                    <view class="pay_btn" bindtap="onTapSuccess">付款</view>
+                    <view class="pay_btn" bindtap="onTapSuccess">完成演出</view>
                 </block>
                 <!-- 付款成功，未评价 -->
                 <block wx:if="{{data.state === 6}}">
