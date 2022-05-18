@@ -137,3 +137,10 @@
     color: #333;
     font-weight: 800;
 }
+
+.price_desc {
+    font-size: 24rpx;
+    color: red;
+    padding: 30rpx;
+    padding-top: 0;
+}

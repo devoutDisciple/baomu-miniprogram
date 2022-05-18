@@ -64,6 +64,7 @@
         showCancelButton="{{false}}"
         >
         <view class="ipt_con">
+            <view class="price_desc">温馨提示：演员与商家充分考虑市场价格商议调整（演员请根据演出信息充分考虑路程、是否包宿等因素、合理议价）</view>
             <input class="ipt" bindblur="onBlurIpt" type="number" placeholder="{{placeholder}}" />
             <view class="footer">
                 <view class="footer_btn footer_left" bindtap="onClose">取消</view>

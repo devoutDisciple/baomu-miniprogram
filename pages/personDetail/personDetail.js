@@ -26,6 +26,7 @@ Page({
 		showInvitationBtn: false, // 是否展示邀请按钮
 		evaluates: [], // 评价列表
 		invitationTime: [], // 被邀请时段
+		is_first: true,
 	},
 
 	/**
@@ -64,8 +65,31 @@ Page({
 			await this.getUserEvaluates();
 			// 获取用户的可用时段
 			await this.getUserInvitationTime();
+			this.setData({ is_first: false });
 			loading.hideLoading();
 		});
+	},
+
+	onShow: async function () {
+		const { is_first } = this.data;
+		if (!is_first) {
+			// 获取个人信息
+			await this.getPersonDetail();
+			// 获取是否关注
+			await this.getIsAttention();
+			// 获取个人技能列表
+			await this.getUserSkill();
+			// 获取个人获奖记录
+			await this.getUserAward();
+			// 获取作品列表
+			await this.getPersonProduction();
+			// 获取个人动态
+			await this.getPersonShowList();
+			// 获取用户全部评价
+			await this.getUserEvaluates();
+			// 获取用户的可用时段
+			await this.getUserInvitationTime();
+		}
 	},
 
 	onScroll: function (e) {
@@ -87,7 +111,6 @@ Page({
 			url: '/attention/userAttentionUser',
 			data: { user_id: own_id, other_id: user_id },
 		});
-		console.log(result, 2222);
 		this.setData({ attentioned: Number(result) });
 	},
 
