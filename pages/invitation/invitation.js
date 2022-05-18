@@ -361,9 +361,9 @@ Page({
 
 	// 计算费用
 	countPrice: function () {
-		let price = 400;
+		let price = 500;
 		// eslint-disable-next-line prefer-const
-		let { startTime, endTime, selectHour, selectFoods, selectSend, user_type, teamDetail } = this.data;
+		let { startTime, endTime, selectHour, user_type, teamDetail } = this.data;
 		endTime = endTime.split('.').join('-');
 		startTime = startTime.split('.').join('-');
 		const temp_user_type = Number(user_type);
@@ -373,7 +373,7 @@ Page({
 		}
 		// 是乐团
 		if (temp_user_type === 2) {
-			// 400     *  人数
+			// 500     *  人数
 			price *= users_num;
 		}
 		// (（结束日期 — 开始日期）—1)  * 300
@@ -387,23 +387,8 @@ Page({
 				price += Number(days - 1) * 260 * users_num;
 			}
 		}
-		// 住宿否   +天数*200
-		if (startTime && endTime && selectFoods && selectFoods === '否') {
-			const days = moment(endTime).diff(moment(startTime), 'days');
-			// 个人
-			if (temp_user_type === 1) {
-				price += days * 200;
-			} else {
-				// 乐队
-				price += (Number(days) * 200 * users_num) / 2;
-			}
-		}
 		// 当演奏时长>3               + 100
 		if (selectHour && Number(selectHour) >= 3) {
-			price += 100;
-		}
-		// 接送否                     +100
-		if (selectSend && selectSend === '否') {
 			price += 100;
 		}
 		if (startTime && endTime) {

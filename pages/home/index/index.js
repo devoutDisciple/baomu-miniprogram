@@ -68,6 +68,12 @@ Page({
 		}
 	},
 
+	// 页面展示
+	onShow: function () {
+		// 清空发布的缓存
+		wx.removeStorageSync('publish');
+	},
+
 	// 查询，给查询页面用的
 	onSearch: async function (params) {
 		const { selectTabIdx } = this.data;
@@ -82,14 +88,14 @@ Page({
 
 	// 页面滚动
 	onPageScroll: function (e) {
-		const { scrollOver } = this.data;
-		const { scrollTop } = e.detail;
-		if (scrollTop > 210 && !scrollOver) {
-			this.setData({ scrollOver: true });
-		}
-		if (scrollTop < 210 && scrollOver) {
-			this.setData({ scrollOver: false });
-		}
+		// const { scrollOver } = this.data;
+		// const { scrollTop } = e.detail;
+		// if (scrollTop > 210 && !scrollOver) {
+		// 	this.setData({ scrollOver: true });
+		// }
+		// if (scrollTop < 210 && scrollOver) {
+		// 	this.setData({ scrollOver: false });
+		// }
 	},
 
 	/**
@@ -286,14 +292,8 @@ Page({
 		let { idx } = e.currentTarget.dataset;
 		idx = Number(idx);
 		this.setData({ selectTabIdx: Number(idx), currentUserPage: 0, searchValue: '' }, () => {
-			this.onSearch({ showLoading: true, is_clear: true });
+			if (Number(idx) === 2) this.onSearch({ showLoading: true, is_clear: true });
 		});
-	},
-
-	// 页面展示
-	onShow: function () {
-		// 清空发布的缓存
-		wx.removeStorageSync('publish');
 	},
 
 	// 当选择条件改变的时候

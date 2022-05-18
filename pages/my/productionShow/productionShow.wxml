@@ -16,7 +16,7 @@
                 </view>
                 <view class="name" data-id="{{item.id}}">
                     <view class="name_type">作品类型：{{item.instr_name}}</view>
-                    <view class="item_delete" data-item="{{item}}" bindtap="onDeleteItem">删除</view>
+                    <view class="item_delete" data-item="{{item}}" wx:if="{{showBtn}}" bindtap="onDeleteItem">删除</view>
                 </view>
             </view>
         </block>

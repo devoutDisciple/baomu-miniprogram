@@ -88,30 +88,19 @@ Page({
 
 	// 计算费用
 	countPrice: function () {
-		let price = 400;
+		let price = 500;
 		const publish2 = getStoragePublishMsg('publish2') || {};
-		const publish3 = getStoragePublishMsg('publish3') || {};
 		// eslint-disable-next-line prefer-const
 		let { startTime, endTime, hours } = publish2;
 		endTime = endTime.split('.').join('-');
 		startTime = startTime.split('.').join('-');
-		const { send, foods } = publish3;
 		if (startTime && endTime) {
 			const days = moment(endTime).diff(moment(startTime), 'days') + 1;
 			// (（结束日期 — 开始日期）—1)  * 300
 			price += Number(days - 1) * 300;
 		}
-		// 住宿否   +天数*200
-		if (startTime && endTime && publish3 && foods === '否') {
-			const days = moment(endTime).diff(moment(startTime), 'days');
-			price += days * 200;
-		}
 		// 当演奏时长>3               + 100
 		if (hours && hours >= 3) {
-			price += 100;
-		}
-		// 接送否                     +100
-		if (publish3 && send === '否') {
 			price += 100;
 		}
 		if (startTime && endTime) {

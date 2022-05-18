@@ -163,9 +163,9 @@ Page({
 
 	// 计算费用
 	countPrice: function () {
-		let price = 400;
+		let price = 500;
 		// eslint-disable-next-line prefer-const
-		let { start_time: startTime, end_time: endTime, hours, is_send, is_food } = this.data.detail;
+		let { start_time: startTime, end_time: endTime, hours } = this.data.detail;
 		endTime = endTime.split('.').join('-');
 		startTime = startTime.split('.').join('-');
 		if (startTime && endTime) {
@@ -173,17 +173,8 @@ Page({
 			// (（结束日期 — 开始日期）—1)  * 300
 			price += Number(days - 1) * 300;
 		}
-		// 住宿否   +天数*200
-		if (startTime && endTime && Number(is_food) === 2) {
-			const days = moment(endTime).diff(moment(startTime), 'days');
-			price += days * 200;
-		}
 		// 当演奏时长>3               + 100
 		if (hours && Number(hours) >= 3) {
-			price += 100;
-		}
-		// 接送否                     +100
-		if (Number(is_send) === 2) {
 			price += 100;
 		}
 		if (startTime && endTime) {

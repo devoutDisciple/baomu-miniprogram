@@ -23,9 +23,7 @@ Component({
 	data: {},
 
 	lifetimes: {
-		attached: function () {
-			console.log(this.data.msg, this.data.msgData, 222);
-		},
+		attached: function () {},
 	},
 
 	/**

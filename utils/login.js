@@ -1,8 +1,6 @@
 import { post } from './request';
 import loading from './loading';
 
-const app = getApp();
-
 module.exports = {
 	getLogin: (userinfo = {}) => {
 		return new Promise((resolve, reject) => {
@@ -11,7 +9,6 @@ module.exports = {
 			if (userId) {
 				post({ url: '/login/loginByUserId', data: { userId } })
 					.then((data) => {
-						app.globalData.userInfo = data;
 						const { id, username, photo, wx_openid, phone } = data;
 						// 将用户信息缓存下来
 						wx.setStorageSync('user_id', id);
@@ -33,7 +30,6 @@ module.exports = {
 						const { code } = res;
 						post({ url: '/login/loginByWxOpenid', data: { code, ...userinfo } })
 							.then((data) => {
-								app.globalData.userInfo = data;
 								const { id, username, photo, wx_openid, phone } = data;
 								// 将用户信息缓存下来
 								wx.setStorageSync('user_id', id);

@@ -1,6 +1,5 @@
 {
     "usingComponents": {
-      "good-item": "/component/goodItem/goodItem",
       "list-item": "/component/msgListItem/msgListItem",
       "btm-empty": "/component/btmEmpty/btmEmpty",
       "empty-img": "/component/emptyImg/emptyImg"
