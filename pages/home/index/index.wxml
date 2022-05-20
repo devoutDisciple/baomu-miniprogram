@@ -4,7 +4,8 @@
     enhanced="{{true}}" 
     lower-threshold="300"
     show-scrollbar="{{false}}" 
-    bindscrolltolower="onScrollBottom">
+    bindscrolltolower="onScrollBottom"
+    bindscroll="onPageScroll">
     <block wx:if="{{scrollOver}}">
         <view class="tab_fix">
             <view class="tab2">

@@ -56,6 +56,12 @@ Page({
 		try {
 			loading.showLoading();
 			const detail = await request.get({ url: '/production/detailById', data: { id } });
+			if (!detail || !detail.id) {
+				return wx.showToast({
+					title: '内容已被删除',
+					icon: 'error',
+				});
+			}
 			if (detail && detail.instr_id) {
 				detail.instr_name = instruments.filter((ins) => ins.id === detail.instr_id)[0].name;
 			}

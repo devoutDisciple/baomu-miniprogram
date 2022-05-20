@@ -88,14 +88,14 @@ Page({
 
 	// 页面滚动
 	onPageScroll: function (e) {
-		// const { scrollOver } = this.data;
-		// const { scrollTop } = e.detail;
-		// if (scrollTop > 210 && !scrollOver) {
-		// 	this.setData({ scrollOver: true });
-		// }
-		// if (scrollTop < 210 && scrollOver) {
-		// 	this.setData({ scrollOver: false });
-		// }
+		const { scrollOver } = this.data;
+		const { scrollTop } = e.detail;
+		if (scrollTop > 210 && !scrollOver) {
+			this.setData({ scrollOver: true });
+		}
+		if (scrollTop < 210 && scrollOver) {
+			this.setData({ scrollOver: false });
+		}
 	},
 
 	/**
