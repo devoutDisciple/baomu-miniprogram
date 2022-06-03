@@ -52,13 +52,13 @@ Page({
 			if (Array.isArray(orders)) {
 				orders.forEach((item) => {
 					// 获取演奏类型
-					const { name: playName } = PLAYS_STYLE.filter((p) => p.id === Number(item.play_id))[0];
+					const { name: playName } = PLAYS_STYLE.find((p) => p.id === Number(item.play_id));
 					let instrItem = {};
 					// 获取乐器类型
 					if (item.play_id === 1) {
-						instrItem = instruments.filter((p) => p.id === Number(item.instrument_id))[0];
+						instrItem = instruments.find((p) => p.id === Number(item.instrument_id));
 					} else {
-						instrItem = voices.filter((p) => p.id === Number(item.instrument_id))[0];
+						instrItem = voices.find((p) => p.id === Number(item.instrument_id));
 					}
 					// eslint-disable-next-line prefer-const
 					let { name: instrumentName, url: instrumentUrl } = instrItem;
@@ -66,14 +66,14 @@ Page({
 					item = Object.assign(item, { playName, instrumentName, instrumentUrl });
 					if (this.data.selectTabIdx === 2) {
 						// 如果是演员查看需求状态
-						if (item.priceState !== 4) {
-							item.detailStateName = price_state.filter((p) => p.id === item.state)[0].name;
+						if (item.priceState < 4) {
+							item.detailStateName = price_state.find((p) => p.id === item.state)?.name;
 						} else {
-							item.detailStateName = DEMAND_STATE_FOR_ACTOR.filter((p) => p.id === item.state)[0].name;
+							item.detailStateName = DEMAND_STATE_FOR_ACTOR.find((p) => p.id === item.state)?.name;
 						}
 					} else {
 						// 需求方看到的状态
-						item.detailStateName = DEMAND_STATE.filter((p) => p.id === item.state)[0].name;
+						item.detailStateName = DEMAND_STATE.find((p) => p.id === item.state)?.name;
 					}
 				});
 			}

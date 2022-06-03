@@ -17,7 +17,6 @@ App({
 		if (config.env === 'dev') {
 			this.getMyMessage();
 		} else {
-			console.log(this.timer, 1111);
 			if (this.timer) return;
 			this.timer = setInterval(() => {
 				this.getMyMessage();

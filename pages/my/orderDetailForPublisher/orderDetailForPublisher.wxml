@@ -51,6 +51,17 @@
                     <image class="icon icon5" src="/asserts/public/food_icon.png" />
                     <view class="value">{{detail.food || ""}}</view> 
                 </view>
+                <view class="chunk">
+                        <view class="price_chunk_label">演员详情</view>
+                        <view class="price_chunk_value">
+                            <block wx:for="{{priceRecordList}}" wx:key="index">
+                                <view class="person_chunk" data-idx="{{index}}" bindtap="onTapUserDetail">
+                                    <image class="person_chunk_photo" src="{{item.userDetail.photo}}" />
+                                    {{item.userDetail.nickname}}
+                                </view>
+                            </block>
+                        </view>
+                    </view>
             </block>
             <block wx:if="{{selectTabIdx === 2}}">
                 <block wx:if="{{priceRecordList && priceRecordList.length !== 0}}">
@@ -65,17 +76,7 @@
                             </block>
                         </view>
                     </view>
-                    <view class="price_chunk">
-                        <view class="price_chunk_label">演员详情：</view>
-                        <view class="price_chunk_value">
-                            <block wx:for="{{priceRecordList}}" wx:key="index">
-                                <view class="person_chunk" data-idx="{{index}}" bindtap="onTapUserDetail">
-                                    <image class="person_chunk_photo" src="{{item.userDetail.photo}}" />
-                                    {{item.userDetail.nickname}}
-                                </view>
-                            </block>
-                        </view>
-                    </view>
+                    
                     <view class="price_chunk">
                         <view class="price_chunk_label">报价记录：</view>
                         <view class="price_chunk_value"></view>

@@ -137,7 +137,10 @@ Page({
 			if (is_clear) {
 				return this.setData({ actorList: actors, currentUserPage: 1, isLoading: false });
 			}
-			const newActorList = [...actorList, ...actors];
+			let newActorList = [...actorList, ...actors];
+			const actorMapList = newActorList.map((item) => [item.id + item.nickname, item]);
+			const actorMap = new Map(actorMapList);
+			newActorList = Array.from(actorMap.values());
 			this.setData({ actorList: newActorList, currentUserPage: currentUserPage + 1, isLoading: false });
 		} finally {
 			if (showLoading) loading.hideLoading();

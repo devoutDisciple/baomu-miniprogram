@@ -81,7 +81,6 @@
 
 .chunk2 {
     margin-top: 40rpx;
-    margin-bottom: 200rpx;
 }
 
 .chunk_title {
@@ -105,4 +104,14 @@
 .photo_img {
     width: calc(100vw - 150rpx);
     height: calc((100vw - 150rpx) / 1.6);
+}
+
+.red_desc {
+    margin-top: 30rpx;
+    font-size: 30rpx;
+    color: red;
+}
+
+.empty_con {
+    height: 300rpx;
 }

@@ -85,8 +85,27 @@ Component({
 
 		// 点击完成，支付给用户
 		onTapSuccess: async function () {
-			wx.showToast({
-				title: '已付款给用户',
+			const { data } = this.data;
+			const self = this;
+			wx.showModal({
+				title: '是否确认演出完成',
+				content: '点击完成后系统会在1-3个工作日内将演出费用支付给演员，请谨慎操作',
+				success: async function (e) {
+					const { confirm, errMsg } = e;
+					if (errMsg === 'showModal:ok' && confirm) {
+						const result = await request.post({
+							url: '/demand/complete',
+							data: { id: data.id },
+						});
+						if (result === 'success') {
+							wx.showModal({
+								title: '已确认演出完成',
+								showCancel: false,
+							});
+							self.triggerEvent('OnSearchForItem');
+						}
+					}
+				},
 			});
 		},
 

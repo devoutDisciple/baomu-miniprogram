@@ -37,6 +37,8 @@
                     </block>
                 </view>
             </view>
+            <view class="red_desc">提示: 请确保人本操作上传真实、有效、清晰的身份证手持照片。手持照片仅用于个人信息实名认证，鲍姆科技决不会泄露您的资料</view>
+            <view class="empty_con"></view>
         </view>
     </scroll-view>
     <block wx:if="{{type === 1}}">

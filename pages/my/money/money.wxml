@@ -2,12 +2,12 @@
     <block wx:if="{{recordList && recordList.length !== 0}}">
         <image class="money_img" src="{{defaultMoneyUrl}}" mode="widthFix"/>
         <view class="money_title">账户余额</view>
-        <view class="money_num">￥ <view class="money_num_txt">{{money}}</view></view>
-        <view class="btn">
+        <view class="money_num">￥ <view class="money_num_txt">{{sumMoney}}</view></view>
+        <view class="btn" bindtap="onTapMoney">
             <view class="btn_txt">提现</view>
         </view>
         <view class="desc">
-            Tip: 由于微信限制，暂时无法提现，所有收入会在演出完成之后的十五个工作日内打到您的微信零钱账户内，对您造成的困扰十分抱歉，请您耐心等待！
+            Tip: 在演出订单结束后四个工作日内，当场演出的收益将会转至该账户，可进行提现操作
         </view>
         <view class="msg_con">
             <view class="msg" bindtap="onSearchDetail">详细记录</view>
