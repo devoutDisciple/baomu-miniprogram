@@ -103,7 +103,13 @@
 
 .chunk2 {
     margin-top: 40rpx;
-    margin-bottom: 200rpx;
+}
+
+.red_desc {
+    margin-top: 30rpx;
+    font-size: 30rpx;
+    color: red;
+    margin-bottom: 300rpx;
 }
 
 .chunk_title {

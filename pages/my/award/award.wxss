@@ -137,3 +137,10 @@
 .picker_value {
     color: #333;
 }
+
+.red_desc {
+    margin-top: 30rpx;
+    font-size: 30rpx;
+    color: red;
+    margin-bottom: 300rpx;
+}
