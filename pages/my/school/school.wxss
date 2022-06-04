@@ -77,7 +77,13 @@
     background: #fff;
     padding: 50rpx 30rpx;
     border-radius: 20rpx;
-    margin-bottom: 200rpx;
+}
+
+.red_desc {
+    margin-top: 30rpx;
+    font-size: 24rpx;
+    color: red;
+    margin-bottom: 300rpx;
 }
 
 .chunk_title {

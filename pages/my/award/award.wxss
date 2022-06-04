@@ -140,7 +140,7 @@
 
 .red_desc {
     margin-top: 30rpx;
-    font-size: 30rpx;
+    font-size: 24rpx;
     color: red;
     margin-bottom: 300rpx;
 }
