@@ -520,3 +520,10 @@ export const PAY_TYPE = [
 	{ id: 2, name: '收入' },
 	{ id: 3, name: '退款' },
 ];
+
+// 1-演出所得 2-退款所得 3-金额提现
+export const MONEY_TYPE = [
+	{ id: 1, name: '演出收入' },
+	{ id: 2, name: '退款' },
+	{ id: 3, name: '余额提现' },
+];

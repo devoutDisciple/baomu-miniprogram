@@ -39,6 +39,7 @@ Page({
 	// 点击提现
 	onTapMoney: async function () {
 		const { money } = this.data;
+		const self = this;
 		wx.showModal({
 			title: '请输入提现金额',
 			editable: true,
@@ -60,10 +61,15 @@ Page({
 					}
 					const user_id = wx.getStorageSync('user_id');
 					await request.post({ url: '/money/withdraw', data: { user_id: user_id, total_money: value } });
-					wx.showToast({
+					wx.showModal({
 						title: '已发起提现',
 						content: '提现金额将会在1-3个工作日内支付到您的微信账户，请耐心等待',
 						showCancel: false,
+						success: async () => {
+							if (res.confirm && res.errMsg === 'showModal:ok') {
+								self.getUserMoney();
+							}
+						},
 					});
 				}
 			},

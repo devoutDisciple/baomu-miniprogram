@@ -2,7 +2,7 @@
     <block wx:if="{{recordList && recordList.length !== 0}}">
         <image class="money_img" src="{{defaultMoneyUrl}}" mode="widthFix"/>
         <view class="money_title">账户余额</view>
-        <view class="money_num">￥ <view class="money_num_txt">{{sumMoney}}</view></view>
+        <view class="money_num">￥ <view class="money_num_txt">{{availableMoney}}</view></view>
         <view class="btn" bindtap="onTapMoney">
             <view class="btn_txt">提现</view>
         </view>

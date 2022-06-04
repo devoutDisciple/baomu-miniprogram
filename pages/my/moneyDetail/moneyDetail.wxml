@@ -17,7 +17,7 @@
                     </view>
                     <view class="desc2">
                         <view class="desc_left">时间：{{item.create_time}}</view>
-                        <view class="desc_right">{{item.money}} 元</view>
+                        <view class="desc_right">{{item.total_money}} 元</view>
                     </view>
                 </view>
             </block>
