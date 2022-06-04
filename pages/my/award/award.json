@@ -2,6 +2,7 @@
     "usingComponents": {
       "header": "/component/header/header",
       "select-item": "/component/selectItem/selectItem",
+      "privacy": "/component/privacy/privacy",
       "tip-dialog": "/component/tipDialog/tipDialog"
     },
     "navigationStyle": "custom"

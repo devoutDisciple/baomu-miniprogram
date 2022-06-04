@@ -45,7 +45,9 @@
     "pages/my/moneyDetail/moneyDetail",
     "pages/my/personCalendar/personCalendar",
     "pages/my/award/award",
-    "pages/test/test"
+    "pages/test/test",
+    "pages/my/privacy/privacy",
+    "pages/my/serviceAgreement/serviceAgreement"
   ],
   "window": {
     "backgroundTextStyle": "light",

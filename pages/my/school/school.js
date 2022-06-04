@@ -23,6 +23,7 @@ Page({
 		study_list: [], // 学习形式
 		study_id: '', // 选择的学习形式id
 		study_name: '', // 选择的学习形式name
+		checkboxValue: false, // 选择框的状态
 	},
 
 	/**
@@ -121,6 +122,12 @@ Page({
 		});
 	},
 
+	// 选择服务协议和隐私政策
+	onCheckChange: function (e) {
+		const { value } = e.detail;
+		this.setData({ checkboxValue: value });
+	},
+
 	// 提交审核
 	onSend: async function () {
 		const user_id = wx.getStorageSync('user_id');
@@ -131,11 +138,19 @@ Page({
 			school_name, // 学校名称
 			graduation_time, // 毕业时间
 			study_id, // 选择的学习形式id
+			checkboxValue,
 		} = this.data;
 		if (!schoolImg || !name || !idcard || !school_name || !graduation_time || !study_id) {
 			return wx.showToast({
 				title: '请完善信息',
 				icon: 'error',
+			});
+		}
+		if (!checkboxValue) {
+			return wx.showModal({
+				title: '请先点击确认按钮',
+				content: '请同意鲍姆演艺的《用户服务协议》和《隐私政策》',
+				showCancel: false,
 			});
 		}
 		loading.showLoading();

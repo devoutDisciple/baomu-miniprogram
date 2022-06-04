@@ -16,6 +16,7 @@ Page({
 			src: '/asserts/public/publish.png',
 			desc: '提交后需1-3个工作日审核，请耐心等待！',
 		},
+		checkboxValue: false, // 选择框的状态
 	},
 
 	/**
@@ -75,14 +76,27 @@ Page({
 		});
 	},
 
+	// 选择服务协议和隐私政策
+	onCheckChange: function (e) {
+		const { value } = e.detail;
+		this.setData({ checkboxValue: value });
+	},
+
 	// 提交审核
 	onSend: async function () {
-		const { idcard1, idcard2 } = this.data;
+		const { idcard1, idcard2, checkboxValue } = this.data;
 		const user_id = wx.getStorageSync('user_id');
 		if (!idcard1 || !idcard2) {
 			return wx.showToast({
 				title: '请完善信息',
 				icon: 'error',
+			});
+		}
+		if (!checkboxValue) {
+			return wx.showModal({
+				title: '请先点击确认按钮',
+				content: '请同意鲍姆演艺的《用户服务协议》和《隐私政策》',
+				showCancel: false,
 			});
 		}
 		loading.showLoading();

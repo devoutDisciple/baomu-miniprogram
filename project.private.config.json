@@ -310,6 +310,20 @@
           "query": "",
           "launchMode": "default",
           "scene": null
+        },
+        {
+          "name": "隐私政策",
+          "pathName": "pages/my/privacy/privacy",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "用户服务协议",
+          "pathName": "pages/my/serviceAgreement/serviceAgreement",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
         }
       ]
     }

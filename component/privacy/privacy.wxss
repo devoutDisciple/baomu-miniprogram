@@ -1,0 +1,15 @@
+.privacy {
+    margin-top: 40rpx;
+    display: flex;
+    align-items: center;
+    font-size: 28rpx;
+    margin-bottom: 300rpx;
+}
+
+.text {
+    margin-left: 10rpx;
+}
+
+.privacy_item {
+    color: #1890ff;
+}

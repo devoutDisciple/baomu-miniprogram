@@ -19,6 +19,7 @@ Page({
 		certificate_name: '', // 证书名称
 		certificate_level: '', // 名次
 		certificate_time: '', // 证书颁发时间
+		checkboxValue: false, // 选择框的状态
 	},
 
 	/**
@@ -98,6 +99,12 @@ Page({
 		});
 	},
 
+	// 选择服务协议和隐私政策
+	onCheckChange: function (e) {
+		const { value } = e.detail;
+		this.setData({ checkboxValue: value });
+	},
+
 	// 提交审核
 	onSend: async function () {
 		const user_id = wx.getStorageSync('user_id');
@@ -107,11 +114,19 @@ Page({
 			certificate_name, // 证书名称
 			certificate_level, // 名次
 			certificate_time, // 证书颁发时间
+			checkboxValue,
 		} = this.data;
 		if (!awardImg || !certificate_gov || !certificate_name || !certificate_level || !certificate_time) {
 			return wx.showToast({
 				title: '请完善信息',
 				icon: 'error',
+			});
+		}
+		if (!checkboxValue) {
+			return wx.showModal({
+				title: '请先点击确认按钮',
+				content: '请同意鲍姆演艺的《用户服务协议》和《隐私政策》',
+				showCancel: false,
 			});
 		}
 		loading.showLoading();

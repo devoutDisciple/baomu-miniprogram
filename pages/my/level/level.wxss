@@ -105,13 +105,6 @@
     margin-top: 40rpx;
 }
 
-.red_desc {
-    margin-top: 30rpx;
-    font-size: 24rpx;
-    color: red;
-    margin-bottom: 300rpx;
-}
-
 .chunk_title {
     font-size: 34rpx;
     margin-bottom: 40rpx;
@@ -164,4 +157,8 @@
 
 .picker_value {
     color: #333;
+}
+
+.empty_bottom {
+    height: 300rpx;
 }

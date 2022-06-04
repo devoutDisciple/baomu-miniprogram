@@ -23,6 +23,7 @@ Page({
 		selectLevelName: '', // 选择的证书等级名称
 		selectDate: '', // 选取的时间
 		selectImg: '', // 选择证书
+		checkboxValue: false, // 选择框的状态
 	},
 
 	/**
@@ -123,14 +124,27 @@ Page({
 		});
 	},
 
+	// 选择服务协议和隐私政策
+	onCheckChange: function (e) {
+		const { value } = e.detail;
+		this.setData({ checkboxValue: value });
+	},
+
 	// 提交审核
 	onSend: async function () {
 		const user_id = wx.getStorageSync('user_id');
-		const { selectSchoolId, selectLevelId, selectDate, selectImg } = this.data;
+		const { selectSchoolId, selectLevelId, selectDate, selectImg, checkboxValue } = this.data;
 		if (!selectSchoolId || !selectLevelId || !selectDate || !selectImg) {
 			return wx.showToast({
 				title: '请完善信息',
 				icon: 'error',
+			});
+		}
+		if (!checkboxValue) {
+			return wx.showModal({
+				title: '请先点击确认按钮',
+				content: '请同意鲍姆演艺的《用户服务协议》和《隐私政策》',
+				showCancel: false,
 			});
 		}
 		loading.showLoading();

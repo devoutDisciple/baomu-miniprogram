@@ -66,7 +66,12 @@
                 </view>
                 <view class="photo_desc">院校信息或者学信网学籍信息(请务必上传真实信息平台会人工审核)</view>
             </view>
-            <view class="red_desc">提示: 请确保人本操作上传资料的真实、有效、清晰。此认证仅用于个人信息的完善以及个人能力的证明，鲍姆科技决不会泄露您的资料!!!</view>
+            <block wx:if="{{type === 1}}">
+                <privacy bindOnCheckChange="onCheckChange"/>
+            </block>
+            <block wx:else>
+                <view class="empty_bottom" />
+            </block>
         </view>
     </scroll-view>
     <block wx:if="{{type === 1}}">

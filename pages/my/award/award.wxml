@@ -50,7 +50,12 @@
                 </view>
                 <view class="photo_desc">获奖证书照片上传</view>
             </view>
-            <view class="red_desc">提示: 请确保人本操作上传资料的真实、有效、清晰。此认证仅用于个人信息的完善以及个人能力的证明，鲍姆科技决不会泄露您的资料!!!</view>
+            <block wx:if="{{type === 1}}">
+                <privacy bindOnCheckChange="onCheckChange"/>
+            </block>
+            <block wx:else>
+                <view class="empty_bottom" />
+            </block>
         </view>
     </scroll-view>
    <block wx:if="{{type === 1}}">

@@ -1,0 +1,9 @@
+<view class="privacy">
+    <checkbox checked="{{checked}}" bindtap="onTapCheckChange"/>
+    <view class="text">
+        <text bindtap="onTapCheckChange">是否同意</text>
+        <text class="privacy_item" data-key="1" bindtap="goPrivacy">《用户服务协议》</text>
+        和
+        <text class="privacy_item" data-key="2" bindtap="goPrivacy">《隐私政策》</text>
+    </view>
+</view>

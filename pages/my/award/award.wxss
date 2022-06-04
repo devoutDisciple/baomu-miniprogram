@@ -144,3 +144,7 @@
     color: red;
     margin-bottom: 300rpx;
 }
+
+.empty_bottom {
+    height: 300rpx;
+}

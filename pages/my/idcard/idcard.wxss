@@ -106,12 +106,6 @@
     height: calc((100vw - 150rpx) / 1.6);
 }
 
-.red_desc {
-    margin-top: 30rpx;
-    font-size: 24rpx;
-    color: red;
-}
-
-.empty_con {
+.empty_bottom {
     height: 300rpx;
 }
