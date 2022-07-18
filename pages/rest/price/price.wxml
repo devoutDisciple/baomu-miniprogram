@@ -1,0 +1,3 @@
+<view class="wrap">
+    <image bindtap="onTapImg" class="img" src="{{priceUrl}}" />
+</view>

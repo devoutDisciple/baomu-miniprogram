@@ -21,8 +21,9 @@
         },
         {
           "name": "其他",
-          "pathName": "pages/rest/index/index",
+          "pathName": "pages/rest/price/price",
           "query": "",
+          "launchMode": "default",
           "scene": null
         },
         {

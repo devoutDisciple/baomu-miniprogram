@@ -47,7 +47,8 @@
     "pages/my/award/award",
     "pages/test/test",
     "pages/my/privacy/privacy",
-    "pages/my/serviceAgreement/serviceAgreement"
+    "pages/my/serviceAgreement/serviceAgreement",
+    "pages/rest/price/price"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -88,8 +89,8 @@
         "selectedIconPath": "asserts/tabBar/square_select.png"
       },
       {
-        "pagePath": "pages/rest/index/index",
-        "text": "其他",
+        "pagePath": "pages/rest/price/price",
+        "text": "价格表",
         "iconPath": "asserts/tabBar/rest.png",
         "selectedIconPath": "asserts/tabBar/rest_select.png"
       },
